@@ -85,6 +85,14 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT')
+    },
+    'sesar2024': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_2024_NAME'),
+        'USER': os.environ.get('DB_2024_USER'),
+        'PASSWORD': os.environ.get('DB_2024_PASSWORD'),
+        'HOST': os.environ.get('DB_2024_HOST'),
+        'PORT': os.environ.get('DB_2024_PORT')
     }
 }
 
