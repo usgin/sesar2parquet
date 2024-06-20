@@ -37,7 +37,8 @@ convert to vocab table platform; name becomes label.  Have to figure out host pl
 ## platform_type-lkup 
 convert to vocab table platform_type; name becomes label
 
-## primary_location_name-lkup, locality, primary_location_type_lkup, location_description, locality_description --  Have to map distinct combinations of location-related fields to SESAR2024 locality. 2024 locality includes geographic, political, geologic features, e.g. place names, formation names, tectonic environments....  Establishes context for sample collection.  These are mixed between location_name and locality in SESAR2017 Should this be split into geographic/political locations and a separate table for geologic/tectonic sampled features?  Need to make sample--> locality many to many.  Geologic or tectonic units go in Geologic unit_verbatim field.   Tectonic env should be location type. 
+## primary_location_name
+lkup, locality, primary_location_type_lkup, location_description, locality_description --  Have to map distinct combinations of location-related fields to SESAR2024 locality. 2024 locality includes geographic, political, geologic features, e.g. place names, formation names, tectonic environments....  Establishes context for sample collection.  These are mixed between location_name and locality in SESAR2017 Should this be split into geographic/political locations and a separate table for geologic/tectonic sampled features?  Need to make sample--> locality many to many.  Geologic or tectonic units go in Geologic unit_verbatim field.   Tectonic env should be location type. 
 
 ## registrar_lkup -- not clear what this is for, is sequence of integers, not sequential.
 
@@ -52,7 +53,7 @@ convert to vocab table platform_type; name becomes label
 	top level can use iSamples material type.  Populate sample material table from classification table mapping to iSamples.  get mindat URIs for minerals  
 	
 	### agents
-	have to construct Agent table from collector, cur_owner_id,  cur_registrant_id,  current_archive, current_archive_contact, last_changed_by, last_registrant_id, orig_owner_id,  original_archive,  original_archive_contact, req_registrant_id, 
+	have to construct Agent table from collector, cur_owner_id,  cur_registrant_id,  current_archive, current_archive_contact, last_changed_by, last_registrant_id, orig_owner_id,  original_archive,  original_archive_contact, req_registrant_id.   *Note that collector is many to many, need correlation table*
 	
 	### Initiative-- construct initiative table from cruise_field_prgm.  a launch is part of an initiative; The launch_label and collection_start_date and collection_end_date serve to identify individual launches.
 	
