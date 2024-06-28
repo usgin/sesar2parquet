@@ -531,6 +531,7 @@ class Migration(migrations.Migration):
                 ('address1', models.CharField(blank=True, max_length=255, null=True)),
                 ('address2', models.CharField(blank=True, max_length=255, null=True)),
                 ('city', models.CharField(blank=True, max_length=255, null=True)),
+                ('country', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.country')),
                 ('state_province', models.CharField(blank=True, max_length=255, null=True)),
                 ('postal_code', models.CharField(blank=True, max_length=255, null=True)),
                 ('phone', models.CharField(blank=True, max_length=255, null=True)),

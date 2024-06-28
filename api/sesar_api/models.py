@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -25,6 +26,7 @@ class Country(models.Model):
 
 
 class SesarUser(models.Model):
+    auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
     sesar_user_id = models.AutoField(primary_key=True)
     sso_account_id = models.IntegerField(blank=True, null=True)
     is_admin = models.IntegerField()
@@ -54,7 +56,7 @@ class SesarUser(models.Model):
     last_login = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sesar_user'
 
 
