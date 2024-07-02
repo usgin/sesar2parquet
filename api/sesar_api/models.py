@@ -8,6 +8,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.db.models.functions import Now
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -29,10 +30,10 @@ class SesarUser(models.Model):
     auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
     sesar_user_id = models.AutoField(primary_key=True)
     sso_account_id = models.IntegerField(blank=True, null=True)
-    is_admin = models.IntegerField()
+    is_admin = models.IntegerField(default=0)
     fname = models.CharField(max_length=100, blank=True, null=True)
     lname = models.CharField(max_length=100, blank=True, null=True)
-    email = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, blank=True, null=True)
     address1 = models.CharField(max_length=255, blank=True, null=True)
     address2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
@@ -45,15 +46,15 @@ class SesarUser(models.Model):
     institution_detail = models.CharField(max_length=255, blank=True, null=True)
     note = models.CharField(max_length=2000, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
-    upload_permission_status = models.IntegerField(blank=True, null=True)
+    upload_permission_status = models.IntegerField(blank=True, null=True, default=0)
     upload_permission_date = models.DateField(blank=True, null=True)
-    registration_date = models.DateTimeField(blank=True, null=True)
+    registration_date = models.DateTimeField(blank=True, null=True, default=Now())
     deactivation_date = models.DateTimeField(blank=True, null=True)
     legacy_user_id = models.IntegerField(blank=True, null=True)
     geopass_id = models.CharField(unique=True, max_length=255, blank=True, null=True)
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
-    doi_prefix = models.CharField(max_length=10)
-    last_login = models.DateTimeField(blank=True, null=True)
+    doi_prefix = models.CharField(max_length=10, default='10.58052/')
+    last_login = models.DateTimeField(blank=True, null=True, default=Now())
 
     class Meta:
         managed = True
