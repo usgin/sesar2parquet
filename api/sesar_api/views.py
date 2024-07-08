@@ -15,6 +15,16 @@ from django.core.exceptions import ObjectDoesNotExist
 @psa()
 def login_by_access_token(request, backend):
     token = request.data.get('access_token')
+
+    if not token:
+        return Response(
+                {
+                    'errors': {
+                        'token': 'Please provide an access token'
+                        }
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
     
     try:
         user = request.backend.do_auth(token)
@@ -26,6 +36,13 @@ def login_by_access_token(request, backend):
                     'errors': {
                         'token': 'Invalid token'
                         }
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        else:
+            return Response(
+                {
+                    'error': 'Bad request'
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
@@ -49,7 +66,7 @@ def login_by_access_token(request, backend):
             )
         
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def user_details(request):
     return Response(
         {
@@ -64,7 +81,14 @@ def revoke_access_token(request):
     try:
         request.user.auth_token.delete()
     except (AttributeError, ObjectDoesNotExist):
-        pass
+        return Response(
+                {
+                    'errors': {
+                        'token': 'Token does not exist'
+                        }
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
     return Response({"success": ("Successfully logged out.")},
                     status=status.HTTP_200_OK)
