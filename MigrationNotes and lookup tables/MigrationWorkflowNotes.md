@@ -4,7 +4,10 @@
 table can include material types from various vocabularies.  the general_material_type foreign key  links to the material type vocabulary used as the top-level facet.  I'd like to see these be the iSamples (with extensions) vocabularies.  sample_material correlation table is used to link to material types from other vocabularies, or more specific material types.   NEED a 'general material type' vocabulary. 
 map existing classification to material_type with scheme_name  'original SESAR classification'.  Will have to come back later and map to 'general_material_type'
 
-##country
+## archive_lkup
+names of repository origanizations, load into agent table with type=organization (or archive)
+
+## country
 there is a correlation table country_id_map that maps geopass country_id to sesar country_id.  Do we still need this?  why not update geopass country ids?
 
 ##cruise_field_prgrm_lkup
@@ -29,7 +32,7 @@ one to one mapping, keep group id's the same. check group_type FK to collection_
 goes to location_method, have to make sure FK integrity is preserved.
 
 ## peng_org
-normalized organization names; these should be the values in the Agent table for agent type = organization.
+normalized organization names; these should be the values in the Agent table for agent type = organization.  Compare with archive_lkup table.
 
 ## platform_name_lkup
 convert to vocab table platform; name becomes label.  Have to figure out host platforms if applicable
@@ -41,7 +44,8 @@ convert to vocab table platform_type; name becomes label
 lkup, locality, primary_location_type_lkup, location_description, locality_description --  Have to map distinct combinations of location-related fields to SESAR2024 locality. 2024 locality includes geographic, political, geologic features, e.g. place names, formation names, tectonic environments....  Establishes context for sample collection.  These are mixed between location_name and locality in SESAR2017 Should this be split into geographic/political locations and a separate table for geologic/tectonic sampled features?  Need to make sample--> locality many to many.  Geologic or tectonic units go in Geologic unit_verbatim field.   Tectonic env should be location type. 
 
 ## registrar_lkup
-not clear what this is for, is sequence of integers, not sequential.
+ not clear what this is for, is sequence of integers, not sequential.
+
 
 ## Sample
 ### location
@@ -54,10 +58,12 @@ age_min, age_max have numbers; convert all to Ma for numeric age fields.  Geolog
 top level can use iSamples material type.  Populate sample material table from classification table mapping to iSamples.  get mindat URIs for minerals  
 	
 ### agents
-have to construct Agent table from collector, cur_owner_id,  cur_registrant_id,  current_archive, current_archive_contact, last_changed_by, last_registrant_id, orig_owner_id,  original_archive,  original_archive_contact, req_registrant_id.   *Note that collector is many to many, need correlation table*
+	see separate document 'agentsMapping.md'.
+	have to construct Agent table from collector, cur_owner_id,  cur_registrant_id,  current_archive, current_archive_contact, last_changed_by, last_registrant_id, orig_owner_id,  original_archive,  original_archive_contact, req_registrant_id, 
 	
 ### Initiative
-construct initiative table from cruise_field_prgm.  a launch is part of an initiative; The launch_label and collection_start_date and collection_end_date serve to identify individual launches.
+	construct initiative table from cruise_field_prgm.  a launch is part of an initiative; The launch_label and collection_start_date and collection_end_date serve to identify individual launches.
+
 	
 ### geological unit
 make current field a 'verbatim'; this will get content from geological_unit and from locality, location fields in SESAR 2017.  Later can add URI or FK to a geologic lexicon table.  Geologic unit is about rock body.  Locality is about location,
@@ -68,8 +74,11 @@ generate platform lookup tabel from samples launch_platform_name, platform_name,
 ### vertical location
 vertical min,max and reference id generate from elevation, elevation_end, elevation_unit, depth_max, depth_min, depth_scale, vertical_datum. will need to generate spatial reference system entries.
 	
+
 ### geospatial_Location table
 generate from northing, easting, zone
+
+
 	
 ### sample_description
 is concatenation of sample_comment, description, classification comment, collector detail, and possible other random text scattered about.
@@ -98,11 +107,19 @@ make vocab table, hopefully use iSamples and extensions
 ## sample_upload_history
 not sure what to do with this.
 
-## sesar_users
-most will go into Agents table, sesar specifica stuff to 
+## sesar_user
+most will go into Agents table, sesar specific stuff to 2024 sesar_user table.  notes apply to current sesar_user, put these in new sesar user table.   *?ADD note field in 2024 agent table?*
+
+## sesar_user_code
+IGSN prefixs; a user might be associated with multiple prefixes (user codes). copy table, make sure ids are the same
+
+## sesar_user_code_role
+maps users to role id (integer 1-4). Sesar_role table defines roles.  Also has geopass_id, user_code, and orcid_id, all of which duplicate content in either sesar_user or sesar_user_code.  Leave this for admin reimplmentation.
+
+## spatial_ref_sys
+spatial refrence system. copy table.  *add description field and label?*
 	
 #	Work flow
-
 
 ## Tables that copy directly
 fields in source table map directly to fields in target tables. All source table content accounted for.
