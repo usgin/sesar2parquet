@@ -571,18 +571,21 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='SesarUserCodeRole',
+            name='UserCodePermission',
             fields=[
-                ('sesar_user_code_role_id', models.AutoField(primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('geopass_id', models.CharField(blank=True, max_length=250, null=True)),
                 ('user_code', models.CharField(max_length=5)),
                 ('activate_date', models.DateTimeField(blank=True, null=True)),
                 ('deactivate_date', models.DateTimeField(blank=True, null=True)),
                 ('orcid_id', models.CharField(blank=True, max_length=19, null=True)),
+                ('sesar_role', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesarrole')),
+                ('sesar_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesaruser')),
             ],
             options={
-                'db_table': 'sesar_user_code_role',
-                'managed': False,
+                'db_table': 'user_code_permission',
+                'managed': True,
+                'unique_together': {('geopass_id', 'user_code')},
             },
         ),
         migrations.CreateModel(

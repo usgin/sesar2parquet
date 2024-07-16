@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.conf import settings
 from django.db.models.functions import Now
 
@@ -14,17 +14,6 @@ from django.db.models.functions import Now
 # Extend Django User Model, add custom fields as neccessary
 class User(AbstractUser):
     pass
-
-
-class Country(models.Model):
-    country_id = models.AutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    is_active = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'country'
-
 
 class SesarUser(models.Model):
     auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
@@ -38,7 +27,7 @@ class SesarUser(models.Model):
     address2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
     state_province = models.CharField(max_length=255, blank=True, null=True)
-    country = models.ForeignKey(Country, models.DO_NOTHING, blank=True, null=True)
+    country = models.ForeignKey('Country', models.DO_NOTHING, blank=True, null=True)
     postal_code = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
     fax = models.CharField(max_length=255, blank=True, null=True)
@@ -55,10 +44,42 @@ class SesarUser(models.Model):
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
     doi_prefix = models.CharField(max_length=10, default='10.58052/')
     last_login = models.DateTimeField(blank=True, null=True, default=Now())
-
     class Meta:
         managed = True
         db_table = 'sesar_user'
+
+class Organization(models.Model):
+    owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    create_date = models.DateTimeField(default=Now())
+    deactivate_date = models.DateTimeField(blank=True, null=True)
+    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    members = models.ManyToManyField(SesarUser, related_name='organizations', through='OrganizationMember')
+
+    class Meta:
+        db_table = 'organization'
+
+
+class OrganizationTeam(models.Model):
+    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    activate_date = models.DateTimeField(default=Now())
+    deactivate_date = models.DateTimeField(blank=True, null=True)
+
+
+class OrganizationMember(models.Model):
+    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
+    is_admin = models.BooleanField(default=False)
+    join_date = models.DateTimeField(default=Now())
+    teams = models.ManyToManyField(OrganizationTeam, related_name='members', through='OrganizationTeamMember')
+
+
+class OrganizationTeamMember(models.Model):
+    member = models.ForeignKey(OrganizationMember, models.DO_NOTHING)
+    team = models.ForeignKey(OrganizationTeam, models.DO_NOTHING)
 
 
 class Classification(models.Model):
@@ -72,6 +93,16 @@ class Classification(models.Model):
     class Meta:
         managed = False
         db_table = 'classification'
+
+
+class Country(models.Model):
+    country_id = models.AutoField(primary_key=True)
+    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    is_active = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'country'
 
 
 class LaunchType(models.Model):
@@ -295,18 +326,21 @@ class SesarUserCode(models.Model):
         db_table = 'sesar_user_code'
 
 
-class SesarUserCodeRole(models.Model):
-    sesar_user_code_role_id = models.AutoField(primary_key=True)
+class UserCodePermission(models.Model):
+    id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
     user_code = models.CharField(max_length=5)
-    sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING)
+    sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING, blank=True, null=True)
     activate_date = models.DateTimeField(blank=True, null=True)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
+    organization_team = models.ForeignKey(OrganizationTeam, models.DO_NOTHING, blank=True, null=True)
+    auth_group = models.ForeignKey(Group, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'sesar_user_code_role'
+        managed = True
+        db_table = 'user_code_permission'
         unique_together = (('geopass_id', 'user_code'),)
 
 
