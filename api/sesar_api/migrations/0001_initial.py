@@ -558,6 +558,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SesarUserCode',
             fields=[
+                ('sesar_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesaruser')),
                 ('user_code', models.CharField(blank=True, max_length=5, null=True, unique=True)),
                 ('is_available', models.IntegerField(blank=True, null=True)),
                 ('igsn_count', models.BigIntegerField(blank=True, null=True)),
@@ -567,7 +568,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': 'sesar_user_code',
-                'managed': False,
+                'managed': True,
             },
         ),
         migrations.CreateModel(

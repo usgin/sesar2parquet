@@ -314,6 +314,7 @@ class SesarRole(models.Model):
 
 class SesarUserCode(models.Model):
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
+    organization = models.ForeignKey(Organization, models.DO_NOTHING, blank=True, null=True)
     user_code = models.CharField(unique=True, max_length=5, blank=True, null=True)
     is_available = models.IntegerField(blank=True, null=True)
     igsn_count = models.BigIntegerField(blank=True, null=True)
@@ -322,20 +323,20 @@ class SesarUserCode(models.Model):
     doi_prefix = models.CharField(max_length=16)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sesar_user_code'
 
 
 class UserCodePermission(models.Model):
     id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
-    user_code = models.CharField(max_length=5)
+    user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5)
     sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING, blank=True, null=True)
     activate_date = models.DateTimeField(blank=True, null=True)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
-    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    organization_team = models.ForeignKey(OrganizationTeam, models.DO_NOTHING, blank=True, null=True)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
+    organization_team = models.ForeignKey(OrganizationTeam, models.CASCADE, related_name='permissions', blank=True, null=True)
     auth_group = models.ForeignKey(Group, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
