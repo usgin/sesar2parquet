@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='usercodepermission',
+            model_name='samplepermission',
             name='auth_group',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='auth.group'),
         ),
@@ -42,6 +42,9 @@ class Migration(migrations.Migration):
                 ('organization', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organization')),
                 ('sesar_user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesaruser')),
             ],
+            options={
+                'db_table': 'organization_member',
+            },
         ),
         migrations.AddField(
             model_name='organization',
@@ -58,9 +61,12 @@ class Migration(migrations.Migration):
                 ('deactivate_date', models.DateTimeField(blank=True, null=True)),
                 ('organization', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organization')),
             ],
+            options={
+                'db_table': 'organization_team',
+            },
         ),
         migrations.AddField(
-            model_name='usercodepermission',
+            model_name='samplepermission',
             name='organization_team',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organizationteam'),
         ),
@@ -71,6 +77,9 @@ class Migration(migrations.Migration):
                 ('member', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organizationmember')),
                 ('team', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organizationteam')),
             ],
+            options={
+                'db_table': 'organization_team_member',
+            },
         ),
         migrations.AddField(
             model_name='organizationmember',

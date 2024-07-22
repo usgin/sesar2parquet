@@ -14,4 +14,12 @@ class Migration(migrations.Migration):
             name='sesaruser',
             options={'managed': True},
         ),
+        migrations.AlterModelOptions(
+            name='sesarusercode',
+            options={'managed': True},
+        ),
+        migrations.AlterModelOptions(
+            name='samplepermission',
+            options={'managed': True},
+        ),
     ]

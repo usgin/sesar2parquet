@@ -17,17 +17,17 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organization'),
         ),
         migrations.AlterField(
-            model_name='usercodepermission',
+            model_name='samplepermission',
             name='organization_team',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='permissions', to='sesar_api.organizationteam'),
         ),
         migrations.AlterField(
-            model_name='usercodepermission',
+            model_name='samplepermission',
             name='sesar_user',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='permissions', to='sesar_api.sesaruser'),
         ),
         migrations.AlterField(
-            model_name='usercodepermission',
+            model_name='samplepermission',
             name='user_code',
             field=models.ForeignKey(db_column='user_code', max_length=5, on_delete=django.db.models.deletion.CASCADE, related_name='permissions', to='sesar_api.sesarusercode', to_field='user_code'),
         ),

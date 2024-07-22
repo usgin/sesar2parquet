@@ -568,11 +568,11 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': 'sesar_user_code',
-                'managed': True,
+                'managed': False,
             },
         ),
         migrations.CreateModel(
-            name='UserCodePermission',
+            name='SamplePermission',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('geopass_id', models.CharField(blank=True, max_length=250, null=True)),
@@ -584,8 +584,8 @@ class Migration(migrations.Migration):
                 ('sesar_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesaruser')),
             ],
             options={
-                'db_table': 'user_code_permission',
-                'managed': True,
+                'db_table': 'sample_permission',
+                'managed': False,
                 'unique_together': {('geopass_id', 'user_code')},
             },
         ),
@@ -771,6 +771,7 @@ class Migration(migrations.Migration):
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
             ],
             options={
+                'db_table': 'auth_user',
                 'verbose_name': 'user',
                 'verbose_name_plural': 'users',
                 'abstract': False,
