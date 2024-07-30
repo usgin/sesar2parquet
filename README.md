@@ -10,6 +10,10 @@ The repository contains code for the frontend application as well as back-end Ap
 
 ## Getting Started
 
+## Testing
+
+When running Django Tests, use the test_settings.py file in order to test on unmanaged models. You can do so by running the following: `python manage.py test --settings sesar.test_settings`
+
 ### Dependencies
 
-* Django
+* Django 5.0.6
