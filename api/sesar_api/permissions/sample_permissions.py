@@ -7,7 +7,7 @@ class IsSampleOwner(permissions.BasePermission):
     message = 'Permission denied. This sample is not owned by you.'
 
     def has_object_permission(self, request, view, obj):
-        return obj.cur_owner == request.user.sesar_user
+        return obj.cur_owner == request.user.sesaruser
 
 
 class CanCreateSample(permissions.BasePermission):
@@ -26,17 +26,21 @@ class CanCreateSample(permissions.BasePermission):
         if user_code.sesar_user == sesar_user:
             return True
 
+        # user owns sample
+        if sample.cur_owner == sesar_user:
+            return True
+
         # check all permissions shared on either user code or directly on sample
         all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
-            if ('C' in permission.sesar_role.sesar_role_name
+            if ((permission.sesar_role and 'C' in permission.sesar_role.sesar_role_name)
                 or (permission.auth_group and permission.auth_group.permissions.filter(codename='add_sample').exists())):
                 
                 # permissions are shared directly with user
-                if (permission.sesar_user == sesar_user
-                    or permission.orcid_id == sesar_user.orcid
-                    or permission.geopass_id == sesar_user.geopass_id):
+                if ((permission.sesar_user and permission.sesar_user == sesar_user)
+                    or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
+                    or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
                 # permissions are shared with an organization team of which user is a member
@@ -80,17 +84,21 @@ class CanEditSample(permissions.BasePermission):
         if user_code.sesar_user == sesar_user:
             return True
 
+        # user owns sample
+        if sample.cur_owner == sesar_user:
+            return True
+
         # check all permissions shared on either user code or directly on sample
         all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
-            if ('E' in permission.sesar_role.sesar_role_name
+            if ((permission.sesar_role and 'E' in permission.sesar_role.sesar_role_name)
                 or (permission.auth_group and permission.auth_group.permissions.filter(codename='change_sample').exists())):
                 
                 # permissions are shared directly with user
-                if (permission.sesar_user == sesar_user
-                    or permission.orcid_id == sesar_user.orcid
-                    or permission.geopass_id == sesar_user.geopass_id):
+                if ((permission.sesar_user and permission.sesar_user == sesar_user)
+                    or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
+                    or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
                 # permissions are shared with an organization team of which user is a member
@@ -134,17 +142,21 @@ class CanDeactivateSample(permissions.BasePermission):
         if user_code.sesar_user == sesar_user:
             return True
 
+        # user owns sample
+        if sample.cur_owner == sesar_user:
+            return True
+
         # check all permissions shared on either user code or directly on sample
         all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
-            if ('D' in permission.sesar_role.sesar_role_name
+            if ((permission.sesar_role and 'D' in permission.sesar_role.sesar_role_name)
                 or (permission.auth_group and permission.auth_group.permissions.filter(codename='deactivate_sample').exists())):
                 
                 # permissions are shared directly with user
-                if (permission.sesar_user == sesar_user
-                    or permission.orcid_id == sesar_user.orcid
-                    or permission.geopass_id == sesar_user.geopass_id):
+                if ((permission.sesar_user and permission.sesar_user == sesar_user)
+                    or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
+                    or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
                 # permissions are shared with an organization team of which user is a member
