@@ -60,6 +60,12 @@ class CanCreateSample(permissions.BasePermission):
             is_admin=True).exists():
             return True
 
+        # user is an admin of organization that owns sample
+        if OrganizationMember.objects.filter(
+            organization=sample.organization_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
 
         # user is a curator approving a batch registration
         if request.user.is_staff:
@@ -118,6 +124,12 @@ class CanEditSample(permissions.BasePermission):
             is_admin=True).exists():
             return True
 
+        # user is an admin of organization that owns sample
+        if OrganizationMember.objects.filter(
+            organization=sample.organization_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
 
         # user is a curator approving a batch registration
         if request.user.is_staff:
@@ -176,6 +188,12 @@ class CanDeactivateSample(permissions.BasePermission):
             is_admin=True).exists():
             return True
 
+        # user is an admin of organization that owns sample
+        if OrganizationMember.objects.filter(
+            organization=sample.organization_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
 
         # user is a curator approving a batch registration
         if request.user.is_staff:

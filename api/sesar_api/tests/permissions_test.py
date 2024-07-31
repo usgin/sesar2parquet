@@ -56,7 +56,7 @@ class SamplePermissionTestCase(TestCase):
         self.user_code_2 = SesarUserCode.objects.create(user_code="IE002", sesar_user=self.user_code_owner_su, organization=self.organization)
         self.sample_type = SampleType.objects.create(name="Sample Type")
         self.sample = Sample.objects.create(name="Sample", igsn="10.58052/IE001TEST", igsn_prefix=self.user_code, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
-        self.sample_2 = Sample.objects.create(name="Sample", igsn="10.58052/IE002TEST", igsn_prefix=self.user_code_2, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
+        self.sample_2 = Sample.objects.create(name="Sample", igsn="10.58052/IE002TEST", igsn_prefix=self.user_code_2, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su, organization_owner=self.organization)
 
         # get all auth groups
         self.R_group = Group.objects.get(name="read_only")
@@ -156,6 +156,13 @@ class SamplePermissionTestCase(TestCase):
         request.user = self.organization_member_no_perms
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample))
 
+        # Test organization admin has permission on organization owned samples
+        request.user = self.organization_admin
+        self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
+
+        request.user = self.organization_member_no_perms
+        self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
+
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
         SamplePermission.objects.filter(id=4).update(organization=self.organization)
@@ -235,6 +242,13 @@ class SamplePermissionTestCase(TestCase):
         request.user = self.organization_member_no_perms
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample))
 
+        # Test organization admin has permission on organization owned samples
+        request.user = self.organization_admin
+        self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
+
+        request.user = self.organization_member_no_perms
+        self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
+
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
         SamplePermission.objects.filter(id=4).update(organization=self.organization)
@@ -313,6 +327,13 @@ class SamplePermissionTestCase(TestCase):
         # Test organization member without permissions
         request.user = self.organization_member_no_perms
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
+
+        # Test organization admin has permission on organization owned samples
+        request.user = self.organization_admin
+        self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
+
+        request.user = self.organization_member_no_perms
+        self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)

@@ -226,10 +226,11 @@ class Sample(models.Model):
     vertical_datum = models.CharField(max_length=128, blank=True, null=True)
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
     orig_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True, null=True)
-    cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_cur_owner_set', blank=True, null=True)
+    cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    organization_owner = models.ForeignKey(Organization, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sample'
 
 
