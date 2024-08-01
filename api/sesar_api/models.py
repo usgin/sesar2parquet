@@ -6,25 +6,15 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.conf import settings
 from django.db.models.functions import Now
 
 
 # Extend Django User Model, add custom fields as neccessary
 class User(AbstractUser):
-    pass
-
-
-class Country(models.Model):
-    country_id = models.AutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    is_active = models.IntegerField(blank=True, null=True)
-
     class Meta:
-        managed = False
-        db_table = 'country'
-
+        db_table = 'auth_user'
 
 class SesarUser(models.Model):
     auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
@@ -38,7 +28,7 @@ class SesarUser(models.Model):
     address2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
     state_province = models.CharField(max_length=255, blank=True, null=True)
-    country = models.ForeignKey(Country, models.DO_NOTHING, blank=True, null=True)
+    country = models.ForeignKey('Country', models.DO_NOTHING, blank=True, null=True)
     postal_code = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
     fax = models.CharField(max_length=255, blank=True, null=True)
@@ -55,10 +45,49 @@ class SesarUser(models.Model):
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
     doi_prefix = models.CharField(max_length=10, default='10.58052/')
     last_login = models.DateTimeField(blank=True, null=True, default=Now())
-
     class Meta:
         managed = True
         db_table = 'sesar_user'
+
+class Organization(models.Model):
+    owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    create_date = models.DateTimeField(default=Now())
+    deactivate_date = models.DateTimeField(blank=True, null=True)
+    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    members = models.ManyToManyField(SesarUser, related_name='organizations', through='OrganizationMember')
+
+    class Meta:
+        db_table = 'organization'
+
+
+class OrganizationTeam(models.Model):
+    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    activate_date = models.DateTimeField(default=Now())
+    deactivate_date = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'organization_team'
+
+class OrganizationMember(models.Model):
+    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
+    is_admin = models.BooleanField(default=False)
+    join_date = models.DateTimeField(default=Now())
+    teams = models.ManyToManyField(OrganizationTeam, related_name='members', through='OrganizationTeamMember')
+
+    class Meta:
+        db_table = 'organization_member'
+
+class OrganizationTeamMember(models.Model):
+    member = models.ForeignKey(OrganizationMember, models.DO_NOTHING)
+    team = models.ForeignKey(OrganizationTeam, models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'organization_team_member'
 
 
 class Classification(models.Model):
@@ -72,6 +101,16 @@ class Classification(models.Model):
     class Meta:
         managed = False
         db_table = 'classification'
+
+
+class Country(models.Model):
+    country_id = models.AutoField(primary_key=True)
+    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    is_active = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'country'
 
 
 class LaunchType(models.Model):
@@ -187,10 +226,11 @@ class Sample(models.Model):
     vertical_datum = models.CharField(max_length=128, blank=True, null=True)
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
     orig_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True, null=True)
-    cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_cur_owner_set', blank=True, null=True)
+    cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    organization_owner = models.ForeignKey(Organization, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sample'
 
 
@@ -283,30 +323,36 @@ class SesarRole(models.Model):
 
 class SesarUserCode(models.Model):
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
+    organization = models.ForeignKey(Organization, models.DO_NOTHING, blank=True, null=True)
     user_code = models.CharField(unique=True, max_length=5, blank=True, null=True)
     is_available = models.IntegerField(blank=True, null=True)
     igsn_count = models.BigIntegerField(blank=True, null=True)
     is_grandfather_code = models.BooleanField(blank=True, null=True)
     id = models.BigAutoField(primary_key=True)
-    doi_prefix = models.CharField(max_length=16)
+    doi_prefix = models.CharField(max_length=16, default='10.58052/')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sesar_user_code'
 
 
-class SesarUserCodeRole(models.Model):
-    sesar_user_code_role_id = models.AutoField(primary_key=True)
+class SamplePermission(models.Model):
+    id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
-    user_code = models.CharField(max_length=5)
-    sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING)
+    user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5, blank=True, null=True)
+    sample = models.ForeignKey(Sample, models.CASCADE, related_name='permissions', blank=True, null=True)
+    sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING, blank=True, null=True)
     activate_date = models.DateTimeField(blank=True, null=True)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
+    organization = models.ForeignKey(Organization, models.CASCADE, related_name='permissions', blank=True, null=True)
+    organization_team = models.ForeignKey(OrganizationTeam, models.CASCADE, related_name='permissions', blank=True, null=True)
+    auth_group = models.ForeignKey(Group, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'sesar_user_code_role'
+        managed = True
+        db_table = 'sample_permission'
         unique_together = (('geopass_id', 'user_code'),)
 
 
@@ -556,113 +602,6 @@ class GfzIgsnsNeedFix(models.Model):
     class Meta:
         managed = False
         db_table = 'gfz_igsns_need_fix'
-
-
-class TempBackfillPublishDate(models.Model):
-    sample_id = models.IntegerField(blank=True, null=True)
-    origin_sample_id = models.CharField(max_length=25, blank=True, null=True)
-    external_parent_sample_type_id = models.CharField(max_length=25, blank=True, null=True)
-    external_parent_name = models.CharField(max_length=25, blank=True, null=True)
-    sample_type_id = models.IntegerField(blank=True, null=True)
-    sample_type_class = models.CharField(max_length=25, blank=True, null=True)
-    org_registrant_id = models.CharField(max_length=25, blank=True, null=True)
-    cur_registrant_id = models.IntegerField(blank=True, null=True)
-    req_registrant_id = models.CharField(max_length=25, blank=True, null=True)
-    igsn = models.CharField(max_length=25, blank=True, null=True)
-    igsn_prefix = models.CharField(max_length=25, blank=True, null=True)
-    igsn_digit = models.CharField(max_length=25, blank=True, null=True)
-    igsn_to_int = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
-    igsn_is_system_assigned = models.CharField(max_length=25, blank=True, null=True)
-    external_sample_id = models.CharField(max_length=50, blank=True, null=True)
-    is_private = models.CharField(max_length=25, blank=True, null=True)
-    publish_date = models.CharField(max_length=25, blank=True, null=True)
-    archive_date = models.CharField(max_length=25, blank=True, null=True)
-    registration_date = models.DateField(blank=True, null=True)
-    last_update_date = models.DateField(blank=True, null=True)
-    name = models.CharField(max_length=50, blank=True, null=True)
-    current_archive = models.CharField(max_length=100, blank=True, null=True)
-    current_archive_contact = models.CharField(max_length=100, blank=True, null=True)
-    original_archive = models.CharField(max_length=25, blank=True, null=True)
-    original_archive_contact = models.CharField(max_length=50, blank=True, null=True)
-    collection_method = models.CharField(max_length=25, blank=True, null=True)
-    collection_method_descr = models.CharField(max_length=25, blank=True, null=True)
-    size = models.CharField(max_length=25, blank=True, null=True)
-    size_unit = models.CharField(max_length=25, blank=True, null=True)
-    classification_id = models.CharField(max_length=25, blank=True, null=True)
-    classification_comment = models.CharField(max_length=25, blank=True, null=True)
-    top_level_classification_id = models.CharField(max_length=25, blank=True, null=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
-    sample_comment = models.CharField(max_length=250, blank=True, null=True)
-    depth_min = models.CharField(max_length=25, blank=True, null=True)
-    depth_max = models.CharField(max_length=25, blank=True, null=True)
-    depth_scale = models.CharField(max_length=25, blank=True, null=True)
-    age_min = models.CharField(max_length=25, blank=True, null=True)
-    age_max = models.CharField(max_length=25, blank=True, null=True)
-    age_unit = models.CharField(max_length=25, blank=True, null=True)
-    geological_age = models.CharField(max_length=25, blank=True, null=True)
-    geological_unit = models.CharField(max_length=50, blank=True, null=True)
-    sample_unit = models.CharField(max_length=25, blank=True, null=True)
-    latitude = models.CharField(max_length=25, blank=True, null=True)
-    longitude = models.CharField(max_length=25, blank=True, null=True)
-    latitude_end = models.CharField(max_length=25, blank=True, null=True)
-    longitude_end = models.CharField(max_length=25, blank=True, null=True)
-    geo_data = models.CharField(max_length=25, blank=True, null=True)
-    elevation = models.CharField(max_length=25, blank=True, null=True)
-    elevation_end = models.CharField(max_length=25, blank=True, null=True)
-    elevation_unit = models.CharField(max_length=25, blank=True, null=True)
-    primary_location_type = models.CharField(max_length=50, blank=True, null=True)
-    primary_location_name = models.CharField(max_length=50, blank=True, null=True)
-    location_description = models.CharField(max_length=250, blank=True, null=True)
-    locality = models.CharField(max_length=50, blank=True, null=True)
-    locality_description = models.CharField(max_length=500, blank=True, null=True)
-    country_id = models.CharField(max_length=25, blank=True, null=True)
-    field_name = models.CharField(max_length=250, blank=True, null=True)
-    province = models.CharField(max_length=25, blank=True, null=True)
-    county = models.CharField(max_length=25, blank=True, null=True)
-    city = models.CharField(max_length=25, blank=True, null=True)
-    cruise_field_prgrm = models.CharField(max_length=50, blank=True, null=True)
-    platform_type = models.CharField(max_length=25, blank=True, null=True)
-    platform_name = models.CharField(max_length=25, blank=True, null=True)
-    platform_descr = models.CharField(max_length=25, blank=True, null=True)
-    collector = models.CharField(max_length=100, blank=True, null=True)
-    collector_detail = models.CharField(max_length=100, blank=True, null=True)
-    collection_start_date = models.CharField(max_length=25, blank=True, null=True)
-    collection_end_date = models.CharField(max_length=25, blank=True, null=True)
-    collection_date_precision = models.CharField(max_length=25, blank=True, null=True)
-    last_changed_by = models.CharField(max_length=25, blank=True, null=True)
-    legcy_datecollected = models.CharField(max_length=25, blank=True, null=True)
-    legcy_rockclassified = models.CharField(max_length=25, blank=True, null=True)
-    legcy_mineralclassified = models.CharField(max_length=25, blank=True, null=True)
-    legcy_startgeodeticdatum = models.CharField(max_length=25, blank=True, null=True)
-    legcy_endgeodeticdatum = models.CharField(max_length=25, blank=True, null=True)
-    legcy_verticaldatum = models.CharField(max_length=25, blank=True, null=True)
-    legcy_shapetype = models.CharField(max_length=25, blank=True, null=True)
-    legcy_dataeditor_id = models.CharField(max_length=25, blank=True, null=True)
-    legcy_formcoordsys = models.CharField(max_length=25, blank=True, null=True)
-    legcy_locationname = models.CharField(max_length=25, blank=True, null=True)
-    legcy_country = models.CharField(max_length=25, blank=True, null=True)
-    legcy_id = models.CharField(max_length=25, blank=True, null=True)
-    legcy_parent_id = models.CharField(max_length=25, blank=True, null=True)
-    legcy_geoobjecttype = models.CharField(max_length=25, blank=True, null=True)
-    last_registrant_id = models.CharField(max_length=25, blank=True, null=True)
-    geom_latlong = models.CharField(max_length=100, blank=True, null=True)
-    nav_type_id = models.CharField(max_length=25, blank=True, null=True)
-    launch_platform_name = models.CharField(max_length=25, blank=True, null=True)
-    launch_type_id = models.CharField(max_length=25, blank=True, null=True)
-    launch_id = models.CharField(max_length=25, blank=True, null=True)
-    purpose = models.CharField(max_length=100, blank=True, null=True)
-    easting = models.CharField(max_length=25, blank=True, null=True)
-    northing = models.CharField(max_length=25, blank=True, null=True)
-    zone = models.CharField(max_length=25, blank=True, null=True)
-    vertical_datum = models.CharField(max_length=25, blank=True, null=True)
-    metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
-    orig_owner_id = models.IntegerField(blank=True, null=True)
-    cur_owner_id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'temp_backfill_publish_date'
-
 
 class TempPp(models.Model):
     id = models.IntegerField(primary_key=True)
