@@ -8,7 +8,7 @@ urlpatterns = [
     re_path('auth/' + r'login/(?P<backend>[^/]+)/$', views.login_by_access_token),
     path('auth/user/', views.user_details),
     path('auth/logout/', views.revoke_access_token),
-    path('organization/<int:pk>/', views.view_organization),
+    path('organization/<str:name>/', views.view_organization),
     path('organization/user-membership/', views.view_user_organizations),
     path('organization/create/', views.create_organization),
     path('organization/update/<int:pk>', views.update_organization),

@@ -1,27 +1,25 @@
 from rest_framework import status
-from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from requests.exceptions import HTTPError
-from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
-
-from sesar_api.permissions import CanCreateSample, IsUserCodeOwner, IsOrganizationAdmin, IsOrganizationOwner
-from sesar_api.models import SesarUserCode, Organization, SesarUser, Sample
-from sesar_api.serializers import OrganizationSerializer, OrganizationWriteSerializer, MemberSerializer, MemberWriteSerializer
-
+from sesar_api.models import Organization
+from sesar_api.serializers import OrganizationSerializer, OrganizationWriteSerializer, MemberWriteSerializer
+from sesar_api.permissions import IsOrganizationAdmin, IsOrganizationOwner
 
 # view an organization, request user must be a member
 @api_view(['GET'])
-def view_organization(request, pk):
-    organization = request.user.sesaruser.organizations.get(pk=pk)
- 
-    if organization:
-        serializer = OrganizationSerializer(organization)
-        return Response(serializer.data)
-    else:
+def view_organization(request, name):
+    try:
+        organization = request.user.sesaruser.organizations.get(name=name)
+    
+        if organization:
+            serializer = OrganizationSerializer(organization)
+            return Response(serializer.data)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
@@ -65,7 +63,7 @@ def update_organization(request, pk):
     try:
         organization = Organization.objects.get(pk=pk, deactivate_date=None)
         if IsOrganizationAdmin().has_object_permission(request, None, organization):
-            serializer = OrganizationSerializer(organization, data=request.data, partial=True)
+            serializer = OrganizationWriteSerializer(organization, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
