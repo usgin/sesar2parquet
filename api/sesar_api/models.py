@@ -49,6 +49,9 @@ class SesarUser(models.Model):
         managed = True
         db_table = 'sesar_user'
 
+    def __str__(self):
+        return self.fname + ' ' + self.lname
+
 class Organization(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
     name = models.CharField(max_length=255)
