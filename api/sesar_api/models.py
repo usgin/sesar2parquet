@@ -54,7 +54,7 @@ class SesarUser(models.Model):
 
 class Organization(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=64, unique=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     create_date = models.DateTimeField(default=Now())
     deactivate_date = models.DateTimeField(blank=True, null=True)
