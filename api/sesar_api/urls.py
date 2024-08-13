@@ -14,4 +14,8 @@ urlpatterns = [
     path('organization/update/', views.update_organization),
     path('organization/deactivate/', views.deactivate_organization),
     path('organization/transfer/', views.transfer_organization),
+    path('organization/<str:name>/members/', views.view_organization_members),
+    path('organization/members/create/', views.create_organization_member),
+    path('organization/members/update/', views.update_organization_member),
+    path('organization/members/delete/', views.delete_organization_member),
 ]

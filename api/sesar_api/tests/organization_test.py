@@ -1,4 +1,4 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 from sesar_api.models import *
@@ -34,7 +34,7 @@ class OrganizationTestCase(TestCase):
 
     def test_view_user_organizations(self):
         """Can view a user's organizations"""
-        request = self.factory.get('/api/user-membership/')
+        request = self.factory.get('/api/organization/user-membership/')
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = view_user_organizations(request)
@@ -72,16 +72,6 @@ class OrganizationTestCase(TestCase):
         force_authenticate(request, user=self.user)
         response = deactivate_organization(request)
         print (response.data)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(Organization.objects.filter(id=self.organization1.pk,deactivate_date__isnull=False).exists())
-
-
-    def test_deactivate_organization(self):
-        """Can deactivate an organization"""
-        request = self.factory.post('/api/organization/deactivate/',{'id':self.organization1.pk})
-        request.user = self.user
-        force_authenticate(request, user=self.user)
-        response = deactivate_organization(request)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Organization.objects.filter(id=self.organization1.pk,deactivate_date__isnull=False).exists())
 
