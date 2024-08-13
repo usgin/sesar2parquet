@@ -38,8 +38,9 @@ def view_user_organizations(request):
 # create organization
 @api_view(['POST'])
 def create_organization(request):
-    request.data['owner'] = request.user.sesaruser.pk
-    organization = OrganizationWriteSerializer(data=request.data)
+    data = request.data.copy()
+    data['owner'] = request.user.sesaruser.pk
+    organization = OrganizationWriteSerializer(data=data)
     if organization.is_valid():
         created_org = organization.save()
         # add owner as a member with admin role
@@ -59,9 +60,9 @@ def create_organization(request):
 
 # update organization information, admin only
 @api_view(['POST'])
-def update_organization(request, pk):
+def update_organization(request):
     try:
-        organization = Organization.objects.get(pk=pk, deactivate_date=None)
+        organization = Organization.objects.get(pk=request.data['id'], deactivate_date=None)
         if IsOrganizationAdmin().has_object_permission(request, None, organization):
             serializer = OrganizationWriteSerializer(organization, data=request.data, partial=True)
             if serializer.is_valid():
@@ -77,12 +78,11 @@ def update_organization(request, pk):
 
 # deactivate organization, owner only
 @api_view(['POST'])
-@permission_classes([IsOrganizationOwner])
-def deactivate_organization(request, pk):
+def deactivate_organization(request):
     try:
-        organization = Organization.objects.get(pk=pk, deactivate_date=None)
+        organization = Organization.objects.get(pk=request.data['id'], deactivate_date=None)
 
-        if organization.owned_samples_set:
+        if organization.owned_samples_set.exists():
             return Response({"detail": "You cannot deactivate an organization that owns samples. Please transfer the ownership of any organization owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
         if IsOrganizationOwner().has_object_permission(request, None, organization):
             serializer = OrganizationWriteSerializer(organization, data={'deactivate_date':datetime.now()}, partial=True)
@@ -99,10 +99,9 @@ def deactivate_organization(request, pk):
 
 # transfer organization ownership, owner only
 @api_view(['POST'])
-@permission_classes([IsOrganizationOwner])
-def transfer_organization(request, pk):
+def transfer_organization(request):
     try:
-        organization = Organization.objects.get(pk=pk, deactivate_date=None)
+        organization = Organization.objects.get(pk=request.data['id'], deactivate_date=None)
         if IsOrganizationOwner().has_object_permission(request, None, organization):
             serializer = OrganizationWriteSerializer(organization, data=request.data, partial=True)
             if serializer.is_valid():

@@ -50,13 +50,13 @@ class MemberSerializer(serializers.ModelSerializer):
 
 class MemberWriteSerializer(MemberSerializer):
     organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.all())
+    sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None))
     class Meta:
         model = OrganizationMember
         fields = ['organization', 'sesar_user', 'is_admin', 'join_date']
         read_only_fields = ['join_date']
 
     def create(self, validated_data):
-
         return OrganizationMember.objects.create(**validated_data)
 
 
