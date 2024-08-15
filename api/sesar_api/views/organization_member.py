@@ -5,8 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
 from sesar_api.models import Organization, OrganizationMember
-from sesar_api.serializers import OrganizationSerializer, OrganizationWriteSerializer, MemberSerializer, MemberWriteSerializer
-from sesar_api.permissions import IsOrganizationAdmin, IsOrganizationOwner
+from sesar_api.serializers import MemberSerializer, MemberWriteSerializer
+from sesar_api.permissions import IsOrganizationAdmin
 
 
 # view all organization members

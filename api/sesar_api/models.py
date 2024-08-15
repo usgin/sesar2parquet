@@ -66,7 +66,7 @@ class Organization(models.Model):
 
 
 class OrganizationTeam(models.Model):
-    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    organization = models.ForeignKey(Organization, models.DO_NOTHING, related_name='teams')
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
     activate_date = models.DateTimeField(default=timezone.now)

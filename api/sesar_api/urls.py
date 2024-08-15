@@ -18,4 +18,11 @@ urlpatterns = [
     path('organization/members/create/', views.create_organization_member),
     path('organization/members/update/', views.update_organization_member),
     path('organization/members/delete/', views.delete_organization_member),
+    path('organization/<str:name>/teams/', views.view_organization_teams),
+    path('organization/<str:organization>/teams/<str:team>/', views.view_organization_team),
+    path('organization/teams/create/', views.create_organization_team),
+    path('organization/teams/update/', views.update_organization_team),
+    path('organization/teams/delete/', views.delete_organization_team),
+    path('organization/teams/add-member/', views.add_organization_team_member),
+    path('organization/teams/remove-member/', views.remove_organization_team_member),
 ]

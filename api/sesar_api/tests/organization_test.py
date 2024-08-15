@@ -71,7 +71,6 @@ class OrganizationTestCase(TestCase):
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = deactivate_organization(request)
-        print (response.data)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Organization.objects.filter(id=self.organization1.pk,deactivate_date__isnull=False).exists())
 

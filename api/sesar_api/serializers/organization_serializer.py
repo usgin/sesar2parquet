@@ -31,17 +31,17 @@ class OrganizationWriteSerializer(serializers.ModelSerializer):
         return value
 
 
-class TeamSerializer(serializers.ModelSerializer):
-    organization = OrganizationSerializer(read_only=True)
+class TeamWriteSerializer(serializers.ModelSerializer):
+    organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.all())
+    members = serializers.PrimaryKeyRelatedField(many=True, queryset=OrganizationMember.objects.all())
     class Meta:
         model = OrganizationTeam
-        fields = ['organization', 'name', 'description', 'activate_date', 'deactivate_date']
-        read_only_fields = ['activate_date', 'deactivate_date']
+        fields = ['organization', 'name', 'description', 'activate_date', 'deactivate_date', 'members']
 
 
 class MemberSerializer(serializers.ModelSerializer):
     organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.all())
-    teams = TeamSerializer(many=True, read_only=True, allow_null=True)
+    teams = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = OrganizationMember
         fields = ['organization', 'sesar_user', 'is_admin', 'join_date', 'teams']
@@ -60,9 +60,10 @@ class MemberWriteSerializer(MemberSerializer):
         return OrganizationMember.objects.create(**validated_data)
 
 
-class TeamMemberSerializer(serializers.ModelSerializer):
-    team = TeamSerializer(read_only=True)
-    member = MemberSerializer(read_only=True)
+class TeamSerializer(serializers.ModelSerializer):
+    organization = serializers.PrimaryKeyRelatedField(read_only=True)
+    members = MemberSerializer(many=True, read_only=True, allow_null=True)
     class Meta:
-        model = OrganizationTeamMember
-        fields = ['member', 'team']
+        model = OrganizationTeam
+        fields = ['organization', 'name', 'description', 'activate_date', 'deactivate_date', 'members']
+        read_only_fields = ['activate_date', 'deactivate_date']
