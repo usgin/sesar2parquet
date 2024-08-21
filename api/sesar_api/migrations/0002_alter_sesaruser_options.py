@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             options={'managed': True},
         ),
         migrations.AlterModelOptions(
-            name='samplepermission',
+            name='permission',
             options={'managed': True},
         ),
     ]

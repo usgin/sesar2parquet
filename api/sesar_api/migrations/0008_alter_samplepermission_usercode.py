@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='samplepermission',
+            model_name='permission',
             name='user_code',
             field=models.ForeignKey(blank=True, db_column='user_code', max_length=5, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='permissions', to='sesar_api.sesarusercode', to_field='user_code'),
         ),

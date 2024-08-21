@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
             options={},
         ),
         migrations.AddField(
-            model_name='samplepermission',
+            model_name='permission',
             name='organization',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='permissions', to='sesar_api.organization'),
         ),
         migrations.AddField(
-            model_name='samplepermission',
+            model_name='permission',
             name='sample',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='permissions', to='sesar_api.sample'),
         ),

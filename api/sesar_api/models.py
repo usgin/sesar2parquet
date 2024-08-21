@@ -339,7 +339,7 @@ class SesarUserCode(models.Model):
         db_table = 'sesar_user_code'
 
 
-class SamplePermission(models.Model):
+class Permission(models.Model):
     id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
     user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5, blank=True, null=True)
@@ -355,7 +355,7 @@ class SamplePermission(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'sample_permission'
+        db_table = 'permission'
         unique_together = (('geopass_id', 'user_code'),)
 
 

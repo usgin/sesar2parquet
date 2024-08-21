@@ -585,7 +585,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='SamplePermission',
+            name='Permission',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('geopass_id', models.CharField(blank=True, max_length=250, null=True)),
@@ -597,7 +597,7 @@ class Migration(migrations.Migration):
                 ('sesar_user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.sesaruser')),
             ],
             options={
-                'db_table': 'sample_permission',
+                'db_table': 'permission',
                 'managed': False,
                 'unique_together': {('geopass_id', 'user_code')},
             },
