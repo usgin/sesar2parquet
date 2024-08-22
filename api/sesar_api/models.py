@@ -8,7 +8,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 from django.conf import settings
-from django.db.models.functions import Now
+from django.utils import timezone
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -38,22 +38,25 @@ class SesarUser(models.Model):
     password = models.CharField(max_length=255, blank=True, null=True)
     upload_permission_status = models.IntegerField(blank=True, null=True, default=0)
     upload_permission_date = models.DateField(blank=True, null=True)
-    registration_date = models.DateTimeField(blank=True, null=True, default=Now())
+    registration_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     deactivation_date = models.DateTimeField(blank=True, null=True)
     legacy_user_id = models.IntegerField(blank=True, null=True)
     geopass_id = models.CharField(unique=True, max_length=255, blank=True, null=True)
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
     doi_prefix = models.CharField(max_length=10, default='10.58052/')
-    last_login = models.DateTimeField(blank=True, null=True, default=Now())
+    last_login = models.DateTimeField(blank=True, null=True, default=timezone.now)
     class Meta:
         managed = True
         db_table = 'sesar_user'
 
+    def __str__(self):
+        return self.fname + ' ' + self.lname
+
 class Organization(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=64, unique=True)
     description = models.CharField(max_length=255, blank=True, null=True)
-    create_date = models.DateTimeField(default=Now())
+    create_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')
     members = models.ManyToManyField(SesarUser, related_name='organizations', through='OrganizationMember')
@@ -63,10 +66,10 @@ class Organization(models.Model):
 
 
 class OrganizationTeam(models.Model):
-    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+    organization = models.ForeignKey(Organization, models.DO_NOTHING, related_name='teams')
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
-    activate_date = models.DateTimeField(default=Now())
+    activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
@@ -76,15 +79,15 @@ class OrganizationMember(models.Model):
     organization = models.ForeignKey(Organization, models.DO_NOTHING)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     is_admin = models.BooleanField(default=False)
-    join_date = models.DateTimeField(default=Now())
+    join_date = models.DateTimeField(default=timezone.now)
     teams = models.ManyToManyField(OrganizationTeam, related_name='members', through='OrganizationTeamMember')
 
     class Meta:
         db_table = 'organization_member'
 
 class OrganizationTeamMember(models.Model):
-    member = models.ForeignKey(OrganizationMember, models.DO_NOTHING)
-    team = models.ForeignKey(OrganizationTeam, models.DO_NOTHING)
+    member = models.ForeignKey(OrganizationMember, models.CASCADE)
+    team = models.ForeignKey(OrganizationTeam, models.CASCADE)
 
     class Meta:
         db_table = 'organization_team_member'
@@ -336,7 +339,7 @@ class SesarUserCode(models.Model):
         db_table = 'sesar_user_code'
 
 
-class SamplePermission(models.Model):
+class Permission(models.Model):
     id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
     user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5, blank=True, null=True)
@@ -352,7 +355,7 @@ class SamplePermission(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'sample_permission'
+        db_table = 'permission'
         unique_together = (('geopass_id', 'user_code'),)
 
 

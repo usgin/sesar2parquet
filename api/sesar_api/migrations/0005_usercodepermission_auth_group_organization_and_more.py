@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='samplepermission',
+            model_name='permission',
             name='auth_group',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='auth.group'),
         ),
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.AddField(
-            model_name='samplepermission',
+            model_name='permission',
             name='organization_team',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='sesar_api.organizationteam'),
         ),

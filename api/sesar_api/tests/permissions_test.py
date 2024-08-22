@@ -66,12 +66,12 @@ class SamplePermissionTestCase(TestCase):
         self.CRED_group = Group.objects.get(name="read_create_edit_deactivate")
 
         # grant permission to the organization team
-        self.team_permission = SamplePermission.objects.create(id=1, user_code=self.user_code, auth_group=self.CRED_group, organization_team=self.organization_team)
+        self.team_permission = Permission.objects.create(id=1, user_code=self.user_code, auth_group=self.CRED_group, organization_team=self.organization_team)
 
         # grant permission to the test user
-        self.test_user_code_permission = SamplePermission.objects.create(id=2, user_code=self.user_code, auth_group=self.CRED_group, sesar_user=self.test_user_su)
-        self.test_sample_permission = SamplePermission.objects.create(id=3, sample=self.sample_2, auth_group=self.CRED_group, sesar_user=self.test_user_su)
-        self.test_organization_permission = SamplePermission.objects.create(id=4, user_code=self.user_code, auth_group=self.CRED_group)
+        self.test_user_code_permission = Permission.objects.create(id=2, user_code=self.user_code, auth_group=self.CRED_group, sesar_user=self.test_user_su)
+        self.test_sample_permission = Permission.objects.create(id=3, sample=self.sample_2, auth_group=self.CRED_group, sesar_user=self.test_user_su)
+        self.test_organization_permission = Permission.objects.create(id=4, user_code=self.user_code, auth_group=self.CRED_group)
 
     def test_is_sample_owner(self):
         """Sample owner is correctly identified"""
@@ -107,19 +107,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.R_group)
+        Permission.objects.filter(id=2).update(auth_group=self.R_group)
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CR_group)
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.RE_group)
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CRE_group)
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
         # Test individual with permissions on individual sample
@@ -128,19 +128,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.R_group)
+        Permission.objects.filter(id=3).update(auth_group=self.R_group)
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CR_group)
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.RE_group)
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
         # Test organization level permissions when organization owns user code
@@ -165,7 +165,7 @@ class SamplePermissionTestCase(TestCase):
 
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        SamplePermission.objects.filter(id=4).update(organization=self.organization)
+        Permission.objects.filter(id=4).update(organization=self.organization)
 
         request.user = self.organization_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
@@ -193,19 +193,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.R_group)
+        Permission.objects.filter(id=2).update(auth_group=self.R_group)
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CR_group)
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.RE_group)
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CRE_group)
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
         # Test individual with permissions on individual sample
@@ -214,19 +214,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample_2))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.R_group)
+        Permission.objects.filter(id=3).update(auth_group=self.R_group)
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CR_group)
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample_2))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.RE_group)
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample_2))
 
         # Test organization level permissions when organization owns user code
@@ -251,7 +251,7 @@ class SamplePermissionTestCase(TestCase):
 
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        SamplePermission.objects.filter(id=4).update(organization=self.organization)
+        Permission.objects.filter(id=4).update(organization=self.organization)
 
         request.user = self.organization_admin
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
@@ -279,19 +279,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.R_group)
+        Permission.objects.filter(id=2).update(auth_group=self.R_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CR_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.RE_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=2).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=2).update(auth_group=self.CRE_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
         # Test individual with permissions on individual sample
@@ -300,19 +300,19 @@ class SamplePermissionTestCase(TestCase):
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read only permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.R_group)
+        Permission.objects.filter(id=3).update(auth_group=self.R_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CR_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CR_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.RE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.RE_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
         # Test read create edit permissions
-        SamplePermission.objects.filter(id=3).update(auth_group=self.CRE_group)
+        Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
         # Test organization level permissions when organization owns user code
@@ -337,7 +337,7 @@ class SamplePermissionTestCase(TestCase):
 
         # Remove organization ownership of user code and test permission shared to organization
         SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        SamplePermission.objects.filter(id=4).update(organization=self.organization)
+        Permission.objects.filter(id=4).update(organization=self.organization)
 
         request.user = self.organization_admin
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample))

@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from sesar_api.models import OrganizationMember, SamplePermission
+from sesar_api.models import OrganizationMember, Permission
 from django.db.models import Q
 
 
@@ -31,7 +31,7 @@ class CanCreateSample(permissions.BasePermission):
             return True
 
         # check all permissions shared on either user code or directly on sample
-        all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
+        all_permissions = Permission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
             if ((permission.sesar_role and 'C' in permission.sesar_role.sesar_role_name)
@@ -95,7 +95,7 @@ class CanEditSample(permissions.BasePermission):
             return True
 
         # check all permissions shared on either user code or directly on sample
-        all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
+        all_permissions = Permission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
             if ((permission.sesar_role and 'E' in permission.sesar_role.sesar_role_name)
@@ -159,7 +159,7 @@ class CanDeactivateSample(permissions.BasePermission):
             return True
 
         # check all permissions shared on either user code or directly on sample
-        all_permissions = SamplePermission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
+        all_permissions = Permission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
             # check both legacy permissions and auth group permissions
             if ((permission.sesar_role and 'D' in permission.sesar_role.sesar_role_name)
