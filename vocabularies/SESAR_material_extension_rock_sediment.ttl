@@ -143,7 +143,6 @@ rksd:Cataclasite_Series
   rdfs:comment "Fault-related rock that maintained primary cohesion during deformation, with matrix comprising greater than 10 percent of rock mass; matrix is fine-grained material formed through grain size reduction by fracture as opposed to crystal plastic process that operate in mylonitic rock. Includes cataclasite, protocataclasite and ultracataclasite."@en ;
   rdfs:label "cataclasite series"@en ;
   skos:broader rksd:Fault_Related_Material ;
-  skos:broader sesrs:Composite_Genesis_Rock ;
 .
 rksd:Chemical_Sedimentary_Material
   rdf:type skos:Concept ;
@@ -1132,7 +1131,6 @@ sesrs:Duricrust
   dcterm:source "This vocabulary"@en ;
   rdfs:comment "Rock forming a hard crust or layer at or near the Earth's surface at the time of formation, e.g. in the upper horizons of a soil, characterized by structures indicative of pedogenic origin."@en ;
   rdfs:label "Duricrust"@en ;
-  skos:broader sesrs:Composite_Genesis_Rock ;
   skos:broader sesrs:material_formed_in_surficial_environment ;
   skos:prefLabel "Duricrust"@en ;
 .
