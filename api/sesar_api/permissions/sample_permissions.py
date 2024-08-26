@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from sesar_api.models import OrganizationMember, Permission
+from sesar_api.models import GroupMember, Permission
 from django.db.models import Q
 
 
@@ -43,26 +43,26 @@ class CanCreateSample(permissions.BasePermission):
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
-                # permissions are shared with an organization team of which user is a member
-                if (permission.organization_team 
-                    and permission.organization_team.members.filter(sesar_user=sesar_user).exists()):
+                # permissions are shared with a sub group team of which user is a member
+                if (permission.group and permission.group.part_of_group
+                    and permission.group.members.contains(sesar_user)):
                     return True
 
-                # permissions are shared with organization of which user is an admin
-                if (permission.organization 
-                and permission.organization.members.filter(is_admin=True).contains(sesar_user)):
+                # permissions are shared with group of which user is an admin
+                if (permission.group
+                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
-        # user is an admin of organization that owns user code
-        if OrganizationMember.objects.filter(
-            organization=user_code.organization, 
+        # user is an admin of group that owns user code
+        if GroupMember.objects.filter(
+            group=user_code.group, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True
 
-        # user is an admin of organization that owns sample
-        if OrganizationMember.objects.filter(
-            organization=sample.organization_owner, 
+        # user is an admin of group that owns sample
+        if GroupMember.objects.filter(
+            group=sample.group_owner, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True
@@ -107,26 +107,26 @@ class CanEditSample(permissions.BasePermission):
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
-                # permissions are shared with an organization team of which user is a member
-                if (permission.organization_team 
-                    and permission.organization_team.members.filter(sesar_user=sesar_user).exists()):
+                # permissions are shared with a sub group team of which user is a member
+                if (permission.group and permission.group.part_of_group
+                    and permission.group.members.contains(sesar_user)):
                     return True
 
-                # permissions are shared with organization of which user is an admin
-                if (permission.organization 
-                and permission.organization.members.filter(is_admin=True).contains(sesar_user)):
+                # permissions are shared with group of which user is an admin
+                if (permission.group
+                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
-        # user is an admin of organization that owns user code
-        if OrganizationMember.objects.filter(
-            organization=user_code.organization, 
+        # user is an admin of group that owns user code
+        if GroupMember.objects.filter(
+            group=user_code.group, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True
 
-        # user is an admin of organization that owns sample
-        if OrganizationMember.objects.filter(
-            organization=sample.organization_owner, 
+        # user is an admin of group that owns sample
+        if GroupMember.objects.filter(
+            group=sample.group_owner, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True
@@ -171,26 +171,26 @@ class CanDeactivateSample(permissions.BasePermission):
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
                 
-                # permissions are shared with an organization team of which user is a member
-                if (permission.organization_team 
-                    and permission.organization_team.members.filter(sesar_user=sesar_user).exists()):
+                # permissions are shared with a sub group team of which user is a member
+                if (permission.group and permission.group.part_of_group
+                    and permission.group.members.contains(sesar_user)):
                     return True
 
-                # permissions are shared with organization of which user is an admin
-                if (permission.organization 
-                and permission.organization.members.filter(is_admin=True).contains(sesar_user)):
+                # permissions are shared with group of which user is an admin
+                if (permission.group
+                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
-        # user is an admin of organization that owns user code
-        if OrganizationMember.objects.filter(
-            organization=user_code.organization, 
+        # user is an admin of group that owns user code
+        if GroupMember.objects.filter(
+            group=user_code.group, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True
 
-        # user is an admin of organization that owns sample
-        if OrganizationMember.objects.filter(
-            organization=sample.organization_owner, 
+        # user is an admin of group that owns sample
+        if GroupMember.objects.filter(
+            group=sample.group_owner, 
             sesar_user=sesar_user, 
             is_admin=True).exists():
             return True

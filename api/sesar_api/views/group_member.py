@@ -4,17 +4,17 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from sesar_api.models import Organization, OrganizationMember
+from sesar_api.models import Group, GroupMember
 from sesar_api.serializers import MemberSerializer, MemberWriteSerializer
-from sesar_api.permissions import IsOrganizationAdmin
+from sesar_api.permissions import IsGroupAdmin
 
 
-# view all organization members
+# view all group members
 @api_view(['GET'])
-def view_organization_members(request, name):
+def view_group_members(request, name):
     try:
-        organization = request.user.sesaruser.organizations.get(name=name)
-        members = OrganizationMember.objects.filter(organization=organization)
+        group = request.user.sesaruser.groups.get(name=name)
+        members = GroupMember.objects.filter(group=group)
 
         if members:
             serializer = MemberSerializer(members, many=True)
@@ -25,12 +25,12 @@ def view_organization_members(request, name):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# create organization member, admin only
+# create group member, admin only
 @api_view(['POST'])
-def create_organization_member(request):
+def create_group_member(request):
     try:
-        organization = Organization.objects.get(pk=request.data['organization'])
-        if IsOrganizationAdmin().has_object_permission(request, None, organization):
+        group = Group.objects.get(pk=request.data['group'])
+        if IsGroupAdmin().has_object_permission(request, None, group):
             member = MemberWriteSerializer(data=request.data)
             if member.is_valid():
                 member.save()
@@ -43,12 +43,12 @@ def create_organization_member(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# update organization information, admin only
+# update group information, admin only
 @api_view(['POST'])
-def update_organization_member(request):
+def update_group_member(request):
     try:
-        member = OrganizationMember.objects.get(pk=request.data['id'])
-        if IsOrganizationAdmin().has_object_permission(request, None, member.organization):
+        member = GroupMember.objects.get(pk=request.data['id'])
+        if IsGroupAdmin().has_object_permission(request, None, member.group):
             serializer = MemberWriteSerializer(member, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -61,12 +61,12 @@ def update_organization_member(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# delete organization member, admin only
+# delete group member, admin only
 @api_view(['POST'])
-def delete_organization_member(request):
+def delete_group_member(request):
     try:
-        member = OrganizationMember.objects.get(pk=request.data['id'])
-        if IsOrganizationAdmin().has_object_permission(request, None, member.organization):
+        member = GroupMember.objects.get(pk=request.data['id'])
+        if IsGroupAdmin().has_object_permission(request, None, member.group):
             member.delete()
             return Response(status=status.HTTP_200_OK)
         else:

@@ -4,17 +4,17 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from sesar_api.models import Organization, OrganizationTeam, OrganizationMember
+from sesar_api.models import Group, GroupMember, SesarUser
 from sesar_api.serializers import TeamSerializer, TeamWriteSerializer
-from sesar_api.permissions import IsOrganizationAdmin
+from sesar_api.permissions import IsGroupAdmin
 
 
-# view all organization teams
+# view all group teams
 @api_view(['GET'])
-def view_organization_teams(request, name):
+def view_group_teams(request, name):
     try:
-        organization = request.user.sesaruser.organizations.get(name=name)
-        teams = OrganizationTeam.objects.filter(organization=organization)
+        group = request.user.sesaruser.groups.get(name=name)
+        teams = Group.objects.filter(part_of_group=group)
 
         if teams:
             serializer = TeamSerializer(teams, many=True)
@@ -25,12 +25,12 @@ def view_organization_teams(request, name):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# view all organization teams
+# view group team
 @api_view(['GET'])
-def view_organization_team(request, organization, team):
+def view_group_team(request, group, team):
     try:
-        organization = request.user.sesaruser.organizations.get(name=organization)
-        team = OrganizationTeam.objects.get(organization=organization, name=team)
+        group = request.user.sesaruser.groups.get(name=group)
+        team = Group.objects.get(part_of_group=group, name=team)
 
         if team:
             serializer = TeamSerializer(team)
@@ -41,12 +41,12 @@ def view_organization_team(request, organization, team):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# create organization team, admin only
+# create group team, admin only
 @api_view(['POST'])
-def create_organization_team(request):
+def create_group_team(request):
     try:
-        organization = Organization.objects.get(pk=request.data['organization'])
-        if IsOrganizationAdmin().has_object_permission(request, None, organization):
+        group = Group.objects.get(pk=request.data['part_of_group'])
+        if IsGroupAdmin().has_object_permission(request, None, group):
             team = TeamWriteSerializer(data=request.data)
             if team.is_valid():
                 team.save()
@@ -59,12 +59,12 @@ def create_organization_team(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# update organization team information, admin only
+# update group team information, admin only
 @api_view(['POST'])
-def update_organization_team(request):
+def update_group_team(request):
     try:
-        team = OrganizationTeam.objects.get(pk=request.data['id'])
-        if IsOrganizationAdmin().has_object_permission(request, None, team.organization):
+        team = Group.objects.get(pk=request.data['id'])
+        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
             serializer = TeamWriteSerializer(team, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -77,12 +77,12 @@ def update_organization_team(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# delete organization team, admin only
+# delete group team, admin only
 @api_view(['POST'])
-def delete_organization_team(request):
+def delete_group_team(request):
     try:
-        team = OrganizationTeam.objects.get(pk=request.data['id'])
-        if IsOrganizationAdmin().has_object_permission(request, None, team.organization):
+        team = Group.objects.get(pk=request.data['id'])
+        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
             team.delete()
             return Response(status=status.HTTP_200_OK)
         else:
@@ -91,13 +91,13 @@ def delete_organization_team(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# add organization team member, admin only
+# add group team member, admin only
 @api_view(['POST'])
-def add_organization_team_member(request):
+def add_group_team_member(request):
     try:
-        team = OrganizationTeam.objects.get(pk=request.data['team'])
-        member = OrganizationMember.objects.get(pk=request.data['member'])
-        if IsOrganizationAdmin().has_object_permission(request, None, team.organization):
+        team = Group.objects.get(pk=request.data['team'])
+        member = SesarUser.objects.get(pk=request.data['member'])
+        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
             team.members.add(member)
             return Response(status=status.HTTP_200_OK)
         else:
@@ -106,13 +106,13 @@ def add_organization_team_member(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# remove organization team member, admin only
+# remove group team member, admin only
 @api_view(['POST'])
-def remove_organization_team_member(request):
+def remove_group_team_member(request):
     try:
-        team = OrganizationTeam.objects.get(pk=request.data['team'])
+        team = Group.objects.get(pk=request.data['team'])
         member = team.members.get(pk=request.data['member'])
-        if IsOrganizationAdmin().has_object_permission(request, None, team.organization):
+        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
             team.members.remove(member)
             return Response(status=status.HTTP_200_OK)
         else:

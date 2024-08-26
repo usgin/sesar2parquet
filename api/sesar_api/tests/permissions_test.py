@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 from sesar_api.models import *
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import *
 from django.core.management import call_command
 
@@ -31,47 +31,47 @@ class SamplePermissionTestCase(TestCase):
         self.user_code_owner = User.objects.create(username='UserCodeOwner')
         self.user_code_owner_su = SesarUser.objects.create(auth_user=self.user_code_owner)
 
-        # organization (with user code ownership) admin
-        self.organization_admin = User.objects.create(username='Admin')
-        self.organization_admin_su = SesarUser.objects.create(auth_user=self.organization_admin)
+        # group (with user code ownership) admin
+        self.group_admin = User.objects.create(username='Admin')
+        self.group_admin_su = SesarUser.objects.create(auth_user=self.group_admin)
 
-        # organization (with user code ownership) team (with permissions granted) member
-        self.organization_member_has_perms = User.objects.create(username='MemberHasPerms')
-        self.organization_member_has_perms_su = SesarUser.objects.create(auth_user=self.organization_member_has_perms)
+        # group (with user code ownership) team (with permissions granted) member
+        self.group_member_has_perms = User.objects.create(username='MemberHasPerms')
+        self.group_member_has_perms_su = SesarUser.objects.create(auth_user=self.group_member_has_perms)
 
-        # organization (with user code ownership) no permission member
-        self.organization_member_no_perms = User.objects.create(username='MemberNoPerms')
-        self.organization_member_no_perms_su = SesarUser.objects.create(auth_user=self.organization_member_no_perms)
+        # group (with user code ownership) no permission member
+        self.group_member_no_perms = User.objects.create(username='MemberNoPerms')
+        self.group_member_no_perms_su = SesarUser.objects.create(auth_user=self.group_member_no_perms)
 
-        # setup organization (with user code ownership) structure
-        self.organization = Organization.objects.create(name="Organization", owner=self.organization_admin_su)
-        self.organization_team = OrganizationTeam.objects.create(name="Team", organization=self.organization)
-        self.admin = OrganizationMember.objects.create(organization=self.organization, sesar_user=self.organization_admin_su, is_admin=True)
-        self.member_has_perms = OrganizationMember.objects.create(organization=self.organization, sesar_user=self.organization_member_has_perms_su, is_admin=False)
-        OrganizationTeamMember.objects.create(team=self.organization_team,member=self.member_has_perms)
-        self.member_no_perms = OrganizationMember.objects.create(organization=self.organization, sesar_user=self.organization_member_no_perms_su, is_admin=False)
+        # setup group (with user code ownership) structure
+        self.group = Group.objects.create(name="Group", owner=self.group_admin_su)
+        self.group_team = Group.objects.create(name="Team", part_of_group=self.group)
+        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, is_admin=True)
+        self.member_has_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_has_perms_su, is_admin=False)
+        GroupMember.objects.create(group=self.group_team,sesar_user=self.group_member_has_perms_su)
+        self.member_no_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_no_perms_su, is_admin=False)
 
         # create user code and sample
-        self.user_code = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.user_code_owner_su, organization=self.organization)
-        self.user_code_2 = SesarUserCode.objects.create(user_code="IE002", sesar_user=self.user_code_owner_su, organization=self.organization)
+        self.user_code = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.user_code_owner_su, group=self.group)
+        self.user_code_2 = SesarUserCode.objects.create(user_code="IE002", sesar_user=self.user_code_owner_su, group=self.group)
         self.sample_type = SampleType.objects.create(name="Sample Type")
         self.sample = Sample.objects.create(name="Sample", igsn="10.58052/IE001TEST", igsn_prefix=self.user_code, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
-        self.sample_2 = Sample.objects.create(name="Sample", igsn="10.58052/IE002TEST", igsn_prefix=self.user_code_2, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su, organization_owner=self.organization)
+        self.sample_2 = Sample.objects.create(name="Sample", igsn="10.58052/IE002TEST", igsn_prefix=self.user_code_2, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su, group_owner=self.group)
 
         # get all auth groups
-        self.R_group = Group.objects.get(name="read_only")
-        self.RE_group = Group.objects.get(name="read_edit")
-        self.CR_group = Group.objects.get(name="read_create")
-        self.CRE_group = Group.objects.get(name="read_create_edit")
-        self.CRED_group = Group.objects.get(name="read_create_edit_deactivate")
+        self.R_group = AuthGroup.objects.get(name="read_only")
+        self.RE_group = AuthGroup.objects.get(name="read_edit")
+        self.CR_group = AuthGroup.objects.get(name="read_create")
+        self.CRE_group = AuthGroup.objects.get(name="read_create_edit")
+        self.CRED_group = AuthGroup.objects.get(name="read_create_edit_deactivate")
 
-        # grant permission to the organization team
-        self.team_permission = Permission.objects.create(id=1, user_code=self.user_code, auth_group=self.CRED_group, organization_team=self.organization_team)
+        # grant permission to the group team
+        self.team_permission = Permission.objects.create(id=1, user_code=self.user_code, auth_group=self.CRED_group, group=self.group_team)
 
         # grant permission to the test user
         self.test_user_code_permission = Permission.objects.create(id=2, user_code=self.user_code, auth_group=self.CRED_group, sesar_user=self.test_user_su)
         self.test_sample_permission = Permission.objects.create(id=3, sample=self.sample_2, auth_group=self.CRED_group, sesar_user=self.test_user_su)
-        self.test_organization_permission = Permission.objects.create(id=4, user_code=self.user_code, auth_group=self.CRED_group)
+        self.test_group_permission = Permission.objects.create(id=4, user_code=self.user_code, auth_group=self.CRED_group)
 
     def test_is_sample_owner(self):
         """Sample owner is correctly identified"""
@@ -143,31 +143,31 @@ class SamplePermissionTestCase(TestCase):
         Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        # Test organization level permissions when organization owns user code
-        # Test organization admin
-        request.user = self.organization_admin
+        # Test group level permissions when group owns user code
+        # Test group admin
+        request.user = self.group_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member with permissions
-        request.user = self.organization_member_has_perms
+        # Test group member with permissions
+        request.user = self.group_member_has_perms
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member without permissions
-        request.user = self.organization_member_no_perms
+        # Test group member without permissions
+        request.user = self.group_member_no_perms
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization admin has permission on organization owned samples
-        request.user = self.organization_admin
+        # Test group admin has permission on group owned samples
+        request.user = self.group_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        request.user = self.organization_member_no_perms
+        request.user = self.group_member_no_perms
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        # Remove organization ownership of user code and test permission shared to organization
-        SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        Permission.objects.filter(id=4).update(organization=self.organization)
+        # Remove group ownership of user code and test permission shared to group
+        SesarUserCode.objects.filter(user_code="IE001").update(group=None)
+        Permission.objects.filter(id=4).update(group=self.group)
 
-        request.user = self.organization_admin
+        request.user = self.group_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample))
 
 
@@ -229,31 +229,31 @@ class SamplePermissionTestCase(TestCase):
         Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample_2))
 
-        # Test organization level permissions when organization owns user code
-        # Test organization admin
-        request.user = self.organization_admin
+        # Test group level permissions when group owns user code
+        # Test group admin
+        request.user = self.group_admin
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member with permissions
-        request.user = self.organization_member_has_perms
+        # Test group member with permissions
+        request.user = self.group_member_has_perms
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member without permissions
-        request.user = self.organization_member_no_perms
+        # Test group member without permissions
+        request.user = self.group_member_no_perms
         self.assertFalse(CanEditSample().has_object_permission(request, None, self.sample))
 
-        # Test organization admin has permission on organization owned samples
-        request.user = self.organization_admin
+        # Test group admin has permission on group owned samples
+        request.user = self.group_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        request.user = self.organization_member_no_perms
+        request.user = self.group_member_no_perms
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        # Remove organization ownership of user code and test permission shared to organization
-        SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        Permission.objects.filter(id=4).update(organization=self.organization)
+        # Remove group ownership of user code and test permission shared to group
+        SesarUserCode.objects.filter(user_code="IE001").update(group=None)
+        Permission.objects.filter(id=4).update(group=self.group)
 
-        request.user = self.organization_admin
+        request.user = self.group_admin
         self.assertTrue(CanEditSample().has_object_permission(request, None, self.sample))
 
 
@@ -315,31 +315,31 @@ class SamplePermissionTestCase(TestCase):
         Permission.objects.filter(id=3).update(auth_group=self.CRE_group)
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample_2))
 
-        # Test organization level permissions when organization owns user code
-        # Test organization admin
-        request.user = self.organization_admin
+        # Test group level permissions when group owns user code
+        # Test group admin
+        request.user = self.group_admin
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member with permissions
-        request.user = self.organization_member_has_perms
+        # Test group member with permissions
+        request.user = self.group_member_has_perms
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization member without permissions
-        request.user = self.organization_member_no_perms
+        # Test group member without permissions
+        request.user = self.group_member_no_perms
         self.assertFalse(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
-        # Test organization admin has permission on organization owned samples
-        request.user = self.organization_admin
+        # Test group admin has permission on group owned samples
+        request.user = self.group_admin
         self.assertTrue(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        request.user = self.organization_member_no_perms
+        request.user = self.group_member_no_perms
         self.assertFalse(CanCreateSample().has_object_permission(request, None, self.sample_2))
 
-        # Remove organization ownership of user code and test permission shared to organization
-        SesarUserCode.objects.filter(user_code="IE001").update(organization=None)
-        Permission.objects.filter(id=4).update(organization=self.organization)
+        # Remove group ownership of user code and test permission shared to group
+        SesarUserCode.objects.filter(user_code="IE001").update(group=None)
+        Permission.objects.filter(id=4).update(group=self.group)
 
-        request.user = self.organization_admin
+        request.user = self.group_admin
         self.assertTrue(CanDeactivateSample().has_object_permission(request, None, self.sample))
 
 
@@ -353,10 +353,10 @@ class UserCodePermissionTestCase(TestCase):
         self.not_user_code_owner = User.objects.create(username='NotOwner')
         self.not_user_code_owner_su = SesarUser.objects.create(auth_user=self.not_user_code_owner)
 
-        self.owner_organization = Organization.objects.create(name="Owner", owner=self.not_user_code_owner_su)
-        self.not_owner_organization = Organization.objects.create(name="NotOwner", owner=self.not_user_code_owner_su)
+        self.owner_group = Group.objects.create(name="Owner", owner=self.not_user_code_owner_su)
+        self.not_owner_group = Group.objects.create(name="NotOwner", owner=self.not_user_code_owner_su)
 
-        self.user_code = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.user_code_owner_su, organization=self.owner_organization)
+        self.user_code = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.user_code_owner_su, group=self.owner_group)
 
     def test_is_user_code_owner(self):
         """User code owner is correctly identified"""
@@ -369,48 +369,48 @@ class UserCodePermissionTestCase(TestCase):
         request.user = self.not_user_code_owner
         self.assertFalse(IsUserCodeOwner().has_object_permission(request, None, self.user_code))
 
-        # Test owned by organization
-        self.assertTrue(IsUserCodeOwner(self.owner_organization).has_object_permission(request, None, self.user_code))
+        # Test owned by group
+        self.assertTrue(IsUserCodeOwner(self.owner_group).has_object_permission(request, None, self.user_code))
         
-        # Test not owned by organization
-        self.assertFalse(IsUserCodeOwner(self.not_owner_organization).has_object_permission(request, None, self.user_code))
+        # Test not owned by group
+        self.assertFalse(IsUserCodeOwner(self.not_owner_group).has_object_permission(request, None, self.user_code))
 
-class OrganizationPermissionTestCase(TestCase):
+class GroupPermissionTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
-        self.organization_owner = User.objects.create(username='Owner')
-        self.organization_owner_su = SesarUser.objects.create(auth_user=self.organization_owner)
+        self.group_owner = User.objects.create(username='Owner')
+        self.group_owner_su = SesarUser.objects.create(auth_user=self.group_owner)
 
-        self.organization_admin = User.objects.create(username='Admin')
-        self.organization_admin_su = SesarUser.objects.create(auth_user=self.organization_admin)
+        self.group_admin = User.objects.create(username='Admin')
+        self.group_admin_su = SesarUser.objects.create(auth_user=self.group_admin)
 
-        self.organization_member = User.objects.create(username='Member')
-        self.organization_member_su = SesarUser.objects.create(auth_user=self.organization_member)
+        self.group_member = User.objects.create(username='Member')
+        self.group_member_su = SesarUser.objects.create(auth_user=self.group_member)
 
-        self.organization = Organization.objects.create(name="Organization", owner=self.organization_owner_su)
-        self.admin = OrganizationMember.objects.create(organization=self.organization, sesar_user=self.organization_admin_su, is_admin=True)
-        self.member = OrganizationMember.objects.create(organization=self.organization, sesar_user=self.organization_member_su, is_admin=False)
+        self.group = Group.objects.create(name="Group", owner=self.group_owner_su)
+        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, is_admin=True)
+        self.member = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_su, is_admin=False)
 
-    def test_is_organization_owner(self):
-        """Organization owner is correctly identified"""
-        # Test organization owner
+    def test_is_group_owner(self):
+        """Group owner is correctly identified"""
+        # Test group owner
         request = self.factory.get('/')
-        request.user = self.organization_owner
-        self.assertTrue(IsOrganizationOwner().has_object_permission(request, None, self.organization))
+        request.user = self.group_owner
+        self.assertTrue(IsGroupOwner().has_object_permission(request, None, self.group))
 
-        # Test not organization owner
-        request.user = self.organization_member
-        self.assertFalse(IsOrganizationOwner().has_object_permission(request, None, self.organization))
+        # Test not group owner
+        request.user = self.group_member
+        self.assertFalse(IsGroupOwner().has_object_permission(request, None, self.group))
 
-    def test_is_organization_admin(self):
-        """Organization admin is correctly identified"""
-        # Test organization admin
+    def test_is_group_admin(self):
+        """Group admin is correctly identified"""
+        # Test group admin
         request = self.factory.get('/')
-        request.user = self.organization_admin
-        self.assertTrue(IsOrganizationAdmin().has_object_permission(request, None, self.organization))
+        request.user = self.group_admin
+        self.assertTrue(IsGroupAdmin().has_object_permission(request, None, self.group))
 
-        # Test not organization admin
-        request.user = self.organization_member
-        self.assertFalse(IsOrganizationAdmin().has_object_permission(request, None, self.organization))
+        # Test not group admin
+        request.user = self.group_member
+        self.assertFalse(IsGroupAdmin().has_object_permission(request, None, self.group))
         

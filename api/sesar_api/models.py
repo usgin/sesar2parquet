@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser, Group as AuthGroup
 from django.conf import settings
 from django.utils import timezone
 
@@ -52,45 +52,28 @@ class SesarUser(models.Model):
     def __str__(self):
         return self.fname + ' ' + self.lname
 
-class Organization(models.Model):
-    owner = models.ForeignKey(SesarUser, models.DO_NOTHING)
+class Group(models.Model):
+    owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=64, unique=True)
-    description = models.CharField(max_length=255, blank=True, null=True)
-    create_date = models.DateTimeField(default=timezone.now)
-    deactivate_date = models.DateTimeField(blank=True, null=True)
-    doi_prefix = models.CharField(max_length=16, default='10.58052/')
-    members = models.ManyToManyField(SesarUser, related_name='organizations', through='OrganizationMember')
-
-    class Meta:
-        db_table = 'organization'
-
-
-class OrganizationTeam(models.Model):
-    organization = models.ForeignKey(Organization, models.DO_NOTHING, related_name='teams')
-    name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
+    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    members = models.ManyToManyField(SesarUser, related_name='groups', through='GroupMember')
+    part_of_group = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='teams')
 
     class Meta:
-        db_table = 'organization_team'
+        db_table = 'group'
 
-class OrganizationMember(models.Model):
-    organization = models.ForeignKey(Organization, models.DO_NOTHING)
+
+class GroupMember(models.Model):
+    group = models.ForeignKey(Group, models.CASCADE)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     is_admin = models.BooleanField(default=False)
     join_date = models.DateTimeField(default=timezone.now)
-    teams = models.ManyToManyField(OrganizationTeam, related_name='members', through='OrganizationTeamMember')
 
     class Meta:
-        db_table = 'organization_member'
-
-class OrganizationTeamMember(models.Model):
-    member = models.ForeignKey(OrganizationMember, models.CASCADE)
-    team = models.ForeignKey(OrganizationTeam, models.CASCADE)
-
-    class Meta:
-        db_table = 'organization_team_member'
+        db_table = 'group_member'
 
 
 class Classification(models.Model):
@@ -230,7 +213,7 @@ class Sample(models.Model):
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
     orig_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True, null=True)
     cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
-    organization_owner = models.ForeignKey(Organization, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    group_owner = models.ForeignKey(Group, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -291,7 +274,7 @@ class SamplePublicationUrl(models.Model):
 class Groups(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     description = models.CharField(max_length=1000, blank=True, null=True)
-    group_owner = models.ForeignKey('SesarUser', models.DO_NOTHING, blank=True, null=True)
+    group_owner = models.ForeignKey('SesarUser', models.DO_NOTHING, related_name="sample_groups", blank=True, null=True)
     date_created = models.DateTimeField(blank=True, null=True)
     group_type = models.CharField(max_length=64, blank=True, null=True, db_comment="type of group such as 'award' or 'user defined'")
     is_private = models.BooleanField(blank=True, null=True)
@@ -326,7 +309,7 @@ class SesarRole(models.Model):
 
 class SesarUserCode(models.Model):
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    organization = models.ForeignKey(Organization, models.DO_NOTHING, blank=True, null=True)
+    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True)
     user_code = models.CharField(unique=True, max_length=5, blank=True, null=True)
     is_available = models.IntegerField(blank=True, null=True)
     igsn_count = models.BigIntegerField(blank=True, null=True)
@@ -349,9 +332,8 @@ class Permission(models.Model):
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
-    organization = models.ForeignKey(Organization, models.CASCADE, related_name='permissions', blank=True, null=True)
-    organization_team = models.ForeignKey(OrganizationTeam, models.CASCADE, related_name='permissions', blank=True, null=True)
-    auth_group = models.ForeignKey(Group, on_delete=models.DO_NOTHING, blank=True, null=True)
+    group = models.ForeignKey(Group, models.CASCADE, related_name='permissions', blank=True, null=True)
+    auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = True

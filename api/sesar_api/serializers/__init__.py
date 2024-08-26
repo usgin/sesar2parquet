@@ -1,1 +1,1 @@
-from .organization_serializer import *
+from .group_serializer import *

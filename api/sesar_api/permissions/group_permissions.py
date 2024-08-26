@@ -1,9 +1,9 @@
 from rest_framework import permissions
-from sesar_api.models import OrganizationMember
+from sesar_api.models import GroupMember
 
 
-class IsOrganizationOwner(permissions.BasePermission):
-    message = 'Permission denied. This organization is not owned by you.'
+class IsGroupOwner(permissions.BasePermission):
+    message = 'Permission denied. This group is not owned by you.'
 
     def has_permission(self, request, view):
         if request.user.is_authenticated:
@@ -13,16 +13,16 @@ class IsOrganizationOwner(permissions.BasePermission):
         return obj.owner == request.user.sesaruser
 
 
-class IsOrganizationAdmin(permissions.BasePermission):
-    message = 'Permission denied. You are not an admin of this organization.'
+class IsGroupAdmin(permissions.BasePermission):
+    message = 'Permission denied. You are not an admin of this group.'
 
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             return True
 
     def has_object_permission(self, request, view, obj):
-        if OrganizationMember.objects.filter(
-            organization=obj,
+        if GroupMember.objects.filter(
+            group=obj,
             sesar_user=request.user.sesaruser, 
             is_admin=True).exists():
             return True
