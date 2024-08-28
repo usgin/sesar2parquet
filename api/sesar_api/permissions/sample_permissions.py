@@ -30,6 +30,24 @@ class CanCreateSample(permissions.BasePermission):
         if sample.cur_owner == sesar_user:
             return True
 
+        # user is an admin of group that owns user code
+        if user_code.group and GroupMember.objects.filter(
+            group=user_code.group, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is an admin of group that owns sample
+        if sample.group_owner and GroupMember.objects.filter(
+            group=sample.group_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is a curator approving a batch registration
+        if request.user.is_staff:
+            return True
+
         # check all permissions shared on either user code or directly on sample
         all_permissions = Permission.objects.filter(Q(user_code=user_code) | Q(sample=sample))
         for permission in all_permissions:
@@ -53,24 +71,6 @@ class CanCreateSample(permissions.BasePermission):
                 and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
-        # user is an admin of group that owns user code
-        if GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is an admin of group that owns sample
-        if GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is a curator approving a batch registration
-        if request.user.is_staff:
-            return True
-
         return False
 
 
@@ -92,6 +92,24 @@ class CanEditSample(permissions.BasePermission):
 
         # user owns sample
         if sample.cur_owner == sesar_user:
+            return True
+
+        # user is an admin of group that owns user code
+        if user_code.group and GroupMember.objects.filter(
+            group=user_code.group, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is an admin of group that owns sample
+        if sample.group_owner and GroupMember.objects.filter(
+            group=sample.group_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is a curator approving a batch registration
+        if request.user.is_staff:
             return True
 
         # check all permissions shared on either user code or directly on sample
@@ -117,24 +135,6 @@ class CanEditSample(permissions.BasePermission):
                 and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
-        # user is an admin of group that owns user code
-        if GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is an admin of group that owns sample
-        if GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is a curator approving a batch registration
-        if request.user.is_staff:
-            return True
-
         return False
 
 
@@ -156,6 +156,24 @@ class CanDeactivateSample(permissions.BasePermission):
 
         # user owns sample
         if sample.cur_owner == sesar_user:
+            return True
+
+        # user is an admin of group that owns user code
+        if user_code.group and GroupMember.objects.filter(
+            group=user_code.group, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is an admin of group that owns sample
+        if sample.group_owner and GroupMember.objects.filter(
+            group=sample.group_owner, 
+            sesar_user=sesar_user, 
+            is_admin=True).exists():
+            return True
+
+        # user is a curator approving a batch registration
+        if request.user.is_staff:
             return True
 
         # check all permissions shared on either user code or directly on sample
@@ -180,23 +198,5 @@ class CanDeactivateSample(permissions.BasePermission):
                 if (permission.group
                 and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
-
-        # user is an admin of group that owns user code
-        if GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is an admin of group that owns sample
-        if GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # user is a curator approving a batch registration
-        if request.user.is_staff:
-            return True
 
         return False
