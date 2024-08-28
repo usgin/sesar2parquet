@@ -1,4 +1,4 @@
 from .auth import *
-from .organization import *
-from .organization_member import *
-from .organization_team import *
+from .group import *
+from .group_member import *
+from .group_team import *
