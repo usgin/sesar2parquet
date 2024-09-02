@@ -54,8 +54,8 @@ lkup, locality, primary_location_type_lkup, location_description, locality_descr
 ### geologic age
 age_min, age_max have numbers; convert all to Ma for numeric age fields.  Geological age has some geologic TOEs, also text for numeric age, which might not be reflected in age_min, age_max fields.   if has TOE, put in 2024 geologic age, have to work on whether to do min and max.  make table of unique age_min, age_max, age_unit, and geological_age to make mapping to 2024 numeric_age and geologic_age fields.   In simplest case just load age_max, age_min to numeric age fields, and geological_age to geological age_verbatim field .  The age max field has some calendar dates in it.   Not clear how to treat these as geologic ages. Some of these are eruption dates for volcanic samples. 
 	
-### classification
-top level can use iSamples material type.  Populate sample material table from classification table mapping to iSamples.  get mindat URIs for minerals  
+### classification  (material type)
+top level can use iSamples material type.  Populate sample material table from isamplesMaterialtype, EarthEnv material type extension and opencontext extension (not the rock/mineral parts).  sample_material correlation table carries verbatim field name.  get mindat URIs for minerals .  Need to add a role on in sample_material correlation for samples with multiple material constitutents, e.g. for protolith links for metamorphic rocks or analytical preparations. 
 	
 ### agents
 	see separate document 'agentsMapping.md'.
@@ -84,7 +84,7 @@ generate from northing, easting, zone
 is concatenation of sample_comment, description, classification comment, collector detail, and possible other random text scattered about.
 	
 ### Sample_type
-corresponds to iSamples Material_sample_object_type. 
+corresponds to iSamples Material_sample_object_type.  Have mapping from existing SESAR sample type to iSamples vocab and vocab extension.   ...GithubC/iSamples/content-classification/SESAR/trainingDataApproach/trainingData/SESAR_training_dataset_archive.xlsx  SpecimentType tab. Build sample type vocab table from iSamples vocabularies. 
 	
 ### metadata_store_status
 values are currently mostly about relation to Datacite.  Is there a need for an isPrivate flag?
