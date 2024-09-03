@@ -1,0 +1,104 @@
+{
+  "classification": [
+    {
+      "1": {
+        "classification_id": 1,
+        "parent_classification_id": null,
+        "name": "Rock",
+        "description": "Rock Classification",
+        "legacy_id": 163,
+        "legacy_parent_id": 1
+      }
+    },
+    {
+      "2": {
+        "classification_id": 2,
+        "parent_classification_id": null,
+        "name": "Mineral",
+        "description": "Mineral Classification",
+        "legacy_id": 8,
+        "legacy_parent_id": 1
+      }
+    },
+    {
+      "3": {
+        "classification_id": 3,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic",
+        "description": "Xenolithic>Metamorphic",
+        "legacy_id": 219,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "4": {
+        "classification_id": 4,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Calc-Silicate",
+        "description": "Xenolithic>Metamorphic>Calc-Silicate",
+        "legacy_id": 220,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "5": {
+        "classification_id": 5,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Eclogite",
+        "description": "Xenolithic>Metamorphic>Eclogite",
+        "legacy_id": 221,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "6": {
+        "classification_id": 6,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Gneiss",
+        "description": "Xenolithic>Metamorphic>Gneiss",
+        "legacy_id": 222,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "7": {
+        "classification_id": 7,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Granofels",
+        "description": "Xenolithic>Metamorphic>Granofels",
+        "legacy_id": 223,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "8": {
+        "classification_id": 8,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Granulite",
+        "description": "Xenolithic>Metamorphic>Granulite",
+        "legacy_id": 224,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "9": {
+        "classification_id": 9,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>MechanicallyBroken",
+        "description": "Xenolithic>Metamorphic>MechanicallyBroken",
+        "legacy_id": 225,
+        "legacy_parent_id": 163
+      }
+    },
+    {
+      "10": {
+        "classification_id": 10,
+        "parent_classification_id": 1,
+        "name": "Xenolithic>Metamorphic>Meta-Carbonate",
+        "description": "Xenolithic>Metamorphic>Meta-Carbonate",
+        "legacy_id": 226,
+        "legacy_parent_id": 163
+      }
+    }
+  ]
+}
