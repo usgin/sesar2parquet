@@ -89,7 +89,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT')
+        'PORT': os.environ.get('DB_PORT', 5432)
     },
     'sesar2024': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -97,7 +97,7 @@ DATABASES = {
         'USER': os.environ.get('DB_2024_USER'),
         'PASSWORD': os.environ.get('DB_2024_PASSWORD'),
         'HOST': os.environ.get('DB_2024_HOST'),
-        'PORT': os.environ.get('DB_2024_PORT')
+        'PORT': os.environ.get('DB_2024_PORT', 5432)
     }
 }
 
@@ -175,7 +175,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ.get('ORCID_OIDC_ENDPOINT')
+SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ.get('ORCID_OIDC_ENDPOINT', 'https://orcid.org/')
 SOCIAL_AUTH_OIDC_KEY = os.environ.get('ORCID_CLIENT_ID')
 SOCIAL_AUTH_OIDC_SECRET = os.environ.get('ORCID_CLIENT_SECRET')
 SOCIAL_AUTH_OIDC_USERNAME_KEY = 'sub'
