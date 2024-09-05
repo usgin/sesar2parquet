@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'newdb.apps.NewdbConfig',
-    'olddb.apps.OlddbConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,22 +75,26 @@ WSGI_APPLICATION = 'sesar2024.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {},
-    "newdb":{
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "SESAR2024-2",
-        "USER": "postgres",
-        "PASSWORD": "smrpostgis",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": "default_etl",
+    # },
+    "olddb": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT')
     },
-    "olddb":{
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "sesardb20240525",
-        "USER": "postgres",
-        "PASSWORD": "smrpostgis",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+
+    "default":{
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_2024_NAME'),
+        'USER': os.environ.get('DB_2024_USER'),
+        'PASSWORD': os.environ.get('DB_2024_PASSWORD'),
+        'HOST': os.environ.get('DB_2024_HOST'),
+        'PORT': os.environ.get('DB_2024_PORT')
     }
 }
 

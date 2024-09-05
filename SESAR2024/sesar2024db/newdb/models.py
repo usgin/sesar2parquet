@@ -6,11 +6,13 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import AbstractUser, Group as AuthGroup
+from django.conf import settings
+from django.utils import timezone
 
 
 class Agent(models.Model):
     AGENT_TYPES = models.TextChoices("Individual", "Organization")
-
     agent_id = models.AutoField(primary_key=True)
     label = models.CharField(unique=True, max_length=50, blank=False, null=False)
     fname = models.CharField(max_length=100, blank=True, null=True)
@@ -67,6 +69,7 @@ class GeologicTimeScale(models.Model):
     scheme_uri = models.CharField(max_length=255, blank=True, null=True)
     numeric_older_bound = models.DecimalField(max_digits=9, decimal_places=4, blank=True, null=True)
     numeric_younger_bound = models.DecimalField(max_digits=9, decimal_places=4, blank=True, null=True)
+    notation = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -74,20 +77,20 @@ class GeologicTimeScale(models.Model):
         db_table_comment = 'vocabulary of ICS geologic time ordinal eras, 2024 version'
 
 
-class GeometryColumns(models.Model):
-    f_table_catalog = models.CharField(primary_key=True, max_length=256)
-    # The composite primary key (f_table_catalog, f_table_schema, f_table_name, f_geometry_column) found, that is not supported. The first column is selected.
-    f_table_schema = models.CharField(max_length=256)
-    f_table_name = models.CharField(max_length=256)
-    f_geometry_column = models.CharField(max_length=256)
-    coord_dimension = models.IntegerField()
-    srid = models.IntegerField()
-    type = models.CharField(max_length=30)
-
-    class Meta:
-        #       managed = False
-        db_table = 'geometry_columns'
-        unique_together = (('f_table_catalog', 'f_table_schema', 'f_table_name', 'f_geometry_column'),)
+# class GeometryColumns(models.Model):
+#     f_table_catalog = models.CharField(primary_key=True, max_length=256)
+#     # The composite primary key (f_table_catalog, f_table_schema, f_table_name, f_geometry_column) found, that is not supported. The first column is selected.
+#     f_table_schema = models.CharField(max_length=256)
+#     f_table_name = models.CharField(max_length=256)
+#     f_geometry_column = models.CharField(max_length=256)
+#     coord_dimension = models.IntegerField()
+#     srid = models.IntegerField()
+#     type = models.CharField(max_length=30)
+#
+#     class Meta:
+#         #       managed = False
+#         db_table = 'geometry_columns'
+#         unique_together = (('f_table_catalog', 'f_table_schema', 'f_table_name', 'f_geometry_column'),)
 
 
 class GeospatialLocation(models.Model):
@@ -101,16 +104,16 @@ class GeospatialLocation(models.Model):
     vertical = models.DecimalField(max_digits=10, decimal_places=4, blank=True, null=True,
                                    db_comment='based on vertical_srs, might be elevation (positive up) or depth (positive down).')
     vertical_srs = models.ForeignKey('SpatialRefSys', models.DO_NOTHING, db_column='vertical_srs', blank=True,
-                                     null=True,
-                                     db_comment='defines units of measure for vertical coordinate, positive up or positive down, and the datum-- that is the surface that has a 0 coordinate value.   If the position is within a borehole, the vertical_srs might be the borehole geometry. ')
+                                      null=True,
+                                      db_comment='defines units of measure for vertical coordinate, positive up or positive down, and the datum-- that is the surface that has a 0 coordinate value.   If the position is within a borehole, the vertical_srs might be the borehole geometry. ')
     coordinate_1 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
                                        db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
     coordinate_2 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
                                        db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
     spatial_reference_system = models.ForeignKey('SpatialRefSys', models.DO_NOTHING,
-                                                 db_column='spatial_reference_system',
-                                                 related_name='geospatiallocation_spatial_reference_system_set',
-                                                 blank=True, null=True)
+                                              db_column='spatial_reference_system',
+                                                  related_name='geospatiallocation_spatial_reference_system_set',
+                                                  blank=True, null=True)
     wkt_geometry = models.CharField(db_column='WKT_geometry', max_length=100, blank=True,
                                     null=True)  # Field name made lowercase.
     global_grid_cell_id = models.CharField(max_length=50, blank=True, null=True)
@@ -121,31 +124,31 @@ class GeospatialLocation(models.Model):
         db_table_comment = 'The latitude and longitude in the sample table are required to use WGS84 decimal degrees. This table is optional, use to report coordinate locations with spatial reference different from WGS84, e.g. UTM, local grid coordinates, global grid cell identifiers, etc. '
 
 
-class GroupSample(models.Model):
-    group_sample_id = models.AutoField(primary_key=True)
-    group = models.ForeignKey('Groups', models.DO_NOTHING, blank=False, null=False)
+class CollectionMember(models.Model):
+    collection_member_id = models.AutoField(primary_key=True)
+    collection = models.ForeignKey('SampleCollection', models.DO_NOTHING, blank=False, null=False,default=-1)
     sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False,default=-1)
 
     class Meta:
         #       managed = False
-        db_table = 'group_sample'
-        db_table_comment = 'correlation table that associated a sample with a group or collection. '
+        db_table = 'collection_member'
+        db_table_comment = 'correlation table that associated a sample with a collection. '
 
 
-class Groups(models.Model):
-    group_id = models.AutoField(primary_key=True)
+class SampleCollection(models.Model):
+    collection_id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
-    group_owner = models.ForeignKey('SesarUser', models.DO_NOTHING, blank=True, null=True)
+    collection_owner = models.ForeignKey('SesarUser', models.DO_NOTHING, blank=True, null=True)
     date_created = models.DateTimeField(blank=True, null=True)
-    group_type = models.ForeignKey(CollectionType, models.DO_NOTHING, blank=True, null=True,
-                                   db_comment="type of group such as 'award' or 'user defined'")
+    collection_type = models.ForeignKey(CollectionType, models.DO_NOTHING, blank=True, null=True,
+                                   db_comment="type of collection")
     is_private = models.BooleanField(blank=True, null=True)
 
     class Meta:
         #       managed = False
-        db_table = 'groups'
-        db_table_comment = 'Definition of a group or collection defined by some user to associate a set of samples for some purpose.'
+        db_table = 'sample_collection'
+        db_table_comment = 'Definition of set of samples by some user to associate a set of samples for some purpose.'
 
 
 class Initiative(models.Model):
@@ -367,7 +370,7 @@ class Sample(models.Model):
                                       db_comment='This is the sample.sample_id for the parent sample; to get its IGSN would have to do a sample-sample join on origin_sample_id = sample_id')
     sample_type = models.ForeignKey('SampleType', models.DO_NOTHING, blank=False, null=False,
                                     db_comment='corresponds to iSamples material sample type, use iSamples vocabulary with earth science extensions.')
-    org_registrant = models.ForeignKey(Agent, models.DO_NOTHING, blank=False, null=False)
+#    org_registrant = models.ForeignKey(Agent, models.DO_NOTHING, blank=False, null=False)
     cur_registrant = models.ForeignKey(Agent, models.DO_NOTHING, blank=False, null=False, related_name='sample_cur_registrant_set')
     req_registrant = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True,
                                        null=True)
@@ -380,9 +383,9 @@ class Sample(models.Model):
     current_archive = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_current_archive_set', blank=True,
                                         null=True,
                                         db_comment='link to agent that currently is the steward of the sample.')
-    original_archive = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_original_archive_set',
-                                         blank=True, null=True,
-                                         db_comment='link to first agent that was the steward of the sample, if different from the current steward.')
+    # original_archive = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_original_archive_set',
+    #                                      blank=True, null=True,
+    #                                      db_comment='link to first agent that was the steward of the sample, if different from the current steward.')
     size = models.CharField(max_length=255, blank=True, null=True,
                             db_comment='text string  specifying size of sample; should be measured value with units of measure. MIght use mass or length dimensions. ')
     general_material_type = models.ForeignKey(MaterialType, models.DO_NOTHING, blank=True, null=True,
@@ -423,7 +426,7 @@ class Sample(models.Model):
     vertical_max = models.DecimalField(max_digits=9, decimal_places=4, blank=True, null=True,
                                        db_comment='if sampling location is a linear feature, e.g. a core from a borehole, report the max  coordinate of the sampling location position. Units of measure and the reference system are reported in the linked vertical_reference definition.  Generally, for cores, max coordinate will be the deepest beneath to datum. ')
     vertical_reference = models.ForeignKey('SpatialRefSys', models.DO_NOTHING, blank=True, null=True,
-                                           db_comment="link to definition of vertical reference system; the definition must specify the units of measure, the datum ('0' surface) and the positive direction for coordinate values (up or down)")
+                                            db_comment="link to definition of vertical reference system; the definition must specify the units of measure, the datum ('0' surface) and the positive direction for coordinate values (up or down)")
     location_method_id = models.ForeignKey(LocationMethod, models.DO_NOTHING, blank=True, null=True,
                                              db_comment='link to description of how the location coordinates have been determined')
     location_qualifier = models.CharField(max_length=50, blank=True, null=True,
@@ -440,8 +443,8 @@ class Sample(models.Model):
                                                 db_comment='text content includes details about specifics of the particular collection event for this sample')
     cruise_field_prgrm = models.ForeignKey(Initiative, models.DO_NOTHING, blank=True, null=True,
                                            db_comment='link to description of the cruise, field program, funded project or other activity that is the context for the collection of this sample')
-    collector = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_collector_set', blank=True, null=True,
-                                  db_comment='agent acknowledged for collection of the sample. ')
+    # collector = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_collector_set', blank=True, null=True,
+    #                               db_comment='agent acknowledged for collection of the sample. ')
     platform = models.ForeignKey(Platform, models.DO_NOTHING, blank=True, null=True,
                                  db_comment='Identifier for the facility that hosted the sampling event either directly or indirectly. Example of indirect host is launch of remote vehicle from a ship.')
     launch_platform = models.ForeignKey(Platform, models.DO_NOTHING, related_name='sample_launch_platform_set',
@@ -457,16 +460,16 @@ class Sample(models.Model):
                                                  db_comment='indicate time interval that collection time is specified; e.g. minutes, hours, days, weeks, months...')
     metadata_store_status = models.CharField(max_length=25, blank=False, null=False,
                                              db_comment='internal status flag used by SESAR to track metadata management')
-    orig_owner = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True,
-                                   null=True,
-                                   db_comment='link to agent who was original owner of sample, if different from the current owner.')
+    # orig_owner = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True,
+    #                                null=True,
+    #                                db_comment='link to agent who was original owner of sample, if different from the current owner.')
     cur_owner = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_cur_owner_set', blank=True, null=True,
                                   db_comment='link to current owner of the sample. SESAR uses the owner ID to determine permissions for updating sample records.')
     last_changed_by = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_last_changed_by_set', blank=True,
                                         null=True,
                                         db_comment='link to agent who most recently changed the content of this record.')
-    last_registrant = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_last_registrant_set', blank=True,
-                                        null=True, db_comment='link to agent that most recently registered the sample.')
+    # last_registrant = models.ForeignKey(Agent, models.DO_NOTHING, related_name='sample_last_registrant_set', blank=True,
+    #                                     null=True, db_comment='link to agent that most recently registered the sample.')
 
     class Meta:
         #       managed = False
@@ -579,3 +582,29 @@ class SpatialRefSys(models.Model):
     class Meta:
         #       managed = False
         db_table = 'spatial_ref_sys'
+
+
+class Group(models.Model):
+    owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
+    name = models.CharField(max_length=64, unique=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    activate_date = models.DateTimeField(default=timezone.now)
+    deactivate_date = models.DateTimeField(blank=True, null=True)
+    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    members = models.ManyToManyField(SesarUser, related_name='groups', through='GroupMember')
+    part_of_group = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='teams')
+
+    class Meta:
+        db_table = 'group'
+        db_table_comment = 'definition imported from SCao migration in legacy db updates'
+
+
+class GroupMember(models.Model):
+    group = models.ForeignKey(Group, models.CASCADE)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
+    is_admin = models.BooleanField(default=False)
+    join_date = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        db_table = 'group_member'
+        db_table_comment = 'Related sesar user to a group. Definition imported from SCao migration in legacy db updates'
