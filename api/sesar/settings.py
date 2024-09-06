@@ -29,7 +29,24 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("LOCAL_DEBUG", False) == "True"
 
+DOMAIN_PUBLIC_NAME = os.environ.get("DOMAIN_PUBLIC_NAME")
+DOMAIN_FRONTEND_NAME = os.environ.get("DOMAIN_FRONTEND_NAME")
+
 ALLOWED_HOSTS = ["*" if DEBUG else ".geosamples.org"]
+ALLOWED_CIDR_NETS = ["10.0.0.0/8"] # TODO parameterize?
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [f"https://{DOMAIN_PUBLIC_NAME}"]
+
+CORS_ALLOWED_ORIGINS = [f"https://{DOMAIN_FRONTEND_NAME}", "http://localhost:8400"]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://[\w-]+\.geosamples\.org$",
+]
 
 # Application definition
 
@@ -40,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'sesar_api',
     'rest_framework',
     'rest_framework.authtoken',
@@ -54,6 +72,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'allow_cidr.middleware.AllowCIDRMiddleware',
 ]
 
 ROOT_URLCONF = 'sesar.urls'
