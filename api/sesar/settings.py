@@ -24,12 +24,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-czg90=p7du@rv3kacjq(bb=18$hm59ls)8o5d_p#n&yf7o$6$!'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("LOCAL_DEBUG", False) == "True"
 
-ALLOWED_HOSTS = []
+DOMAIN_PUBLIC_NAME = os.environ.get("DOMAIN_PUBLIC_NAME")
+DOMAIN_FRONTEND_NAME = os.environ.get("DOMAIN_FRONTEND_NAME")
+
+ALLOWED_HOSTS = ["*" if DEBUG else ".geosamples.org"]
+ALLOWED_CIDR_NETS = ["10.0.0.0/8"] # TODO parameterize?
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [f"https://{DOMAIN_PUBLIC_NAME}"]
+
+CORS_ALLOWED_ORIGINS = [f"https://{DOMAIN_FRONTEND_NAME}", "http://localhost:8400"]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://[\w-]+\.geosamples\.org$",
+]
 
 # Application definition
 
@@ -40,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'sesar_api',
     'rest_framework',
     'rest_framework.authtoken',
@@ -54,6 +72,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'allow_cidr.middleware.AllowCIDRMiddleware',
 ]
 
 ROOT_URLCONF = 'sesar.urls'
@@ -89,7 +109,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT')
+        'PORT': os.environ.get('DB_PORT', 5432)
     },
     'sesar2024': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -97,7 +117,7 @@ DATABASES = {
         'USER': os.environ.get('DB_2024_USER'),
         'PASSWORD': os.environ.get('DB_2024_PASSWORD'),
         'HOST': os.environ.get('DB_2024_HOST'),
-        'PORT': os.environ.get('DB_2024_PORT')
+        'PORT': os.environ.get('DB_2024_PORT', 5432)
     }
 }
 
@@ -175,7 +195,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ.get('ORCID_OIDC_ENDPOINT')
+SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ.get('ORCID_OIDC_ENDPOINT', 'https://orcid.org/')
 SOCIAL_AUTH_OIDC_KEY = os.environ.get('ORCID_CLIENT_ID')
 SOCIAL_AUTH_OIDC_SECRET = os.environ.get('ORCID_CLIENT_SECRET')
 SOCIAL_AUTH_OIDC_USERNAME_KEY = 'sub'
