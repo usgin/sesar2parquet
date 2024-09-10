@@ -1,9 +1,6 @@
 name: deploy_staging
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - cicd
 
 jobs:
   build_publish_api:
