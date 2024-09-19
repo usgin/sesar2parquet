@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 TOKEN_LIMIT = 5
 
-@api_view(['POST'])
+@api_view(['GET'])
 def get_jwt_for_user(request):
     try:
         if (request.user.sesaruser.upload_permission_status != 1):
@@ -50,3 +50,24 @@ def get_jwt_for_user(request):
                 },
                 status=status.HTTP_401_UNAUTHORIZED,
             )
+
+
+@api_view(['GET'])
+def revoke_all_jwt_for_user(request):
+    # Get all outstanding tokens for the user
+    outstanding_tokens = OutstandingToken.objects.filter(user=request.user)
+    count = 0
+    # Loop through the outstanding tokens and blacklist each one
+    for token in outstanding_tokens:
+        # Blacklist the token if it's not already blacklisted
+        _, created = BlacklistedToken.objects.get_or_create(token=token)
+        
+        if created:
+            count += 1
+
+    return Response(
+        {
+        'message': f"All {count} token(s) have been revoked.",
+        },
+        status=status.HTTP_200_OK,
+    )
