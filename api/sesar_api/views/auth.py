@@ -3,6 +3,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from social_django.utils import psa
 
@@ -37,12 +38,14 @@ def login_by_access_token(request, backend):
                         'token': 'Invalid token'
                         }
                 },
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
         else:
             return Response(
                 {
-                    'error': 'Bad request'
+                    'errors': {
+                        'token': 'Missing token'
+                        }
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
@@ -62,18 +65,30 @@ def login_by_access_token(request, backend):
                         'token': 'Invalid token'
                         }
                 },
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
         
 
-@api_view(['POST'])
+@api_view(['GET'])
 def user_details(request):
-    return Response(
-        {
-            'user': str(request.user)
-        },
-        status=status.HTTP_200_OK,
-    )
+    if request.user:
+        return Response(
+            {
+                'user': str(request.user),
+                'orcid': str(request.user.sesaruser.orcid),
+                'has_api_access': True if request.user.sesaruser.upload_permission_status else False
+            },
+            status=status.HTTP_200_OK,
+        )
+    else:
+        return Response(
+                {
+                    'errors': {
+                        'message': 'An unknown error occured'
+                        }
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -87,7 +102,7 @@ def revoke_access_token(request):
                         'token': 'Token does not exist'
                         }
                 },
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_404_NOT_FOUND,
             )
 
     return Response({"success": ("Successfully logged out.")},
