@@ -65,6 +65,8 @@ class Group(models.Model):
     class Meta:
         db_table = 'group'
 
+    def __str__(self):
+        return self.name
 
 class GroupMember(models.Model):
     group = models.ForeignKey(Group, models.CASCADE)
@@ -328,12 +330,13 @@ class Permission(models.Model):
     user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5, blank=True, null=True)
     sample = models.ForeignKey(Sample, models.CASCADE, related_name='permissions', blank=True, null=True)
     sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING, blank=True, null=True)
-    activate_date = models.DateTimeField(blank=True, null=True)
+    activate_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
     group = models.ForeignKey(Group, models.CASCADE, related_name='permissions', blank=True, null=True)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
+    granted_by_group = models.ForeignKey(Group, models.CASCADE, related_name='granted_permissions', blank=True, null=True)
 
     class Meta:
         managed = True
