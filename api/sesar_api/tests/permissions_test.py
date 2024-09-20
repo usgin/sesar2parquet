@@ -4,8 +4,6 @@ from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import *
 from django.core.management import call_command
 
-
-
 class SamplePermissionTestCase(TestCase):
     def setUp(self):
         call_command('create_auth_groups')
