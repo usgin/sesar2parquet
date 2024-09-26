@@ -56,6 +56,7 @@ class Group(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=64, unique=True)
     description = models.CharField(max_length=255, blank=True, null=True)
+    contact_email = models.EmailField(max_length=255, blank=False, null=True)
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')

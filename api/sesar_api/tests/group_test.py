@@ -10,14 +10,14 @@ class GroupTestCase(TestCase):
         self.factory = APIRequestFactory()
 
         self.user = User.objects.create(username='User')
-        self.user_su = SesarUser.objects.create(auth_user=self.user, fname='User', lname='1')
+        self.user_su = SesarUser.objects.create(auth_user=self.user, fname='User', lname='1', orcid='0000-0000-0000-0000')
 
         self.new_owner = User.objects.create(username='NewOwner')
-        self.new_owner_su = SesarUser.objects.create(auth_user=self.new_owner, fname='User', lname='2')
+        self.new_owner_su = SesarUser.objects.create(auth_user=self.new_owner, fname='User', lname='2', orcid='0000-0000-0000-0001')
 
         # setup group structure
-        self.group1 = Group.objects.create(name="test1", owner=self.user_su)
-        self.group2 = Group.objects.create(name="test2", owner=self.user_su)
+        self.group1 = Group.objects.create(name="test1", owner=self.user_su, contact_email='test@gmail.com')
+        self.group2 = Group.objects.create(name="test2", owner=self.user_su, contact_email='test@gmail.com')
         GroupMember.objects.create(group=self.group1, sesar_user=self.user_su, is_admin=True)
         GroupMember.objects.create(group=self.group2, sesar_user=self.user_su, is_admin=True)
 
@@ -41,13 +41,14 @@ class GroupTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
-        self.assertTrue({'owner': 'User 1', 'name': 'test1', 'description': None, 'doi_prefix': '10.58052/'} in response.data)
-        self.assertTrue({'owner': 'User 1', 'name': 'test2', 'description': None, 'doi_prefix': '10.58052/'} in response.data)
+        print(response.data)
+        self.assertTrue({'owner': 'User 1', 'name': 'test1', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
+        self.assertTrue({'owner': 'User 1', 'name': 'test2', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
 
 
     def test_create_group(self):
         """Can create a new group"""
-        request = self.factory.post('/api/group/create/',{'name': 'NewOrg', 'description': 'Test description'})
+        request = self.factory.post('/api/group/create/',{'name': 'NewOrg', 'description': 'Test description', 'contact_email': 'test@gmail.com'})
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = create_group(request)
@@ -57,7 +58,7 @@ class GroupTestCase(TestCase):
 
     def test_update_group(self):
         """Can update an group"""
-        request = self.factory.post('/api/group/update/',{'id':self.group1.pk, 'name': 'NewName', 'description': 'New Description'})
+        request = self.factory.post('/api/group/update/',{'group_name':self.group1.name, 'name': 'NewName', 'description': 'New Description'})
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = update_group(request)
@@ -67,7 +68,7 @@ class GroupTestCase(TestCase):
 
     def test_deactivate_group(self):
         """Can deactivate an group"""
-        request = self.factory.post('/api/group/deactivate/',{'id':self.group1.pk})
+        request = self.factory.post('/api/group/deactivate/',{'name':self.group1.name})
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = deactivate_group(request)
@@ -77,7 +78,7 @@ class GroupTestCase(TestCase):
 
     def test_transfer_group(self):
         """Can transfer an group"""
-        request = self.factory.post('/api/group/transfer/',{'id':self.group1.pk, 'owner':self.new_owner_su.pk})
+        request = self.factory.post('/api/group/transfer/',{'name':self.group1.name, 'owner':self.new_owner_su.orcid})
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = transfer_group(request)

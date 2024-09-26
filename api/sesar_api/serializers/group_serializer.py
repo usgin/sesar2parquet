@@ -8,16 +8,18 @@ class GroupSerializer(serializers.ModelSerializer):
     owner = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Group
-        fields = ['owner', 'name', 'description', 'doi_prefix']
-        read_only_fields = ['name', 'description', 'doi_prefix']
+        fields = ['owner', 'name', 'description', 'doi_prefix', 'contact_email']
+        read_only_fields = ['name', 'description', 'doi_prefix', 'contact_email']
 
 
 class GroupWriteSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None))
+    owner = serializers.SlugRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None),slug_field='orcid')
     class Meta:
         model = Group
-        fields = ['owner', 'name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix']
+        fields = ['owner', 'name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix', 'contact_email']
         read_only_fields = ['activate_date', 'doi_prefix']
+        extra_kwargs = {'contact_email': {'required': True,
+                                  'allow_blank': False}}
 
     def create(self, validated_data):
         return Group.objects.create(**validated_data)
@@ -27,7 +29,7 @@ class GroupWriteSerializer(serializers.ModelSerializer):
         Check that the name contains valid characters.
         """
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_\.-]+[A-Za-z0-9]", value):
-            raise serializers.ValidationError("Group name contains invalid characters.")
+            raise serializers.ValidationError("Name can only contain letters (A-Z), numbers (0-9), underscores (_), periods (.), and hyphens (-).")
         return value
 
 

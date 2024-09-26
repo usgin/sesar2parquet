@@ -26,7 +26,7 @@ def view_group(request, name):
 # get all groups of request user
 @api_view(['GET'])
 def view_user_groups(request):
-    groups = request.user.sesaruser.groups
+    groups = request.user.sesaruser.groups.filter(part_of_group__isnull=True)
  
     if groups:
         serializer = GroupSerializer(groups, many=True)
@@ -39,7 +39,7 @@ def view_user_groups(request):
 @api_view(['POST'])
 def create_group(request):
     data = request.data.copy()
-    data['owner'] = request.user.sesaruser.pk
+    data['owner'] = request.user.sesaruser.orcid
     group = GroupWriteSerializer(data=data)
     if group.is_valid():
         created_org = group.save()
@@ -62,7 +62,7 @@ def create_group(request):
 @api_view(['POST'])
 def update_group(request):
     try:
-        group = Group.objects.get(pk=request.data['id'], deactivate_date=None)
+        group = Group.objects.get(name=request.data['group_name'], deactivate_date=None)
         if IsGroupAdmin().has_object_permission(request, None, group):
             serializer = GroupWriteSerializer(group, data=request.data, partial=True)
             if serializer.is_valid():
@@ -80,7 +80,7 @@ def update_group(request):
 @api_view(['POST'])
 def deactivate_group(request):
     try:
-        group = Group.objects.get(pk=request.data['id'], deactivate_date=None)
+        group = Group.objects.get(name=request.data['name'], deactivate_date=None)
 
         if group.owned_samples_set.exists():
             return Response({"detail": "You cannot deactivate an group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
@@ -101,7 +101,7 @@ def deactivate_group(request):
 @api_view(['POST'])
 def transfer_group(request):
     try:
-        group = Group.objects.get(pk=request.data['id'], deactivate_date=None)
+        group = Group.objects.get(name=request.data['name'], deactivate_date=None)
         if IsGroupOwner().has_object_permission(request, None, group):
             serializer = GroupWriteSerializer(group, data=request.data, partial=True)
             if serializer.is_valid():
