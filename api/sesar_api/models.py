@@ -345,6 +345,21 @@ class Permission(models.Model):
         unique_together = (('geopass_id', 'user_code'),)
 
 
+class TransferHistory(models.Model):
+    id = models.AutoField(primary_key=True)
+    transfer_by = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_created')
+    transfer_time = models.DateTimeField(default=timezone.now)
+    orig_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
+    orig_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
+    data = models.JSONField(blank=True, null=True)
+    new_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
+    new_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
+    status = models.CharField(max_length=32, default='pending')
+
+    class Meta:
+        managed = True
+        db_table = 'transfer_history'
+
 class BatchHistory(models.Model):
     batch_history_id = models.AutoField(primary_key=True)
     batch_type = models.CharField(max_length=10)

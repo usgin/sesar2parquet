@@ -41,7 +41,6 @@ class GroupTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
-        print(response.data)
         self.assertTrue({'owner': 'User 1', 'name': 'test1', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
         self.assertTrue({'owner': 'User 1', 'name': 'test2', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
 

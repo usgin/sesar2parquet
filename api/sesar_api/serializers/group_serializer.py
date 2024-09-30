@@ -14,12 +14,11 @@ class GroupSerializer(serializers.ModelSerializer):
 
 class GroupWriteSerializer(serializers.ModelSerializer):
     owner = serializers.SlugRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None),slug_field='orcid')
+    contact_email = serializers.EmailField(required=True, allow_blank=False)
     class Meta:
         model = Group
         fields = ['owner', 'name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix', 'contact_email']
         read_only_fields = ['activate_date', 'doi_prefix']
-        extra_kwargs = {'contact_email': {'required': True,
-                                  'allow_blank': False}}
 
     def create(self, validated_data):
         return Group.objects.create(**validated_data)
