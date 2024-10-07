@@ -1,6 +1,7 @@
 from rest_framework import permissions
 from sesar_api.models import GroupMember, Permission
 from django.db.models import Q
+from django.core.exceptions import ObjectDoesNotExist 
 
 
 class IsSampleOwner(permissions.BasePermission):
@@ -30,19 +31,25 @@ class CanCreateSample(permissions.BasePermission):
         if sample.cur_owner == sesar_user:
             return True
 
-        # user is an admin of group that owns user code
-        if user_code.group and GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # user code owned by group that user has add sample permission for
+            if user_code.group and GroupMember.objects.get(
+                group=user_code.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
-        # user is an admin of group that owns sample
-        if sample.group_owner and GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # sample owned by group that user has add sample permission for
+            if sample.group_owner and GroupMember.objects.get(
+                group=sample.group_owner, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         # user is a curator approving a batch registration
         if request.user.is_staff:
@@ -60,16 +67,20 @@ class CanCreateSample(permissions.BasePermission):
                     or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
+
+                try:
+                    # permissions are shared with group of which user has add sample permission
+                    if (permission.group
+                    and GroupMember.objects.get(group=permission.group, sesar_user=sesar_user).auth_group.permissions.filter(codename='add_sample').exists()):
+                        return True
+                except (GroupMember.DoesNotExist, AttributeError):
+                    # continue to next check
+                    pass
                 
                 # permissions are shared with a sub group team of which user is a member
                 if (permission.group and permission.group.part_of_group
                     and permission.group.members.contains(sesar_user)):
-                    return True
-
-                # permissions are shared with group of which user is an admin
-                if (permission.group
-                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
-                    return True
+                    return True   
 
         return False
 
@@ -94,19 +105,25 @@ class CanEditSample(permissions.BasePermission):
         if sample.cur_owner == sesar_user:
             return True
 
-        # user is an admin of group that owns user code
-        if user_code.group and GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # user is an admin of group that owns user code
+            if user_code.group and GroupMember.objects.get(
+                group=user_code.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='change_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
-        # user is an admin of group that owns sample
-        if sample.group_owner and GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # user is an admin of group that owns sample
+            if sample.group_owner and GroupMember.objects.get(
+                group=sample.group_owner, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='change_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         # user is a curator approving a batch registration
         if request.user.is_staff:
@@ -124,15 +141,19 @@ class CanEditSample(permissions.BasePermission):
                     or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
+
+                try:
+                    # permissions are shared with group of which user has change sample permission
+                    if (permission.group
+                    and GroupMember.objects.get(group=permission.group, sesar_user=sesar_user).auth_group.permissions.filter(codename='change_sample').exists()):
+                        return True
+                except (GroupMember.DoesNotExist, AttributeError):
+                    # continue to next check
+                    pass
                 
                 # permissions are shared with a sub group team of which user is a member
                 if (permission.group and permission.group.part_of_group
                     and permission.group.members.contains(sesar_user)):
-                    return True
-
-                # permissions are shared with group of which user is an admin
-                if (permission.group
-                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
         return False
@@ -158,19 +179,26 @@ class CanDeactivateSample(permissions.BasePermission):
         if sample.cur_owner == sesar_user:
             return True
 
-        # user is an admin of group that owns user code
-        if user_code.group and GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # user is an admin of group that owns user code
+            if user_code.group and GroupMember.objects.get(
+                group=user_code.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='deactivate_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
-        # user is an admin of group that owns sample
-        if sample.group_owner and GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+
+        try:
+            # user is an admin of group that owns sample
+            if sample.group_owner and GroupMember.objects.get(
+                group=sample.group_owner, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='deactivate_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         # user is a curator approving a batch registration
         if request.user.is_staff:
@@ -188,15 +216,19 @@ class CanDeactivateSample(permissions.BasePermission):
                     or (permission.orcid_id and permission.orcid_id == sesar_user.orcid)
                     or (permission.geopass_id and permission.orcid_id== sesar_user.geopass_id)):
                     return True
+
+                try:
+                    # permissions are shared with group of which user has deactivate sample permission
+                    if (permission.group
+                    and GroupMember.objects.get(group=permission.group, sesar_user=sesar_user).auth_group.permissions.filter(codename='deactivate_sample').exists()):
+                        return True
+                except (GroupMember.DoesNotExist, AttributeError):
+                    # continue to next check
+                    pass
                 
                 # permissions are shared with a sub group team of which user is a member
                 if (permission.group and permission.group.part_of_group
                     and permission.group.members.contains(sesar_user)):
-                    return True
-
-                # permissions are shared with group of which user is an admin
-                if (permission.group
-                and permission.group.members.filter(is_admin=True).contains(sesar_user)):
                     return True
 
         return False

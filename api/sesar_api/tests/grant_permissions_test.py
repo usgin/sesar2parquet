@@ -6,6 +6,7 @@ from sesar_api.views import *
 from sesar_api.permissions import *
 from django.core.management import call_command
 from django.utils import timezone
+from django.contrib.auth.models import Group as AuthGroup
 
 
 class GrantPermissionsTestCase(TestCase):
@@ -48,14 +49,14 @@ class GrantPermissionsTestCase(TestCase):
 
         # group 1 owns sample and user code
         self.group1 = Group.objects.create(name="Group1", owner=self.group1_admin_su)
-        GroupMember.objects.create(group=self.group1, sesar_user=self.group1_admin_su, is_admin=True)
+        GroupMember.objects.create(group=self.group1, sesar_user=self.group1_admin_su, auth_group=AuthGroup.objects.get(name='group_owner'))
         self.user_code_3 = SesarUserCode.objects.create(user_code="IE003", group=self.group1)
         self.group_owner_sample = Sample.objects.create(name="Sample2", igsn="10.58052/IE003TEST", igsn_prefix=self.user_code_3, group_owner=self.group1, sample_type=self.sample_type, cur_registrant=self.group1_admin_su)
 
         # group 1 member
         self.group1_member = User.objects.create(username='Member1')
         self.group1_member_su = SesarUser.objects.create(auth_user=self.group1_member)
-        GroupMember.objects.create(group=self.group1, sesar_user=self.group1_member_su, is_admin=False)
+        GroupMember.objects.create(group=self.group1, sesar_user=self.group1_member_su)
 
         # group 1 team with permissions
         self.group1_team = Group.objects.create(name='Group1Team1', part_of_group=self.group1)
@@ -68,12 +69,12 @@ class GrantPermissionsTestCase(TestCase):
 
         # group 2 with shared permissions
         self.group2 = Group.objects.create(name="Group2", owner=self.group2_admin_su)
-        GroupMember.objects.create(group=self.group2, sesar_user=self.group2_admin_su, is_admin=True)
+        GroupMember.objects.create(group=self.group2, sesar_user=self.group2_admin_su, auth_group=AuthGroup.objects.get(name='group_admin'))
 
         # group 2 member
         self.group2_member = User.objects.create(username='Member2')
         self.group2_member_su = SesarUser.objects.create(auth_user=self.group2_member)
-        GroupMember.objects.create(group=self.group2, sesar_user=self.group2_member_su, is_admin=False)
+        GroupMember.objects.create(group=self.group2, sesar_user=self.group2_member_su)
 
         # grant permission to the group
         self.permission2 = Permission.objects.create(user_code=self.user_code_1, auth_group=self.CRE_group, group=self.group2)
@@ -256,7 +257,6 @@ class GrantPermissionsTestCase(TestCase):
         force_authenticate(request, user=self.sample_owner)
         
         response = create_permission(request)
-        print(response.data)
         self.assertEqual(response.status_code, 201)
         self.assertTrue(Permission.objects.filter(user_code='IE001', sesar_user=self.test_user_su).exists())
 

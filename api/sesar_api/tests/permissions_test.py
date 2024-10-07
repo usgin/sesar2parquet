@@ -9,6 +9,15 @@ class SamplePermissionTestCase(TestCase):
         call_command('create_auth_groups')
         self.factory = RequestFactory()
 
+        # get all auth groups
+        self.R_group = AuthGroup.objects.get(name="read_only")
+        self.RE_group = AuthGroup.objects.get(name="read_edit")
+        self.CR_group = AuthGroup.objects.get(name="read_create")
+        self.CRE_group = AuthGroup.objects.get(name="read_create_edit")
+        self.CRED_group = AuthGroup.objects.get(name="read_create_edit_deactivate")
+        self.OWNER_group = AuthGroup.objects.get(name="group_owner")
+        self.ADMIN_group = AuthGroup.objects.get(name="group_admin")
+
         # user without permissions
         self.user_no_perm = User.objects.create(username='NoPermissionUser')
         self.user_no_perm_su = SesarUser.objects.create(auth_user=self.user_no_perm)
@@ -44,10 +53,10 @@ class SamplePermissionTestCase(TestCase):
         # setup group (with user code ownership) structure
         self.group = Group.objects.create(name="Group", owner=self.group_admin_su)
         self.group_team = Group.objects.create(name="Team", part_of_group=self.group)
-        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, is_admin=True)
-        self.member_has_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_has_perms_su, is_admin=False)
+        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, auth_group=self.ADMIN_group)
+        self.member_has_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_has_perms_su)
         GroupMember.objects.create(group=self.group_team,sesar_user=self.group_member_has_perms_su)
-        self.member_no_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_no_perms_su, is_admin=False)
+        self.member_no_perms = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_no_perms_su)
 
         # create user code and sample
         self.user_code = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.user_code_owner_su, group=self.group)
@@ -56,12 +65,7 @@ class SamplePermissionTestCase(TestCase):
         self.sample = Sample.objects.create(name="Sample", igsn="10.58052/IE001TEST", igsn_prefix=self.user_code, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
         self.sample_2 = Sample.objects.create(name="Sample", igsn="10.58052/IE002TEST", igsn_prefix=self.user_code_2, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su, group_owner=self.group)
 
-        # get all auth groups
-        self.R_group = AuthGroup.objects.get(name="read_only")
-        self.RE_group = AuthGroup.objects.get(name="read_edit")
-        self.CR_group = AuthGroup.objects.get(name="read_create")
-        self.CRE_group = AuthGroup.objects.get(name="read_create_edit")
-        self.CRED_group = AuthGroup.objects.get(name="read_create_edit_deactivate")
+        
 
         # grant permission to the group team
         self.team_permission = Permission.objects.create(id=1, user_code=self.user_code, auth_group=self.CRED_group, group=self.group_team)
@@ -375,6 +379,7 @@ class UserCodePermissionTestCase(TestCase):
 
 class GroupPermissionTestCase(TestCase):
     def setUp(self):
+        call_command('create_auth_groups')
         self.factory = RequestFactory()
 
         self.group_owner = User.objects.create(username='Owner')
@@ -387,8 +392,9 @@ class GroupPermissionTestCase(TestCase):
         self.group_member_su = SesarUser.objects.create(auth_user=self.group_member)
 
         self.group = Group.objects.create(name="Group", owner=self.group_owner_su)
-        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, is_admin=True)
-        self.member = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_su, is_admin=False)
+        self.owner = GroupMember.objects.create(group=self.group, sesar_user=self.group_owner_su, auth_group=AuthGroup.objects.get(name='group_owner'))
+        self.admin = GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        self.member = GroupMember.objects.create(group=self.group, sesar_user=self.group_member_su)
 
     def test_is_group_owner(self):
         """Group owner is correctly identified"""
@@ -401,14 +407,68 @@ class GroupPermissionTestCase(TestCase):
         request.user = self.group_member
         self.assertFalse(IsGroupOwner().has_object_permission(request, None, self.group))
 
-    def test_is_group_admin(self):
-        """Group admin is correctly identified"""
-        # Test group admin
+    def test_can_add_group_member(self):
+        """Add group member permission is correctly identified"""
+        # Test has permission
         request = self.factory.get('/')
-        request.user = self.group_admin
-        self.assertTrue(IsGroupAdmin().has_object_permission(request, None, self.group))
+        request.user = self.group_owner
+        self.assertTrue(CanAddGroupMember().has_object_permission(request, None, self.group))
 
-        # Test not group admin
+        # Test does not have permission
         request.user = self.group_member
-        self.assertFalse(IsGroupAdmin().has_object_permission(request, None, self.group))
-        
+        self.assertFalse(CanAddGroupMember().has_object_permission(request, None, self.group))
+
+    def test_can_change_group_member(self):
+        """Change group member permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanChangeGroupMember().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanChangeGroupMember().has_object_permission(request, None, self.group))
+
+    def test_can_delete_group_member(self):
+        """Delete group member permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanDeleteGroupMember().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanDeleteGroupMember().has_object_permission(request, None, self.group))
+
+    def test_can_add_group(self):
+        """Add group permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanAddGroup().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanAddGroup().has_object_permission(request, None, self.group))
+
+    def test_can_change_group(self):
+        """Change group permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanChangeGroup().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanChangeGroup().has_object_permission(request, None, self.group))
+
+    def test_can_delete_group(self):
+        """Delete group permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanDeleteGroup().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanDeleteGroup().has_object_permission(request, None, self.group))

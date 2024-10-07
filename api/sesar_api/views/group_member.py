@@ -6,7 +6,7 @@ from datetime import *
 
 from sesar_api.models import Group, GroupMember
 from sesar_api.serializers import MemberSerializer, MemberWriteSerializer
-from sesar_api.permissions import IsGroupAdmin
+from sesar_api.permissions import CanAddGroupMember, CanChangeGroupMember, CanDeleteGroupMember
 
 
 # view all group members
@@ -30,7 +30,7 @@ def view_group_members(request, name):
 def create_group_member(request):
     try:
         group = Group.objects.get(pk=request.data['group'])
-        if IsGroupAdmin().has_object_permission(request, None, group):
+        if CanAddGroupMember().has_object_permission(request, None, group):
             member = MemberWriteSerializer(data=request.data)
             if member.is_valid():
                 member.save()
@@ -48,7 +48,7 @@ def create_group_member(request):
 def update_group_member(request):
     try:
         member = GroupMember.objects.get(pk=request.data['id'])
-        if IsGroupAdmin().has_object_permission(request, None, member.group):
+        if CanChangeGroupMember().has_object_permission(request, None, member.group):
             serializer = MemberWriteSerializer(member, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -66,7 +66,7 @@ def update_group_member(request):
 def delete_group_member(request):
     try:
         member = GroupMember.objects.get(pk=request.data['id'])
-        if IsGroupAdmin().has_object_permission(request, None, member.group):
+        if CanDeleteGroupMember().has_object_permission(request, None, member.group):
             member.delete()
             return Response(status=status.HTTP_200_OK)
         else:

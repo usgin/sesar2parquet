@@ -6,7 +6,8 @@ from datetime import *
 
 from sesar_api.models import Group
 from sesar_api.serializers import GroupSerializer, GroupWriteSerializer, MemberWriteSerializer
-from sesar_api.permissions import IsGroupAdmin, IsGroupOwner
+from sesar_api.permissions import IsGroupOwner, CanChangeGroup
+from django.contrib.auth.models import Group as AuthGroup
 
 # view an group, request user must be a member
 @api_view(['GET'])
@@ -43,11 +44,11 @@ def create_group(request):
     group = GroupWriteSerializer(data=data)
     if group.is_valid():
         created_org = group.save()
-        # add owner as a member with admin role
+        # add owner as a member with owner role
         owner = MemberWriteSerializer(data={
             'group':created_org.pk,
             'sesar_user':request.user.sesaruser.pk,
-            'is_admin': True
+            'auth_group':AuthGroup.objects.get(name='group_owner').pk
         })
         if owner.is_valid():
             owner.save()
@@ -63,7 +64,7 @@ def create_group(request):
 def update_group(request):
     try:
         group = Group.objects.get(name=request.data['group_name'], deactivate_date=None)
-        if IsGroupAdmin().has_object_permission(request, None, group):
+        if CanChangeGroup().has_object_permission(request, None, group):
             serializer = GroupWriteSerializer(group, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -83,7 +84,7 @@ def deactivate_group(request):
         group = Group.objects.get(name=request.data['name'], deactivate_date=None)
 
         if group.owned_samples_set.exists():
-            return Response({"detail": "You cannot deactivate an group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"detail": "You cannot deactivate a group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
         if IsGroupOwner().has_object_permission(request, None, group):
             serializer = GroupWriteSerializer(group, data={'deactivate_date':datetime.now()}, partial=True)
             if serializer.is_valid():

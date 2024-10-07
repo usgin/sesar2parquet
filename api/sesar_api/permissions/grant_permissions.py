@@ -25,27 +25,33 @@ class CanGrantSamplePermission(permissions.BasePermission):
         if sample.cur_owner == sesar_user:
             return True
 
-        # user is an admin of group that owns sample
-        if sample.group_owner and GroupMember.objects.filter(
-            group=sample.group_owner, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # if case of sharing permissions within a group with granted permissions
-        if self.group and GroupMember.objects.filter(
-            group=self.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            # get the original permission granted to the group
-            permission = Permission.objects.get(sample=sample, group=self.group)
-            if permission and permission.auth_group:
-                # check if group has all permissions that are attempting to be shared
-                for auth_permission in self.permissions_to_grant.permissions.all():
-                    if not permission.auth_group.permissions.filter(codename=auth_permission.codename).exists():
-                        # return false if a given permission does not exist
-                        return False
+        try:
+            # user is an admin of group that owns sample
+            if sample.group_owner and GroupMember.objects.get(
+                group=sample.group_owner, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
                 return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
+
+        try:
+            # if case of sharing permissions within a group with granted permissions
+            if self.group and GroupMember.objects.get(
+                group=self.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
+                # get the original permission granted to the group
+                permission = Permission.objects.get(sample=sample, group=self.group)
+                if permission and permission.auth_group:
+                    # check if group has all permissions that are attempting to be shared
+                    for auth_permission in self.permissions_to_grant.permissions.all():
+                        if not permission.auth_group.permissions.filter(codename=auth_permission.codename).exists():
+                            # return false if a given permission does not exist
+                            return False
+                    return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         return False
 
@@ -71,27 +77,33 @@ class CanGrantUserCodePermission(permissions.BasePermission):
         if user_code.sesar_user == sesar_user:
             return True
 
-        # user is an admin of group that owns user code
-        if user_code.group and GroupMember.objects.filter(
-            group=user_code.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
-
-        # if case of sharing permissions within a group with granted permissions
-        if self.group and GroupMember.objects.filter(
-            group=self.group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            # get the original permission granted to the group
-            permission = Permission.objects.get(user_code=user_code, group=self.group)
-            if permission and permission.auth_group:
-                # check if group has all permissions that are attempting to be shared
-                for auth_permission in self.permissions_to_grant.permissions.all():
-                    if not permission.auth_group.permissions.filter(codename=auth_permission.codename).exists():
-                        # return false if a given permission does not exist
-                        return False
+        try:
+            # user is an admin of group that owns user code
+            if user_code.group and GroupMember.objects.get(
+                group=user_code.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
                 return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
+
+        try:
+            # if case of sharing permissions within a group with granted permissions
+            if self.group and GroupMember.objects.get(
+                group=self.group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
+                # get the original permission granted to the group
+                permission = Permission.objects.get(user_code=user_code, group=self.group)
+                if permission and permission.auth_group:
+                    # check if group has all permissions that are attempting to be shared
+                    for auth_permission in self.permissions_to_grant.permissions.all():
+                        if not permission.auth_group.permissions.filter(codename=auth_permission.codename).exists():
+                            # return false if a given permission does not exist
+                            return False
+                    return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         return False
 
@@ -115,11 +127,14 @@ class CanEditPermission(permissions.BasePermission):
         if permission.sample and permission.sample.cur_owner == sesar_user:
             return True
 
-        # user is an admin of group that granted permission
-        if permission.granted_by_group and GroupMember.objects.filter(
-            group=permission.granted_by_group, 
-            sesar_user=sesar_user, 
-            is_admin=True).exists():
-            return True
+        try:
+            # user is an admin of group that granted permission
+            if permission.granted_by_group and GroupMember.objects.get(
+                group=permission.granted_by_group, 
+                sesar_user=sesar_user).auth_group.permissions.filter(codename='change_permission').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            # continue to next check
+            pass
 
         return False

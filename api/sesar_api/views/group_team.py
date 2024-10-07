@@ -6,7 +6,7 @@ from datetime import *
 
 from sesar_api.models import Group, GroupMember, SesarUser
 from sesar_api.serializers import TeamSerializer, TeamWriteSerializer
-from sesar_api.permissions import IsGroupAdmin
+from sesar_api.permissions import CanAddGroupMember, CanDeleteGroupMember, CanAddGroup, CanChangeGroup, CanDeleteGroup
 
 
 # view all group teams
@@ -46,7 +46,7 @@ def view_group_team(request, group, team):
 def create_group_team(request):
     try:
         group = Group.objects.get(pk=request.data['part_of_group'])
-        if IsGroupAdmin().has_object_permission(request, None, group):
+        if CanAddGroup().has_object_permission(request, None, group):
             team = TeamWriteSerializer(data=request.data)
             if team.is_valid():
                 team.save()
@@ -64,7 +64,7 @@ def create_group_team(request):
 def update_group_team(request):
     try:
         team = Group.objects.get(pk=request.data['id'])
-        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
+        if CanChangeGroup().has_object_permission(request, None, team.part_of_group):
             serializer = TeamWriteSerializer(team, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -82,7 +82,7 @@ def update_group_team(request):
 def delete_group_team(request):
     try:
         team = Group.objects.get(pk=request.data['id'])
-        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
+        if CanDeleteGroup().has_object_permission(request, None, team.part_of_group):
             team.delete()
             return Response(status=status.HTTP_200_OK)
         else:
@@ -97,7 +97,7 @@ def add_group_team_member(request):
     try:
         team = Group.objects.get(pk=request.data['team'])
         member = SesarUser.objects.get(pk=request.data['member'])
-        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
+        if CanAddGroupMember().has_object_permission(request, None, team.part_of_group):
             team.members.add(member)
             return Response(status=status.HTTP_200_OK)
         else:
@@ -112,7 +112,7 @@ def remove_group_team_member(request):
     try:
         team = Group.objects.get(pk=request.data['team'])
         member = team.members.get(pk=request.data['member'])
-        if IsGroupAdmin().has_object_permission(request, None, team.part_of_group):
+        if CanDeleteGroupMember().has_object_permission(request, None, team.part_of_group):
             team.members.remove(member)
             return Response(status=status.HTTP_200_OK)
         else:

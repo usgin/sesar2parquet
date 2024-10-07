@@ -2,6 +2,7 @@ from django.db.models import fields
 from rest_framework import serializers
 import re
 from sesar_api.models import Group, GroupMember, SesarUser
+from django.contrib.auth.models import Group as AuthGroup
  
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -41,18 +42,20 @@ class TeamWriteSerializer(serializers.ModelSerializer):
 
 class MemberSerializer(serializers.ModelSerializer):
     group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all())
+    auth_group = serializers.PrimaryKeyRelatedField(queryset=AuthGroup.objects.all())
     class Meta:
         model = GroupMember
-        fields = ['group', 'sesar_user', 'is_admin', 'join_date']
-        read_only_fields = ['is_admin', 'join_date']
+        fields = ['group', 'sesar_user', 'auth_group', 'join_date']
+        read_only_fields = ['auth_group', 'join_date']
 
 
 class MemberWriteSerializer(MemberSerializer):
     group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all())
     sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None))
+    auth_group = serializers.PrimaryKeyRelatedField(queryset=AuthGroup.objects.all(), required=False)
     class Meta:
         model = GroupMember
-        fields = ['group', 'sesar_user', 'is_admin', 'join_date']
+        fields = ['group', 'sesar_user', 'auth_group', 'join_date']
         read_only_fields = ['join_date']
 
     def create(self, validated_data):

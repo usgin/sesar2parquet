@@ -72,8 +72,8 @@ class Group(models.Model):
 class GroupMember(models.Model):
     group = models.ForeignKey(Group, models.CASCADE)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
-    is_admin = models.BooleanField(default=False)
     join_date = models.DateTimeField(default=timezone.now)
+    auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         db_table = 'group_member'

@@ -3,10 +3,12 @@ from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 from sesar_api.models import *
 from sesar_api.views import *
+from django.core.management import call_command
 
 
 class GroupTeamTestCase(TestCase):
     def setUp(self):
+        call_command('create_auth_groups')
         self.factory = APIRequestFactory()
 
         self.admin = User.objects.create(username='Owner')
@@ -20,9 +22,9 @@ class GroupTeamTestCase(TestCase):
 
         # setup group structure
         self.group = Group.objects.create(name="test1", owner=self.admin_su)
-        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, is_admin=True)
-        self.group_member1 = GroupMember.objects.create(group=self.group, sesar_user=self.member1_su, is_admin=False)
-        self.group_member2 = GroupMember.objects.create(group=self.group, sesar_user=self.member2_su, is_admin=False)
+        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        self.group_member1 = GroupMember.objects.create(group=self.group, sesar_user=self.member1_su)
+        self.group_member2 = GroupMember.objects.create(group=self.group, sesar_user=self.member2_su)
 
         self.team = Group.objects.create(part_of_group=self.group,name='team1',description='team1 description')
         self.team.members.add(self.member1_su)
