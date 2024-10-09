@@ -108,3 +108,20 @@ class CanDeleteGroup(permissions.BasePermission):
             return False
 
         return False
+
+
+class CanViewGroupSamples(permissions.BasePermission):
+    message = 'Permission denied. Cannot view group samples.'
+
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+        try:
+            if GroupMember.objects.get(group=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='view_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            return False
+
+        return False

@@ -23,6 +23,7 @@ urlpatterns = [
     path('group/deactivate/', views.deactivate_group),
     path('group/transfer/', views.transfer_group),
     path('group/<str:name>/', views.view_group),
+    path('group/<str:name>/samples/', views.view_user_group_samples),
     path('group/<str:name>/members/', views.view_group_members),
     path('group/members/create/', views.create_group_member),
     path('group/members/update/', views.update_group_member),

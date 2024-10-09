@@ -70,7 +70,7 @@ class Group(models.Model):
         return self.name
 
 class GroupMember(models.Model):
-    group = models.ForeignKey(Group, models.CASCADE)
+    group = models.ForeignKey(Group, models.CASCADE, related_name='groups')
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     join_date = models.DateTimeField(default=timezone.now)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)

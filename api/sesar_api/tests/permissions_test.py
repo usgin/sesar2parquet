@@ -472,3 +472,15 @@ class GroupPermissionTestCase(TestCase):
         # Test does not have permission
         request.user = self.group_member
         self.assertFalse(CanDeleteGroup().has_object_permission(request, None, self.group))
+
+
+    def test_can_view_group_samples(self):
+        """View group sample permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanViewGroupSamples().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member
+        self.assertFalse(CanViewGroupSamples().has_object_permission(request, None, self.group))
