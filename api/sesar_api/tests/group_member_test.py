@@ -25,7 +25,7 @@ class GroupMemberTestCase(TestCase):
 
         # setup group structure
         self.group = Group.objects.create(name="test1", owner=self.user_su)
-        self.org_owner = GroupMember.objects.create(group=self.group, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='group_owner'))
+        self.org_owner = GroupMember.objects.create(group=self.group, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Owner'))
         self.org_member1 = GroupMember.objects.create(group=self.group, sesar_user=self.member1_su)
         self.org_member2 = GroupMember.objects.create(group=self.group, sesar_user=self.member2_su)
 
@@ -52,12 +52,12 @@ class GroupMemberTestCase(TestCase):
 
     def test_update_group_member(self):
         """Can update an group member"""
-        request = self.factory.post('/api/group/members/update/',{'id':self.org_member1.pk, 'auth_group':AuthGroup.objects.get(name='group_admin').pk})
+        request = self.factory.post('/api/group/members/update/',{'id':self.org_member1.pk, 'auth_group':'Group Admin'})
         request.user = self.user
         force_authenticate(request, user=self.user)
         response = update_group_member(request)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(GroupMember.objects.filter(id=self.org_member1.pk, auth_group=AuthGroup.objects.get(name='group_admin')).exists())
+        self.assertTrue(GroupMember.objects.filter(id=self.org_member1.pk, auth_group=AuthGroup.objects.get(name='Group Admin')).exists())
 
 
     def test_delete_group_member(self):

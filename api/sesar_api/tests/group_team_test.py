@@ -22,7 +22,7 @@ class GroupTeamTestCase(TestCase):
 
         # setup group structure
         self.group = Group.objects.create(name="test1", owner=self.admin_su)
-        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
         self.group_member1 = GroupMember.objects.create(group=self.group, sesar_user=self.member1_su)
         self.group_member2 = GroupMember.objects.create(group=self.group, sesar_user=self.member2_su)
 

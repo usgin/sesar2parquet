@@ -13,32 +13,32 @@ MODELS = ['sample']
 
 GROUPS = [
     {
-        'name': 'read_only',
+        'name': 'Read Only',
         'permissions': ['view']
     },
     {
-        'name': 'read_create',
+        'name': 'Read Create',
         'permissions': ['view', 'add']
     },
     {
-        'name': 'read_edit',
+        'name': 'Read Edit',
         'permissions': ['view', 'change']
     },
     {
-        'name': 'read_create_edit',
+        'name': 'Read Create Edit',
         'permissions': ['view', 'add', 'change']
     },
     {
-        'name': 'read_create_edit_deactivate',
+        'name': 'Read Create Edit Deactivate',
         'permissions': ['view', 'add', 'change', 'deactivate']
     },
     {
-        'name': 'group_owner',
+        'name': 'Group Owner',
         'permissions': ['view', 'add', 'change', 'deactivate'],
         'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group']
     },
     {
-        'name': 'group_admin',
+        'name': 'Group Admin',
         'permissions': ['view', 'add', 'change', 'deactivate'],
         'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission']
     }

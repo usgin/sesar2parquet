@@ -20,8 +20,8 @@ class GroupTestCase(TestCase):
         # setup group structure
         self.group1 = Group.objects.create(name="test1", owner=self.user_su, contact_email='test@gmail.com')
         self.group2 = Group.objects.create(name="test2", owner=self.user_su, contact_email='test@gmail.com')
-        GroupMember.objects.create(group=self.group1, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='group_admin'))
-        GroupMember.objects.create(group=self.group2, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        GroupMember.objects.create(group=self.group1, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
+        GroupMember.objects.create(group=self.group2, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
 
 
     def test_view_group(self):
@@ -31,7 +31,7 @@ class GroupTestCase(TestCase):
         force_authenticate(request, user=self.user)
         response = view_group(request, name='test1')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['name'], self.group1.name)
+        self.assertEqual(response.data['group']['name'], self.group1.name)
 
 
     def test_view_user_groups(self):
