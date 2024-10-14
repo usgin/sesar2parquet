@@ -13,7 +13,10 @@ from sesar_api.permissions import CanAddGroupMember, CanChangeGroupMember, CanDe
 @api_view(['GET'])
 def view_group_members(request, name):
     try:
-        group = request.user.sesaruser.groups.get(name=name)
+        part_of_group = request.GET.get('part_of_group', None)
+        if part_of_group:
+            part_of_group = Group.objects.get(name=part_of_group, part_of_group__isnull=True)
+        group = request.user.sesaruser.groups.get(name=name, part_of_group=part_of_group)
         members = GroupMember.objects.filter(group=group)
 
         if members:
@@ -33,8 +36,8 @@ def create_group_member(request):
         if CanAddGroupMember().has_object_permission(request, None, group):
             member = MemberWriteSerializer(data=request.data)
             if member.is_valid():
-                member.save()
-                return Response(member.data, status=status.HTTP_201_CREATED)
+                new_member = member.save()
+                return Response(MemberSerializer(new_member).data, status=status.HTTP_201_CREATED)
             else:
                 return Response(member.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
@@ -68,7 +71,7 @@ def delete_group_member(request):
         member = GroupMember.objects.get(pk=request.data['id'])
         if CanDeleteGroupMember().has_object_permission(request, None, member.group):
             member.delete()
-            return Response(status=status.HTTP_200_OK)
+            return Response({'message': 'group member deleted'}, status=status.HTTP_200_OK)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:

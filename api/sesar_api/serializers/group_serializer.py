@@ -41,18 +41,19 @@ class TeamWriteSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
-    group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all())
-    auth_group = serializers.PrimaryKeyRelatedField(queryset=AuthGroup.objects.all())
+    group = serializers.StringRelatedField()
+    auth_group = serializers.StringRelatedField()
+    sesar_user = serializers.StringRelatedField()
     class Meta:
         model = GroupMember
-        fields = ['group', 'sesar_user', 'auth_group', 'join_date']
-        read_only_fields = ['auth_group', 'join_date']
+        fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date']
+        read_only_fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date']
 
 
 class MemberWriteSerializer(MemberSerializer):
     group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all())
     sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None))
-    auth_group = serializers.PrimaryKeyRelatedField(queryset=AuthGroup.objects.all(), required=False)
+    auth_group = serializers.SlugRelatedField(queryset=AuthGroup.objects.all(), required=False, slug_field='name')
     class Meta:
         model = GroupMember
         fields = ['group', 'sesar_user', 'auth_group', 'join_date']

@@ -16,7 +16,7 @@ def view_user_group_samples(request, name):
     offset = int(request.GET.get('offset', 0))
     limit = int(request.GET.get('limit', 25))
     try:
-        group = request.user.sesaruser.groups.get(name=name)
+        group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
     
         if group:
             user_codes = get_group_user_codes_with_permission(request.user.sesaruser, group, 'view_sample')
@@ -25,9 +25,6 @@ def view_user_group_samples(request, name):
                 'igsn_prefix__in': user_codes,
                 'group_owner': group
             }
-
-            # for key, value in request.query_params.items():
-            #     filters[key] = value
 
             total_samples = get_samples(filters, None, None, None)
             samples = get_samples(filters, order_by, offset, limit)

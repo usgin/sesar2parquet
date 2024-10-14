@@ -54,7 +54,7 @@ class SesarUser(models.Model):
 
 class Group(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    name = models.CharField(max_length=64, unique=True)
+    name = models.CharField(max_length=64)
     description = models.CharField(max_length=255, blank=True, null=True)
     contact_email = models.EmailField(max_length=255, blank=False, null=True)
     activate_date = models.DateTimeField(default=timezone.now)
@@ -65,6 +65,7 @@ class Group(models.Model):
 
     class Meta:
         db_table = 'group'
+        unique_together = ('name', 'part_of_group')
 
     def __str__(self):
         return self.name
@@ -77,6 +78,7 @@ class GroupMember(models.Model):
 
     class Meta:
         db_table = 'group_member'
+        unique_together = ('group', 'sesar_user')
 
 
 class Classification(models.Model):

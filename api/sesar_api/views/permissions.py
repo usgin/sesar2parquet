@@ -31,18 +31,23 @@ def view_user_permissions_shared_to_others(request):
 # function should work with sub groups (teams)
 @api_view(['GET'])
 def view_group_permissions(request, group_name):
-    group = Group.objects.get(name=group_name)
+    try:
+        part_of_group = request.GET.get('part_of_group', None)
+        if part_of_group:
+            part_of_group = Group.objects.get(name=part_of_group, part_of_group__isnull=True)
+        group = Group.objects.get(name=group_name, part_of_group=part_of_group)
+        if group:
+            shared_to_group = Permission.objects.filter(group=group)
 
-    if group:
-        shared_to_group = Permission.objects.filter(group=group)
-
-        shared_by_group = Permission.objects.filter(granted_by_group=group)
+            shared_by_group = Permission.objects.filter(granted_by_group=group)
 
 
-        to_serializer = PermissionSerializer(shared_to_group, many=True)
-        by_serializer = PermissionSerializer(shared_by_group, many=True)
-        return Response({'shared_to_group':to_serializer.data,'shared_by_group':by_serializer.data})
-    else:
+            to_serializer = PermissionSerializer(shared_to_group, many=True)
+            by_serializer = PermissionSerializer(shared_by_group, many=True)
+            return Response({'shared_to_group':to_serializer.data,'shared_by_group':by_serializer.data})
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 

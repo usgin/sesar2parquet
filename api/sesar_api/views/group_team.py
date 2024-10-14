@@ -13,7 +13,7 @@ from sesar_api.permissions import CanAddGroupMember, CanDeleteGroupMember, CanAd
 @api_view(['GET'])
 def view_group_teams(request, name):
     try:
-        group = request.user.sesaruser.groups.get(name=name)
+        group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
         teams = Group.objects.filter(part_of_group=group)
 
         if teams:
@@ -29,7 +29,7 @@ def view_group_teams(request, name):
 @api_view(['GET'])
 def view_group_team(request, group, team):
     try:
-        group = request.user.sesaruser.groups.get(name=group)
+        group = request.user.sesaruser.groups.get(name=group, part_of_group__isnull=True)
         team = Group.objects.get(part_of_group=group, name=team)
 
         if team:
