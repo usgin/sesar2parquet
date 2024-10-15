@@ -145,7 +145,7 @@ class Sample(models.Model):
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING)
     req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True, null=True)
     igsn = models.CharField(unique=True, max_length=64)
-    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code')
+    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code', related_name='samples')
     igsn_digit = models.CharField(max_length=29, blank=True, null=True)
     igsn_to_int = models.BigIntegerField(unique=True, blank=True, null=True)
     igsn_is_system_assigned = models.IntegerField(blank=True, null=True)
@@ -283,6 +283,7 @@ class Groups(models.Model):
     date_created = models.DateTimeField(blank=True, null=True)
     group_type = models.CharField(max_length=64, blank=True, null=True, db_comment="type of group such as 'award' or 'user defined'")
     is_private = models.BooleanField(blank=True, null=True)
+    
 
     class Meta:
         managed = False
@@ -313,12 +314,12 @@ class SesarRole(models.Model):
 
 
 class SesarUserCode(models.Model):
-    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True)
-    user_code = models.CharField(unique=True, max_length=5, blank=True, null=True)
-    is_available = models.IntegerField(blank=True, null=True)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
+    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
+    user_code = models.CharField(unique=True, max_length=5)
+    is_available = models.IntegerField(blank=True, null=True, default=1)
     igsn_count = models.BigIntegerField(blank=True, null=True)
-    is_grandfather_code = models.BooleanField(blank=True, null=True)
+    is_grandfather_code = models.BooleanField(blank=True, null=True, default=False)
     id = models.BigAutoField(primary_key=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')
 

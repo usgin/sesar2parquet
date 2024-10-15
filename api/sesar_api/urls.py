@@ -26,6 +26,7 @@ urlpatterns = [
     path('group/<str:name>/samples/', views.view_user_group_samples),
     path('group/<str:name>/members/', views.view_group_members),
     path('group/<str:name>/permissions/', views.view_group_permissions),
+    path('group/<str:name>/usercodes/', views.view_group_user_codes),
     path('group/members/create/', views.create_group_member),
     path('group/members/update/', views.update_group_member),
     path('group/members/delete/', views.delete_group_member),
@@ -36,4 +37,8 @@ urlpatterns = [
     path('group/teams/delete/', views.delete_group_team),
     path('group/teams/add-member/', views.add_group_team_member),
     path('group/teams/remove-member/', views.remove_group_team_member),
+    path('usercode/', views.view_user_user_codes),
+    path('usercode/create/', views.create_user_code),
+    path('usercode/delete/', views.delete_user_code),
+    path('usercode/<str:user_code>/', views.view_user_code),
 ]

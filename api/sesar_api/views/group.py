@@ -24,7 +24,7 @@ def view_group(request, name):
             return Response({
                 'group': serializer.data,
                 'permissions': permissions
-            })
+            }, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
@@ -38,7 +38,7 @@ def view_user_groups(request):
  
     if groups:
         serializer = GroupSerializer(groups, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -79,7 +79,7 @@ def update_group(request):
             serializer = GroupWriteSerializer(group, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
@@ -95,12 +95,12 @@ def deactivate_group(request):
         group = Group.objects.get(name=request.data['name'], deactivate_date=None)
 
         if group.owned_samples_set.exists():
-            return Response({"detail": "You cannot deactivate a group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "You cannot deactivate a group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
         if IsGroupOwner().has_object_permission(request, None, group):
             serializer = GroupWriteSerializer(group, data={'deactivate_date':datetime.now()}, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
@@ -118,7 +118,7 @@ def transfer_group(request):
             serializer = GroupWriteSerializer(group, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:

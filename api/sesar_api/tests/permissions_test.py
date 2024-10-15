@@ -500,6 +500,32 @@ class GroupPermissionTestCase(TestCase):
         self.assertFalse(CanViewGroupSamples().has_object_permission(request, None, self.group))
 
     
+    def test_can_add_user_code(self):
+        """Add user code permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanAddGroupUserCode().has_object_permission(request, None, self.group))
+        self.assertTrue(CanAddGroupUserCode().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member2
+        self.assertFalse(CanAddGroupUserCode().has_object_permission(request, None, self.group))
+
+
+    def test_can_delete_user_code(self):
+        """Delete user code permission is correctly identified"""
+        # Test has permission
+        request = self.factory.get('/')
+        request.user = self.group_owner
+        self.assertTrue(CanDeleteGroupUserCode().has_object_permission(request, None, self.group))
+        self.assertTrue(CanDeleteGroupUserCode().has_object_permission(request, None, self.group))
+
+        # Test does not have permission
+        request.user = self.group_member2
+        self.assertFalse(CanDeleteGroupUserCode().has_object_permission(request, None, self.group))
+
+    
     def test_get_group_user_codes_with_permission(self):
         """Group user codes with permission are correctly identified"""
 

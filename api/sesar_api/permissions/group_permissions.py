@@ -125,3 +125,37 @@ class CanViewGroupSamples(permissions.BasePermission):
             return False
 
         return False
+
+
+class CanAddGroupUserCode(permissions.BasePermission):
+    message = 'Permission denied. Cannot add user code.'
+
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+        try:
+            if GroupMember.objects.get(group=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='add_sesarusercode').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            return False
+
+        return False
+
+
+class CanDeleteGroupUserCode(permissions.BasePermission):
+    message = 'Permission denied. Cannot delete user code.'
+
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+        try:
+            if GroupMember.objects.get(group=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='delete_sesarusercode').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            return False
+
+        return False

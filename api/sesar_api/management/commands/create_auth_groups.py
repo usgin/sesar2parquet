@@ -6,7 +6,7 @@ import logging
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from sesar_api.models import Sample, Group as UserGroup, GroupMember, Permission as SesarPermission
+from sesar_api.models import Sample, Group as UserGroup, GroupMember, Permission as SesarPermission, SesarUserCode
 from django.db import IntegrityError
 
 MODELS = ['sample']
@@ -35,12 +35,12 @@ GROUPS = [
     {
         'name': 'Group Owner',
         'permissions': ['view', 'add', 'change', 'deactivate'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group']
+        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group', 'add_sesarusercode', 'delete_sesarusercode']
     },
     {
         'name': 'Group Admin',
         'permissions': ['view', 'add', 'change', 'deactivate'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission']
+        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'add_sesarusercode', 'delete_sesarusercode']
     }
 ]
 
@@ -100,6 +100,8 @@ class Command(BaseCommand):
                             content_type = ContentType.objects.get_for_model(UserGroup)
                         elif 'permission' in codename:
                             content_type = ContentType.objects.get_for_model(SesarPermission)
+                        elif 'sesarusercode' in codename:
+                            content_type = ContentType.objects.get_for_model(SesarUserCode)
                         permission_to_add = Permission.objects.get(content_type=content_type, codename=codename)
                     except Permission.DoesNotExist:
                         logging.warning("Permission not found with codename '{}'.".format(codename))
