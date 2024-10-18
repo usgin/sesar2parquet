@@ -49,7 +49,7 @@ class CanGrantSamplePermission(permissions.BasePermission):
                             # return false if a given permission does not exist
                             return False
                     return True
-        except (GroupMember.DoesNotExist, AttributeError):
+        except (GroupMember.DoesNotExist, Permission.DoesNotExist, AttributeError):
             # continue to next check
             pass
 
@@ -101,7 +101,7 @@ class CanGrantUserCodePermission(permissions.BasePermission):
                             # return false if a given permission does not exist
                             return False
                     return True
-        except (GroupMember.DoesNotExist, AttributeError):
+        except (GroupMember.DoesNotExist, Permission.DoesNotExist, AttributeError):
             # continue to next check
             pass
 
@@ -133,7 +133,7 @@ class CanEditPermission(permissions.BasePermission):
                 group=permission.granted_by_group, 
                 sesar_user=sesar_user).auth_group.permissions.filter(codename='change_permission').exists():
                 return True
-        except (GroupMember.DoesNotExist, AttributeError):
+        except (GroupMember.DoesNotExist, Permission.DoesNotExist,  AttributeError):
             # continue to next check
             pass
 

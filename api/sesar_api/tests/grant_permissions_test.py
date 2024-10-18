@@ -249,11 +249,6 @@ class GrantPermissionsTestCase(TestCase):
             fname='Test', lname='User')
         request = self.factory.post('/api/permissions/create/', 
             {'user_code': 'IE001', 
-            'sample': '',
-            'geopass_id': '',
-            'group': '',
-            'granted_by_group':'',
-            'sesar_role': '', 
             'auth_group': 'Read Create Edit Deactivate',
             'sesar_user': self.test_user_su.pk})
         request.user = self.sample_owner

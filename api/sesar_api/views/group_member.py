@@ -15,15 +15,16 @@ def view_group_members(request, name):
     try:
         part_of_group = request.GET.get('part_of_group', None)
         if part_of_group:
-            part_of_group = Group.objects.get(name=part_of_group, part_of_group__isnull=True)
-        group = request.user.sesaruser.groups.get(name=name, part_of_group=part_of_group)
+            group = request.user.sesaruser.groups.get(name=part_of_group, part_of_group__isnull=True).teams.get(name=name)
+        else:
+            group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
         members = GroupMember.objects.filter(group=group)
 
         if members:
             serializer = MemberSerializer(members, many=True)
             return Response(serializer.data)
         else:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': 'No members found'}, status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

@@ -13,7 +13,7 @@ from django.contrib.auth.models import Group as AuthGroup
 @api_view(['GET'])
 def view_group(request, name):
     try:
-        group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
+        group = request.user.sesaruser.groups.prefetch_related('members').get(name=name, part_of_group__isnull=True)
         if group:
             serializer = GroupSerializer(group)
             try:

@@ -41,4 +41,7 @@ urlpatterns = [
     path('usercode/create/', views.create_user_code),
     path('usercode/delete/', views.delete_user_code),
     path('usercode/<str:user_code>/', views.view_user_code),
+    path('permissions/create/', views.create_permission),
+    path('permissions/update/', views.update_permission),
+    path('permissions/delete/', views.delete_permission),
 ]

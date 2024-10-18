@@ -42,7 +42,7 @@ def view_group_user_codes(request, name):
     
         if group and group.user_codes:
             serializer = UserCodeSerializer(group.user_codes, many=True)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
     except Group.DoesNotExist:

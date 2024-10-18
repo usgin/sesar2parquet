@@ -20,14 +20,14 @@ class PermissionSerializer(serializers.ModelSerializer):
 
 
 class PermissionWriteSerializer(serializers.ModelSerializer):
-    user_code = serializers.SlugRelatedField(queryset=SesarUserCode.objects.all(), slug_field='user_code', allow_null=True)
-    sample = serializers.SlugRelatedField(queryset=Sample.objects.all(), slug_field='igsn', allow_null=True)
-    sesar_role = serializers.SlugRelatedField(queryset=SesarRole.objects.all(), slug_field='sesar_role_name', allow_null=True)
-    sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.all(), allow_null=True)
-    group = serializers.SlugRelatedField(queryset=Group.objects.all(), slug_field='name', allow_null=True)
+    user_code = serializers.SlugRelatedField(queryset=SesarUserCode.objects.all(), slug_field='user_code', allow_null=True, required=False)
+    sample = serializers.SlugRelatedField(queryset=Sample.objects.all(), slug_field='igsn', allow_null=True, required=False)
+    sesar_role = serializers.SlugRelatedField(queryset=SesarRole.objects.all(), slug_field='sesar_role_name', allow_null=True, required=False)
+    sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.all(), allow_null=True, required=False)
+    group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all(), allow_null=True, required=False)
     auth_group = serializers.SlugRelatedField(queryset=AuthGroup.objects.all(), slug_field='name')
-    granted_by_group = serializers.SlugRelatedField(queryset=Group.objects.filter(part_of_group=None), slug_field='name', allow_null=True)
+    granted_by_group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.filter(part_of_group=None), allow_null=True, required=False)
 
     class Meta:
         model = Permission
-        fields = ['user_code', 'sample', 'geopass_id', 'orcid_id', 'sesar_user', 'group', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_group']
+        fields = ['user_code', 'sample', 'sesar_user', 'group', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_group']
