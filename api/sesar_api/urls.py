@@ -37,6 +37,7 @@ urlpatterns = [
     path('group/teams/delete/', views.delete_group_team),
     path('group/teams/add-member/', views.add_group_team_member),
     path('group/teams/remove-member/', views.remove_group_team_member),
+    path('user/search/', views.search_users),
     path('usercode/', views.view_user_user_codes),
     path('usercode/create/', views.create_user_code),
     path('usercode/delete/', views.delete_user_code),

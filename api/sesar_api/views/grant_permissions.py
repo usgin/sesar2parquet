@@ -30,12 +30,12 @@ def view_user_permissions_shared_to_others(request):
 # get permissions shared to group and shared by group
 # function should work with sub groups (teams)
 @api_view(['GET'])
-def view_group_permissions(request, group_name):
+def view_group_permissions(request, name):
     try:
         part_of_group = request.GET.get('part_of_group', None)
         if part_of_group:
             part_of_group = Group.objects.get(name=part_of_group, part_of_group__isnull=True)
-        group = Group.objects.get(name=group_name, part_of_group=part_of_group)
+        group = Group.objects.get(name=name, part_of_group=part_of_group)
         if group:
             shared_to_group = Permission.objects.filter(group=group)
 
@@ -71,8 +71,8 @@ def create_permission(request):
             (user_code and CanGrantUserCodePermission(granted_by_group,permissions_to_grant=auth_group).has_object_permission(request, None, user_code))):
                 permission = PermissionWriteSerializer(data=request.data)
                 if permission.is_valid():
-                    permission.save()
-                    return Response(permission.data, status=status.HTTP_201_CREATED)
+                    new_permission = permission.save()
+                    return Response(PermissionSerializer(new_permission).data, status=status.HTTP_201_CREATED)
                 else:
                     return Response(permission.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
