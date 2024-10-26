@@ -45,4 +45,7 @@ urlpatterns = [
     path('permissions/create/', views.create_permission),
     path('permissions/update/', views.update_permission),
     path('permissions/delete/', views.delete_permission),
+    path('transfer/', views.view_transfers),
+    path('transfer/create/', views.create_transfer),
+    path('transfer/update/', views.update_transfer),
 ]

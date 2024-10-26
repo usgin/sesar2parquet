@@ -48,7 +48,7 @@ def view_user_group_samples(request, name):
                 'total': total_samples.count(),
                 'totalNotFiltered': total_samples.count(),
                 'rows': serializer.data
-            })
+            }, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:

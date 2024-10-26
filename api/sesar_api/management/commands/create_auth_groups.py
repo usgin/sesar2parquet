@@ -34,12 +34,12 @@ GROUPS = [
     },
     {
         'name': 'Group Owner',
-        'permissions': ['view', 'add', 'change', 'deactivate'],
+        'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
         'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group', 'add_sesarusercode', 'delete_sesarusercode']
     },
     {
         'name': 'Group Admin',
-        'permissions': ['view', 'add', 'change', 'deactivate'],
+        'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
         'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'add_sesarusercode', 'delete_sesarusercode']
     }
 ]
@@ -67,6 +67,11 @@ class Command(BaseCommand):
             Permission.objects.get_or_create(
                 codename = "deactivate_sample",
                 name = "Can deactivate sample",
+                content_type = ContentType.objects.get_for_model(Sample)
+            )
+            Permission.objects.get_or_create(
+                codename = "transfer_sample",
+                name = "Can transfer sample",
                 content_type = ContentType.objects.get_for_model(Sample)
             )
             # custom group permissions

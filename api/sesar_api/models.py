@@ -50,7 +50,10 @@ class SesarUser(models.Model):
         db_table = 'sesar_user'
 
     def __str__(self):
-        return self.fname + ' ' + self.lname + ' (' + self.orcid + ')'
+        output = self.fname + ' ' + self.lname
+        if self.orcid:
+            output += ' (' + self.orcid + ')'
+        return  output
 
 class Group(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)

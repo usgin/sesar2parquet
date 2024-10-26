@@ -159,3 +159,20 @@ class CanDeleteGroupUserCode(permissions.BasePermission):
             return False
 
         return False
+
+
+class CanTransferGroupSample(permissions.BasePermission):
+    message = 'Permission denied. Cannot transfer sample.'
+
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+        try:
+            if GroupMember.objects.get(group=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='transfer_sample').exists():
+                return True
+        except (GroupMember.DoesNotExist, AttributeError):
+            return False
+
+        return False

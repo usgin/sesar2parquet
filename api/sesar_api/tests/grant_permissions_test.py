@@ -226,7 +226,7 @@ class GrantPermissionsTestCase(TestCase):
         request = self.factory.get('/api/permissions/group/')
         request.user = self.sample_owner
         force_authenticate(request, user=self.sample_owner)
-        response = view_group_permissions(request, group_name='Group1')
+        response = view_group_permissions(request, name='Group1')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['shared_to_group'], [])
         self.assertTrue(any(perm.get('user_code') == 'IE003' and perm.get('group') == 'Group1Team1' for perm in response.data['shared_by_group']))
@@ -235,7 +235,7 @@ class GrantPermissionsTestCase(TestCase):
         request = self.factory.get('/api/permissions/group/?part_of_group=Group1')
         request.user = self.sample_owner
         force_authenticate(request, user=self.sample_owner)
-        response = view_group_permissions(request, group_name='Group1Team1')
+        response = view_group_permissions(request, name='Group1Team1')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(any(perm.get('user_code') == 'IE003' and perm.get('group') == 'Group1Team1' for perm in response.data['shared_to_group']))
         self.assertEqual(response.data['shared_by_group'], [])
