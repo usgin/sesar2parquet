@@ -31,10 +31,11 @@ def view_user_group_samples(request, name):
             user_codes = get_group_user_codes_with_permission(request.user.sesaruser, group, 'view_sample')
 
             filters = {
-                'igsn_prefix__in': user_codes,
-                'group_owner': group,
                 'group_owner': group
             }
+
+            if user_codes != 'all':
+                filters['igsn_prefix__in'] = user_codes
 
             for key, value in optional_filters.items():
                 if value is not None and value != '':

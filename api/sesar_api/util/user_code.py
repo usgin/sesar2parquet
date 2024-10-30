@@ -7,7 +7,7 @@ def get_group_user_codes_with_permission(sesar_user, group, permission):
     try:
         if GroupMember.objects.get(group=group, sesar_user=sesar_user).auth_group.permissions.filter(codename=permission).exists():
             # return all group owned user codes
-            return list(SesarUserCode.objects.filter(group=group).values_list('user_code', flat=True))
+            return 'all'
     except GroupMember.DoesNotExist:
         # user is not a member of group
         return []

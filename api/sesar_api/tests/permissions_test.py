@@ -545,15 +545,15 @@ class GroupPermissionTestCase(TestCase):
         # Test owner/admin permission
         request = self.factory.get('/')
         request.user = self.group_owner
-        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'add_sample'), ['IE001', 'IE002'])
-        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'view_sample'), ['IE001', 'IE002'])
-        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'change_sample'), ['IE001', 'IE002'])
+        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'add_sample'), 'all')
+        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'view_sample'), 'all')
+        self.assertEqual(get_group_user_codes_with_permission(self.group_owner_su, self.group, 'change_sample'), 'all')
 
         # Test group level permission
         request = self.factory.get('/')
         request.user = self.group_member
         self.assertEqual(get_group_user_codes_with_permission(self.group_member_su, self.group, 'add_sample'), [])
-        self.assertEqual(get_group_user_codes_with_permission(self.group_member_su, self.group, 'view_sample'), ['IE001', 'IE002'])
+        self.assertEqual(get_group_user_codes_with_permission(self.group_member_su, self.group, 'view_sample'), 'all')
 
         # Test team level permission
         request = self.factory.get('/')
