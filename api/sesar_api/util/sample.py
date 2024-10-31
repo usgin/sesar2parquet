@@ -2,7 +2,7 @@ from sesar_api.models import Sample
 from django.core.exceptions import FieldError
 
 
-def get_samples(filters, order_by=None, offset=None, limit=1000):
+def get_samples(filters, order_by=None):
 
     valid_fields = [f.name for f in Sample._meta.get_fields()]
     cleaned_filters = {}
@@ -21,12 +21,6 @@ def get_samples(filters, order_by=None, offset=None, limit=1000):
         queryset = Sample.objects.filter(**cleaned_filters)
         if order_by:
             queryset = queryset.order_by(order_by)
-        
-        if offset and limit:
-            queryset = queryset[offset:offset+limit]
-        elif limit:
-            queryset = queryset[:limit]
-
 
         return queryset
     except FieldError as e:

@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from datetime import *
 
 from sesar_api.serializers import SampleSerializer
-from sesar_api.util import get_samples, get_group_user_codes_with_permission
+from sesar_api.util import get_samples, get_group_user_codes_with_permission, get_paginated_queryset
 
 
 # get all viewable samples in user group
@@ -14,7 +14,7 @@ def view_user_group_samples(request, name):
     order_by = '-' if request.GET.get('order') == 'desc' else ''
     order_by += request.GET.get('sort', 'igsn')
     offset = int(request.GET.get('offset', 0))
-    limit = int(request.GET.get('limit', 25))
+    limit = int(request.GET.get('limit', 50))
 
     optional_filters = {
         'igsn_prefix': request.GET.get('user_code', None),
@@ -41,13 +41,14 @@ def view_user_group_samples(request, name):
                 if value is not None and value != '':
                     filters[key] = value
 
-            total_samples = get_samples(filters, None, None, None)
-            samples = get_samples(filters, order_by, offset, limit)
+            samples_queryset = get_samples(filters, order_by)
+            total_samples = samples_queryset.count()
+            samples = get_paginated_queryset(samples_queryset, offset, limit)
 
             serializer = SampleSerializer(samples, many=True)
             return Response({
-                'total': total_samples.count(),
-                'totalNotFiltered': total_samples.count(),
+                'total': total_samples,
+                'totalNotFiltered': total_samples,
                 'rows': serializer.data
             }, status=status.HTTP_200_OK)
         else:

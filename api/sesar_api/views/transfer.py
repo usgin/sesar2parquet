@@ -77,7 +77,7 @@ def create_transfer(request):
             else:
                 return Response({'error': 'Missing sample list'}, status=status.HTTP_400_BAD_REQUEST)
         
-        samples = get_samples(filters, limit=None)
+        samples = get_samples(filters)
 
         if samples:
             serializer_data = {
