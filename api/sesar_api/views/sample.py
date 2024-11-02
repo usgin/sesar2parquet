@@ -11,7 +11,7 @@ from sesar_api.util import get_samples, get_group_user_codes_with_permission, ge
 # get all viewable samples in user group
 @api_view(['GET'])
 def view_user_group_samples(request, name):
-    order_by = '-' if request.GET.get('order') == 'desc' else ''
+    order_by = '-' if request.GET.get('order', 'asc') == 'desc' else ''
     order_by += request.GET.get('sort', 'igsn')
     offset = int(request.GET.get('offset', 0))
     limit = int(request.GET.get('limit', 50))
@@ -49,7 +49,7 @@ def view_user_group_samples(request, name):
             return Response({
                 'total': total_samples,
                 'totalNotFiltered': total_samples,
-                'rows': serializer.data
+                'rows': serializer.data,
             }, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)

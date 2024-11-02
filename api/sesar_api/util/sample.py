@@ -18,9 +18,17 @@ def get_samples(filters, order_by=None):
 
     try:
         # Use the cleaned filters to perform the query
-        queryset = Sample.objects.filter(**cleaned_filters)
+        queryset = Sample.objects.filter(**cleaned_filters).select_related(
+            'origin_sample',
+            'sample_type',
+            'top_level_classification',
+            'classification',
+            'country',
+            'nav_type',
+            'launch_type'
+        )
         if order_by:
-            queryset = queryset.order_by(order_by)
+            queryset = queryset.order_by(order_by,'sample_id')
 
         return queryset
     except FieldError as e:
