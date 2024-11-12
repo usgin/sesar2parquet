@@ -5,7 +5,9 @@ from django.core.exceptions import FieldError
 def get_samples(filters, order_by=None):
 
     valid_fields = [f.name for f in Sample._meta.get_fields()]
-    cleaned_filters = {}
+    cleaned_filters = {
+        'archive_date__isnull': True
+    }
 
     for key, value in filters.items():
         # Check if the key is a valid field
