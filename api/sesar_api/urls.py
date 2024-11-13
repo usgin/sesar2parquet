@@ -34,4 +34,8 @@ urlpatterns = [
     path('group/teams/delete/', views.delete_group_team),
     path('group/teams/add-member/', views.add_group_team_member),
     path('group/teams/remove-member/', views.remove_group_team_member),
+    path('statistics/igsns/count/', views.get_published_sample_count),
+    path('statistics/igsns/count/parent/', views.get_published_parent_sample_count),
+    path('statistics/igsns/count/sample-type/', views.get_sample_count_by_sample_type),
+    path('statistics/igsns/count/institution/', views.get_sample_count_by_institution),
 ]
