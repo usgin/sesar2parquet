@@ -30,19 +30,24 @@ def view_user_permissions_shared_to_others(request):
 # get permissions shared to group and shared by group
 # function should work with sub groups (teams)
 @api_view(['GET'])
-def view_group_permissions(request, group_name):
-    group = Group.objects.get(name=group_name)
+def view_group_permissions(request, name):
+    try:
+        part_of_group = request.GET.get('part_of_group', None)
+        if part_of_group:
+            part_of_group = Group.objects.get(name=part_of_group, part_of_group__isnull=True)
+        group = Group.objects.get(name=name, part_of_group=part_of_group)
+        if group:
+            shared_to_group = Permission.objects.filter(group=group)
 
-    if group:
-        shared_to_group = Permission.objects.filter(group=group)
-
-        shared_by_group = Permission.objects.filter(granted_by_group=group)
+            shared_by_group = Permission.objects.filter(granted_by_group=group)
 
 
-        to_serializer = PermissionSerializer(shared_to_group, many=True)
-        by_serializer = PermissionSerializer(shared_by_group, many=True)
-        return Response({'shared_to_group':to_serializer.data,'shared_by_group':by_serializer.data})
-    else:
+            to_serializer = PermissionSerializer(shared_to_group, many=True)
+            by_serializer = PermissionSerializer(shared_by_group, many=True)
+            return Response({'shared_to_group':to_serializer.data,'shared_by_group':by_serializer.data})
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
@@ -54,20 +59,22 @@ def create_permission(request):
     user_code = None
     try:
         if 'granted_by_group' in request.data:
-            granted_by_group = Group.objects.filter(name=request.data['granted_by_group']).first()
+            granted_by_group = Group.objects.filter(pk=request.data['granted_by_group'], part_of_group__isnull=True).first()
         if 'sample' in request.data:
             sample = Sample.objects.filter(igsn=request.data['sample']).first()
         if 'user_code' in request.data:
             user_code = SesarUserCode.objects.filter(user_code=request.data['user_code']).first()
 
-        if (sample and CanGrantSamplePermission(granted_by_group, permissions_to_grant=request.data['auth_group']).has_object_permission(request, None, sample) or
-            user_code and CanGrantUserCodePermission(granted_by_group,permissions_to_grant=request.data['auth_group']).has_object_permission(request, None, user_code)):
-            permission = PermissionWriteSerializer(data=request.data)
-            if permission.is_valid():
-                permission.save()
-                return Response(permission.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response(permission.errors, status=status.HTTP_400_BAD_REQUEST)
+        auth_group = request.data['auth_group']
+
+        if ((sample and CanGrantSamplePermission(granted_by_group, permissions_to_grant=auth_group).has_object_permission(request, None, sample)) or
+            (user_code and CanGrantUserCodePermission(granted_by_group,permissions_to_grant=auth_group).has_object_permission(request, None, user_code))):
+                permission = PermissionWriteSerializer(data=request.data)
+                if permission.is_valid():
+                    new_permission = permission.save()
+                    return Response(PermissionSerializer(new_permission).data, status=status.HTTP_201_CREATED)
+                else:
+                    return Response(permission.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
@@ -83,7 +90,7 @@ def update_permission(request):
             serializer = PermissionWriteSerializer(permission, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
@@ -99,7 +106,7 @@ def delete_permission(request):
         permission = Permission.objects.get(pk=request.data['id'])
         if CanEditPermission().has_object_permission(request, None, permission):
             permission.delete()
-            return Response(status=status.HTTP_200_OK)
+            return Response({'message': 'Permission removed.'}, status=status.HTTP_200_OK)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:

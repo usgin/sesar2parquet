@@ -6,41 +6,41 @@ import logging
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from sesar_api.models import Sample, Group as UserGroup, GroupMember, Permission as SesarPermission
+from sesar_api.models import Sample, Group as UserGroup, GroupMember, Permission as SesarPermission, SesarUserCode
 from django.db import IntegrityError
 
 MODELS = ['sample']
 
 GROUPS = [
     {
-        'name': 'read_only',
+        'name': 'Read Only',
         'permissions': ['view']
     },
     {
-        'name': 'read_create',
+        'name': 'Read Create',
         'permissions': ['view', 'add']
     },
     {
-        'name': 'read_edit',
+        'name': 'Read Edit',
         'permissions': ['view', 'change']
     },
     {
-        'name': 'read_create_edit',
+        'name': 'Read Create Edit',
         'permissions': ['view', 'add', 'change']
     },
     {
-        'name': 'read_create_edit_deactivate',
+        'name': 'Read Create Edit Deactivate',
         'permissions': ['view', 'add', 'change', 'deactivate']
     },
     {
-        'name': 'group_owner',
-        'permissions': ['view', 'add', 'change', 'deactivate'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group']
+        'name': 'Group Owner',
+        'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
+        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group', 'add_sesarusercode', 'delete_sesarusercode']
     },
     {
-        'name': 'group_admin',
-        'permissions': ['view', 'add', 'change', 'deactivate'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission']
+        'name': 'Group Admin',
+        'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
+        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'add_sesarusercode', 'delete_sesarusercode']
     }
 ]
 
@@ -67,6 +67,11 @@ class Command(BaseCommand):
             Permission.objects.get_or_create(
                 codename = "deactivate_sample",
                 name = "Can deactivate sample",
+                content_type = ContentType.objects.get_for_model(Sample)
+            )
+            Permission.objects.get_or_create(
+                codename = "transfer_sample",
+                name = "Can transfer sample",
                 content_type = ContentType.objects.get_for_model(Sample)
             )
             # custom group permissions
@@ -100,6 +105,8 @@ class Command(BaseCommand):
                             content_type = ContentType.objects.get_for_model(UserGroup)
                         elif 'permission' in codename:
                             content_type = ContentType.objects.get_for_model(SesarPermission)
+                        elif 'sesarusercode' in codename:
+                            content_type = ContentType.objects.get_for_model(SesarUserCode)
                         permission_to_add = Permission.objects.get(content_type=content_type, codename=codename)
                     except Permission.DoesNotExist:
                         logging.warning("Permission not found with codename '{}'.".format(codename))

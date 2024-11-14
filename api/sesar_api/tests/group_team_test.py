@@ -22,7 +22,7 @@ class GroupTeamTestCase(TestCase):
 
         # setup group structure
         self.group = Group.objects.create(name="test1", owner=self.admin_su)
-        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        self.group_admin = GroupMember.objects.create(group=self.group, sesar_user=self.admin_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
         self.group_member1 = GroupMember.objects.create(group=self.group, sesar_user=self.member1_su)
         self.group_member2 = GroupMember.objects.create(group=self.group, sesar_user=self.member2_su)
 
@@ -47,7 +47,7 @@ class GroupTeamTestCase(TestCase):
         force_authenticate(request, user=self.admin)
         response = view_group_team(request, group='test1', team='team1')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['name'], 'team1')
+        self.assertEqual(response.data['team']['name'], 'team1')
 
 
     def test_create_group_team(self):
@@ -87,7 +87,7 @@ class GroupTeamTestCase(TestCase):
         request.user = self.admin
         force_authenticate(request, user=self.admin)
         response = add_group_team_member(request)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertTrue(GroupMember.objects.filter(group=self.team.pk,sesar_user=self.member2_su.pk).exists())
 
 

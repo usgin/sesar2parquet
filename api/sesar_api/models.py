@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.db.models import Index
 from django.contrib.auth.models import AbstractUser, Group as AuthGroup
 from django.conf import settings
 from django.utils import timezone
@@ -50,11 +51,14 @@ class SesarUser(models.Model):
         db_table = 'sesar_user'
 
     def __str__(self):
-        return self.fname + ' ' + self.lname
+        output = self.fname + ' ' + self.lname
+        if self.orcid:
+            output += ' (' + self.orcid + ')'
+        return  output
 
 class Group(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    name = models.CharField(max_length=64, unique=True)
+    name = models.CharField(max_length=64)
     description = models.CharField(max_length=255, blank=True, null=True)
     contact_email = models.EmailField(max_length=255, blank=False, null=True)
     activate_date = models.DateTimeField(default=timezone.now)
@@ -65,18 +69,20 @@ class Group(models.Model):
 
     class Meta:
         db_table = 'group'
+        unique_together = ('name', 'part_of_group')
 
     def __str__(self):
         return self.name
 
 class GroupMember(models.Model):
-    group = models.ForeignKey(Group, models.CASCADE)
+    group = models.ForeignKey(Group, models.CASCADE, related_name='groups')
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     join_date = models.DateTimeField(default=timezone.now)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         db_table = 'group_member'
+        unique_together = ('group', 'sesar_user')
 
 
 class Classification(models.Model):
@@ -143,7 +149,7 @@ class Sample(models.Model):
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING)
     req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True, null=True)
     igsn = models.CharField(unique=True, max_length=64)
-    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code')
+    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code', related_name='samples')
     igsn_digit = models.CharField(max_length=29, blank=True, null=True)
     igsn_to_int = models.BigIntegerField(unique=True, blank=True, null=True)
     igsn_is_system_assigned = models.IntegerField(blank=True, null=True)
@@ -221,6 +227,11 @@ class Sample(models.Model):
     class Meta:
         managed = True
         db_table = 'sample'
+        indexes = [
+            Index(fields=['group_owner'], 
+            name='sample_g_owner_non_null_idx',
+            condition=models.Q(group_owner__isnull=False)),
+        ]
 
 
 class SampleAdditionalName(models.Model):
@@ -281,6 +292,7 @@ class Groups(models.Model):
     date_created = models.DateTimeField(blank=True, null=True)
     group_type = models.CharField(max_length=64, blank=True, null=True, db_comment="type of group such as 'award' or 'user defined'")
     is_private = models.BooleanField(blank=True, null=True)
+    
 
     class Meta:
         managed = False
@@ -311,12 +323,12 @@ class SesarRole(models.Model):
 
 
 class SesarUserCode(models.Model):
-    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
-    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True)
-    user_code = models.CharField(unique=True, max_length=5, blank=True, null=True)
-    is_available = models.IntegerField(blank=True, null=True)
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
+    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
+    user_code = models.CharField(unique=True, max_length=5)
+    is_available = models.IntegerField(blank=True, null=True, default=1)
     igsn_count = models.BigIntegerField(blank=True, null=True)
-    is_grandfather_code = models.BooleanField(blank=True, null=True)
+    is_grandfather_code = models.BooleanField(blank=True, null=True, default=False)
     id = models.BigAutoField(primary_key=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')
 

@@ -20,8 +20,8 @@ class GroupTestCase(TestCase):
         # setup group structure
         self.group1 = Group.objects.create(name="test1", owner=self.user_su, contact_email='test@gmail.com')
         self.group2 = Group.objects.create(name="test2", owner=self.user_su, contact_email='test@gmail.com')
-        GroupMember.objects.create(group=self.group1, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='group_admin'))
-        GroupMember.objects.create(group=self.group2, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='group_admin'))
+        GroupMember.objects.create(group=self.group1, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
+        GroupMember.objects.create(group=self.group2, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Admin'))
 
 
     def test_view_group(self):
@@ -31,7 +31,7 @@ class GroupTestCase(TestCase):
         force_authenticate(request, user=self.user)
         response = view_group(request, name='test1')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['name'], self.group1.name)
+        self.assertEqual(response.data['group']['name'], self.group1.name)
 
 
     def test_view_user_groups(self):
@@ -43,8 +43,8 @@ class GroupTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
-        self.assertTrue({'owner': 'User 1', 'name': 'test1', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
-        self.assertTrue({'owner': 'User 1', 'name': 'test2', 'description': None, 'doi_prefix': '10.58052/', 'contact_email': 'test@gmail.com'} in response.data)
+        self.assertTrue(any(d.get('name') == 'test1' for d in response.data))
+        self.assertTrue(any(d.get('name') == 'test2' for d in response.data))
 
 
     def test_create_group(self):

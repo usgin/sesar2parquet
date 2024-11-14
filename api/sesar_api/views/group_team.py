@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from sesar_api.models import Group, GroupMember, SesarUser
-from sesar_api.serializers import TeamSerializer, TeamWriteSerializer
+from sesar_api.models import Group, GroupMember, SesarUser, Permission
+from sesar_api.serializers import TeamSerializer, TeamWriteSerializer, SesarUserSerializer, PermissionSerializer
 from sesar_api.permissions import CanAddGroupMember, CanDeleteGroupMember, CanAddGroup, CanChangeGroup, CanDeleteGroup
 
 
@@ -13,7 +13,7 @@ from sesar_api.permissions import CanAddGroupMember, CanDeleteGroupMember, CanAd
 @api_view(['GET'])
 def view_group_teams(request, name):
     try:
-        group = request.user.sesaruser.groups.get(name=name)
+        group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
         teams = Group.objects.filter(part_of_group=group)
 
         if teams:
@@ -29,12 +29,29 @@ def view_group_teams(request, name):
 @api_view(['GET'])
 def view_group_team(request, group, team):
     try:
-        group = request.user.sesaruser.groups.get(name=group)
+        group = request.user.sesaruser.groups.get(name=group, part_of_group__isnull=True)
         team = Group.objects.get(part_of_group=group, name=team)
 
         if team:
             serializer = TeamSerializer(team)
-            return Response(serializer.data)
+            try:
+                member_permissions = GroupMember.objects.get(sesar_user=request.user.sesaruser, group=group).auth_group.permissions
+                member_permissions = list(member_permissions.values_list('codename', flat=True))
+            except AttributeError:
+                member_permissions = None
+            try:
+                team_permissions = Permission.objects.filter(group=team, auth_group__isnull=False)
+                if team_permissions:
+                    team_permissions = PermissionSerializer(team_permissions, many=True).data
+                else:
+                    team_permissions = None
+            except:
+                team_permissions = None
+            return Response({
+                'team': serializer.data,
+                'member_permissions': member_permissions,
+                'team_permissions': team_permissions
+            }, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
@@ -84,7 +101,7 @@ def delete_group_team(request):
         team = Group.objects.get(pk=request.data['id'])
         if CanDeleteGroup().has_object_permission(request, None, team.part_of_group):
             team.delete()
-            return Response(status=status.HTTP_200_OK)
+            return Response({'message': 'team deleted'}, status=status.HTTP_200_OK)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
@@ -96,10 +113,10 @@ def delete_group_team(request):
 def add_group_team_member(request):
     try:
         team = Group.objects.get(pk=request.data['team'])
-        member = SesarUser.objects.get(pk=request.data['member'])
+        sesar_user = SesarUser.objects.get(pk=request.data['member'])
         if CanAddGroupMember().has_object_permission(request, None, team.part_of_group):
-            team.members.add(member)
-            return Response(status=status.HTTP_200_OK)
+            team.members.add(sesar_user)
+            return Response(SesarUserSerializer(sesar_user).data, status=status.HTTP_201_CREATED)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
@@ -114,7 +131,7 @@ def remove_group_team_member(request):
         member = team.members.get(pk=request.data['member'])
         if CanDeleteGroupMember().has_object_permission(request, None, team.part_of_group):
             team.members.remove(member)
-            return Response(status=status.HTTP_200_OK)
+            return Response({'message': 'Team member removed.'}, status=status.HTTP_200_OK)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
