@@ -52,4 +52,5 @@ urlpatterns = [
     path('statistics/igsns/count/parent/', views.get_published_parent_sample_count),
     path('statistics/igsns/count/sample-type/', views.get_sample_count_by_sample_type),
     path('statistics/igsns/count/institution/', views.get_sample_count_by_institution),
+    path('sitemap/', views.get_igsn_list_for_sitemap),
 ]

@@ -8,5 +8,4 @@ from .sample import *
 from .sesar_user import *
 from .user_code import *
 from .transfer import *
-from .permissions import *
 from .statistics import *

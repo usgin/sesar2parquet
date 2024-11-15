@@ -1,5 +1,6 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import *
@@ -55,3 +56,21 @@ def view_user_group_samples(request, name):
             return Response(status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_igsn_list_for_sitemap(request):
+    order_by = 'sample_id'
+    limit = int(request.GET.get('limit', 50000))
+    offset = int(request.GET.get('page', 0)) * limit
+    
+    
+    values = ['igsn', 'last_update_date']
+    try:
+        igsns_queryset = get_samples(order_by=order_by, values=values)
+        igsns = get_paginated_queryset(igsns_queryset, offset, limit)
+
+        return Response(igsns, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response(e, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
