@@ -11,6 +11,7 @@ jobs:
     uses: ./.github/workflows/build_publish.yml
     with:
       APPLICATION: sesar2-api
+      CONTEXT: api
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.SESAR_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SESAR_AWS_SECRET_ACCESS_KEY }}
