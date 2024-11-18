@@ -6,7 +6,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from datetime import *
 
 from sesar_api.serializers import SampleSerializer
-from sesar_api.util import get_samples, get_group_user_codes_with_permission, get_paginated_queryset
+from sesar_api.models import Sample
+from sesar_api.util import get_samples, get_group_user_codes_with_permission, get_paginated_queryset, generate_sample_jsonld
 
 
 # get all viewable samples in user group
@@ -74,3 +75,16 @@ def get_igsn_list_for_sitemap(request):
         return Response(igsns, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(e, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_sample_jsonld(request):
+    igsn = request.GET.get('igsn')
+
+    try:
+        sample = Sample.objects.get(igsn=igsn)
+
+        return Response(generate_sample_jsonld(sample), status=status.HTTP_200_OK)
+    except Sample.DoesNotExist:
+        return Response({'error': 'Sample does not exist'}, status=status.HTTP_404_NOT_FOUND)

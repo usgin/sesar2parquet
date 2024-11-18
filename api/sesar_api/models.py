@@ -97,6 +97,9 @@ class Classification(models.Model):
         managed = False
         db_table = 'classification'
 
+    def __str__(self):
+        return self.name
+
 
 class Country(models.Model):
     country_id = models.AutoField(primary_key=True)
@@ -236,7 +239,7 @@ class Sample(models.Model):
 
 class SampleAdditionalName(models.Model):
     sample_additional_name_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True, related_name="other_names")
     name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
@@ -246,7 +249,7 @@ class SampleAdditionalName(models.Model):
 
 class SampleDoc(models.Model):
     sample_doc_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True, related_name="sample_docs")
     primary_image = models.IntegerField(blank=True, null=True)
     file_name = models.CharField(max_length=2048, blank=True, null=True)
     path_to_file = models.CharField(max_length=400, blank=True, null=True)
@@ -274,7 +277,7 @@ class SampleExternalIdentifier(models.Model):
 
 class SamplePublicationUrl(models.Model):
     sample_publication_url_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True, related_name="publication_urls")
     url = models.CharField(max_length=300, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
     url_type = models.CharField(max_length=25, blank=True, null=True)
