@@ -40,13 +40,13 @@ def view_group_user_codes(request, name):
     try:
         group = Group.objects.get(name=name, part_of_group__isnull=True)
     
-        if group and group.user_codes:
+        if group and group.user_codes.count() > 0:
             serializer = UserCodeSerializer(group.user_codes, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'No group owned user codes found'}, status=status.HTTP_404_NOT_FOUND)
     except Group.DoesNotExist:
-        Response(status=status.HTTP_404_NOT_FOUND)
+        Response({'error': 'Group does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['POST'])
