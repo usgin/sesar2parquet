@@ -188,7 +188,8 @@ SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id_connect.OpenIdConnectAuth',
-    'django.contrib.auth.backends.ModelBackend'
+    'django.contrib.auth.backends.ModelBackend',
+    'sesar_api.backends.ORCIDAuthenticationBackend',
 )
 
 SOCIAL_AUTH_PIPELINE = (
