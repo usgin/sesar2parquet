@@ -1,9 +1,6 @@
 from django.urls import path, re_path
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenBlacklistView
-)
+from rest_framework_simplejwt.views import TokenBlacklistView
+from sesar_api.views import CustomTokenRefreshView
 
 from . import views
 
@@ -14,9 +11,10 @@ urlpatterns = [
     path('auth/user/', views.user_details),
     path('auth/logout/', views.revoke_access_token),
     path("auth/token/", views.get_jwt_for_user, name="token_obtain_pair"),
-    path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("auth/token/refresh/", CustomTokenRefreshView.as_view(), name="token_refresh"),
     path('auth/token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist'),
     path('auth/token/blacklist-all/', views.revoke_all_jwt_for_user),
+    path("auth/token/<str:connection>/", views.get_jwt_for_user_with_connection),
     path('group/create/', views.create_group),
     path('group/user-membership/', views.view_user_groups),
     path('group/update/', views.update_group),
