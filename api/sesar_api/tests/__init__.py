@@ -1,4 +1,5 @@
-from .permissions_test import *
+from .sample_permissions_test import *
+from .user_code_permissions_test import *
 from .group_test import *
 from .group_member_test import *
 from .group_team_test import *
