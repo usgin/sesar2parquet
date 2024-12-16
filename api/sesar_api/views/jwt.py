@@ -1,4 +1,6 @@
 from django.contrib.auth import authenticate
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -75,8 +77,21 @@ def get_jwt_for_user(request):
 @permission_classes([AllowAny])
 def get_jwt_for_user_with_connection(request, connection):
     try:
-        token = request.POST.get("token")
-        user = authenticate(request, token=token)
+        user = None
+        # Check for TokenAuthentication
+        try:
+            token_auth = TokenAuthentication()
+            result = token_auth.authenticate(request)
+            if result is not None:
+                user, token = result
+        except AuthenticationFailed:
+            pass
+
+        # Check for ORCID ID Token using custom authentication backend
+        if user is None:
+            token = request.POST.get("token")
+            user = authenticate(request, token=token)
+
         if user is None:
             return Response(
                 {
