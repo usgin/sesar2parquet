@@ -4,6 +4,7 @@ import re
 from sesar_api.models import Permission, Group, GroupMember, SesarUser, SesarUserCode, Sample, SesarRole
 from django.contrib.auth.models import Group as AuthGroup
 from django.utils import timezone
+from datetime import timedelta
  
 
 class PermissionSerializer(serializers.ModelSerializer):
@@ -37,11 +38,17 @@ class PermissionWriteSerializer(serializers.ModelSerializer):
     def validate_activate_date(self, value):
         if value == None:
             return self.Meta.model._meta.get_field('activate_date').get_default()
-        
-        today = timezone.now()
-        if value < today:
-            raise serializers.ValidationError("The activate date cannot be in the past.")
-        
+
+        # set today start to yesterday to give a buffer for any timezone descrepancies
+        now = timezone.now()
+        today_start = (now - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+
+        # Validation: Ensure the value is not before today
+        if value < today_start:
+            raise serializers.ValidationError(
+                f"The activate date ({value}) cannot be in the past.({today_start})"
+            )
+
         return value
 
     def validate_deactivate_date(self, value):
