@@ -152,7 +152,7 @@ class Sample(models.Model):
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING)
     req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True, null=True)
     igsn = models.CharField(unique=True, max_length=64)
-    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code', related_name='samples')
+    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code', related_name='samples', blank=True, null=True)
     igsn_digit = models.CharField(max_length=29, blank=True, null=True)
     igsn_to_int = models.BigIntegerField(unique=True, blank=True, null=True)
     igsn_is_system_assigned = models.IntegerField(blank=True, null=True)
