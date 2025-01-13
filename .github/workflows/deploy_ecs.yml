@@ -45,7 +45,7 @@ jobs:
           container-name: ${{ inputs.APPLICATION }}
           image: ${{ steps.login-ecr.outputs.registry }}/${{ inputs.APPLICATION }}:${{ env.SHA }}
       - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ inputs.ENVIRONMENT }}-${{ inputs.APPLICATION }}
