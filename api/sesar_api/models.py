@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from django.db.models import Index
+from django.db.models import Index, Q
 from django.contrib.auth.models import AbstractUser, Group as AuthGroup
 from django.conf import settings
 from django.utils import timezone
@@ -59,6 +59,7 @@ class SesarUser(models.Model):
 class Group(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=64)
+    display_name = models.CharField(max_length=64)
     description = models.CharField(max_length=255, blank=True, null=True)
     contact_email = models.EmailField(max_length=255, blank=False, null=True)
     activate_date = models.DateTimeField(default=timezone.now)
@@ -69,7 +70,18 @@ class Group(models.Model):
 
     class Meta:
         db_table = 'group'
-        unique_together = ('name', 'part_of_group')
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'part_of_group'],
+                name='unique_name_group',
+                condition=Q(part_of_group__isnull=False)
+            ),
+            models.UniqueConstraint(
+                fields=['name'],
+                name='unique_name_when_no_group',
+                condition=Q(part_of_group__isnull=True)
+            )
+        ]
 
     def __str__(self):
         return self.name

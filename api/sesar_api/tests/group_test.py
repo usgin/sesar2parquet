@@ -54,7 +54,7 @@ class GroupTestCase(TestCase):
         force_authenticate(request, user=self.user)
         response = create_group(request)
         self.assertEqual(response.status_code, 201)
-        self.assertTrue(Group.objects.filter(name='NewOrg').exists())
+        self.assertTrue(Group.objects.filter(name='neworg').exists())
 
 
     def test_update_group(self):

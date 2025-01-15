@@ -7,6 +7,7 @@ from datetime import *
 from sesar_api.models import Group, GroupMember, SesarUser, Permission
 from sesar_api.serializers import TeamSerializer, TeamWriteSerializer, SesarUserSerializer, PermissionSerializer
 from sesar_api.permissions import CanAddGroupMember, CanDeleteGroupMember, CanAddGroup, CanChangeGroup, CanDeleteGroup
+from sesar_api.views.group import normalize_name
 
 
 # view all group teams
@@ -61,10 +62,14 @@ def view_group_team(request, group, team):
 # create group team, admin only
 @api_view(['POST'])
 def create_group_team(request):
+    data = request.data.copy()
+    data['name'] = data['name'].strip()
+    data['display_name'] = data['name']
+    data['name'] = normalize_name(data['name'])
     try:
-        group = Group.objects.get(pk=request.data['part_of_group'])
+        group = Group.objects.get(pk=data['part_of_group'])
         if CanAddGroup().has_object_permission(request, None, group):
-            team = TeamWriteSerializer(data=request.data)
+            team = TeamWriteSerializer(data=data)
             if team.is_valid():
                 team.save()
                 return Response(team.data, status=status.HTTP_201_CREATED)

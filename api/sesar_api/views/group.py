@@ -3,17 +3,23 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
+import re
 
 from sesar_api.models import Group, GroupMember
 from sesar_api.serializers import GroupSerializer, GroupWriteSerializer, MemberWriteSerializer
 from sesar_api.permissions import IsGroupOwner, CanChangeGroup
 from django.contrib.auth.models import Group as AuthGroup
 
+
+def normalize_name(name):
+    return re.sub(r'[^a-zA-Z0-9-]', '-', name.strip().lower())
+
+
 # view an group, request user must be a member
 @api_view(['GET'])
 def view_group(request, name):
     try:
-        group = request.user.sesaruser.groups.prefetch_related('members').get(name=name, part_of_group__isnull=True)
+        group = request.user.sesaruser.groups.prefetch_related('members').get(name=name, part_of_group__isnull=True, deactivate_date__isnull=True)
         if group:
             serializer = GroupSerializer(group)
             try:
@@ -34,7 +40,7 @@ def view_group(request, name):
 # get all groups of request user
 @api_view(['GET'])
 def view_user_groups(request):
-    groups = request.user.sesaruser.groups.filter(part_of_group__isnull=True)
+    groups = request.user.sesaruser.groups.filter(part_of_group__isnull=True, deactivate_date__isnull=True)
  
     if groups:
         serializer = GroupSerializer(groups, many=True)
@@ -48,6 +54,9 @@ def view_user_groups(request):
 def create_group(request):
     data = request.data.copy()
     data['owner'] = request.user.sesaruser.orcid
+    data['name'] = data['name'].strip()
+    data['display_name'] = data['name']
+    data['name'] = normalize_name(data['name'])
     group = GroupWriteSerializer(data=data)
     if group.is_valid():
         created_org = group.save()

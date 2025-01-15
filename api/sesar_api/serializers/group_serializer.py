@@ -21,8 +21,8 @@ class GroupSerializer(serializers.ModelSerializer):
     members = SesarUserSerializer(many=True, read_only=True)
     class Meta:
         model = Group
-        fields = ['id', 'owner', 'name', 'description', 'doi_prefix', 'contact_email', 'members']
-        read_only_fields = ['id', 'name', 'description', 'doi_prefix', 'contact_email', 'members']
+        fields = ['id', 'owner', 'name', 'display_name', 'description', 'doi_prefix', 'contact_email', 'members']
+        read_only_fields = ['id', 'name', 'display_name', 'description', 'doi_prefix', 'contact_email', 'members']
 
 
 class GroupWriteSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class GroupWriteSerializer(serializers.ModelSerializer):
     contact_email = serializers.EmailField(required=True, allow_blank=False)
     class Meta:
         model = Group
-        fields = ['owner', 'name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix', 'contact_email']
+        fields = ['owner', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix', 'contact_email']
         read_only_fields = ['activate_date', 'doi_prefix']
 
     def create(self, validated_data):
@@ -49,7 +49,18 @@ class TeamWriteSerializer(serializers.ModelSerializer):
     part_of_group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.filter(part_of_group=None))
     class Meta:
         model = Group
-        fields = ['id', 'part_of_group', 'name', 'description', 'activate_date', 'deactivate_date',]
+        fields = ['id', 'part_of_group', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date',]
+
+    def create(self, validated_data):
+        return Group.objects.create(**validated_data)
+
+    def validate_name(self, value):
+        """
+        Check that the name contains valid characters.
+        """
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_\.-]+[A-Za-z0-9]", value):
+            raise serializers.ValidationError("Name can only contain letters (A-Z), numbers (0-9), underscores (_), periods (.), and hyphens (-).")
+        return value
 
 
 class MemberWriteSerializer(MemberSerializer):
@@ -70,5 +81,5 @@ class TeamSerializer(serializers.ModelSerializer):
     members = SesarUserSerializer(many=True, read_only=True)
     class Meta:
         model = Group
-        fields = ['id', 'part_of_group', 'name', 'description', 'activate_date', 'deactivate_date', 'members']
+        fields = ['id', 'part_of_group', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date', 'members']
         read_only_fields = ['id', 'activate_date', 'deactivate_date']
