@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
+from django.db.models import Q
 import re
 
 from sesar_api.models import Group, GroupMember
@@ -133,4 +134,26 @@ def transfer_group(request):
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+# search for group by name
+@api_view(['GET'])
+def search_groups(request):
+    query = request.GET.get('query', '')
+    limit = int(request.GET.get('limit', 10))
+    try:
+        # search for user using name or orcid
+        groups = Group.objects.filter(
+            Q(part_of_group__isnull=True) &
+            Q(name__icontains=query) |
+            Q(display_name__icontains=query)
+        )[:limit]
+
+        if groups:
+            serializer = GroupSerializer(groups, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    except:
         return Response(status=status.HTTP_404_NOT_FOUND)
