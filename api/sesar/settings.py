@@ -209,3 +209,19 @@ SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.environ.get('ORCID_OIDC_ENDPOINT', 'https://
 SOCIAL_AUTH_OIDC_KEY = os.environ.get('ORCID_CLIENT_ID')
 SOCIAL_AUTH_OIDC_SECRET = os.environ.get('ORCID_CLIENT_SECRET')
 SOCIAL_AUTH_OIDC_USERNAME_KEY = 'sub'
+
+# Use Django's SMTP backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SMTP Settings for AWS SES
+EMAIL_HOST = os.environ.get('SMTP_HOST')
+EMAIL_PORT = os.environ.get('SMTP_PORT')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+# SES SMTP credentials
+EMAIL_HOST_USER = os.environ.get('SMTP_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD')
+
+# Default From Email (must be a verified email address in SES)
+DEFAULT_FROM_EMAIL = 'info@geosamples.org'
