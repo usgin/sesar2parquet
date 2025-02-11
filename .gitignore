@@ -2,3 +2,4 @@
 /api/smrvenv
 /api/.idea
 /api/smrvenv
+*.pyc
