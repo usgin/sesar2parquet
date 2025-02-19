@@ -4,9 +4,10 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from sesar_api.models import Group, GroupMember
+from sesar_api.models import Group, GroupMember, SesarUser
 from sesar_api.serializers import MemberSerializer, MemberWriteSerializer
 from sesar_api.permissions import CanAddGroupMember, CanChangeGroupMember, CanDeleteGroupMember
+from sesar_api.util import sesar_email
 
 
 # view all group members
@@ -37,6 +38,19 @@ def create_group_member(request):
         if CanAddGroupMember().has_object_permission(request, None, group):
             member = MemberWriteSerializer(data=request.data)
             if member.is_valid():
+                domain = request.get_host().replace("api", "app")
+                link = domain + '/t/' + group.name
+                recipient = SesarUser.objects.get(sesar_user_id=request.data['sesar_user'])
+                sesar_email(
+                    [recipient], 
+                    f"You've been invited to the {group.display_name} team!",
+                    f"Invited by {request.user.sesaruser.fname} {request.user.sesaruser.lname}",
+                    None,
+                    button={
+                        'href': link,
+                        'text': f'Join {group.display_name}'
+                    }
+                )
                 new_member = member.save()
                 return Response(MemberSerializer(new_member).data, status=status.HTTP_201_CREATED)
             else:
