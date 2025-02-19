@@ -70,7 +70,7 @@ def update_group_member(request):
 def delete_group_member(request):
     try:
         member = GroupMember.objects.get(pk=request.data['id'])
-        if CanDeleteGroupMember().has_object_permission(request, None, member.group):
+        if CanDeleteGroupMember(member).has_object_permission(request, None, member.group):
             member.delete()
             return Response({'message': 'group member deleted'}, status=status.HTTP_200_OK)
         else:

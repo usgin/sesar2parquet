@@ -12,8 +12,8 @@ class MemberSerializer(serializers.ModelSerializer):
     sesar_user = SesarUserSerializer(read_only=True)
     class Meta:
         model = GroupMember
-        fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date']
-        read_only_fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date']
+        fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date', 'status']
+        read_only_fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date', 'status']
 
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -69,7 +69,7 @@ class MemberWriteSerializer(MemberSerializer):
     auth_group = serializers.SlugRelatedField(queryset=AuthGroup.objects.all(), required=False, slug_field='name')
     class Meta:
         model = GroupMember
-        fields = ['group', 'sesar_user', 'auth_group', 'join_date']
+        fields = ['group', 'sesar_user', 'auth_group', 'join_date', 'status']
         read_only_fields = ['join_date']
 
     def create(self, validated_data):

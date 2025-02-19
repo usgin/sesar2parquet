@@ -61,7 +61,7 @@ class Group(models.Model):
     name = models.CharField(max_length=64)
     display_name = models.CharField(max_length=64)
     description = models.CharField(max_length=255, blank=True, null=True)
-    contact_email = models.EmailField(max_length=255, blank=False, null=True)
+    contact_email = models.EmailField(max_length=255)
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')
@@ -91,6 +91,7 @@ class GroupMember(models.Model):
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     join_date = models.DateTimeField(default=timezone.now)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
+    status = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
         db_table = 'group_member'

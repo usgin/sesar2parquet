@@ -48,6 +48,11 @@ class CanChangeGroupMember(permissions.BasePermission):
 class CanDeleteGroupMember(permissions.BasePermission):
     message = 'Permission denied. Cannot delete group member.'
 
+    def __init__(self, member=None):
+        # for the case where permissions were originally shared to a group, but the user code is not owned by the group
+        # the permissions should only be shared within that group and within the bounds of the original granted permissions
+        self.member = member
+
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             return True
@@ -55,6 +60,8 @@ class CanDeleteGroupMember(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         try:
             if GroupMember.objects.get(group=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='delete_groupmember').exists():
+                return True
+            if request.user.sesaruser == self.member and obj.owner != self.member: # user can remove themselves
                 return True
         except (GroupMember.DoesNotExist, AttributeError):
             return False
