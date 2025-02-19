@@ -22,12 +22,17 @@ def view_group(request, name):
     try:
         group = request.user.sesaruser.groups.prefetch_related('members').get(name=name, part_of_group__isnull=True, deactivate_date__isnull=True)
         if group:
+            group_member = GroupMember.objects.get(sesar_user=request.user.sesaruser, group=group)
+            if group_member.status == 'pending':
+                return Response({
+                    'membership_status': 'pending'
+                }, status=status.HTTP_200_OK)
             serializer = GroupSerializer(group)
             try:
-                permissions = GroupMember.objects.get(sesar_user=request.user.sesaruser, group=group).auth_group.permissions
+                permissions = group_member.auth_group.permissions
                 permissions = list(permissions.values_list('codename', flat=True))
             except AttributeError:
-                permissions = None
+                permissions = []
             return Response({
                 'group': serializer.data,
                 'permissions': permissions

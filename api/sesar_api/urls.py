@@ -29,6 +29,8 @@ urlpatterns = [
     path('group/members/create/', views.create_group_member),
     path('group/members/update/', views.update_group_member),
     path('group/members/delete/', views.delete_group_member),
+    path('team/members/accept-invitation/', views.accept_invitation),
+    path('team/members/decline-invitation/', views.decline_invitation),
     path('group/<str:name>/teams/', views.view_group_teams),
     path('group/<str:group>/teams/<str:team>/', views.view_group_team),
     path('group/teams/create/', views.create_group_team),

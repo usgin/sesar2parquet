@@ -91,3 +91,28 @@ def delete_group_member(request):
             raise PermissionDenied
     except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['POST'])
+def accept_invitation(request):
+    try:
+        group = Group.objects.get(name=request.data['group_name'])
+        member = GroupMember.objects.get(group=group, sesar_user=request.user.sesaruser, status='pending')
+        if member:
+            member.status = None
+            member.save()
+            return Response({'message': 'invitation accepted'}, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist:
+        return Response({'error': 'no pending invitation found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['POST'])
+def decline_invitation(request):
+    try:
+        group = Group.objects.get(name=request.data['group_name'])
+        member = GroupMember.objects.get(group=group, sesar_user=request.user.sesaruser, status='pending')
+        if member:
+            member.delete()
+            return Response({'message': 'invitation declined'}, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist:
+        return Response({'error': 'no pending invitation found'}, status=status.HTTP_404_NOT_FOUND)
