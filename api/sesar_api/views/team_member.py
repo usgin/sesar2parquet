@@ -4,22 +4,22 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from datetime import *
 
-from sesar_api.models import Group, GroupMember, SesarUser
+from sesar_api.models import Team, TeamMember, SesarUser
 from sesar_api.serializers import MemberSerializer, MemberWriteSerializer
-from sesar_api.permissions import CanAddGroupMember, CanChangeGroupMember, CanDeleteGroupMember
+from sesar_api.permissions import CanAddTeamMember, CanChangeTeamMember, CanDeleteTeamMember
 from sesar_api.util import sesar_email
 
 
-# view all group members
+# view all team members
 @api_view(['GET'])
-def view_group_members(request, name):
+def view_team_members(request, name):
     try:
-        part_of_group = request.GET.get('part_of_group', None)
-        if part_of_group:
-            group = request.user.sesaruser.groups.get(name=part_of_group, part_of_group__isnull=True).teams.get(name=name)
+        part_of_team = request.GET.get('part_of_team', None)
+        if part_of_team:
+            team = request.user.sesaruser.teams.get(name=part_of_team, part_of_team__isnull=True).teams.get(name=name)
         else:
-            group = request.user.sesaruser.groups.get(name=name, part_of_group__isnull=True)
-        members = GroupMember.objects.filter(group=group)
+            team = request.user.sesaruser.teams.get(name=name, part_of_team__isnull=True)
+        members = TeamMember.objects.filter(team=team)
 
         if members:
             serializer = MemberSerializer(members, many=True)
@@ -30,25 +30,25 @@ def view_group_members(request, name):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# create group member, admin only
+# create team member, admin only
 @api_view(['POST'])
-def create_group_member(request):
+def create_team_member(request):
     try:
-        group = Group.objects.get(pk=request.data['group'])
-        if CanAddGroupMember().has_object_permission(request, None, group):
+        team = Team.objects.get(pk=request.data['team'])
+        if CanAddTeamMember().has_object_permission(request, None, team):
             member = MemberWriteSerializer(data=request.data)
             if member.is_valid():
                 domain = request.get_host().replace("api", "app")
-                link = domain + '/t/' + group.name
+                link = domain + '/t/' + team.name
                 recipient = SesarUser.objects.get(sesar_user_id=request.data['sesar_user'])
                 sesar_email(
                     [recipient], 
-                    f"You've been invited to the {group.display_name} team!",
+                    f"You've been invited to the {team.display_name} team!",
                     f"Invited by {request.user.sesaruser.fname} {request.user.sesaruser.lname}",
                     None,
                     button={
                         'href': link,
-                        'text': f'Join {group.display_name}'
+                        'text': f'Join {team.display_name}'
                     }
                 )
                 new_member = member.save()
@@ -61,12 +61,12 @@ def create_group_member(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# update group information, admin only
+# update team information, admin only
 @api_view(['POST'])
-def update_group_member(request):
+def update_team_member(request):
     try:
-        member = GroupMember.objects.get(pk=request.data['id'])
-        if CanChangeGroupMember().has_object_permission(request, None, member.group):
+        member = TeamMember.objects.get(pk=request.data['id'])
+        if CanChangeTeamMember().has_object_permission(request, None, member.team):
             serializer = MemberWriteSerializer(member, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -79,14 +79,14 @@ def update_group_member(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# delete group member, admin only
+# delete team member, admin only
 @api_view(['POST'])
-def delete_group_member(request):
+def delete_team_member(request):
     try:
-        member = GroupMember.objects.get(pk=request.data['id'])
-        if CanDeleteGroupMember(member).has_object_permission(request, None, member.group):
+        member = TeamMember.objects.get(pk=request.data['id'])
+        if CanDeleteTeamMember(member).has_object_permission(request, None, member.team):
             member.delete()
-            return Response({'message': 'group member deleted'}, status=status.HTTP_200_OK)
+            return Response({'message': 'team member deleted'}, status=status.HTTP_200_OK)
         else:
             raise PermissionDenied
     except ObjectDoesNotExist:
@@ -96,8 +96,8 @@ def delete_group_member(request):
 @api_view(['POST'])
 def accept_invitation(request):
     try:
-        group = Group.objects.get(name=request.data['group_name'])
-        member = GroupMember.objects.get(group=group, sesar_user=request.user.sesaruser, status='pending')
+        team = Team.objects.get(name=request.data['team_name'])
+        member = TeamMember.objects.get(team=team, sesar_user=request.user.sesaruser, status='pending')
         if member:
             member.status = None
             member.save()
@@ -109,8 +109,8 @@ def accept_invitation(request):
 @api_view(['POST'])
 def decline_invitation(request):
     try:
-        group = Group.objects.get(name=request.data['group_name'])
-        member = GroupMember.objects.get(group=group, sesar_user=request.user.sesaruser, status='pending')
+        team = Team.objects.get(name=request.data['team_name'])
+        member = TeamMember.objects.get(team=team, sesar_user=request.user.sesaruser, status='pending')
         if member:
             member.delete()
             return Response({'message': 'invitation declined'}, status=status.HTTP_200_OK)

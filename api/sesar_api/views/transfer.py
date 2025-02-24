@@ -7,8 +7,8 @@ import os
 import json
 
 from sesar_api.serializers import TransferSerializer, TransferWriteSerializer
-from sesar_api.permissions import CanTransferGroupSample
-from sesar_api.models import TransferHistory, Sample, Group
+from sesar_api.permissions import CanTransferTeamSample
+from sesar_api.models import TransferHistory, Sample, Team
 
 from sesar_api.util import get_samples
 
@@ -17,11 +17,11 @@ from sesar_api.util import get_samples
 @api_view(['GET'])
 def view_transfers(request):
     try:
-        # get group transfers
-        if request.GET.get('group', False):
-            group = Group.objects.get(name=request.GET.get('group'), part_of_group__isnull=True)
-            if CanTransferGroupSample().has_object_permission(request, None, group):
-                transfers = TransferHistory.objects.filter(Q(new_group=group)|Q(orig_group=group))
+        # get team transfers
+        if request.GET.get('team', False):
+            team = Team.objects.get(name=request.GET.get('team'), part_of_team__isnull=True)
+            if CanTransferTeamSample().has_object_permission(request, None, team):
+                transfers = TransferHistory.objects.filter(Q(new_team=team)|Q(orig_team=team))
             else:
                 raise PermissionDenied
         else: # get request user transfers
@@ -39,9 +39,9 @@ def view_transfers(request):
 
 @api_view(['POST'])
 def create_transfer(request): 
-    new_group = request.data.get('new_group') # new group name
+    new_team = request.data.get('new_team') # new team name
     new_user = request.data.get('new_user') # new owner orcid
-    orig_group = request.data.get('orig_group') # current group name
+    orig_team = request.data.get('orig_team') # current team name
     orig_user = request.data.get('orig_user') # current owner orcid
     transfer_type = request.data.get('transfer_type') # values: all, user_code, sample_list
     user_code = request.data.get('user_code') # user code string
@@ -49,12 +49,12 @@ def create_transfer(request):
     sesar_user = request.user.sesaruser
 
     try:
-        # is group transfer
-        if orig_group:
-            group = Group.objects.get(name=orig_group, part_of_group__isnull=True)
-            if CanTransferGroupSample().has_object_permission(request, None, group):
+        # is team transfer
+        if orig_team:
+            team = Team.objects.get(name=orig_team, part_of_team__isnull=True)
+            if CanTransferTeamSample().has_object_permission(request, None, team):
                 filters = {
-                    'group_owner': group,
+                    'team_owner': team,
                 }
             else:
                 raise PermissionDenied
@@ -83,9 +83,9 @@ def create_transfer(request):
             serializer_data = {
                 'transfer_by': sesar_user.pk,
                 'orig_user': orig_user,
-                'orig_group': orig_group,
+                'orig_team': orig_team,
                 'new_user': new_user,
-                'new_group': new_group,
+                'new_team': new_team,
                 'status': 'pending',
                 'data': {
                     'igsns': list(samples.values_list('igsn', flat=True))
@@ -94,7 +94,7 @@ def create_transfer(request):
             transfer = TransferWriteSerializer(data=serializer_data)
             if transfer.is_valid():
                 new_transfer = transfer.save()
-                samples.update(cur_owner=int(os.environ.get('SESAR_OWNER')), group_owner=None)
+                samples.update(cur_owner=int(os.environ.get('SESAR_OWNER')), team_owner=None)
                 return Response(TransferSerializer(new_transfer).data, status=status.HTTP_201_CREATED)
             else:
                 return Response(transfer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -118,24 +118,24 @@ def update_transfer(request):
             # check user is recipient
             if transfer.new_user and transfer.new_user == sesar_user:
                 if transfer_status == 'completed':
-                    samples.update(req_registrant=None, cur_owner=transfer.new_user, group_owner=None)
+                    samples.update(req_registrant=None, cur_owner=transfer.new_user, team_owner=None)
                 else: # rejected
-                    samples.update(req_registrant=None, cur_owner=transfer.orig_user, group_owner=transfer.orig_group)
-            # check user has permissions to manage transfer for group
-            elif transfer.new_group and CanTransferGroupSample().has_object_permission(request, None, transfer.new_group):
+                    samples.update(req_registrant=None, cur_owner=transfer.orig_user, team_owner=transfer.orig_team)
+            # check user has permissions to manage transfer for team
+            elif transfer.new_team and CanTransferTeamSample().has_object_permission(request, None, transfer.new_team):
                 if transfer_status == 'completed':
-                    samples.update(req_registrant=None, cur_owner=None, group_owner=transfer.new_group)
+                    samples.update(req_registrant=None, cur_owner=None, team_owner=transfer.new_team)
                 else: # rejected
-                    samples.update(req_registrant=None, cur_owner=transfer.orig_user, group_owner=transfer.orig_group)
+                    samples.update(req_registrant=None, cur_owner=transfer.orig_user, team_owner=transfer.orig_team)
             else:
                 raise PermissionDenied
         elif transfer_status == 'canceled':
             # check user is initiator
             if transfer.orig_user and transfer.orig_user == sesar_user:
-                samples.update(req_registrant=None, cur_owner=transfer.orig_user, group_owner=transfer.orig_group)
-            # check user has permissions to manage transfer for group
-            elif transfer.orig_group and CanTransferGroupSample().has_object_permission(request, None, transfer.orig_group):
-                samples.update(req_registrant=None, cur_owner=transfer.orig_user, group_owner=transfer.orig_group)
+                samples.update(req_registrant=None, cur_owner=transfer.orig_user, team_owner=transfer.orig_team)
+            # check user has permissions to manage transfer for team
+            elif transfer.orig_team and CanTransferTeamSample().has_object_permission(request, None, transfer.orig_team):
+                samples.update(req_registrant=None, cur_owner=transfer.orig_user, team_owner=transfer.orig_team)
             else:
                 raise PermissionDenied
 

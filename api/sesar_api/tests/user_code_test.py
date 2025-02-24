@@ -14,9 +14,9 @@ class UserCodeTestCase(TestCase):
         self.user = User.objects.create(username='user')
         self.user_su = SesarUser.objects.create(auth_user=self.user, fname='User', lname='1', orcid='0000-0000-0001')
 
-        self.group = Group.objects.create(name="group", owner=self.user_su, contact_email='test@gmail.com')
-        GroupMember.objects.create(group=self.group, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Group Owner'))
-        self.user_code = SesarUserCode.objects.create(group=self.group, user_code='IE001')
+        self.team = Team.objects.create(name="team", owner=self.user_su, contact_email='test@gmail.com')
+        TeamMember.objects.create(team=self.team, sesar_user=self.user_su, auth_group=AuthGroup.objects.get(name='Team Owner'))
+        self.user_code = SesarUserCode.objects.create(team=self.team, user_code='IE001')
         self.user_code2 = SesarUserCode.objects.create(sesar_user=self.user_su, user_code='IE002')
 
 
@@ -38,18 +38,18 @@ class UserCodeTestCase(TestCase):
         response = view_user_user_codes(request)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 1)
-        self.assertTrue({'sesar_user': '0000-0000-0001', 'group': None, 'user_code': 'IE002', 'doi_prefix': '10.58052/', 'sample_count': 0} in response.data)
+        self.assertTrue({'sesar_user': '0000-0000-0001', 'team': None, 'user_code': 'IE002', 'doi_prefix': '10.58052/', 'sample_count': 0} in response.data)
 
 
-    def test_view_group_user_codes(self):
+    def test_view_team_user_codes(self):
         """Can view a user's user codes"""
-        request = self.factory.get('/api/group/<group_name>/usercodes/')
+        request = self.factory.get('/api/team/<team_name>/usercodes/')
         request.user = self.user
         force_authenticate(request, user=self.user)
-        response = view_group_user_codes(request, name='group')
+        response = view_team_user_codes(request, name='team')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 1)
-        self.assertTrue({'sesar_user': None, 'group': 'group', 'user_code': 'IE001', 'doi_prefix': '10.58052/', 'sample_count': 0} in response.data)
+        self.assertTrue({'sesar_user': None, 'team': 'team', 'user_code': 'IE001', 'doi_prefix': '10.58052/', 'sample_count': 0} in response.data)
 
 
     def test_create_user_code(self):
@@ -67,7 +67,7 @@ class UserCodeTestCase(TestCase):
 
         data = {
             'user_code': 'IE004',
-            'group': 'group'
+            'team': 'team'
         }
         request = self.factory.post('/api/usercode/create/', data)
         request.user = self.user

@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from sesar_api.models import GroupMember, Permission
+from sesar_api.models import TeamMember, Permission
 
 
 class BaseUserCodePermission(permissions.BasePermission):
@@ -9,22 +9,22 @@ class BaseUserCodePermission(permissions.BasePermission):
     def user_owns_user_code(self, user_code, sesar_user):
         return user_code.sesar_user == sesar_user
 
-    def user_has_group_permission(self, group, sesar_user, codename):
+    def user_has_team_permission(self, team, sesar_user, codename):
         try:
             return (
-                group and
-                GroupMember.objects.get(group=group, sesar_user=sesar_user)
+                team and
+                TeamMember.objects.get(team=team, sesar_user=sesar_user)
                 .auth_group.permissions.filter(codename=codename)
                 .exists()
             )
-        except (GroupMember.DoesNotExist, AttributeError):
+        except (TeamMember.DoesNotExist, AttributeError):
             return False
 
     def user_has_shared_permission(self, user_code, sesar_user, role_check, codename):
         all_permissions = Permission.objects.filter(user_code=user_code)
 
         for permission in all_permissions:
-            # Check legacy roles or auth group permissions
+            # Check legacy roles or auth team permissions
             if (
                 (permission.sesar_role and role_check in permission.sesar_role.sesar_role_name) or
                 (permission.auth_group and permission.auth_group.permissions.filter(codename=codename).exists())
@@ -37,14 +37,14 @@ class BaseUserCodePermission(permissions.BasePermission):
                 ):
                     return True
 
-                # Permissions shared with user's group
-                if self.user_has_group_permission(permission.group, sesar_user, codename):
+                # Permissions shared with user's team
+                if self.user_has_team_permission(permission.team, sesar_user, codename):
                     return True
 
-                # Permissions shared with subgroup teams
+                # Permissions shared with subteam teams
                 if (
-                    permission.group and permission.group.part_of_group and
-                    permission.group.members.contains(sesar_user)
+                    permission.team and permission.team.part_of_team and
+                    permission.team.members.contains(sesar_user)
                 ):
                     return True
 
@@ -58,8 +58,8 @@ class BaseUserCodePermission(permissions.BasePermission):
         if self.user_owns_user_code(user_code, sesar_user):
             return True
 
-        # Group permission checks
-        if self.user_has_group_permission(user_code.group, sesar_user, codename):
+        # Team permission checks
+        if self.user_has_team_permission(user_code.team, sesar_user, codename):
             return True
 
         # Staff permission check
@@ -74,19 +74,19 @@ class BaseUserCodePermission(permissions.BasePermission):
 
 
 class IsUserCodeOwner(permissions.BasePermission):
-    message = 'Permission denied. This user code is not owned by you or your group'
+    message = 'Permission denied. This user code is not owned by you or your team'
 
-    def __init__(self, group=None):
-        self.group = group
+    def __init__(self, team=None):
+        self.team = team
 
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             return True
 
     def has_object_permission(self, request, view, obj):
-        # user code is owned by request user or passed in group object
+        # user code is owned by request user or passed in team object
         return (obj.sesar_user == request.user.sesaruser 
-            or (obj.group is not None and obj.group == self.group))
+            or (obj.team is not None and obj.team == self.team))
 
 
 

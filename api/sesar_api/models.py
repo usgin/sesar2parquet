@@ -56,7 +56,7 @@ class SesarUser(models.Model):
             output += ' (' + self.orcid + ')'
         return  output
 
-class Group(models.Model):
+class Team(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=64)
     display_name = models.CharField(max_length=64)
@@ -65,37 +65,37 @@ class Group(models.Model):
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     doi_prefix = models.CharField(max_length=16, default='10.58052/')
-    members = models.ManyToManyField(SesarUser, related_name='groups', through='GroupMember')
-    part_of_group = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='teams')
+    members = models.ManyToManyField(SesarUser, related_name='teams', through='TeamMember')
+    part_of_team = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='subteams')
 
     class Meta:
-        db_table = 'group'
+        db_table = 'team'
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'part_of_group'],
-                name='unique_name_group',
-                condition=Q(part_of_group__isnull=False)
+                fields=['name', 'part_of_team'],
+                name='unique_name_team',
+                condition=Q(part_of_team__isnull=False)
             ),
             models.UniqueConstraint(
                 fields=['name'],
-                name='unique_name_when_no_group',
-                condition=Q(part_of_group__isnull=True)
+                name='unique_name_when_no_team',
+                condition=Q(part_of_team__isnull=True)
             )
         ]
 
     def __str__(self):
         return self.name
 
-class GroupMember(models.Model):
-    group = models.ForeignKey(Group, models.CASCADE, related_name='groups')
+class TeamMember(models.Model):
+    team = models.ForeignKey(Team, models.CASCADE, related_name='teams')
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     join_date = models.DateTimeField(default=timezone.now)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
     status = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
-        db_table = 'group_member'
-        unique_together = ('group', 'sesar_user')
+        db_table = 'team_member'
+        unique_together = ('team', 'sesar_user')
 
 
 class Classification(models.Model):
@@ -238,15 +238,15 @@ class Sample(models.Model):
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
     orig_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True, null=True)
     cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
-    group_owner = models.ForeignKey(Group, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    team_owner = models.ForeignKey(Team, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'sample'
         indexes = [
-            Index(fields=['group_owner'], 
-            name='sample_g_owner_non_null_idx',
-            condition=models.Q(group_owner__isnull=False)),
+            Index(fields=['team_owner'], 
+            name='sample_t_owner_non_null_idx',
+            condition=models.Q(team_owner__isnull=False)),
         ]
 
 
@@ -340,7 +340,7 @@ class SesarRole(models.Model):
 
 class SesarUserCode(models.Model):
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
-    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
+    team = models.ForeignKey(Team, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
     user_code = models.CharField(unique=True, max_length=5)
     is_available = models.IntegerField(blank=True, null=True, default=1)
     igsn_count = models.BigIntegerField(blank=True, null=True)
@@ -363,9 +363,9 @@ class Permission(models.Model):
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
-    group = models.ForeignKey(Group, models.CASCADE, related_name='permissions', blank=True, null=True)
+    team = models.ForeignKey(Team, models.CASCADE, related_name='permissions', blank=True, null=True)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
-    granted_by_group = models.ForeignKey(Group, models.CASCADE, related_name='granted_permissions', blank=True, null=True)
+    granted_by_team = models.ForeignKey(Team, models.CASCADE, related_name='granted_permissions', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -378,10 +378,10 @@ class TransferHistory(models.Model):
     transfer_by = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_created')
     transfer_time = models.DateTimeField(default=timezone.now)
     orig_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
-    orig_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
+    orig_team = models.ForeignKey(Team, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
     data = models.JSONField(blank=True, null=True)
     new_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
-    new_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
+    new_team = models.ForeignKey(Team, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
     status = models.CharField(max_length=32, default='pending')
 
     class Meta:

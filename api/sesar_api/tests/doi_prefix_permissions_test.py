@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 from parameterized import parameterized
-from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Group, GroupMember, Permission
+from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Team, TeamMember, Permission
 from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import CanCreateSampleOnDoiPrefix
 from django.core.management import call_command
@@ -13,7 +13,7 @@ class DoiPrefixPermissionTestCase(TestCase):
         self.factory = RequestFactory()
         self.create_auth_groups()
         self.create_users()
-        self.create_user_group_structure()
+        self.create_team_structure()
 
     def create_auth_groups(self):
         """Helper to create and retrieve permission groups."""
@@ -23,53 +23,53 @@ class DoiPrefixPermissionTestCase(TestCase):
             "CR": AuthGroup.objects.get(name="Read Create"),
             "CRE": AuthGroup.objects.get(name="Read Create Edit"),
             "CRED": AuthGroup.objects.get(name="Read Create Edit Deactivate"),
-            "OWNER": AuthGroup.objects.get(name="Group Owner"),
-            "ADMIN": AuthGroup.objects.get(name="Group Admin"),
+            "OWNER": AuthGroup.objects.get(name="Team Owner"),
+            "ADMIN": AuthGroup.objects.get(name="Team Admin"),
         }
 
     def create_users(self):
-        """Helper to create users and assign them to groups."""
+        """Helper to create users and assign them to teams."""
         # Create users
         self.staff_user = User.objects.create(username="Staff", is_staff=True)
         self.no_permission_user = User.objects.create(username="NoPermissionUser")
-        self.group_admin_user = User.objects.create(username="GroupAdmin")
-        self.group_member_has_perms_user = User.objects.create(username="GroupMemberHasPerms")
-        self.group_member_no_perms_user = User.objects.create(username="GroupMemberNoPerms")
+        self.team_admin_user = User.objects.create(username="TeamAdmin")
+        self.team_member_has_perms_user = User.objects.create(username="TeamMemberHasPerms")
+        self.team_member_no_perms_user = User.objects.create(username="TeamMemberNoPerms")
 
         # Wrap users in SesarUser model
         self.staff_su = SesarUser.objects.create(auth_user=self.staff_user)
         self.no_permission_su = SesarUser.objects.create(auth_user=self.no_permission_user)
-        self.group_admin_su = SesarUser.objects.create(auth_user=self.group_admin_user)
-        self.group_member_has_perms_su = SesarUser.objects.create(auth_user=self.group_member_has_perms_user)
-        self.group_member_no_perms_su = SesarUser.objects.create(auth_user=self.group_member_no_perms_user)
+        self.team_admin_su = SesarUser.objects.create(auth_user=self.team_admin_user)
+        self.team_member_has_perms_su = SesarUser.objects.create(auth_user=self.team_member_has_perms_user)
+        self.team_member_no_perms_su = SesarUser.objects.create(auth_user=self.team_member_no_perms_user)
 
-    def create_user_group_structure(self):
-        # create group and subgroup
-        self.group = Group.objects.create(name="Group", owner=self.group_admin_su, doi_prefix="10.1234/")
-        self.group_team = Group.objects.create(name="Team", part_of_group=self.group)
+    def create_team_structure(self):
+        # create team and subteam
+        self.team = Team.objects.create(name="Team", owner=self.team_admin_su, doi_prefix="10.1234/")
+        self.team_team = Team.objects.create(name="Team", part_of_team=self.team)
 
-        # assign group permissions
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_admin_su, 
+        # assign team permissions
+        TeamMember.objects.create(
+            team=self.team, 
+            sesar_user=self.team_admin_su, 
             auth_group=self.AUTH_GROUPS['ADMIN']
         )
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_member_has_perms_su, 
+        TeamMember.objects.create(
+            team=self.team, 
+            sesar_user=self.team_member_has_perms_su, 
             auth_group=self.AUTH_GROUPS['CRED']
         )
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_member_no_perms_su
+        TeamMember.objects.create(
+            team=self.team, 
+            sesar_user=self.team_member_no_perms_su
         )
 
     @parameterized.expand([
         ("staff", "staff_user", "10.1234/", True),
         ("no_permission_user", "no_permission_user", "10.1234/", False),
-        ("group_admin_user", "group_admin_user", "10.1234/", True),
-        ("group_member_has_perms_user", "group_member_has_perms_user", "10.1234/", True),
-        ("group_member_no_perms_user", "group_member_no_perms_user", "10.1234/", False),
+        ("team_admin_user", "team_admin_user", "10.1234/", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "10.1234/", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "10.1234/", False),
     ])
     def test_can_create_sample_on_doi_prefix(self, name, user_attr, doi_prefix, expected):
         """Test CanCreateSampleOnDoiPrefix permission for different users."""

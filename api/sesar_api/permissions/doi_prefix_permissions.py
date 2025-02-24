@@ -1,21 +1,21 @@
 from rest_framework import permissions
-from sesar_api.models import Group, GroupMember
+from sesar_api.models import Team, TeamMember
 
 
 class BaseDoiPrefixPermission(permissions.BasePermission):
     """
     Base permission for handling common logic for sample permissions.
     """
-    def user_has_group_permission(self, groups, sesar_user, codename):
+    def user_has_team_permission(self, teams, sesar_user, codename):
         try:
-            if groups:
-                for group in groups:
-                    if (GroupMember.objects.get(group=group, sesar_user=sesar_user)
+            if teams:
+                for team in teams:
+                    if (TeamMember.objects.get(team=team, sesar_user=sesar_user)
                             .auth_group.permissions.filter(codename=codename)
                             .exists()
                         ):
                         return True
-        except (GroupMember.DoesNotExist, AttributeError):
+        except (TeamMember.DoesNotExist, AttributeError):
             return False
 
 
@@ -23,10 +23,10 @@ class BaseDoiPrefixPermission(permissions.BasePermission):
         doi_prefix = obj
         sesar_user = request.user.sesaruser
 
-        groups = Group.objects.filter(doi_prefix=doi_prefix)
+        teams = Team.objects.filter(doi_prefix=doi_prefix)
 
-        # Group permission checks
-        if self.user_has_group_permission(groups, sesar_user, codename):
+        # Team permission checks
+        if self.user_has_team_permission(teams, sesar_user, codename):
             return True
 
         # Staff permission check

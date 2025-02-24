@@ -6,9 +6,9 @@ from datetime import *
 from django.db.models import Q
 import re
 
-from sesar_api.models import Group, GroupMember
-from sesar_api.serializers import GroupSerializer, GroupWriteSerializer, MemberWriteSerializer
-from sesar_api.permissions import IsGroupOwner, CanChangeGroup
+from sesar_api.models import Team, TeamMember
+from sesar_api.serializers import TeamSerializer, TeamWriteSerializer, MemberWriteSerializer
+from sesar_api.permissions import IsTeamOwner, CanChangeTeam
 from django.contrib.auth.models import Group as AuthGroup
 
 
@@ -16,25 +16,25 @@ def normalize_name(name):
     return re.sub(r'[^a-zA-Z0-9-]', '-', name.strip().lower())
 
 
-# view an group, request user must be a member
+# view a team, request user must be a member
 @api_view(['GET'])
-def view_group(request, name):
+def view_team(request, name):
     try:
-        group = request.user.sesaruser.groups.prefetch_related('members').get(name=name, part_of_group__isnull=True, deactivate_date__isnull=True)
-        if group:
-            group_member = GroupMember.objects.get(sesar_user=request.user.sesaruser, group=group)
-            if group_member.status == 'pending':
+        team = request.user.sesaruser.teams.prefetch_related('members').get(name=name, part_of_team__isnull=True, deactivate_date__isnull=True)
+        if team:
+            team_member = TeamMember.objects.get(sesar_user=request.user.sesaruser, team=team)
+            if team_member.status == 'pending':
                 return Response({
                     'membership_status': 'pending'
                 }, status=status.HTTP_200_OK)
-            serializer = GroupSerializer(group)
+            serializer = TeamSerializer(team)
             try:
-                permissions = group_member.auth_group.permissions
+                permissions = team_member.auth_group.permissions
                 permissions = list(permissions.values_list('codename', flat=True))
             except AttributeError:
                 permissions = []
             return Response({
-                'group': serializer.data,
+                'team': serializer.data,
                 'permissions': permissions
             }, status=status.HTTP_200_OK)
         else:
@@ -43,55 +43,55 @@ def view_group(request, name):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# get all groups of request user
+# get all teams of request user
 @api_view(['GET'])
-def view_user_groups(request):
-    groups = request.user.sesaruser.groups.filter(part_of_group__isnull=True, deactivate_date__isnull=True)
+def view_user_teams(request):
+    teams = request.user.sesaruser.teams.filter(part_of_team__isnull=True, deactivate_date__isnull=True)
  
-    if groups:
-        serializer = GroupSerializer(groups, many=True)
+    if teams:
+        serializer = TeamSerializer(teams, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# create group
+# create team
 @api_view(['POST'])
-def create_group(request):
+def create_team(request):
     data = request.data.copy()
     data['owner'] = request.user.sesaruser.orcid
     data['name'] = data['name'].strip()
     data['display_name'] = data['name']
     data['name'] = normalize_name(data['name'])
-    group = GroupWriteSerializer(data=data)
-    if group.is_valid():
-        created_org = group.save()
+    team = TeamWriteSerializer(data=data)
+    if team.is_valid():
+        created_org = team.save()
         # add owner as a member with owner role
         owner = MemberWriteSerializer(data={
-            'group':created_org.pk,
+            'team':created_org.pk,
             'sesar_user':request.user.sesaruser.pk,
-            'auth_group':'Group Owner'
+            'auth_group':'Team Owner'
         })
         if owner.is_valid():
             owner.save()
         else:
             return Response(owner.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response(group.data, status=status.HTTP_201_CREATED)
+        return Response(team.data, status=status.HTTP_201_CREATED)
     else:
-        return Response(group.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(team.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# update group information, admin only
+# update team information, admin only
 @api_view(['POST'])
-def update_group(request):
+def update_team(request):
     try:
-        if 'part_of_group' in request.data:
-            part_of_group = Group.objects.get(name=request.data['part_of_group'], part_of_group__isnull=True)
+        if 'part_of_team' in request.data:
+            part_of_team = Team.objects.get(name=request.data['part_of_team'], part_of_team__isnull=True)
         else:
-            part_of_group = None
-        group = Group.objects.get(name=request.data['group_name'], deactivate_date=None, part_of_group=part_of_group)
-        if CanChangeGroup().has_object_permission(request, None, group):
-            serializer = GroupWriteSerializer(group, data=request.data, partial=True)
+            part_of_team = None
+        team = Team.objects.get(name=request.data['team_name'], deactivate_date=None, part_of_team=part_of_team)
+        if CanChangeTeam().has_object_permission(request, None, team):
+            serializer = TeamWriteSerializer(team, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -103,16 +103,16 @@ def update_group(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# deactivate group, owner only
+# deactivate team, owner only
 @api_view(['POST'])
-def deactivate_group(request):
+def deactivate_team(request):
     try:
-        group = Group.objects.get(name=request.data['name'], deactivate_date=None)
+        team = Team.objects.get(name=request.data['name'], deactivate_date=None)
 
-        if group.owned_samples_set.exists():
-            return Response({"error": "You cannot deactivate a group that owns samples. Please transfer the ownership of any group owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
-        if IsGroupOwner().has_object_permission(request, None, group):
-            serializer = GroupWriteSerializer(group, data={'deactivate_date':datetime.now()}, partial=True)
+        if team.owned_samples_set.exists():
+            return Response({"error": "You cannot deactivate a team that owns samples. Please transfer the ownership of any team owned samples first."}, status=status.HTTP_400_BAD_REQUEST)
+        if IsTeamOwner().has_object_permission(request, None, team):
+            serializer = TeamWriteSerializer(team, data={'deactivate_date':datetime.now()}, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -124,13 +124,13 @@ def deactivate_group(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# transfer group ownership, owner only
+# transfer team ownership, owner only
 @api_view(['POST'])
-def transfer_group(request):
+def transfer_team(request):
     try:
-        group = Group.objects.get(name=request.data['name'], deactivate_date=None)
-        if IsGroupOwner().has_object_permission(request, None, group):
-            serializer = GroupWriteSerializer(group, data=request.data, partial=True)
+        team = Team.objects.get(name=request.data['name'], deactivate_date=None)
+        if IsTeamOwner().has_object_permission(request, None, team):
+            serializer = TeamWriteSerializer(team, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -142,21 +142,21 @@ def transfer_group(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# search for group by name
+# search for team by name
 @api_view(['GET'])
-def search_groups(request):
+def search_teams(request):
     query = request.GET.get('query', '')
     limit = int(request.GET.get('limit', 10))
     try:
         # search for user using name or orcid
-        groups = Group.objects.filter(
-            Q(part_of_group__isnull=True) &
+        teams = Team.objects.filter(
+            Q(part_of_team__isnull=True) &
             Q(name__icontains=query) |
             Q(display_name__icontains=query)
         )[:limit]
 
-        if groups:
-            serializer = GroupSerializer(groups, many=True)
+        if teams:
+            serializer = TeamSerializer(teams, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)

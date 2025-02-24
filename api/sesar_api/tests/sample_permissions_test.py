@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 from parameterized import parameterized
-from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Group, GroupMember, Permission
+from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Team, TeamMember, Permission
 from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import IsSampleOwner, CanCreateSample, CanEditSample, CanDeactivateSample
 from django.core.management import call_command
@@ -13,7 +13,7 @@ class SamplePermissionTestCase(TestCase):
         self.factory = RequestFactory()
         self.create_auth_groups()
         self.create_users()
-        self.create_user_group_structure()
+        self.create_team_structure()
         self.create_samples()
         self.create_permissions()
 
@@ -25,21 +25,21 @@ class SamplePermissionTestCase(TestCase):
             "CR": AuthGroup.objects.get(name="Read Create"),
             "CRE": AuthGroup.objects.get(name="Read Create Edit"),
             "CRED": AuthGroup.objects.get(name="Read Create Edit Deactivate"),
-            "OWNER": AuthGroup.objects.get(name="Group Owner"),
-            "ADMIN": AuthGroup.objects.get(name="Group Admin"),
+            "OWNER": AuthGroup.objects.get(name="Team Owner"),
+            "ADMIN": AuthGroup.objects.get(name="Team Admin"),
         }
 
     def create_users(self):
-        """Helper to create users and assign them to groups."""
+        """Helper to create users and assign them to teams."""
         # Create users
         self.staff_user = User.objects.create(username="Staff", is_staff=True)
         self.sample_owner_user = User.objects.create(username="SampleOwner")
         self.user_code_owner_user = User.objects.create(username="UserCodeOwner")
         self.no_permission_user = User.objects.create(username="NoPermissionUser")
-        self.group_admin_user = User.objects.create(username="GroupAdmin")
-        self.group_member_has_perms_user = User.objects.create(username="GroupMemberHasPerms")
+        self.team_admin_user = User.objects.create(username="TeamAdmin")
         self.team_member_has_perms_user = User.objects.create(username="TeamMemberHasPerms")
-        self.group_member_no_perms_user = User.objects.create(username="GroupMemberNoPerms")
+        self.subteam_member_has_perms_user = User.objects.create(username="SubTeamMemberHasPerms")
+        self.team_member_no_perms_user = User.objects.create(username="TeamMemberNoPerms")
         self.r_user = User.objects.create(username="r_user")
         self.re_user = User.objects.create(username="re_user")
         self.cr_user = User.objects.create(username="cr_user")
@@ -51,40 +51,40 @@ class SamplePermissionTestCase(TestCase):
         self.sample_owner_su = SesarUser.objects.create(auth_user=self.sample_owner_user)
         self.user_code_owner_su = SesarUser.objects.create(auth_user=self.user_code_owner_user)
         self.no_permission_su = SesarUser.objects.create(auth_user=self.no_permission_user)
-        self.group_admin_su = SesarUser.objects.create(auth_user=self.group_admin_user)
-        self.group_member_has_perms_su = SesarUser.objects.create(auth_user=self.group_member_has_perms_user)
+        self.team_admin_su = SesarUser.objects.create(auth_user=self.team_admin_user)
         self.team_member_has_perms_su = SesarUser.objects.create(auth_user=self.team_member_has_perms_user)
-        self.group_member_no_perms_su = SesarUser.objects.create(auth_user=self.group_member_no_perms_user)
+        self.subteam_member_has_perms_su = SesarUser.objects.create(auth_user=self.subteam_member_has_perms_user)
+        self.team_member_no_perms_su = SesarUser.objects.create(auth_user=self.team_member_no_perms_user)
         self.r_su = SesarUser.objects.create(auth_user=self.r_user)
         self.re_su = SesarUser.objects.create(auth_user=self.re_user)
         self.cr_su = SesarUser.objects.create(auth_user=self.cr_user)
         self.cre_su = SesarUser.objects.create(auth_user=self.cre_user)
         self.cred_su = SesarUser.objects.create(auth_user=self.cred_user)
 
-    def create_user_group_structure(self):
-        # create group and subgroup
-        self.group = Group.objects.create(name="Group", owner=self.group_admin_su)
-        self.group_team = Group.objects.create(name="Team", part_of_group=self.group)
+    def create_team_structure(self):
+        # create team and subteam
+        self.team = Team.objects.create(name="Team", owner=self.team_admin_su)
+        self.subteam = Team.objects.create(name="SubTeam", part_of_team=self.team)
 
-        # assign group permissions
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_admin_su, 
+        # assign team permissions
+        TeamMember.objects.create(
+            team=self.team, 
+            sesar_user=self.team_admin_su, 
             auth_group=self.AUTH_GROUPS['ADMIN']
         )
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_member_has_perms_su, 
-            auth_group=self.AUTH_GROUPS['CRED']
-        )
-        GroupMember.objects.create(
-            group=self.group_team,
+        TeamMember.objects.create(
+            team=self.team, 
             sesar_user=self.team_member_has_perms_su, 
             auth_group=self.AUTH_GROUPS['CRED']
         )
-        GroupMember.objects.create(
-            group=self.group, 
-            sesar_user=self.group_member_no_perms_su
+        TeamMember.objects.create(
+            team=self.subteam,
+            sesar_user=self.subteam_member_has_perms_su, 
+            auth_group=self.AUTH_GROUPS['CRED']
+        )
+        TeamMember.objects.create(
+            team=self.team, 
+            sesar_user=self.team_member_no_perms_su
         )
 
     def create_samples(self):
@@ -94,12 +94,12 @@ class SamplePermissionTestCase(TestCase):
         self.user_code = SesarUserCode.objects.create(
             user_code="IE001", 
             sesar_user=self.user_code_owner_su, 
-            group=self.group
+            team=self.team
         )
         self.user_code_2 = SesarUserCode.objects.create(
             user_code="IE002", 
             sesar_user=self.user_code_owner_su, 
-            group=self.group
+            team=self.team
         )
         self.user_sample = Sample.objects.create(
             name="Sample", 
@@ -109,21 +109,21 @@ class SamplePermissionTestCase(TestCase):
             sample_type=self.sample_type, 
             cur_registrant=self.sample_owner_su
         )
-        self.group_sample = Sample.objects.create(
+        self.team_sample = Sample.objects.create(
             name="Sample", 
             igsn="10.58052/IE002TEST", 
             igsn_prefix=self.user_code_2,
             sample_type=self.sample_type, 
             cur_registrant=self.sample_owner_su, 
-            group_owner=self.group
+            team_owner=self.team
         )
 
     def create_permissions(self):
         # assign team permission
         Permission.objects.create(
-            sample=self.group_sample, 
+            sample=self.team_sample, 
             auth_group=self.AUTH_GROUPS['CRED'], 
-            group=self.group_team
+            team=self.subteam
         )
 
         sample_permissions_to_assign = [
@@ -177,10 +177,10 @@ class SamplePermissionTestCase(TestCase):
         ("cr_user", "cr_user", "user_sample", True),
         ("cre_user", "cre_user", "user_sample", True),
         ("cred_user", "cred_user", "user_sample", True),
-        ("group_admin_user", "group_admin_user", "group_sample", True),
-        ("group_member_has_perms_user", "group_member_has_perms_user", "group_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "group_sample", True),
-        ("group_member_no_perms_user", "group_member_no_perms_user", "group_sample", False),
+        ("team_admin_user", "team_admin_user", "team_sample", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
     ])
     def test_can_create_sample(self, name, user_attr, sample, expected):
         """Test CanCreateSample permission for different users."""
@@ -199,10 +199,10 @@ class SamplePermissionTestCase(TestCase):
         ("cr_user", "cr_user", "user_sample", False),
         ("cre_user", "cre_user", "user_sample", True),
         ("cred_user", "cred_user", "user_sample", True),
-        ("group_admin_user", "group_admin_user", "group_sample", True),
-        ("group_member_has_perms_user", "group_member_has_perms_user", "group_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "group_sample", True),
-        ("group_member_no_perms_user", "group_member_no_perms_user", "group_sample", False),
+        ("team_admin_user", "team_admin_user", "team_sample", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
     ])
     def test_can_edit_sample(self, name, user_attr, sample, expected):
         """Test CanEditSample permission for different users."""
@@ -221,10 +221,10 @@ class SamplePermissionTestCase(TestCase):
         ("cr_user", "cr_user", "user_sample", False),
         ("cre_user", "cre_user", "user_sample", False),
         ("cred_user", "cred_user", "user_sample", True),
-        ("group_admin_user", "group_admin_user", "group_sample", True),
-        ("group_member_has_perms_user", "group_member_has_perms_user", "group_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "group_sample", True),
-        ("group_member_no_perms_user", "group_member_no_perms_user", "group_sample", False),
+        ("team_admin_user", "team_admin_user", "team_sample", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
     ])
     def test_can_deactivate_sample(self, name, user_attr, sample, expected):
         """Test CanDeactivateSample permission for different users."""

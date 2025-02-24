@@ -1,4 +1,4 @@
-from .group_serializer import *
+from .team_serializer import *
 from .permission_serializer import *
 from .sample_serializer import *
 from .sesar_user_serializer import *

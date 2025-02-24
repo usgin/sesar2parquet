@@ -1,40 +1,40 @@
 from django.db.models import fields
 from rest_framework import serializers
 import re
-from sesar_api.models import Group, GroupMember, SesarUser
+from sesar_api.models import Team, TeamMember, SesarUser
 from django.contrib.auth.models import Group as AuthGroup
 from .sesar_user_serializer import SesarUserSerializer
 
 
 class MemberSerializer(serializers.ModelSerializer):
-    group = serializers.StringRelatedField(read_only=True)
+    team = serializers.StringRelatedField(read_only=True)
     auth_group = serializers.StringRelatedField(read_only=True)
     sesar_user = SesarUserSerializer(read_only=True)
     class Meta:
-        model = GroupMember
-        fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date', 'status']
-        read_only_fields = ['id', 'group', 'sesar_user', 'auth_group', 'join_date', 'status']
+        model = TeamMember
+        fields = ['id', 'team', 'sesar_user', 'auth_group', 'join_date', 'status']
+        read_only_fields = ['id', 'team', 'sesar_user', 'auth_group', 'join_date', 'status']
 
 
-class GroupSerializer(serializers.ModelSerializer):
+class TeamSerializer(serializers.ModelSerializer):
     owner = serializers.StringRelatedField(read_only=True)
     members = SesarUserSerializer(many=True, read_only=True)
     class Meta:
-        model = Group
+        model = Team
         fields = ['id', 'owner', 'name', 'display_name', 'description', 'doi_prefix', 'contact_email', 'members']
         read_only_fields = ['id', 'name', 'display_name', 'description', 'doi_prefix', 'contact_email', 'members']
 
 
-class GroupWriteSerializer(serializers.ModelSerializer):
+class TeamWriteSerializer(serializers.ModelSerializer):
     owner = serializers.SlugRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None),slug_field='orcid')
     contact_email = serializers.EmailField(required=True, allow_blank=False)
     class Meta:
-        model = Group
+        model = Team
         fields = ['owner', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date', 'doi_prefix', 'contact_email']
         read_only_fields = ['activate_date', 'doi_prefix']
 
     def create(self, validated_data):
-        return Group.objects.create(**validated_data)
+        return Team.objects.create(**validated_data)
 
     def validate_name(self, value):
         """
@@ -45,14 +45,14 @@ class GroupWriteSerializer(serializers.ModelSerializer):
         return value
 
 
-class TeamWriteSerializer(serializers.ModelSerializer):
-    part_of_group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.filter(part_of_group=None))
+class SubTeamWriteSerializer(serializers.ModelSerializer):
+    part_of_team = serializers.PrimaryKeyRelatedField(queryset=Team.objects.filter(part_of_team=None))
     class Meta:
-        model = Group
-        fields = ['id', 'part_of_group', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date',]
+        model = Team
+        fields = ['id', 'part_of_team', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date',]
 
     def create(self, validated_data):
-        return Group.objects.create(**validated_data)
+        return Team.objects.create(**validated_data)
 
     def validate_name(self, value):
         """
@@ -64,22 +64,22 @@ class TeamWriteSerializer(serializers.ModelSerializer):
 
 
 class MemberWriteSerializer(MemberSerializer):
-    group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all())
+    team = serializers.PrimaryKeyRelatedField(queryset=Team.objects.all())
     sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.filter(deactivation_date=None))
     auth_group = serializers.SlugRelatedField(queryset=AuthGroup.objects.all(), required=False, slug_field='name')
     class Meta:
-        model = GroupMember
-        fields = ['group', 'sesar_user', 'auth_group', 'join_date', 'status']
+        model = TeamMember
+        fields = ['team', 'sesar_user', 'auth_group', 'join_date', 'status']
         read_only_fields = ['join_date']
 
     def create(self, validated_data):
-        return GroupMember.objects.create(**validated_data)
+        return TeamMember.objects.create(**validated_data)
 
 
-class TeamSerializer(serializers.ModelSerializer):
-    part_of_group = GroupSerializer(read_only=True)
+class SubTeamSerializer(serializers.ModelSerializer):
+    part_of_team = TeamSerializer(read_only=True)
     members = SesarUserSerializer(many=True, read_only=True)
     class Meta:
-        model = Group
-        fields = ['id', 'part_of_group', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date', 'members']
+        model = Team
+        fields = ['id', 'part_of_team', 'name', 'display_name', 'description', 'activate_date', 'deactivate_date', 'members']
         read_only_fields = ['id', 'activate_date', 'deactivate_date']

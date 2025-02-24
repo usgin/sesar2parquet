@@ -32,18 +32,18 @@ class TransferTestCase(TestCase):
         self.new_user = User.objects.create(username='new_user')
         self.new_user_su = SesarUser.objects.create(auth_user=self.new_user, fname='New', lname='User', orcid='0000-0000-0002')
 
-        # group admin
-        self.group_admin = User.objects.create(username='group_admin')
-        self.group_admin_su = SesarUser.objects.create(auth_user=self.group_admin, fname='Group', lname='Admin', orcid='0000-0000-0003')
+        # team admin
+        self.team_admin = User.objects.create(username='team_admin')
+        self.team_admin_su = SesarUser.objects.create(auth_user=self.team_admin, fname='Team', lname='Admin', orcid='0000-0000-0003')
 
-        # group owned by admin
-        self.group = Group.objects.create(name="group", owner=self.group_admin_su, contact_email='test@gmail.com')
-        GroupMember.objects.create(group=self.group, sesar_user=self.group_admin_su, auth_group=AuthGroup.objects.get(name='Group Owner'))
-        # group user code
-        self.user_code3 = SesarUserCode.objects.create(group=self.group, user_code='IE003')
-        # group owned samples
-        self.group_sample = Sample.objects.create(name="GroupSample1", igsn="10.58052/IE003TEST", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.group_admin_su, group_owner=self.group)
-        self.group_sample2 = Sample.objects.create(name="GroupSample2", igsn="10.58052/IE003TEST2", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.group_admin_su, group_owner=self.group)
+        # team owned by admin
+        self.team = Team.objects.create(name="team", owner=self.team_admin_su, contact_email='test@gmail.com')
+        TeamMember.objects.create(team=self.team, sesar_user=self.team_admin_su, auth_group=AuthGroup.objects.get(name='Team Owner'))
+        # team user code
+        self.user_code3 = SesarUserCode.objects.create(team=self.team, user_code='IE003')
+        # team owned samples
+        self.team_sample = Sample.objects.create(name="TeamSample1", igsn="10.58052/IE003TEST", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
+        self.team_sample2 = Sample.objects.create(name="TeamSample2", igsn="10.58052/IE003TEST2", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
 
         # user sample pending transfer to new user
         self.user_pending_sample = Sample.objects.create(name="PendingTransferUserSample", igsn="10.58052/IE001TransferMe", igsn_prefix=self.user_code, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
@@ -51,18 +51,18 @@ class TransferTestCase(TestCase):
             'igsns': ['10.58052/IE001TransferMe']
         }
         self.user_transfer = TransferHistory.objects.create(transfer_by=self.orig_user_su, orig_user=self.orig_user_su, new_user=self.new_user_su, data=transfer_data, status='pending')
-        # user sample pending transfer to new group
+        # user sample pending transfer to new team
         self.user_pending_sample2 = Sample.objects.create(name="PendingTransferUserSample2", igsn="10.58052/IE002TransferMe", igsn_prefix=self.user_code2, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
         transfer_data = {
             'igsns': ['10.58052/IE002TransferMe']
         }
-        self.user_transfer2 = TransferHistory.objects.create(transfer_by=self.orig_user_su, orig_user=self.orig_user_su, new_group=self.group, data=transfer_data, status='pending')
-        # group sample pending transfer to new user
-        self.group_pending_sample = Sample.objects.create(name="PendingTransferGroupSample", igsn="10.58052/IE003TransferMe", igsn_prefix=self.user_code3, cur_owner=self.sesar_owner_su, group_owner=None, sample_type=self.sample_type, cur_registrant=self.group_admin_su)
+        self.user_transfer2 = TransferHistory.objects.create(transfer_by=self.orig_user_su, orig_user=self.orig_user_su, new_team=self.team, data=transfer_data, status='pending')
+        # team sample pending transfer to new user
+        self.team_pending_sample = Sample.objects.create(name="PendingTransferTeamSample", igsn="10.58052/IE003TransferMe", igsn_prefix=self.user_code3, cur_owner=self.sesar_owner_su, team_owner=None, sample_type=self.sample_type, cur_registrant=self.team_admin_su)
         transfer_data = {
             'igsns': ['10.58052/IE003TransferMe']
         }
-        self.group_transfer = TransferHistory.objects.create(transfer_by=self.group_admin_su, new_user=self.new_user_su, orig_group=self.group, data=transfer_data, status='pending')
+        self.team_transfer = TransferHistory.objects.create(transfer_by=self.team_admin_su, new_user=self.new_user_su, orig_team=self.team, data=transfer_data, status='pending')
 
 
     def test_view_transfers(self):
@@ -74,9 +74,9 @@ class TransferTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
 
-        request = self.factory.get('/api/transfer/?group=group')
-        request.user = self.group_admin
-        force_authenticate(request, user=self.group_admin)
+        request = self.factory.get('/api/transfer/?team=team')
+        request.user = self.team_admin
+        force_authenticate(request, user=self.team_admin)
         response = view_transfers(request)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
@@ -133,20 +133,20 @@ class TransferTestCase(TestCase):
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 1)
 
     
-    def test_create_transfer_group(self):
-        """Can create transfer for samples in group"""
+    def test_create_transfer_team(self):
+        """Can create transfer for samples in team"""
         data = {
-            'orig_group': 'group',
+            'orig_team': 'team',
             'new_user': '0000-0000-0002',
             'transfer_type': 'all'
         }
         request = self.factory.post('/api/transfer/create/', data)
-        request.user = self.group_admin
-        force_authenticate(request, user=self.group_admin)
+        request.user = self.team_admin
+        force_authenticate(request, user=self.team_admin)
         response = create_transfer(request)
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(TransferHistory.objects.filter(orig_group=self.group).count(), 2)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 0)
+        self.assertEqual(TransferHistory.objects.filter(orig_team=self.team).count(), 2)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 0)
         self.assertEqual(Sample.objects.filter(cur_owner=self.sesar_owner_su).count(), 5)
 
 
@@ -194,38 +194,38 @@ class TransferTestCase(TestCase):
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 4)
 
 
-    def test_update_transfer_to_group_complete(self):
-        """Can complete transfer to group"""
+    def test_update_transfer_to_team_complete(self):
+        """Can complete transfer to team"""
         data = {
             'id': self.user_transfer2.pk,
             'status': 'completed'
         }
         request = self.factory.post('/api/transfer/update/', data)
-        request.user = self.group_admin
-        force_authenticate(request, user=self.group_admin)
+        request.user = self.team_admin
+        force_authenticate(request, user=self.team_admin)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 3)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 3)
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 3)
 
     
-    def test_update_transfer_to_group_reject(self):
-        """Can reject transfer to group"""
+    def test_update_transfer_to_team_reject(self):
+        """Can reject transfer to team"""
         data = {
             'id': self.user_transfer2.pk,
             'status': 'rejected'
         }
         request = self.factory.post('/api/transfer/update/', data)
-        request.user = self.group_admin
-        force_authenticate(request, user=self.group_admin)
+        request.user = self.team_admin
+        force_authenticate(request, user=self.team_admin)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 2)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 2)
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 4)
 
 
-    def test_update_transfer_to_group_cancel(self):
-        """Can cancel transfer to group"""
+    def test_update_transfer_to_team_cancel(self):
+        """Can cancel transfer to team"""
         data = {
             'id': self.user_transfer2.pk,
             'status': 'canceled'
@@ -235,14 +235,14 @@ class TransferTestCase(TestCase):
         force_authenticate(request, user=self.orig_user)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 2)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 2)
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 4)
 
 
-    def test_update_transfer_by_group_complete(self):
-        """Can complete transfer to group"""
+    def test_update_transfer_by_team_complete(self):
+        """Can complete transfer to team"""
         data = {
-            'id': self.group_transfer.pk,
+            'id': self.team_transfer.pk,
             'status': 'completed'
         }
         request = self.factory.post('/api/transfer/update/', data)
@@ -250,14 +250,14 @@ class TransferTestCase(TestCase):
         force_authenticate(request, user=self.new_user)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 2)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 2)
         self.assertEqual(Sample.objects.filter(cur_owner=self.new_user_su).count(), 1)
 
 
-    def test_update_transfer_by_group_reject(self):
-        """Can reject transfer to group"""
+    def test_update_transfer_by_team_reject(self):
+        """Can reject transfer to team"""
         data = {
-            'id': self.group_transfer.pk,
+            'id': self.team_transfer.pk,
             'status': 'rejected'
         }
         request = self.factory.post('/api/transfer/update/', data)
@@ -265,20 +265,20 @@ class TransferTestCase(TestCase):
         force_authenticate(request, user=self.new_user)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 3)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 3)
         self.assertEqual(Sample.objects.filter(cur_owner=self.new_user_su).count(), 0)
 
 
-    def test_update_transfer_by_group_cancel(self):
-        """Can cancel transfer to group"""
+    def test_update_transfer_by_team_cancel(self):
+        """Can cancel transfer to team"""
         data = {
-            'id': self.group_transfer.pk,
+            'id': self.team_transfer.pk,
             'status': 'canceled'
         }
         request = self.factory.post('/api/transfer/update/', data)
-        request.user = self.group_admin
-        force_authenticate(request, user=self.group_admin)
+        request.user = self.team_admin
+        force_authenticate(request, user=self.team_admin)
         response = update_transfer(request)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Sample.objects.filter(group_owner=self.group).count(), 3)
+        self.assertEqual(Sample.objects.filter(team_owner=self.team).count(), 3)
         self.assertEqual(Sample.objects.filter(cur_owner=self.new_user_su).count(), 0)

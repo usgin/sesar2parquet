@@ -3,9 +3,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
-from sesar_api.models import SesarUserCode, Group
+from sesar_api.models import SesarUserCode, Team
 from sesar_api.serializers import UserCodeSerializer, UserCodeWriteSerializer
-from sesar_api.permissions import CanAddGroupUserCode, CanDeleteGroupUserCode
+from sesar_api.permissions import CanAddTeamUserCode, CanDeleteTeamUserCode
 
 
 # view a user code
@@ -34,19 +34,19 @@ def view_user_user_codes(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-# get all user codes of group
+# get all user codes of team
 @api_view(['GET'])
-def view_group_user_codes(request, name):
+def view_team_user_codes(request, name):
     try:
-        group = Group.objects.get(name=name, part_of_group__isnull=True)
+        team = Team.objects.get(name=name, part_of_team__isnull=True)
     
-        if group and group.user_codes.count() > 0:
-            serializer = UserCodeSerializer(group.user_codes, many=True)
+        if team and team.user_codes.count() > 0:
+            serializer = UserCodeSerializer(team.user_codes, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response({'error': 'No group owned user codes found'}, status=status.HTTP_404_NOT_FOUND)
-    except Group.DoesNotExist:
-        Response({'error': 'Group does not exist'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'No team owned user codes found'}, status=status.HTTP_404_NOT_FOUND)
+    except Team.DoesNotExist:
+        Response({'error': 'Team does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['POST'])
@@ -57,10 +57,10 @@ def create_user_code(request):
         # individuals can create user codes they own
         if 'sesar_user' in request.data:
             can_create = True
-        # need to check if user has permissions to create group owned code
-        elif 'group' in request.data:
-            group = request.user.sesaruser.groups.get(name=request.data['group'], part_of_group__isnull=True)
-            if CanAddGroupUserCode().has_object_permission(request, None, group):
+        # need to check if user has permissions to create team owned code
+        elif 'team' in request.data:
+            team = request.user.sesaruser.teams.get(name=request.data['team'], part_of_team__isnull=True)
+            if CanAddTeamUserCode().has_object_permission(request, None, team):
                 can_create = True
 
         if can_create:
@@ -90,9 +90,9 @@ def delete_user_code(request):
         # if owned by individual
         if user_code.sesar_user:
             can_delete = False # TODO: add individual level permission for deletion
-        # if owned by group
-        if user_code.group:
-            if CanDeleteGroupUserCode().has_object_permission(request, None, user_code.group):
+        # if owned by team
+        if user_code.team:
+            if CanDeleteTeamUserCode().has_object_permission(request, None, user_code.team):
                 can_delete = True
 
         if can_delete:
