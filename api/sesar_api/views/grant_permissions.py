@@ -4,9 +4,9 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.db.models import Q
 
-from sesar_api.models import Permission, Team, Sample, SesarUserCode
+from sesar_api.models import Permission, Team, Sample, SesarCode
 from sesar_api.serializers import PermissionSerializer, PermissionWriteSerializer
-from sesar_api.permissions import CanGrantSamplePermission, CanGrantUserCodePermission, CanEditPermission
+from sesar_api.permissions import CanGrantSamplePermission, CanGrantSesarCodePermission, CanEditPermission
 
 
 # get user permissions
@@ -21,7 +21,7 @@ def view_user_permissions(request):
 # get permissions user shared to others
 @api_view(['GET'])
 def view_user_permissions_shared_to_others(request):
-    permissions = Permission.objects.filter(Q(sample__cur_owner=request.user.sesaruser) | Q(user_code__sesar_user=request.user.sesaruser))
+    permissions = Permission.objects.filter(Q(sample__cur_owner=request.user.sesaruser) | Q(sesar_code__sesar_user=request.user.sesaruser))
 
     serializer = PermissionSerializer(permissions, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -55,19 +55,19 @@ def view_team_permissions(request, name):
 def create_permission(request):
     granted_by_team = None
     sample = None
-    user_code = None
+    sesar_code = None
     try:
         if 'granted_by_team' in request.data:
             granted_by_team = Team.objects.filter(pk=request.data['granted_by_team'], part_of_team__isnull=True).first()
         if 'sample' in request.data:
             sample = Sample.objects.filter(igsn=request.data['sample']).first()
-        if 'user_code' in request.data:
-            user_code = SesarUserCode.objects.filter(user_code=request.data['user_code']).first()
+        if 'sesar_code' in request.data:
+            sesar_code = SesarCode.objects.filter(sesar_code=request.data['sesar_code']).first()
 
         auth_group = request.data['auth_group']
 
         if ((sample and CanGrantSamplePermission(granted_by_team, permissions_to_grant=auth_group).has_object_permission(request, None, sample)) or
-            (user_code and CanGrantUserCodePermission(granted_by_team,permissions_to_grant=auth_group).has_object_permission(request, None, user_code))):
+            (sesar_code and CanGrantSesarCodePermission(granted_by_team,permissions_to_grant=auth_group).has_object_permission(request, None, sesar_code))):
                 permission = PermissionWriteSerializer(data=request.data)
                 if permission.is_valid():
                     new_permission = permission.save()

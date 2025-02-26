@@ -2,12 +2,12 @@ from rest_framework import permissions
 from sesar_api.models import TeamMember, Permission
 
 
-class BaseUserCodePermission(permissions.BasePermission):
+class BaseSesarCodePermission(permissions.BasePermission):
     """
-    Base permission for handling common logic for user code permissions.
+    Base permission for handling common logic for sesar code permissions.
     """
-    def user_owns_user_code(self, user_code, sesar_user):
-        return user_code.sesar_user == sesar_user
+    def user_owns_sesar_code(self, sesar_code, sesar_user):
+        return sesar_code.sesar_user == sesar_user
 
     def user_has_team_permission(self, team, sesar_user, codename):
         try:
@@ -20,8 +20,8 @@ class BaseUserCodePermission(permissions.BasePermission):
         except (TeamMember.DoesNotExist, AttributeError):
             return False
 
-    def user_has_shared_permission(self, user_code, sesar_user, role_check, codename):
-        all_permissions = Permission.objects.filter(user_code=user_code)
+    def user_has_shared_permission(self, sesar_code, sesar_user, role_check, codename):
+        all_permissions = Permission.objects.filter(sesar_code=sesar_code)
 
         for permission in all_permissions:
             # Check legacy roles or auth team permissions
@@ -51,15 +51,15 @@ class BaseUserCodePermission(permissions.BasePermission):
         return False
 
     def has_permission_logic(self, request, obj, codename, role_check):
-        user_code = obj
+        sesar_code = obj
         sesar_user = request.user.sesaruser
 
         # User ownership checks
-        if self.user_owns_user_code(user_code, sesar_user):
+        if self.user_owns_sesar_code(sesar_code, sesar_user):
             return True
 
         # Team permission checks
-        if self.user_has_team_permission(user_code.team, sesar_user, codename):
+        if self.user_has_team_permission(sesar_code.team, sesar_user, codename):
             return True
 
         # Staff permission check
@@ -67,14 +67,14 @@ class BaseUserCodePermission(permissions.BasePermission):
             return True
 
         # Shared permissions
-        if self.user_has_shared_permission(user_code, sesar_user, role_check, codename):
+        if self.user_has_shared_permission(sesar_code, sesar_user, role_check, codename):
             return True
 
         return False
 
 
-class IsUserCodeOwner(permissions.BasePermission):
-    message = 'Permission denied. This user code is not owned by you or your team'
+class IsSesarCodeOwner(permissions.BasePermission):
+    message = 'Permission denied. This sesar code is not owned by you or your team'
 
     def __init__(self, team=None):
         self.team = team
@@ -84,14 +84,14 @@ class IsUserCodeOwner(permissions.BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        # user code is owned by request user or passed in team object
+        # sesar code is owned by request user or passed in team object
         return (obj.sesar_user == request.user.sesaruser 
             or (obj.team is not None and obj.team == self.team))
 
 
 
-class CanCreateSampleOnUserCode(BaseUserCodePermission):
-    message = 'Permission denied. Cannot create samples on user code.'
+class CanCreateSampleOnSesarCode(BaseSesarCodePermission):
+    message = 'Permission denied. Cannot create samples on sesar code.'
 
     def has_permission(self, request, view):
         return request.user.is_authenticated
@@ -100,8 +100,8 @@ class CanCreateSampleOnUserCode(BaseUserCodePermission):
         return self.has_permission_logic(request, obj, codename='add_sample', role_check='C')
 
 
-class CanEditSampleOnUserCode(BaseUserCodePermission):
-    message = 'Permission denied. Cannot edit samples on user code.'
+class CanEditSampleOnSesarCode(BaseSesarCodePermission):
+    message = 'Permission denied. Cannot edit samples on sesar code.'
 
     def has_permission(self, request, view):
         return request.user.is_authenticated
@@ -110,8 +110,8 @@ class CanEditSampleOnUserCode(BaseUserCodePermission):
         return self.has_permission_logic(request, obj, codename='change_sample', role_check='E')
 
 
-class CanDeactivateSampleOnUserCode(BaseUserCodePermission):
-    message = 'Permission denied. Cannot deactivate samples on user code.'
+class CanDeactivateSampleOnSesarCode(BaseSesarCodePermission):
+    message = 'Permission denied. Cannot deactivate samples on sesar code.'
 
     def has_permission(self, request, view):
         return request.user.is_authenticated

@@ -27,15 +27,15 @@ class GrantPermissionsTestCase(TestCase):
         self.sample_owner_su = SesarUser.objects.create(
             auth_user=self.sample_owner, 
             fname='Sample', lname='Owner')
-        self.user_code_1 = SesarUserCode.objects.create(user_code="IE001", sesar_user=self.sample_owner_su)
-        self.sample_owner_sample = Sample.objects.create(name="Sample1", igsn="10.58052/IE001TEST", igsn_prefix=self.user_code_1, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
+        self.sesar_code_1 = SesarCode.objects.create(sesar_code="IE001", sesar_user=self.sample_owner_su)
+        self.sample_owner_sample = Sample.objects.create(name="Sample1", igsn="10.58052/IE001TEST", igsn_prefix=self.sesar_code_1, cur_owner=self.sample_owner_su, sample_type=self.sample_type, cur_registrant=self.sample_owner_su)
 
-        # user code owner
-        self.user_code_owner = User.objects.create(username='UserCodeOwner')
-        self.user_code_owner_su = SesarUser.objects.create(
-            auth_user=self.user_code_owner, 
-            fname='UserCode', lname='Owner')
-        self.user_code_2 = SesarUserCode.objects.create(user_code="IE002", sesar_user=self.user_code_owner_su)
+        # Sesar code owner
+        self.sesar_code_owner = User.objects.create(username='SesarCodeOwner')
+        self.sesar_code_owner_su = SesarUser.objects.create(
+            auth_user=self.sesar_code_owner, 
+            fname='SesarCode', lname='Owner')
+        self.sesar_code_2 = SesarCode.objects.create(sesar_code="IE002", sesar_user=self.sesar_code_owner_su)
 
         # permission denied user
         self.random_user = User.objects.create(username='RandomUser')
@@ -47,11 +47,11 @@ class GrantPermissionsTestCase(TestCase):
         self.team1_admin = User.objects.create(username='Admin1')
         self.team1_admin_su = SesarUser.objects.create(auth_user=self.team1_admin)
 
-        # team 1 owns sample and user code
+        # team 1 owns sample and Sesar code
         self.team1 = Team.objects.create(name="Team1", owner=self.team1_admin_su)
         TeamMember.objects.create(team=self.team1, sesar_user=self.team1_admin_su, auth_group=AuthGroup.objects.get(name='Team Owner'))
-        self.user_code_3 = SesarUserCode.objects.create(user_code="IE003", team=self.team1)
-        self.team_owner_sample = Sample.objects.create(name="Sample2", igsn="10.58052/IE003TEST", igsn_prefix=self.user_code_3, team_owner=self.team1, sample_type=self.sample_type, cur_registrant=self.team1_admin_su)
+        self.sesar_code_3 = SesarCode.objects.create(sesar_code="IE003", team=self.team1)
+        self.team_owner_sample = Sample.objects.create(name="Sample2", igsn="10.58052/IE003TEST", igsn_prefix=self.sesar_code_3, team_owner=self.team1, sample_type=self.sample_type, cur_registrant=self.team1_admin_su)
 
         # team 1 member
         self.team1_member = User.objects.create(username='Member1')
@@ -61,7 +61,7 @@ class GrantPermissionsTestCase(TestCase):
         # team 1 subteam with permissions
         self.team1_subteam = Team.objects.create(name='Team1Subteam1', part_of_team=self.team1)
         TeamMember.objects.create(team=self.team1_subteam, sesar_user=self.team1_member_su)
-        self.permission1 = Permission.objects.create(user_code=self.user_code_3, auth_group=self.CRED_group, team=self.team1_subteam, granted_by_team=self.team1)
+        self.permission1 = Permission.objects.create(sesar_code=self.sesar_code_3, auth_group=self.CRED_group, team=self.team1_subteam, granted_by_team=self.team1)
 
         # team 2 (with shared permissions) admin
         self.team2_admin = User.objects.create(username='Admin2')
@@ -77,7 +77,7 @@ class GrantPermissionsTestCase(TestCase):
         TeamMember.objects.create(team=self.team2, sesar_user=self.team2_member_su)
 
         # grant permission to the team
-        self.permission2 = Permission.objects.create(user_code=self.user_code_1, auth_group=self.CRE_group, team=self.team2)
+        self.permission2 = Permission.objects.create(sesar_code=self.sesar_code_1, auth_group=self.CRE_group, team=self.team2)
         self.permission3 = Permission.objects.create(sample=self.team_owner_sample, auth_group=self.CRE_group, team=self.team2, granted_by_team=self.team1)
 
         # user with shared permissions
@@ -99,17 +99,17 @@ class GrantPermissionsTestCase(TestCase):
         self.assertFalse(CanGrantSamplePermission().has_object_permission(request, None, self.sample_owner_sample))
 
 
-    def test_user_code_owner(self):
-        """Can grant permission on owned user code"""
+    def test_sesar_code_owner(self):
+        """Can grant permission on owned Sesar code"""
         request = self.factory.get('/')
 
-        # Test user code owner
-        request.user = self.user_code_owner
-        self.assertTrue(CanGrantUserCodePermission().has_object_permission(request, None, self.user_code_2))
+        # Test Sesar code owner
+        request.user = self.sesar_code_owner
+        self.assertTrue(CanGrantSesarCodePermission().has_object_permission(request, None, self.sesar_code_2))
 
         # Test not sample owner
         request.user = self.random_user
-        self.assertFalse(CanGrantUserCodePermission().has_object_permission(request, None, self.user_code_2))
+        self.assertFalse(CanGrantSesarCodePermission().has_object_permission(request, None, self.sesar_code_2))
 
 
     def test_team_sample_owner(self):
@@ -129,37 +129,37 @@ class GrantPermissionsTestCase(TestCase):
         self.assertFalse(CanGrantSamplePermission().has_object_permission(request, None, self.team_owner_sample))
 
 
-    def test_team_user_code_owner(self):
-        """Can grant permission on team owned user code"""
+    def test_team_sesar_code_owner(self):
+        """Can grant permission on team owned Sesar code"""
         request = self.factory.get('/')
 
         # Test team admin
         request.user = self.team1_admin
-        self.assertTrue(CanGrantUserCodePermission().has_object_permission(request, None, self.user_code_3))
+        self.assertTrue(CanGrantSesarCodePermission().has_object_permission(request, None, self.sesar_code_3))
 
         # Test team member
         request.user = self.team1_member
-        self.assertFalse(CanGrantUserCodePermission().has_object_permission(request, None, self.user_code_3))
+        self.assertFalse(CanGrantSesarCodePermission().has_object_permission(request, None, self.sesar_code_3))
 
         # Test other user
         request.user = self.random_user
-        self.assertFalse(CanGrantUserCodePermission().has_object_permission(request, None, self.user_code_3))
+        self.assertFalse(CanGrantSesarCodePermission().has_object_permission(request, None, self.sesar_code_3))
 
 
-    def test_team_shared_user_code_permissions(self):
-        """Can grant permission user codes that have been shared with the team"""
+    def test_team_shared_sesar_code_permissions(self):
+        """Can grant permission Sesar codes that have been shared with the team"""
         request = self.factory.get('/')
 
         # Test team admin
         request.user = self.team2_admin
         # Test permissions granted to team
-        self.assertTrue(CanGrantUserCodePermission(team=self.team2,permissions_to_grant='Read Create').has_object_permission(request, None, self.user_code_1))
+        self.assertTrue(CanGrantSesarCodePermission(team=self.team2,permissions_to_grant='Read Create').has_object_permission(request, None, self.sesar_code_1))
         # Test permission not granted to team
-        self.assertFalse(CanGrantUserCodePermission(team=self.team2,permissions_to_grant='Read Create_edit_deactivate').has_object_permission(request, None, self.user_code_1))
+        self.assertFalse(CanGrantSesarCodePermission(team=self.team2,permissions_to_grant='Read Create_edit_deactivate').has_object_permission(request, None, self.sesar_code_1))
 
         # Test not admin
         request.user = self.team2_member
-        self.assertFalse(CanGrantUserCodePermission(team=self.team2,permissions_to_grant='Read Create').has_object_permission(request, None, self.user_code_1))
+        self.assertFalse(CanGrantSesarCodePermission(team=self.team2,permissions_to_grant='Read Create').has_object_permission(request, None, self.sesar_code_1))
 
 
     def test_team_shared_sample_permissions(self):
@@ -179,7 +179,7 @@ class GrantPermissionsTestCase(TestCase):
 
 
     def test_can_edit_permission(self):
-        """Can edit permissions of managed samples/usercodes"""
+        """Can edit permissions of managed samples/sesarcodes"""
         request = self.factory.get('/')
 
         # Test sample owner
@@ -229,7 +229,7 @@ class GrantPermissionsTestCase(TestCase):
         response = view_team_permissions(request, name='Team1')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['shared_to_team'], [])
-        self.assertTrue(any(perm.get('user_code') == 'IE003' and perm.get('team') == 'Team1Subteam1' for perm in response.data['shared_by_team']))
+        self.assertTrue(any(perm.get('sesar_code') == 'IE003' and perm.get('team') == 'Team1Subteam1' for perm in response.data['shared_by_team']))
 
         # Test view works with sub teams
         request = self.factory.get('/api/permissions/team/?part_of_team=Team1')
@@ -237,7 +237,7 @@ class GrantPermissionsTestCase(TestCase):
         force_authenticate(request, user=self.sample_owner)
         response = view_team_permissions(request, name='Team1Subteam1')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(any(perm.get('user_code') == 'IE003' and perm.get('team') == 'Team1Subteam1' for perm in response.data['shared_to_team']))
+        self.assertTrue(any(perm.get('sesar_code') == 'IE003' and perm.get('team') == 'Team1Subteam1' for perm in response.data['shared_to_team']))
         self.assertEqual(response.data['shared_by_team'], [])
 
 
@@ -248,7 +248,7 @@ class GrantPermissionsTestCase(TestCase):
             auth_user=self.test_user, 
             fname='Test', lname='User')
         request = self.factory.post('/api/permissions/create/', 
-            {'user_code': 'IE001', 
+            {'sesar_code': 'IE001', 
             'auth_group': 'Read Create Edit Deactivate',
             'sesar_user': self.test_user_su.pk})
         request.user = self.sample_owner
@@ -256,7 +256,7 @@ class GrantPermissionsTestCase(TestCase):
         
         response = create_permission(request)
         self.assertEqual(response.status_code, 201)
-        self.assertTrue(Permission.objects.filter(user_code='IE001', sesar_user=self.test_user_su).exists())
+        self.assertTrue(Permission.objects.filter(sesar_code='IE001', sesar_user=self.test_user_su).exists())
 
 
     def test_update_permission(self):

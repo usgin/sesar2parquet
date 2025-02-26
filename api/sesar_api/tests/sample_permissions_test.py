@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 from parameterized import parameterized
-from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Team, TeamMember, Permission
+from sesar_api.models import User, SesarUser, SampleType, Sample, SesarCode, Team, TeamMember, Permission
 from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import IsSampleOwner, CanCreateSample, CanEditSample, CanDeactivateSample
 from django.core.management import call_command
@@ -34,7 +34,7 @@ class SamplePermissionTestCase(TestCase):
         # Create users
         self.staff_user = User.objects.create(username="Staff", is_staff=True)
         self.sample_owner_user = User.objects.create(username="SampleOwner")
-        self.user_code_owner_user = User.objects.create(username="UserCodeOwner")
+        self.sesar_code_owner_user = User.objects.create(username="SesarCodeOwner")
         self.no_permission_user = User.objects.create(username="NoPermissionUser")
         self.team_admin_user = User.objects.create(username="TeamAdmin")
         self.team_member_has_perms_user = User.objects.create(username="TeamMemberHasPerms")
@@ -49,7 +49,7 @@ class SamplePermissionTestCase(TestCase):
         # Wrap users in SesarUser model
         self.staff_su = SesarUser.objects.create(auth_user=self.staff_user)
         self.sample_owner_su = SesarUser.objects.create(auth_user=self.sample_owner_user)
-        self.user_code_owner_su = SesarUser.objects.create(auth_user=self.user_code_owner_user)
+        self.sesar_code_owner_su = SesarUser.objects.create(auth_user=self.sesar_code_owner_user)
         self.no_permission_su = SesarUser.objects.create(auth_user=self.no_permission_user)
         self.team_admin_su = SesarUser.objects.create(auth_user=self.team_admin_user)
         self.team_member_has_perms_su = SesarUser.objects.create(auth_user=self.team_member_has_perms_user)
@@ -91,20 +91,20 @@ class SamplePermissionTestCase(TestCase):
         """Helper to create sample-related objects."""
         self.sample_type = SampleType.objects.create(name="Sample Type")
 
-        self.user_code = SesarUserCode.objects.create(
-            user_code="IE001", 
-            sesar_user=self.user_code_owner_su, 
+        self.sesar_code = SesarCode.objects.create(
+            sesar_code="IE001", 
+            sesar_user=self.sesar_code_owner_su, 
             team=self.team
         )
-        self.user_code_2 = SesarUserCode.objects.create(
-            user_code="IE002", 
-            sesar_user=self.user_code_owner_su, 
+        self.sesar_code_2 = SesarCode.objects.create(
+            sesar_code="IE002", 
+            sesar_user=self.sesar_code_owner_su, 
             team=self.team
         )
         self.user_sample = Sample.objects.create(
             name="Sample", 
             igsn="10.58052/IE001TEST", 
-            igsn_prefix=self.user_code, 
+            igsn_prefix=self.sesar_code, 
             cur_owner=self.sample_owner_su, 
             sample_type=self.sample_type, 
             cur_registrant=self.sample_owner_su
@@ -112,7 +112,7 @@ class SamplePermissionTestCase(TestCase):
         self.team_sample = Sample.objects.create(
             name="Sample", 
             igsn="10.58052/IE002TEST", 
-            igsn_prefix=self.user_code_2,
+            igsn_prefix=self.sesar_code_2,
             sample_type=self.sample_type, 
             cur_registrant=self.sample_owner_su, 
             team_owner=self.team

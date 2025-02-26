@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 from parameterized import parameterized
-from sesar_api.models import User, SesarUser, SampleType, Sample, SesarUserCode, Team, TeamMember, Permission
+from sesar_api.models import User, SesarUser, Team, TeamMember
 from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import CanCreateSampleOnDoiPrefix
 from django.core.management import call_command

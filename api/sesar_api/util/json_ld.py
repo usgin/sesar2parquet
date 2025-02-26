@@ -75,14 +75,14 @@ def generate_description(sample):
     if sample.archive_date and sample.archive_date <= timezone.now():
         description = {
             "description": "The sample is deleted",
-            "igsnPrefix": sample.igsn_prefix.user_code
+            "igsnPrefix": sample.igsn_prefix.sesar_code
         }
         return description
     # check if sample is private (not published)
     elif sample.publish_date > datetime.datetime.now():
         description = {
             "description": "Sample medata is private",
-            "igsnPrefix": sample.igsn_prefix.user_code
+            "igsnPrefix": sample.igsn_prefix.sesar_code
         }
         return description
 
@@ -219,7 +219,7 @@ def generate_description(sample):
 
     description = {
         "sampleName": sample.name,
-        "igsnPrefix": sample.igsn_prefix.user_code,
+        "igsnPrefix": sample.igsn_prefix.sesar_code,
         "sampleType": sample.sample_type.name if sample.sample_type else None,
         "contributors": contributors,
         "material":  material,
