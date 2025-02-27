@@ -391,7 +391,7 @@ class TransferHistory(models.Model):
 class BatchHistory(models.Model):
     batch_history_id = models.AutoField(primary_key=True)
     batch_type = models.CharField(max_length=10)
-    user_code = models.CharField(max_length=10)
+    sesar_code = models.CharField(max_length=10)
     sample_count = models.IntegerField(blank=True, null=True)
     upload_time = models.DateTimeField()
     upload_by = models.ForeignKey('SesarUser', models.DO_NOTHING, db_column='upload_by')
