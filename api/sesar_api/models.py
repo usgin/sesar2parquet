@@ -10,6 +10,7 @@ from django.db.models import Index, Q
 from django.contrib.auth.models import AbstractUser, Group as AuthGroup
 from django.conf import settings
 from django.utils import timezone
+import os
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -44,7 +45,7 @@ class SesarUser(models.Model):
     legacy_user_id = models.IntegerField(blank=True, null=True)
     geopass_id = models.CharField(unique=True, max_length=255, blank=True, null=True)
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
-    doi_prefix = models.CharField(max_length=10, default='10.58052/')
+    doi_prefix = models.CharField(max_length=10, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
     last_login = models.DateTimeField(blank=True, null=True, default=timezone.now)
     class Meta:
         managed = True
@@ -64,7 +65,7 @@ class Team(models.Model):
     contact_email = models.EmailField(max_length=255)
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
-    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    doi_prefix = models.CharField(max_length=16, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
     members = models.ManyToManyField(SesarUser, related_name='teams', through='TeamMember')
     part_of_team = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='subteams')
 
@@ -346,7 +347,7 @@ class SesarCode(models.Model):
     igsn_count = models.BigIntegerField(blank=True, null=True)
     is_grandfather_code = models.BooleanField(blank=True, null=True, default=False)
     id = models.BigAutoField(primary_key=True)
-    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    doi_prefix = models.CharField(max_length=16, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
 
     class Meta:
         managed = True
