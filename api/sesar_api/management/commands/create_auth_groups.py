@@ -6,7 +6,7 @@ import logging
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from sesar_api.models import Sample, Group as UserGroup, GroupMember, Permission as SesarPermission, SesarUserCode
+from sesar_api.models import Sample, Team, TeamMember, Permission as SesarPermission, SesarCode
 from django.db import IntegrityError
 
 MODELS = ['sample']
@@ -33,26 +33,26 @@ GROUPS = [
         'permissions': ['view', 'add', 'change', 'deactivate']
     },
     {
-        'name': 'Group Owner',
+        'name': 'Team Owner',
         'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_group_ownership', 'deactivate_group', 'add_sesarusercode', 'delete_sesarusercode']
+        'team_permissions': ['add_teammember', 'change_teammember', 'delete_teammember', 'add_team', 'change_team', 'delete_team', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'transfer_team_ownership', 'deactivate_team', 'add_sesarcode', 'delete_sesarcode']
     },
     {
-        'name': 'Group Admin',
+        'name': 'Team Admin',
         'permissions': ['view', 'add', 'change', 'deactivate', 'transfer'],
-        'group_permissions': ['add_groupmember', 'change_groupmember', 'delete_groupmember', 'add_group', 'change_group', 'delete_group', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'add_sesarusercode', 'delete_sesarusercode']
+        'team_permissions': ['add_teammember', 'change_teammember', 'delete_teammember', 'add_team', 'change_team', 'delete_team', 'view_permission', 'add_permission', 'change_permission', 'delete_permission', 'add_sesarcode', 'delete_sesarcode']
     }
 ]
 
-# custom permissions for transferring/deactivating groups
-NEW_GROUP_PERMISSIONS = [
+# custom permissions for transferring/deactivating teams
+NEW_TEAM_PERMISSIONS = [
     {
-        'codename': 'transfer_group_ownership',
-        'name': 'Can transfer group ownership',
+        'codename': 'transfer_team_ownership',
+        'name': 'Can transfer team ownership',
     },
     {
-        'codename': 'deactivate_group',
-        'name': 'Can deactivate group',
+        'codename': 'deactivate_team',
+        'name': 'Can deactivate team',
     },
 ]
 
@@ -74,12 +74,12 @@ class Command(BaseCommand):
                 name = "Can transfer sample",
                 content_type = ContentType.objects.get_for_model(Sample)
             )
-            # custom group permissions
-            for permission in NEW_GROUP_PERMISSIONS:
+            # custom team permissions
+            for permission in NEW_TEAM_PERMISSIONS:
                 Permission.objects.get_or_create(
                     codename = permission['codename'],
                     name = permission['name'],
-                    content_type = ContentType.objects.get_for_model(UserGroup)
+                    content_type = ContentType.objects.get_for_model(Team)
                 )
         except IntegrityError:
             print('Custom permission already exists.')
@@ -96,17 +96,17 @@ class Command(BaseCommand):
                         continue
 
                     new_group.permissions.add(permission_to_add)
-            if 'group_permissions' in group:
-                for codename in group['group_permissions']:
+            if 'team_permissions' in group:
+                for codename in group['team_permissions']:
                     try:
-                        if 'groupmember' in codename:
-                            content_type = ContentType.objects.get_for_model(GroupMember)
-                        elif 'group' in codename:
-                            content_type = ContentType.objects.get_for_model(UserGroup)
+                        if 'teammember' in codename:
+                            content_type = ContentType.objects.get_for_model(TeamMember)
+                        elif 'team' in codename:
+                            content_type = ContentType.objects.get_for_model(Team)
                         elif 'permission' in codename:
                             content_type = ContentType.objects.get_for_model(SesarPermission)
-                        elif 'sesarusercode' in codename:
-                            content_type = ContentType.objects.get_for_model(SesarUserCode)
+                        elif 'sesarcode' in codename:
+                            content_type = ContentType.objects.get_for_model(SesarCode)
                         permission_to_add = Permission.objects.get(content_type=content_type, codename=codename)
                     except Permission.DoesNotExist:
                         logging.warning("Permission not found with codename '{}'.".format(codename))

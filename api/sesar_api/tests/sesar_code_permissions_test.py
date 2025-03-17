@@ -2,10 +2,10 @@ from django.test import TestCase, RequestFactory
 from parameterized import parameterized
 from sesar_api.models import User, SesarUser, SampleType, Sample, SesarCode, Team, TeamMember, Permission
 from django.contrib.auth.models import Group as AuthGroup
-from sesar_api.permissions import IsSampleOwner, CanCreateSample, CanEditSample, CanDeactivateSample
+from sesar_api.permissions import IsSesarCodeOwner, CanCreateSampleOnSesarCode, CanEditSampleOnSesarCode, CanDeactivateSampleOnSesarCode
 from django.core.management import call_command
 
-class SamplePermissionTestCase(TestCase):
+class SesarCodePermissionTestCase(TestCase):
     def setUp(self):
         # Run command to create authorization groups
         call_command("create_auth_groups")
@@ -38,7 +38,7 @@ class SamplePermissionTestCase(TestCase):
         self.no_permission_user = User.objects.create(username="NoPermissionUser")
         self.team_admin_user = User.objects.create(username="TeamAdmin")
         self.team_member_has_perms_user = User.objects.create(username="TeamMemberHasPerms")
-        self.subteam_member_has_perms_user = User.objects.create(username="SubTeamMemberHasPerms")
+        self.subteam_member_has_perms_user = User.objects.create(username="SubteamMemberHasPerms")
         self.team_member_no_perms_user = User.objects.create(username="TeamMemberNoPerms")
         self.r_user = User.objects.create(username="r_user")
         self.re_user = User.objects.create(username="re_user")
@@ -64,7 +64,7 @@ class SamplePermissionTestCase(TestCase):
     def create_team_structure(self):
         # create team and subteam
         self.team = Team.objects.create(name="Team", owner=self.team_admin_su)
-        self.subteam = Team.objects.create(name="SubTeam", part_of_team=self.team)
+        self.subteam = Team.objects.create(name="Subteam", part_of_team=self.team)
 
         # assign team permissions
         TeamMember.objects.create(
@@ -93,12 +93,10 @@ class SamplePermissionTestCase(TestCase):
 
         self.sesar_code = SesarCode.objects.create(
             sesar_code="IE001", 
-            sesar_user=self.sesar_code_owner_su, 
-            team=self.team
+            sesar_user=self.sesar_code_owner_su
         )
-        self.sesar_code_2 = SesarCode.objects.create(
+        self.team_sesar_code = SesarCode.objects.create(
             sesar_code="IE002", 
-            sesar_user=self.sesar_code_owner_su, 
             team=self.team
         )
         self.user_sample = Sample.objects.create(
@@ -112,21 +110,21 @@ class SamplePermissionTestCase(TestCase):
         self.team_sample = Sample.objects.create(
             name="Sample", 
             igsn="10.58052/IE002TEST", 
-            igsn_prefix=self.sesar_code_2,
+            igsn_prefix=self.team_sesar_code,
             sample_type=self.sample_type, 
             cur_registrant=self.sample_owner_su, 
             team_owner=self.team
         )
 
     def create_permissions(self):
-        # assign team permission
+        # assign subteam permission
         Permission.objects.create(
-            sample=self.team_sample, 
+            sesar_code=self.team_sesar_code, 
             auth_group=self.AUTH_GROUPS['CRED'], 
             team=self.subteam
         )
 
-        sample_permissions_to_assign = [
+        sesar_code_permissions_to_assign = [
             {
                 'sesar_user': self.r_su,
                 'auth_group': self.AUTH_GROUPS['R']
@@ -150,85 +148,91 @@ class SamplePermissionTestCase(TestCase):
         ]
 
         # assign permissions to test users
-        for permission in sample_permissions_to_assign:
+        for permission in sesar_code_permissions_to_assign:
             Permission.objects.create(
-                sample=self.user_sample,
+                sesar_code=self.sesar_code,
                 sesar_user=permission['sesar_user'],
                 auth_group=permission['auth_group']
             )
 
-    def test_is_sample_owner(self):
-        """Sample owner is correctly identified"""
-        # Test sample owner
+    def test_is_sesar_code_owner(self):
+        """Sesar code owner is correctly identified"""
+        # Test Sesar code owner
         request = self.factory.get('/')
-        request.user = self.sample_owner_user
-        self.assertTrue(IsSampleOwner().has_object_permission(request, None, self.user_sample))
+        request.user = self.sesar_code_owner_user
+        self.assertTrue(IsSesarCodeOwner().has_object_permission(request, None, self.sesar_code))
 
-        # Test not sample owner
+        # Test not Sesar code owner
         request.user = self.no_permission_user
-        self.assertFalse(IsSampleOwner().has_object_permission(request, None, self.user_sample))
+        self.assertFalse(IsSesarCodeOwner().has_object_permission(request, None, self.sesar_code))
+
+        # Test owned by team
+        self.assertTrue(IsSesarCodeOwner(self.team).has_object_permission(request, None, self.team_sesar_code))
+        
+        # Test not owned by team
+        self.assertFalse(IsSesarCodeOwner(self.subteam).has_object_permission(request, None, self.team_sesar_code))
 
     @parameterized.expand([
-        ("staff", "staff_user", "user_sample", True),
-        ("sample_owner", "sample_owner_user", "user_sample", True),
-        ("no_permission_user", "no_permission_user", "user_sample", False),
-        ("r_user", "r_user", "user_sample", False),
-        ("re_user", "re_user", "user_sample", False),
-        ("cr_user", "cr_user", "user_sample", True),
-        ("cre_user", "cre_user", "user_sample", True),
-        ("cred_user", "cred_user", "user_sample", True),
-        ("team_admin_user", "team_admin_user", "team_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
-        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
-        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
+        ("staff", "staff_user", "sesar_code", True),
+        ("sesar_code_owner", "sesar_code_owner_user", "sesar_code", True),
+        ("no_permission_user", "no_permission_user", "sesar_code", False),
+        ("r_user", "r_user", "sesar_code", False),
+        ("re_user", "re_user", "sesar_code", False),
+        ("cr_user", "cr_user", "sesar_code", True),
+        ("cre_user", "cre_user", "sesar_code", True),
+        ("cred_user", "cred_user", "sesar_code", True),
+        ("team_admin_user", "team_admin_user", "team_sesar_code", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sesar_code", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sesar_code", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sesar_code", False),
     ])
-    def test_can_create_sample(self, name, user_attr, sample, expected):
-        """Test CanCreateSample permission for different users."""
+    def test_can_create_sample_on_sesar_code(self, name, user_attr, sample, expected):
+        """Test CanCreateSampleOnSesarCode permission for different users."""
         request = self.factory.get('/')
         request.user = getattr(self, user_attr)
         obj = getattr(self, sample)
-        self.assertEqual(CanCreateSample().has_object_permission(request, None, obj), expected)
+        self.assertEqual(CanCreateSampleOnSesarCode().has_object_permission(request, None, obj), expected)
 
 
     @parameterized.expand([
-        ("staff", "staff_user", "user_sample", True),
-        ("sample_owner", "sample_owner_user", "user_sample", True),
-        ("no_permission_user", "no_permission_user", "user_sample", False),
-        ("r_user", "r_user", "user_sample", False),
-        ("re_user", "re_user", "user_sample", True),
-        ("cr_user", "cr_user", "user_sample", False),
-        ("cre_user", "cre_user", "user_sample", True),
-        ("cred_user", "cred_user", "user_sample", True),
-        ("team_admin_user", "team_admin_user", "team_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
-        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
-        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
+        ("staff", "staff_user", "sesar_code", True),
+        ("sesar_code_owner", "sesar_code_owner_user", "sesar_code", True),
+        ("no_permission_user", "no_permission_user", "sesar_code", False),
+        ("r_user", "r_user", "sesar_code", False),
+        ("re_user", "re_user", "sesar_code", True),
+        ("cr_user", "cr_user", "sesar_code", False),
+        ("cre_user", "cre_user", "sesar_code", True),
+        ("cred_user", "cred_user", "sesar_code", True),
+        ("team_admin_user", "team_admin_user", "team_sesar_code", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sesar_code", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sesar_code", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sesar_code", False),
     ])
-    def test_can_edit_sample(self, name, user_attr, sample, expected):
-        """Test CanEditSample permission for different users."""
+    def test_can_edit_sample_on_sesar_code(self, name, user_attr, sample, expected):
+        """Test CanEditSampleOnSesarCode permission for different users."""
         request = self.factory.get('/')
         request.user = getattr(self, user_attr)
         obj = getattr(self, sample)
-        self.assertEqual(CanEditSample().has_object_permission(request, None, obj), expected)
+        self.assertEqual(CanEditSampleOnSesarCode().has_object_permission(request, None, obj), expected)
 
 
     @parameterized.expand([
-        ("staff", "staff_user", "user_sample", True),
-        ("sample_owner", "sample_owner_user", "user_sample", True),
-        ("no_permission_user", "no_permission_user", "user_sample", False),
-        ("r_user", "r_user", "user_sample", False),
-        ("re_user", "re_user", "user_sample", False),
-        ("cr_user", "cr_user", "user_sample", False),
-        ("cre_user", "cre_user", "user_sample", False),
-        ("cred_user", "cred_user", "user_sample", True),
-        ("team_admin_user", "team_admin_user", "team_sample", True),
-        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sample", True),
-        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sample", True),
-        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sample", False),
+        ("staff", "staff_user", "sesar_code", True),
+        ("sesar_code_owner", "sesar_code_owner_user", "sesar_code", True),
+        ("no_permission_user", "no_permission_user", "sesar_code", False),
+        ("r_user", "r_user", "sesar_code", False),
+        ("re_user", "re_user", "sesar_code", False),
+        ("cr_user", "cr_user", "sesar_code", False),
+        ("cre_user", "cre_user", "sesar_code", False),
+        ("cred_user", "cred_user", "sesar_code", True),
+        ("team_admin_user", "team_admin_user", "team_sesar_code", True),
+        ("team_member_has_perms_user", "team_member_has_perms_user", "team_sesar_code", True),
+        ("subteam_member_has_perms_user", "subteam_member_has_perms_user", "team_sesar_code", True),
+        ("team_member_no_perms_user", "team_member_no_perms_user", "team_sesar_code", False),
     ])
-    def test_can_deactivate_sample(self, name, user_attr, sample, expected):
-        """Test CanDeactivateSample permission for different users."""
+    def test_can_deactivate_sample_on_sesar_code(self, name, user_attr, sample, expected):
+        """Test CanDeactivateSampleOnSesarCode permission for different users."""
         request = self.factory.get('/')
         request.user = getattr(self, user_attr)
         obj = getattr(self, sample)
-        self.assertEqual(CanDeactivateSample().has_object_permission(request, None, obj), expected)
+        self.assertEqual(CanDeactivateSampleOnSesarCode().has_object_permission(request, None, obj), expected)

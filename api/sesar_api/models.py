@@ -10,6 +10,7 @@ from django.db.models import Index, Q
 from django.contrib.auth.models import AbstractUser, Group as AuthGroup
 from django.conf import settings
 from django.utils import timezone
+import os
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -44,7 +45,7 @@ class SesarUser(models.Model):
     legacy_user_id = models.IntegerField(blank=True, null=True)
     geopass_id = models.CharField(unique=True, max_length=255, blank=True, null=True)
     orcid = models.CharField(unique=True, max_length=19, blank=True, null=True)
-    doi_prefix = models.CharField(max_length=10, default='10.58052/')
+    doi_prefix = models.CharField(max_length=10, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
     last_login = models.DateTimeField(blank=True, null=True, default=timezone.now)
     class Meta:
         managed = True
@@ -56,7 +57,7 @@ class SesarUser(models.Model):
             output += ' (' + self.orcid + ')'
         return  output
 
-class Group(models.Model):
+class Team(models.Model):
     owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=64)
     display_name = models.CharField(max_length=64)
@@ -64,38 +65,38 @@ class Group(models.Model):
     contact_email = models.EmailField(max_length=255)
     activate_date = models.DateTimeField(default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
-    doi_prefix = models.CharField(max_length=16, default='10.58052/')
-    members = models.ManyToManyField(SesarUser, related_name='groups', through='GroupMember')
-    part_of_group = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='teams')
+    doi_prefix = models.CharField(max_length=16, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
+    members = models.ManyToManyField(SesarUser, related_name='teams', through='TeamMember')
+    part_of_team = models.ForeignKey("self", models.CASCADE, null=True, blank=True, related_name='subteams')
 
     class Meta:
-        db_table = 'group'
+        db_table = 'team'
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'part_of_group'],
-                name='unique_name_group',
-                condition=Q(part_of_group__isnull=False)
+                fields=['name', 'part_of_team'],
+                name='unique_name_team',
+                condition=Q(part_of_team__isnull=False)
             ),
             models.UniqueConstraint(
                 fields=['name'],
-                name='unique_name_when_no_group',
-                condition=Q(part_of_group__isnull=True)
+                name='unique_name_when_no_team',
+                condition=Q(part_of_team__isnull=True)
             )
         ]
 
     def __str__(self):
         return self.name
 
-class GroupMember(models.Model):
-    group = models.ForeignKey(Group, models.CASCADE, related_name='groups')
+class TeamMember(models.Model):
+    team = models.ForeignKey(Team, models.CASCADE, related_name='teams')
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING)
     join_date = models.DateTimeField(default=timezone.now)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
     status = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
-        db_table = 'group_member'
-        unique_together = ('group', 'sesar_user')
+        db_table = 'team_member'
+        unique_together = ('team', 'sesar_user')
 
 
 class Classification(models.Model):
@@ -165,7 +166,7 @@ class Sample(models.Model):
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING)
     req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True, null=True)
     igsn = models.CharField(unique=True, max_length=64)
-    igsn_prefix = models.ForeignKey('SesarUserCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='user_code', related_name='samples', blank=True, null=True)
+    igsn_prefix = models.ForeignKey('SesarCode', models.DO_NOTHING, db_column='igsn_prefix', to_field='sesar_code', related_name='samples', blank=True, null=True)
     igsn_digit = models.CharField(max_length=29, blank=True, null=True)
     igsn_to_int = models.BigIntegerField(unique=True, blank=True, null=True)
     igsn_is_system_assigned = models.IntegerField(blank=True, null=True)
@@ -238,15 +239,15 @@ class Sample(models.Model):
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True)
     orig_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_orig_owner_set', blank=True, null=True)
     cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
-    group_owner = models.ForeignKey(Group, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    team_owner = models.ForeignKey(Team, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'sample'
         indexes = [
-            Index(fields=['group_owner'], 
-            name='sample_g_owner_non_null_idx',
-            condition=models.Q(group_owner__isnull=False)),
+            Index(fields=['team_owner'], 
+            name='sample_t_owner_non_null_idx',
+            condition=models.Q(team_owner__isnull=False)),
         ]
 
 
@@ -338,39 +339,39 @@ class SesarRole(models.Model):
         db_table = 'sesar_role'
 
 
-class SesarUserCode(models.Model):
-    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
-    group = models.ForeignKey(Group, models.DO_NOTHING, blank=True, null=True, related_name='user_codes')
-    user_code = models.CharField(unique=True, max_length=5)
+class SesarCode(models.Model):
+    sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True, related_name='sesar_codes')
+    team = models.ForeignKey(Team, models.DO_NOTHING, blank=True, null=True, related_name='sesar_codes')
+    sesar_code = models.CharField(unique=True, max_length=5)
     is_available = models.IntegerField(blank=True, null=True, default=1)
     igsn_count = models.BigIntegerField(blank=True, null=True)
     is_grandfather_code = models.BooleanField(blank=True, null=True, default=False)
     id = models.BigAutoField(primary_key=True)
-    doi_prefix = models.CharField(max_length=16, default='10.58052/')
+    doi_prefix = models.CharField(max_length=16, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
 
     class Meta:
         managed = True
-        db_table = 'sesar_user_code'
+        db_table = 'sesar_code'
 
 
 class Permission(models.Model):
     id = models.AutoField(primary_key=True)
     geopass_id = models.CharField(max_length=250, blank=True, null=True)
-    user_code = models.ForeignKey(SesarUserCode, models.CASCADE, to_field='user_code', db_column='user_code', related_name='permissions', max_length=5, blank=True, null=True)
+    sesar_code = models.ForeignKey(SesarCode, models.CASCADE, to_field='sesar_code', db_column='sesar_code', related_name='permissions', max_length=5, blank=True, null=True)
     sample = models.ForeignKey(Sample, models.CASCADE, related_name='permissions', blank=True, null=True)
     sesar_role = models.ForeignKey(SesarRole, models.DO_NOTHING, blank=True, null=True)
     activate_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     deactivate_date = models.DateTimeField(blank=True, null=True)
     orcid_id = models.CharField(max_length=19, blank=True, null=True)
     sesar_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='permissions', blank=True, null=True)
-    group = models.ForeignKey(Group, models.CASCADE, related_name='permissions', blank=True, null=True)
+    team = models.ForeignKey(Team, models.CASCADE, related_name='permissions', blank=True, null=True)
     auth_group = models.ForeignKey(AuthGroup, on_delete=models.DO_NOTHING, blank=True, null=True)
-    granted_by_group = models.ForeignKey(Group, models.CASCADE, related_name='granted_permissions', blank=True, null=True)
+    granted_by_team = models.ForeignKey(Team, models.CASCADE, related_name='granted_permissions', blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'permission'
-        unique_together = (('geopass_id', 'user_code'),)
+        unique_together = (('geopass_id', 'sesar_code'),)
 
 
 class TransferHistory(models.Model):
@@ -378,10 +379,10 @@ class TransferHistory(models.Model):
     transfer_by = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_created')
     transfer_time = models.DateTimeField(default=timezone.now)
     orig_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
-    orig_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
+    orig_team = models.ForeignKey(Team, models.DO_NOTHING, related_name='transfers_sent', blank=True, null=True)
     data = models.JSONField(blank=True, null=True)
     new_user = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
-    new_group = models.ForeignKey(Group, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
+    new_team = models.ForeignKey(Team, models.DO_NOTHING, related_name='transfers_received', blank=True, null=True)
     status = models.CharField(max_length=32, default='pending')
 
     class Meta:
@@ -391,7 +392,7 @@ class TransferHistory(models.Model):
 class BatchHistory(models.Model):
     batch_history_id = models.AutoField(primary_key=True)
     batch_type = models.CharField(max_length=10)
-    user_code = models.CharField(max_length=10)
+    sesar_code = models.CharField(max_length=10)
     sample_count = models.IntegerField(blank=True, null=True)
     upload_time = models.DateTimeField()
     upload_by = models.ForeignKey('SesarUser', models.DO_NOTHING, db_column='upload_by')
