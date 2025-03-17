@@ -3,7 +3,7 @@ from sesar_api.models import *
 from django.contrib.auth.models import Group as AuthGroup
 from sesar_api.permissions import *
 from django.core.management import call_command
-from sesar_api.util import get_team_user_codes_with_permission
+from sesar_api.util import get_team_sesar_codes_with_permission
 
 
 class TeamPermissionTestCase(TestCase):
@@ -29,12 +29,12 @@ class TeamPermissionTestCase(TestCase):
         self.member = TeamMember.objects.create(team=self.team, sesar_user=self.team_member_su, auth_group=AuthGroup.objects.get(name="Read Only"))
         self.member2 = TeamMember.objects.create(team=self.team, sesar_user=self.team_member2_su)
 
-        self.user_code1 = SesarUserCode.objects.create(user_code="IE001", team=self.team)
-        self.user_code2 = SesarUserCode.objects.create(user_code="IE002", team=self.team)
+        self.sesar_code1 = SesarSesarCode.objects.create(sesar_code="IE001", team=self.team)
+        self.sesar_code2 = SesarSesarCode.objects.create(sesar_code="IE002", team=self.team)
 
         self.subteam = Team.objects.create(name="subteam", part_of_team=self.team)
         TeamMember.objects.create(team=self.subteam, sesar_user=self.team_member2_su)
-        Permission.objects.create(user_code=self.user_code1, team=self.subteam, auth_group=AuthGroup.objects.get(name="Read Create"))
+        Permission.objects.create(sesar_code=self.sesar_code1, team=self.subteam, auth_group=AuthGroup.objects.get(name="Read Create"))
 
 
     def test_is_team_owner(self):
@@ -128,30 +128,30 @@ class TeamPermissionTestCase(TestCase):
         self.assertFalse(CanViewTeamSamples().has_object_permission(request, None, self.team))
 
     
-    def test_can_add_user_code(self):
-        """Add user code permission is correctly identified"""
+    def test_can_add_sesar_code(self):
+        """Add Sesar code permission is correctly identified"""
         # Test has permission
         request = self.factory.get('/')
         request.user = self.team_owner
-        self.assertTrue(CanAddTeamUserCode().has_object_permission(request, None, self.team))
-        self.assertTrue(CanAddTeamUserCode().has_object_permission(request, None, self.team))
+        self.assertTrue(CanAddTeamSesarCode().has_object_permission(request, None, self.team))
+        self.assertTrue(CanAddTeamSesarCode().has_object_permission(request, None, self.team))
 
         # Test does not have permission
         request.user = self.team_member2
-        self.assertFalse(CanAddTeamUserCode().has_object_permission(request, None, self.team))
+        self.assertFalse(CanAddTeamSesarCode().has_object_permission(request, None, self.team))
 
 
-    def test_can_delete_user_code(self):
-        """Delete user code permission is correctly identified"""
+    def test_can_delete_sesar_code(self):
+        """Delete Sesar code permission is correctly identified"""
         # Test has permission
         request = self.factory.get('/')
         request.user = self.team_owner
-        self.assertTrue(CanDeleteTeamUserCode().has_object_permission(request, None, self.team))
-        self.assertTrue(CanDeleteTeamUserCode().has_object_permission(request, None, self.team))
+        self.assertTrue(CanDeleteTeamSesarCode().has_object_permission(request, None, self.team))
+        self.assertTrue(CanDeleteTeamSesarCode().has_object_permission(request, None, self.team))
 
         # Test does not have permission
         request.user = self.team_member2
-        self.assertFalse(CanDeleteTeamUserCode().has_object_permission(request, None, self.team))
+        self.assertFalse(CanDeleteTeamSesarCode().has_object_permission(request, None, self.team))
 
 
     def test_can_transfer_sample(self):
@@ -167,25 +167,25 @@ class TeamPermissionTestCase(TestCase):
         self.assertFalse(CanTransferTeamSample().has_object_permission(request, None, self.team))
 
     
-    def test_get_team_user_codes_with_permission(self):
-        """Team user codes with permission are correctly identified"""
+    def test_get_team_sesar_codes_with_permission(self):
+        """Team Sesar codes with permission are correctly identified"""
 
         # Test owner/admin permission
         request = self.factory.get('/')
         request.user = self.team_owner
-        self.assertEqual(get_team_user_codes_with_permission(self.team_owner_su, self.team, 'add_sample'), 'all')
-        self.assertEqual(get_team_user_codes_with_permission(self.team_owner_su, self.team, 'view_sample'), 'all')
-        self.assertEqual(get_team_user_codes_with_permission(self.team_owner_su, self.team, 'change_sample'), 'all')
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_owner_su, self.team, 'add_sample'), 'all')
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_owner_su, self.team, 'view_sample'), 'all')
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_owner_su, self.team, 'change_sample'), 'all')
 
         # Test team level permission
         request = self.factory.get('/')
         request.user = self.team_member
-        self.assertEqual(get_team_user_codes_with_permission(self.team_member_su, self.team, 'add_sample'), [])
-        self.assertEqual(get_team_user_codes_with_permission(self.team_member_su, self.team, 'view_sample'), 'all')
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_member_su, self.team, 'add_sample'), [])
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_member_su, self.team, 'view_sample'), 'all')
 
         # Test subteam level permission
         request = self.factory.get('/')
         request.user = self.team_member2
-        self.assertEqual(get_team_user_codes_with_permission(self.team_member2_su, self.team, 'add_sample'), ['IE001'])
-        self.assertEqual(get_team_user_codes_with_permission(self.team_member2_su, self.team, 'view_sample'), ['IE001'])
-        self.assertEqual(get_team_user_codes_with_permission(self.team_member2_su, self.team, 'change_sample'), [])
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_member2_su, self.team, 'add_sample'), ['IE001'])
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_member2_su, self.team, 'view_sample'), ['IE001'])
+        self.assertEqual(get_team_sesar_codes_with_permission(self.team_member2_su, self.team, 'change_sample'), [])

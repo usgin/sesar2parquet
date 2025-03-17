@@ -56,11 +56,11 @@ class CanGrantSamplePermission(permissions.BasePermission):
         return False
 
 
-class CanGrantUserCodePermission(permissions.BasePermission):
-    message = 'Permission denied. Cannot grant permission on user code.'
+class CanGrantSesarCodePermission(permissions.BasePermission):
+    message = 'Permission denied. Cannot grant permission on sesar code.'
 
     def __init__(self, team=None, permissions_to_grant=None):
-        # for the case where permissions were originally shared to a team, but the user code is not owned by the team
+        # for the case where permissions were originally shared to a team, but the sesar code is not owned by the team
         # the permissions should only be shared within that team and within the bounds of the original granted permissions
         self.team = team
         self.permissions_to_grant = AuthGroup.objects.filter(name=permissions_to_grant).first()
@@ -70,17 +70,17 @@ class CanGrantUserCodePermission(permissions.BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        user_code = obj
+        sesar_code = obj
         sesar_user = request.user.sesaruser
 
-        # user owns user code
-        if user_code.sesar_user == sesar_user:
+        # user owns sesar code
+        if sesar_code.sesar_user == sesar_user:
             return True
 
         try:
-            # user is an admin of team that owns user code
-            if user_code.team and TeamMember.objects.get(
-                team=user_code.team, 
+            # user is an admin of team that owns sesar code
+            if sesar_code.team and TeamMember.objects.get(
+                team=sesar_code.team, 
                 sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
                 return True
         except (TeamMember.DoesNotExist, AttributeError):
@@ -93,7 +93,7 @@ class CanGrantUserCodePermission(permissions.BasePermission):
                 team=self.team, 
                 sesar_user=sesar_user).auth_group.permissions.filter(codename='add_permission').exists():
                 # get the original permission granted to the team
-                permission = Permission.objects.get(user_code=user_code, team=self.team)
+                permission = Permission.objects.get(sesar_code=sesar_code, team=self.team)
                 if permission and permission.auth_group:
                     # check if team has all permissions that are attempting to be shared
                     for auth_permission in self.permissions_to_grant.permissions.all():
@@ -119,8 +119,8 @@ class CanEditPermission(permissions.BasePermission):
         permission = obj
         sesar_user = request.user.sesaruser
 
-        # user owns user code
-        if permission.user_code and permission.user_code.sesar_user == sesar_user:
+        # user owns sesar code
+        if permission.sesar_code and permission.sesar_code.sesar_user == sesar_user:
             return True
 
         # user owns sample

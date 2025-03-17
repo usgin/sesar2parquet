@@ -43,8 +43,8 @@ def create_transfer(request):
     new_user = request.data.get('new_user') # new owner orcid
     orig_team = request.data.get('orig_team') # current team name
     orig_user = request.data.get('orig_user') # current owner orcid
-    transfer_type = request.data.get('transfer_type') # values: all, user_code, sample_list
-    user_code = request.data.get('user_code') # user code string
+    transfer_type = request.data.get('transfer_type') # values: all, sesar_code, sample_list
+    sesar_code = request.data.get('sesar_code') # Sesar code string
     sample_list = request.data.get('sample_list') # list of sample igsns
     sesar_user = request.user.sesaruser
 
@@ -66,11 +66,11 @@ def create_transfer(request):
             else:
                 raise PermissionDenied
 
-        if transfer_type == 'user_code':
-            if user_code:
-                filters['igsn_prefix'] = user_code
+        if transfer_type == 'sesar_code':
+            if sesar_code:
+                filters['igsn_prefix'] = sesar_code
             else:
-                return Response({'error': 'Missing user code'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'error': 'Missing Sesar code'}, status=status.HTTP_400_BAD_REQUEST)
         elif transfer_type == 'sample_list':
             if sample_list:
                 filters['igsn__in'] = json.loads(sample_list)

@@ -20,13 +20,13 @@ class TransferTestCase(TestCase):
         # orig user
         self.orig_user = User.objects.create(username='orig_user')
         self.orig_user_su = SesarUser.objects.create(auth_user=self.orig_user, fname='Orig', lname='User', orcid='0000-0000-0001')
-        # user codes owned by orig_user
-        self.user_code = SesarUserCode.objects.create(sesar_user=self.orig_user_su, user_code='IE001')
-        self.user_code2 = SesarUserCode.objects.create(sesar_user=self.orig_user_su, user_code='IE002')
+        # sesar codes owned by orig_user
+        self.sesar_code = SesarCode.objects.create(sesar_user=self.orig_user_su, sesar_code='IE001')
+        self.sesar_code2 = SesarCode.objects.create(sesar_user=self.orig_user_su, sesar_code='IE002')
         # samples owned by orig user
-        self.user_sample = Sample.objects.create(name="UserSample1", igsn="10.58052/IE001TEST", igsn_prefix=self.user_code, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
-        self.user_sample2 = Sample.objects.create(name="UserSample2", igsn="10.58052/IE001TEST2", igsn_prefix=self.user_code, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
-        self.user_sample3 = Sample.objects.create(name="UserSample3", igsn="10.58052/IE002TEST2", igsn_prefix=self.user_code2, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
+        self.user_sample = Sample.objects.create(name="UserSample1", igsn="10.58052/IE001TEST", igsn_prefix=self.sesar_code, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
+        self.user_sample2 = Sample.objects.create(name="UserSample2", igsn="10.58052/IE001TEST2", igsn_prefix=self.sesar_code, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
+        self.user_sample3 = Sample.objects.create(name="UserSample3", igsn="10.58052/IE002TEST2", igsn_prefix=self.sesar_code2, cur_owner=self.orig_user_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
 
         # new user
         self.new_user = User.objects.create(username='new_user')
@@ -39,26 +39,26 @@ class TransferTestCase(TestCase):
         # team owned by admin
         self.team = Team.objects.create(name="team", owner=self.team_admin_su, contact_email='test@gmail.com')
         TeamMember.objects.create(team=self.team, sesar_user=self.team_admin_su, auth_group=AuthGroup.objects.get(name='Team Owner'))
-        # team user code
-        self.user_code3 = SesarUserCode.objects.create(team=self.team, user_code='IE003')
+        # team sesar code
+        self.sesar_code3 = SesarCode.objects.create(team=self.team, sesar_code='IE003')
         # team owned samples
-        self.team_sample = Sample.objects.create(name="TeamSample1", igsn="10.58052/IE003TEST", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
-        self.team_sample2 = Sample.objects.create(name="TeamSample2", igsn="10.58052/IE003TEST2", igsn_prefix=self.user_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
+        self.team_sample = Sample.objects.create(name="TeamSample1", igsn="10.58052/IE003TEST", igsn_prefix=self.sesar_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
+        self.team_sample2 = Sample.objects.create(name="TeamSample2", igsn="10.58052/IE003TEST2", igsn_prefix=self.sesar_code3, sample_type=self.sample_type, cur_registrant=self.team_admin_su, team_owner=self.team)
 
         # user sample pending transfer to new user
-        self.user_pending_sample = Sample.objects.create(name="PendingTransferUserSample", igsn="10.58052/IE001TransferMe", igsn_prefix=self.user_code, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
+        self.user_pending_sample = Sample.objects.create(name="PendingTransferUserSample", igsn="10.58052/IE001TransferMe", igsn_prefix=self.sesar_code, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
         transfer_data = {
             'igsns': ['10.58052/IE001TransferMe']
         }
         self.user_transfer = TransferHistory.objects.create(transfer_by=self.orig_user_su, orig_user=self.orig_user_su, new_user=self.new_user_su, data=transfer_data, status='pending')
         # user sample pending transfer to new team
-        self.user_pending_sample2 = Sample.objects.create(name="PendingTransferUserSample2", igsn="10.58052/IE002TransferMe", igsn_prefix=self.user_code2, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
+        self.user_pending_sample2 = Sample.objects.create(name="PendingTransferUserSample2", igsn="10.58052/IE002TransferMe", igsn_prefix=self.sesar_code2, cur_owner=self.sesar_owner_su, sample_type=self.sample_type, cur_registrant=self.orig_user_su)
         transfer_data = {
             'igsns': ['10.58052/IE002TransferMe']
         }
         self.user_transfer2 = TransferHistory.objects.create(transfer_by=self.orig_user_su, orig_user=self.orig_user_su, new_team=self.team, data=transfer_data, status='pending')
         # team sample pending transfer to new user
-        self.team_pending_sample = Sample.objects.create(name="PendingTransferTeamSample", igsn="10.58052/IE003TransferMe", igsn_prefix=self.user_code3, cur_owner=self.sesar_owner_su, team_owner=None, sample_type=self.sample_type, cur_registrant=self.team_admin_su)
+        self.team_pending_sample = Sample.objects.create(name="PendingTransferTeamSample", igsn="10.58052/IE003TransferMe", igsn_prefix=self.sesar_code3, cur_owner=self.sesar_owner_su, team_owner=None, sample_type=self.sample_type, cur_registrant=self.team_admin_su)
         transfer_data = {
             'igsns': ['10.58052/IE003TransferMe']
         }
@@ -98,13 +98,13 @@ class TransferTestCase(TestCase):
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 0)
 
     
-    def test_create_transfer_user_code(self):
-        """Can create transfer for all samples in user code"""
+    def test_create_transfer_sesar_code(self):
+        """Can create transfer for all samples in sesar code"""
         data = {
             'orig_user': '0000-0000-0001',
             'new_user': '0000-0000-0002',
-            'transfer_type': 'user_code',
-            'user_code': 'IE001'
+            'transfer_type': 'sesar_code',
+            'sesar_code': 'IE001'
         }
         request = self.factory.post('/api/transfer/create/', data)
         request.user = self.orig_user
@@ -112,11 +112,11 @@ class TransferTestCase(TestCase):
         response = create_transfer(request)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(TransferHistory.objects.filter(orig_user=self.orig_user_su).count(), 3)
-        self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su, igsn_prefix=self.user_code).count(), 0)
+        self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su, igsn_prefix=self.sesar_code).count(), 0)
 
 
     def test_create_transfer_igsn_list(self):
-        """Can create transfer for all samples in user code"""
+        """Can create transfer for all samples in sesar code"""
         data = {
             'orig_user': '0000-0000-0001',
             'new_user': '0000-0000-0002',
@@ -129,7 +129,7 @@ class TransferTestCase(TestCase):
         response = create_transfer(request)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(TransferHistory.objects.filter(orig_user=self.orig_user_su).count(), 3)
-        self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su, igsn_prefix=self.user_code).count(), 1)
+        self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su, igsn_prefix=self.sesar_code).count(), 1)
         self.assertEqual(Sample.objects.filter(cur_owner=self.orig_user_su).count(), 1)
 
     

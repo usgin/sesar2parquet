@@ -1,14 +1,12 @@
-from django.db.models import fields
 from rest_framework import serializers
-import re
-from sesar_api.models import Permission, Team, TeamMember, SesarUser, SesarUserCode, Sample, SesarRole
+from sesar_api.models import Permission, Team, TeamMember, SesarUser, SesarCode, Sample, SesarRole
 from django.contrib.auth.models import Group as AuthGroup
 from django.utils import timezone
 from datetime import timedelta
  
 
 class PermissionSerializer(serializers.ModelSerializer):
-    user_code = serializers.SlugRelatedField(read_only=True,slug_field='user_code')
+    sesar_code = serializers.SlugRelatedField(read_only=True,slug_field='sesar_code')
     sample = serializers.SlugRelatedField(read_only=True,slug_field='igsn')
     sesar_role = serializers.SlugRelatedField(read_only=True,slug_field='sesar_role_name')
     sesar_user = serializers.StringRelatedField()
@@ -17,12 +15,12 @@ class PermissionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Permission
-        fields = ['id', 'user_code', 'sample', 'geopass_id', 'orcid_id', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
-        read_only_fields = ['id', 'user_code', 'sample', 'geopass_id', 'orcid_id', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
+        fields = ['id', 'sesar_code', 'sample', 'geopass_id', 'orcid_id', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
+        read_only_fields = ['id', 'sesar_code', 'sample', 'geopass_id', 'orcid_id', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
 
 
 class PermissionWriteSerializer(serializers.ModelSerializer):
-    user_code = serializers.SlugRelatedField(queryset=SesarUserCode.objects.all(), slug_field='user_code', allow_null=True, required=False)
+    sesar_code = serializers.SlugRelatedField(queryset=SesarCode.objects.all(), slug_field='sesar_code', allow_null=True, required=False)
     sample = serializers.SlugRelatedField(queryset=Sample.objects.all(), slug_field='igsn', allow_null=True, required=False)
     sesar_role = serializers.SlugRelatedField(queryset=SesarRole.objects.all(), slug_field='sesar_role_name', allow_null=True, required=False)
     sesar_user = serializers.PrimaryKeyRelatedField(queryset=SesarUser.objects.all(), allow_null=True, required=False)
@@ -32,7 +30,7 @@ class PermissionWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Permission
-        fields = ['user_code', 'sample', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
+        fields = ['sesar_code', 'sample', 'sesar_user', 'team', 'sesar_role', 'auth_group', 'activate_date', 'deactivate_date', 'granted_by_team']
 
 
     def validate_activate_date(self, value):

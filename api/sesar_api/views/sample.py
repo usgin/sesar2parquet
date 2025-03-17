@@ -7,7 +7,7 @@ from datetime import *
 
 from sesar_api.serializers import SampleSerializer
 from sesar_api.models import Sample
-from sesar_api.util import get_samples, get_team_user_codes_with_permission, get_paginated_queryset, generate_sample_jsonld
+from sesar_api.util import get_samples, get_team_sesar_codes_with_permission, get_paginated_queryset, generate_sample_jsonld
 
 
 # get all viewable samples in user team
@@ -19,7 +19,7 @@ def view_user_team_samples(request, name):
     limit = int(request.GET.get('limit', 50))
 
     optional_filters = {
-        'igsn_prefix': request.GET.get('user_code', None),
+        'igsn_prefix': request.GET.get('sesar_code', None),
         'igsn__icontains': request.GET.get('igsn', None),
         'name__icontains': request.GET.get('sample_name', None),
         'registration_date__gt': request.GET.get('date_start', None),
@@ -30,14 +30,14 @@ def view_user_team_samples(request, name):
         team = request.user.sesaruser.teams.get(name=name, part_of_team__isnull=True)
     
         if team:
-            user_codes = get_team_user_codes_with_permission(request.user.sesaruser, team, 'view_sample')
+            sesar_codes = get_team_sesar_codes_with_permission(request.user.sesaruser, team, 'view_sample')
 
             filters = {
                 'team_owner': team
             }
 
-            if user_codes != 'all':
-                filters['igsn_prefix__in'] = user_codes
+            if sesar_codes != 'all':
+                filters['igsn_prefix__in'] = sesar_codes
 
             for key, value in optional_filters.items():
                 if value is not None and value != '':

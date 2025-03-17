@@ -49,7 +49,7 @@ class CanDeleteTeamMember(permissions.BasePermission):
     message = 'Permission denied. Cannot delete team member.'
 
     def __init__(self, member=None):
-        # for the case where permissions were originally shared to a team, but the user code is not owned by the team
+        # for the case where permissions were originally shared to a team, but the Sesar code is not owned by the team
         # the permissions should only be shared within that team and within the bounds of the original granted permissions
         self.member = member
 
@@ -134,8 +134,8 @@ class CanViewTeamSamples(permissions.BasePermission):
         return False
 
 
-class CanAddTeamUserCode(permissions.BasePermission):
-    message = 'Permission denied. Cannot add user code.'
+class CanAddTeamSesarCode(permissions.BasePermission):
+    message = 'Permission denied. Cannot add Sesar code.'
 
     def has_permission(self, request, view):
         if request.user.is_authenticated:
@@ -143,7 +143,7 @@ class CanAddTeamUserCode(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         try:
-            if TeamMember.objects.get(team=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='add_sesarusercode').exists():
+            if TeamMember.objects.get(team=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='add_sesarcode').exists():
                 return True
         except (TeamMember.DoesNotExist, AttributeError):
             return False
@@ -151,8 +151,8 @@ class CanAddTeamUserCode(permissions.BasePermission):
         return False
 
 
-class CanDeleteTeamUserCode(permissions.BasePermission):
-    message = 'Permission denied. Cannot delete user code.'
+class CanDeleteTeamSesarCode(permissions.BasePermission):
+    message = 'Permission denied. Cannot delete Sesar code.'
 
     def has_permission(self, request, view):
         if request.user.is_authenticated:
@@ -160,7 +160,7 @@ class CanDeleteTeamUserCode(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         try:
-            if TeamMember.objects.get(team=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='delete_sesarusercode').exists():
+            if TeamMember.objects.get(team=obj, sesar_user=request.user.sesaruser).auth_group.permissions.filter(codename='delete_sesarcode').exists():
                 return True
         except (TeamMember.DoesNotExist, AttributeError):
             return False
