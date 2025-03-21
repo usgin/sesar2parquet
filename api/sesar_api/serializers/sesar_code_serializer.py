@@ -23,7 +23,7 @@ class SesarCodeWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SesarCode
-        fields = ['sesar_user', 'team', 'sesar_code', 'doi_prefix']
+        fields = ['sesar_user', 'team', 'sesar_code', 'doi_prefix', 'igsn_count']
 
     def validate_sesar_code(self, value):
         if not re.fullmatch(r'^IE[a-zA-Z0-9]{3}$', value):
