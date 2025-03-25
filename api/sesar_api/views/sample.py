@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import *
+from django.db.models import Prefetch
 
 from sesar_api.serializers import SampleSerializer
 from sesar_api.models import Sample
@@ -83,7 +84,33 @@ def get_sample_jsonld(request):
     igsn = request.GET.get('igsn')
 
     try:
-        sample = Sample.objects.get(igsn=igsn)
+        sample = Sample.objects.select_related(
+            "igsn_prefix",
+            "classification",
+            "top_level_classification",
+            "cur_owner",
+            "cur_registrant",
+            "sample_type",
+            "country",
+            "external_parent_sample_type",
+            "launch_type",
+            "nav_type",
+            "origin_sample",
+        ).prefetch_related(
+            "other_names",
+            "publication_urls",
+            "sample_docs",
+            Prefetch(
+                "origin_sample__sample_set", 
+                queryset=Sample.objects.all(),
+                to_attr="children_samples",
+            ),
+            Prefetch(
+                'sample_set',
+                queryset=Sample.objects.all(),
+                to_attr="children_samples"
+            )
+        ).get(igsn=igsn)
 
         return Response(generate_sample_jsonld(sample), status=status.HTTP_200_OK)
     except Sample.DoesNotExist:

@@ -100,11 +100,8 @@ def generate_description(sample):
         sample.collection_start_date, sample.collection_end_date, sample.collection_date_precision
     )
 
-    children_samples = list(Sample.objects.filter(origin_sample=sample).values_list('igsn', flat=True))
-    if sample.origin_sample:
-        sibling_samples = list(Sample.objects.filter(origin_sample=sample.origin_sample).values_list('igsn', flat=True))
-    else:
-        sibling_samples = []
+    children_samples = [child.igsn for child in sample.children_samples]
+    sibling_samples = [sibling.igsn for sibling in sample.origin_sample.children_samples if sibling.sample_id != sample.sample_id]
 
     other_names = list(sample.other_names.values_list('name', flat=True))
 
