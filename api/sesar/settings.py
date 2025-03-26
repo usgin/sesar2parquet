@@ -224,4 +224,4 @@ EMAIL_HOST_USER = os.environ.get('SMTP_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD')
 
 # Default From Email (must be a verified email address in SES)
-DEFAULT_FROM_EMAIL = 'Sesar² <info@geosamples.org>'
+DEFAULT_FROM_EMAIL = 'SESAR <info@geosamples.org>'

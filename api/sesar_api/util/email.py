@@ -84,7 +84,7 @@ def generate_html(subject: str, subject_detail: str, text: str, button: object =
             <div class="container">
                 <div class="logo-container">
                     <a href="https://geosamples.org">
-                        <img class="logo" src="https://www.geosamples.org/wp-content/uploads/2023/11/sesar2_full_logo_website_bnw-1.png" alt="Logo" title="Logo">
+                        <img class="logo" src="https://www.geosamples.org/wp-content/uploads/2020/12/sesar_vertical_website_logo_black.png" alt="Logo" title="Logo">
                     </a>
                 </div>
                 <div class="header">{subject}</div>
