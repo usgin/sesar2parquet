@@ -6,10 +6,11 @@ from datetime import *
 from django.db.models import Q
 import re
 
-from sesar_api.models import Team, TeamMember
+from sesar_api.models import Team, TeamMember, SesarUser
 from sesar_api.serializers import TeamSerializer, TeamWriteSerializer, MemberWriteSerializer
 from sesar_api.permissions import IsTeamOwner, CanChangeTeam
 from django.contrib.auth.models import Group as AuthGroup
+from sesar_api.util import sesar_email
 
 
 def normalize_name(name):
@@ -132,7 +133,27 @@ def transfer_team(request):
         if IsTeamOwner().has_object_permission(request, None, team):
             serializer = TeamWriteSerializer(team, data=request.data, partial=True)
             if serializer.is_valid():
+                owner_auth_group = AuthGroup.objects.get(name='Team Owner')
+                cred_auth_group = AuthGroup.objects.get(name='Read Create Edit Deactivate')
+
+                demote_old_owner = TeamMember.objects.get(team=team, sesar_user=request.user.sesaruser)
+                demote_old_owner.auth_group = cred_auth_group
+                
+                new_owner_su = SesarUser.objects.get(orcid=request.POST.get('owner'))
+                promote_new_owner = TeamMember.objects.get(team=team, sesar_user=new_owner_su)
+                promote_new_owner.auth_group = owner_auth_group
+
                 serializer.save()
+                demote_old_owner.save()
+                promote_new_owner.save()
+
+                sesar_email(
+                    [new_owner_su], 
+                    f"You are now the owner of the {team.display_name} team!",
+                    f"Ownership transferred from {request.user.sesaruser.fname} {request.user.sesaruser.lname}",
+                    None,
+                    None
+                )
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
