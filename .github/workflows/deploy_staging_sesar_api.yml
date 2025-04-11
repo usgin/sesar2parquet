@@ -1,6 +1,9 @@
 name: deploy_staging
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "new_api"
 
 jobs:
   build_publish_api:
