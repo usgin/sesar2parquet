@@ -6,7 +6,7 @@ jobs:
   build_publish_api:
     uses: ./.github/workflows/build_publish.yml
     with:
-      APPLICATION: sesar2-api
+      APPLICATION: sesar-api
       CONTEXT: api
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.SESAR_AWS_ACCESS_KEY_ID }}
@@ -16,7 +16,7 @@ jobs:
     needs: [build_publish_api]
     uses: ./.github/workflows/deploy_ecs.yml
     with:
-      APPLICATION: sesar2-api
+      APPLICATION: sesar-api
       ENVIRONMENT: staging
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.SESAR_AWS_ACCESS_KEY_ID }}
