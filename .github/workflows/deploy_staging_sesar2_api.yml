@@ -1,4 +1,4 @@
-name: deploy_staging
+name: deploy_staging_sesar2_api
 on:
   workflow_dispatch:
 

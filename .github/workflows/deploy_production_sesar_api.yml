@@ -1,10 +1,10 @@
-name: deploy_production
+name: deploy_production_sesar_api
 on:
   workflow_dispatch:
   # change to master push when ready for production deployment
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - "new_api"
 
 jobs:
   build_publish_api:
