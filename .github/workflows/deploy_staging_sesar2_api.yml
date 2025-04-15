@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "new-api"
+      - "new_api"
 
 jobs:
   build_publish_api:
