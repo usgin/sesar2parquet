@@ -15,4 +15,5 @@ RUN \
 COPY . /sesar-api/
 
 COPY ./start.sh /sesar-api/
-CMD "/sesar-api/start.sh"
+RUN chmod +x /sesar-api/start.sh
+CMD ["/sesar-api/start.sh"]
