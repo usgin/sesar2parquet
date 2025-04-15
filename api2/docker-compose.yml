@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/sesar-api
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=sesar
+      - DB_USER=sesar
+      - DB_PASSWORD=sesar-pass
+      - DB_HOST=db
+      - DJANGO_ADMIN_USER=sesar_admin_local
+      - DJANGO_ADMIN_PASSWORD=sesar_pass_local
+      - ORCID_CLIENT_ID=
+      - ORCID_CLIENT_SECRET=
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=sesar
+      - POSTGRES_USER=sesar
+      - POSTGRES_PASSWORD=sesar-pass
+    # publish port so we can connect directly during development
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data: null

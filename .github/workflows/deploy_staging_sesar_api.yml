@@ -1,9 +1,9 @@
 name: deploy_staging_sesar_api
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "new_api"
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   build_publish_api:
