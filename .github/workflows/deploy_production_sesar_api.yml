@@ -4,7 +4,7 @@ on:
   # change to master push when ready for production deployment
   # push:
   #   branches:
-  #     - master
+  #     - main
 
 jobs:
   build_publish_api:
