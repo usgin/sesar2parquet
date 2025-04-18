@@ -1,13 +1,16 @@
-name: deploy_staging
+name: deploy_staging_sesar2_api
 on:
   workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   build_publish_api:
     uses: ./.github/workflows/build_publish.yml
     with:
       APPLICATION: sesar2-api
-      CONTEXT: api
+      CONTEXT: api2
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.SESAR_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SESAR_AWS_SECRET_ACCESS_KEY }}
