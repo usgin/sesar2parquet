@@ -10,27 +10,20 @@ class IGSNToDatacite:
     """
     Handles interactions with the Datacite API.
     """
-
     def __init__(self, sample: Sample):
         self.base_url = os.getenv('DATACITE_BASEURL', "https://api.datacite.org/")
         self.sample = sample
         self.test_mode = os.getenv('DATACITE_TEST', False)
-        self._login_lookup = self._parse_env_string(os.getenv('DATACITE_LOGIN'))
-        self._password_lookup = self._parse_env_string(os.getenv('DATACITE_PASSWORD'))
+        self._credentials = self._parse_credentials(os.getenv('DATACITE_CREDENTIALS', '{}'))
         self._login, self._pswd = self._get_credentials(sample.igsn)
 
-    def _parse_env_string(self, env_string):
-        """Helper method to parse login and password environment variables"""
-        lookup = {}
-        for entry in env_string.split("|"):
-            key, value = entry.split(",")
-            lookup[key] = value
-        return lookup
+    def _parse_credentials(self, json_string):
+        return json.loads(json_string)
 
     def _get_credentials(self, igsn):
-        """Retrieve login and password for the given IGSN prefix"""
         prefix = igsn.split("/")[0] + "/"
-        return self._login_lookup.get(prefix), self._password_lookup.get(prefix)
+        creds = self._credentials.get(prefix, {})
+        return creds.get("username"), creds.get("password")
 
     # get existing igsn registered with Datacite
     def get_igsn(self):
