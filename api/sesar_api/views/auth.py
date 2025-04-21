@@ -72,11 +72,14 @@ def login_by_access_token(request, backend):
 @api_view(['GET'])
 def user_details(request):
     if request.user:
+        jwt_connection = request.auth.get("connection")
+        jwt_connection = jwt_connection.upper() if jwt_connection else None
         return Response(
             {
                 'user': str(request.user),
                 'orcid': str(request.user.sesaruser.orcid),
-                'has_api_access': True if request.user.sesaruser.upload_permission_status else False
+                'has_api_access': True if request.user.sesaruser.upload_permission_status else False,
+                'jwt_connection': jwt_connection
             },
             status=status.HTTP_200_OK,
         )
@@ -84,7 +87,7 @@ def user_details(request):
         return Response(
                 {
                     'errors': {
-                        'message': 'An unknown error occured'
+                        'message': 'No user found.'
                         }
                 },
                 status=status.HTTP_400_BAD_REQUEST,
