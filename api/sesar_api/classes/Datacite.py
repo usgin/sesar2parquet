@@ -128,7 +128,7 @@ class IGSNToDatacite:
             related_identifiers.append({
                 "relatedIdentifier": sample.origin_sample.igsn,
                 "relatedIdentifierType": "IGSN",
-                "relationType": "isPartOf"
+                "relationType": "IsPartOf"
             })
 
         if sample.publication_urls.exists():
@@ -141,7 +141,7 @@ class IGSNToDatacite:
                 related_identifiers.append({
                     "relatedIdentifier": url.url,
                     "relatedIdentifierType": identifier_type,
-                    "relationType": "isReferencedBy"
+                    "relationType": "IsReferencedBy"
                 })
 
         if sample.other_names.exists():
