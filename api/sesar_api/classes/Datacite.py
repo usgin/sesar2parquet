@@ -13,7 +13,7 @@ class IGSNToDatacite:
     def __init__(self, sample: Sample):
         self.base_url = os.getenv('DATACITE_BASEURL', "https://api.datacite.org/")
         self.sample = sample
-        self.test_mode = os.getenv('DATACITE_TEST', False)
+        self.test_mode = os.getenv('DATACITE_TEST', 'false').lower() == 'true'
         self._credentials = self._parse_credentials(os.getenv('DATACITE_CREDENTIALS', '{}'))
         self._login, self._pswd = self._get_credentials(sample.igsn)
 
