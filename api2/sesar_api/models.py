@@ -39,10 +39,13 @@ class SesarUser(models.Model):
     auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
-        output = self.fname + ' ' + self.lname
+        if self.individual:
+            output = f"{self.individual.fname or ''} {self.individual.lname or ''}".strip()
+        
         if self.orcid:
-            output += ' (' + self.orcid + ')'
-        return  output
+            output += f" ({self.orcid})"
+        
+        return output
 
     class Meta:
         db_table = 'sesar_user'
@@ -135,66 +138,6 @@ class GeologicTimeScale(models.Model):
         db_table_comment = 'vocabulary of ICS geologic time ordinal eras, 2024 version'
 
 
-class GeospatialLocation(models.Model):
-    location_id = models.AutoField(primary_key=True)
-    label = models.CharField(unique=True, max_length=50, blank=False, null=False,
-                             db_comment='text to display this location position in user interface. ')
-    description = models.TextField(blank=True, null=True,
-                                   db_comment='information about the position determination and representation.')
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False,
-                               db_comment='link to sample that this position applies to. ')
-    vertical = models.DecimalField(max_digits=10, decimal_places=4, blank=True, null=True,
-                                   db_comment='based on vertical_srs, might be elevation (positive up) or depth (positive down).')
-    vertical_srs = models.ForeignKey('SesarSpatialRefSys', models.DO_NOTHING, db_column='vertical_srs', blank=True,
-                                     null=True,
-                                     db_comment='defines units of measure for vertical coordinate, positive up or positive down, and the datum-- that is the surface that has a 0 coordinate value.   If the position is within a borehole, the vertical_srs might be the borehole geometry. ')
-    coordinate_1 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
-                                       db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
-    coordinate_2 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
-                                       db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
-    spatial_reference_system = models.CharField(db_column='spatial_reference_system', max_length=100, blank=True,
-                                                null=True)
-    wkt_geometry = models.CharField(db_column='WKT_geometry', max_length=100, blank=True,
-                                    null=True)  # Field name made lowercase.
-    global_grid_cell_id = models.CharField(max_length=50, blank=True, null=True)
-
-    def __str__(self):
-        return self.label
-
-    class Meta:
-        db_table = 'geospatial_location'
-        db_table_comment = 'The latitude and longitude in the sample table are required to use WGS84 decimal degrees. This table is optional, use to report coordinate locations with spatial reference different from WGS84, e.g. UTM, local grid coordinates, global grid cell identifiers, etc. '
-
-
-class SampleCollection(models.Model):
-    collection_id = models.AutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=100, blank=False, null=False)
-    description = models.TextField(blank=True, null=True)
-    collection_owner = models.ForeignKey('SesarUser', models.DO_NOTHING,
-                                         db_column='collection_owner', blank=True, null=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    collection_type = models.ForeignKey(CollectionType, models.DO_NOTHING, blank=True, null=True,
-                                        db_comment="type of collection")
-    is_private = models.BooleanField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'sample_collection'
-        db_table_comment = 'Definition of set of samples by some user to associate a set of samples for some purpose.'
-
-
-class CollectionMember(models.Model):
-    collection = models.ForeignKey(SampleCollection, models.DO_NOTHING, blank=False, null=False, default=-1)
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False, default=-1)
-
-    def __str__(self):
-        return self.collection
-
-    class Meta:
-        db_table = 'collection_member'
-        db_table_comment = 'correlation table that associated a sample with a collection. '
 
 
 class InitiativeType(models.Model):
@@ -294,31 +237,6 @@ class MaterialType(models.Model):
         db_table_comment = 'was classification'
 
 
-class OtherProperty(models.Model):
-    property_value_id = models.IntegerField(primary_key=True)
-    label = models.CharField(max_length=50, blank=False, null=False,
-                             db_comment='text to display property value in user interface')
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False, default=-1,
-                               db_comment='foreign key to sample table to link property attribution to sample')
-    property_type = models.ForeignKey('PropertyType', models.DO_NOTHING, blank=False, null=False,
-                                      db_comment='foreign key to property type vocabulary')
-    property_value_text = models.CharField(max_length=256, blank=False, null=False,
-                                           db_comment='property value, serialized as text. the value_data_type is used ' \
-                                                      ' to convert to number or treat as URI if appropriated')
-    value_data_type = models.CharField(max_length=50, blank=False, null=False,
-                                       db_comment='data type for property value, if need to cast text as numeric or a URI.')
-    provenance = models.CharField(max_length=250, blank=True, null=True,
-                                  db_comment='explanation of how (when, who...) the value was determined')
-
-    def __str__(self):
-        return self.label
-
-    class Meta:
-        db_table = 'other_property'
-        db_table_comment = 'Optional correlation table to link sample with descriptive properties not explicitly included in this schema. Was sample_customized_metadata'
-
-
-
 class PlatformType(models.Model):
     platform_type_id = models.AutoField(primary_key=True)
     label = models.CharField(max_length=50, blank=False, null=False)
@@ -347,78 +265,6 @@ class PropertyType(models.Model):
         db_table = 'property_type'
         db_table_comment = 'vocabulary of properties that might have values assigned for a material sample'
 
-
-class RelatedLocalDoc(models.Model):
-    local_doc_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False, default=-1)
-    primary_image = models.IntegerField(blank=True, null=True)
-    file_name = models.CharField(max_length=255, blank=True, null=True)
-    file_type = models.CharField(max_length=100, blank=True, null=True)
-    path_to_file = models.CharField(max_length=400, blank=True, null=True)
-    uploaded_by = models.ForeignKey('SesarUser', models.DO_NOTHING, db_column='uploaded_by', blank=False, null=False)
-    uploaded_date = models.DateField(blank=True, null=True)
-
-    def __str__(self):
-        return self.file_name
-
-    class Meta:
-        db_table = 'related_local_doc'
-        db_table_comment = 'Table to provide links from sample to document hosted in the file system local to the SESAR server'
-
-
-class RelatedResource(models.Model):
-    relation_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False, default=-1)
-    relation_type = models.ForeignKey('RelationType', models.DO_NOTHING, blank=False, null=False)
-    relation_label = models.CharField(max_length=100, blank=False, null=False)
-    related_resource_uri = models.CharField(max_length=255, blank=False, null=False)
-    related_sesar_sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=True, null=True,
-                                             related_name='relatedsesarsample')
-    related_resource_type = models.ForeignKey('ResourceType', models.DO_NOTHING, blank=True, null=True)
-
-    def __str__(self):
-        return (self.relation_label)
-
-    class Meta:
-        db_table = 'related_resource'
-        db_table_comment = "table to provide links to web-accessible related resource via their URIs. Can be used to provide more explicit relation between a subsample and its parent that simply 'parent', e.g. mineral_separate, soluble_fraction..."
-
-
-class RelationType(models.Model):
-    relation_type_id = models.AutoField(primary_key=True)
-    label = models.CharField(max_length=50, blank=False, null=False)
-    description = models.TextField(blank=True, null=True)
-    source = models.TextField(blank=True, null=True)
-    # need relation type URI
-    scheme_uri = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return (self.label)
-
-    class Meta:
-        db_table = 'relation_type'
-        db_table_comment = ('terms to assign semantics for relations between samples. Relations can detail the '
-                            'relationship between parent and child samples, use to link to publications, data, '
-                            'other online resources, relate to other samples.')
-
-
-class ResourceType(models.Model):
-    resource_type_id = models.AutoField(primary_key=True)
-    label = models.CharField(max_length=100, blank=False, null=False)
-    description = models.TextField(blank=True, null=True)
-    resource_type_uri = models.CharField(max_length=255, blank=True, null=True)
-    broader_type = models.ForeignKey('ResourceType', models.DO_NOTHING,
-                                     default='-9999', blank=True, null=True)
-    source = models.TextField(blank=True, null=True)
-    scheme_uri = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return (self.label)
-
-    class Meta:
-        db_table = 'resource_type'
-        db_table_comment = ('kinds of things a sample can be related to, e.g. publication, dataset, sample, research '
-                            'project')
 
 
 class AffiliationType(models.Model):
@@ -520,6 +366,10 @@ class Individual(models.Model):
 
     def __str__(self):
         return self.label
+
+    @property
+    def affiliations_list(self):
+        return [a.institution for a in self.affiliation_set.all()]
 
     class Meta:
         db_table = 'individual'
@@ -747,12 +597,10 @@ class Sample(models.Model):
                                                       'collection of this sample')
     individual_collector = models.ManyToManyField(Individual, related_name='collected_samples',
                                                   through='RelatedSampleAgent',
-                                                  through_fields=('sample', 'individual'),
-                                                  db_comment='individual acknowledged for collection of the sample. ')
+                                                  through_fields=('sample', 'individual'))
     institution_collector = models.ManyToManyField(Institution, related_name='collected_samples',
                                                   through='RelatedSampleAgent',
-                                                  through_fields=('sample', 'institution'),
-                                                  db_comment='institution acknowledged for collection of the sample. ')
+                                                  through_fields=('sample', 'institution'))
     platform = models.ForeignKey(Platform, models.DO_NOTHING, blank=True, null=True,
                                  db_comment='Facility that hosted the sampling event. Example of indirect host is '
                                             'remote vehicle from a ship.')
@@ -798,26 +646,9 @@ class Sample(models.Model):
                             'representation of a physical, material sample.')
 
 
-# class SampleAdditionalIdentifier(models.Model):
-#     sample_external_identifier_id = models.AutoField(primary_key=True)
-#     sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False)
-#     identifier_scheme = models.CharField(max_length=50)
-#     identifier_value = models.CharField(max_length=256, blank=False, null=False)
-#
-#     def __str__(self):
-#         return self.identifier_value
-#
-#     class Meta:
-#      
-#         db_table = 'sample_additional_identifier'
-#         db_table_comment = ('Simple link to implement one to many relation from sample id to other identifiers '
-#                             'assigned to the sample. includes sample external identifier and and sample additional '
-#                             'name from legacy database')
-
-
 class SampleAdditionalName(models.Model):
     sample_additional_name_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, related_name='other_names')
     name = models.CharField(max_length=255, blank=False, null=False)
     name_authority = models.CharField(max_length=100, blank=True, null=True)
 
@@ -863,6 +694,37 @@ class SampleMaterial(models.Model):
         db_table_comment = 'Correlation table to implement many to many relationship between samples and material constituents of the sample.'
 
 
+class SampleCollection(models.Model):
+    collection_id = models.AutoField(primary_key=True)
+    name = models.CharField(unique=True, max_length=100, blank=False, null=False)
+    description = models.TextField(blank=True, null=True)
+    collection_owner = models.ForeignKey('SesarUser', models.DO_NOTHING,
+                                         db_column='collection_owner', blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    collection_type = models.ForeignKey(CollectionType, models.DO_NOTHING, blank=True, null=True,
+                                        db_comment="type of collection")
+    is_private = models.BooleanField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'sample_collection'
+        db_table_comment = 'Definition of set of samples by some user to associate a set of samples for some purpose.'
+
+
+class CollectionMember(models.Model):
+    collection = models.ForeignKey(SampleCollection, models.DO_NOTHING, blank=False, null=False, default=-1)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, default=-1)
+
+    def __str__(self):
+        return self.collection
+
+    class Meta:
+        db_table = 'collection_member'
+        db_table_comment = 'correlation table that associated a sample with a collection. '
+
+
 class AgentRoleType(models.Model):
     agent_role_id = models.AutoField(primary_key=True)
     label = models.CharField(unique=True, max_length=50, blank=True, null=True)
@@ -899,9 +761,66 @@ class RelatedSampleAgent(models.Model):
         db_table = 'related_sample_agent'
 
 
+
+
+class RelationType(models.Model):
+    relation_type_id = models.AutoField(primary_key=True)
+    label = models.CharField(max_length=50, blank=False, null=False)
+    description = models.TextField(blank=True, null=True)
+    source = models.TextField(blank=True, null=True)
+    # need relation type URI
+    scheme_uri = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return (self.label)
+
+    class Meta:
+        db_table = 'relation_type'
+        db_table_comment = ('terms to assign semantics for relations between samples. Relations can detail the '
+                            'relationship between parent and child samples, use to link to publications, data, '
+                            'other online resources, relate to other samples.')
+
+
+class ResourceType(models.Model):
+    resource_type_id = models.AutoField(primary_key=True)
+    label = models.CharField(max_length=100, blank=False, null=False)
+    description = models.TextField(blank=True, null=True)
+    resource_type_uri = models.CharField(max_length=255, blank=True, null=True)
+    broader_type = models.ForeignKey('ResourceType', models.DO_NOTHING,
+                                     default='-9999', blank=True, null=True)
+    source = models.TextField(blank=True, null=True)
+    scheme_uri = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return (self.label)
+
+    class Meta:
+        db_table = 'resource_type'
+        db_table_comment = ('kinds of things a sample can be related to, e.g. publication, dataset, sample, research '
+                            'project')
+
+
+class RelatedResource(models.Model):
+    relation_id = models.AutoField(primary_key=True)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, default=-1)
+    relation_type = models.ForeignKey(RelationType, models.DO_NOTHING, blank=False, null=False)
+    relation_label = models.CharField(max_length=100, blank=False, null=False)
+    related_resource_uri = models.CharField(max_length=255, blank=False, null=False)
+    related_sesar_sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True,
+                                             related_name='relatedsesarsample')
+    related_resource_type = models.ForeignKey(ResourceType, models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self):
+        return (self.relation_label)
+
+    class Meta:
+        db_table = 'related_resource'
+        db_table_comment = "table to provide links to web-accessible related resource via their URIs. Can be used to provide more explicit relation between a subsample and its parent that simply 'parent', e.g. mineral_separate, soluble_fraction..."
+
+
 class SamplePublicationUrl(models.Model):
     sample_publication_url_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey('Sample', models.DO_NOTHING, blank=False, null=False,
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, related_name='publication_urls',
                                db_comment='link to sample described by this URL content.')
     url = models.CharField(max_length=254, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
@@ -914,12 +833,42 @@ class SamplePublicationUrl(models.Model):
         db_table = 'sample_publication_url'
 
 
+class GeospatialLocation(models.Model):
+    location_id = models.AutoField(primary_key=True)
+    label = models.CharField(unique=True, max_length=50, blank=False, null=False,
+                             db_comment='text to display this location position in user interface. ')
+    description = models.TextField(blank=True, null=True,
+                                   db_comment='information about the position determination and representation.')
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False,
+                               db_comment='link to sample that this position applies to. ')
+    vertical = models.DecimalField(max_digits=10, decimal_places=4, blank=True, null=True,
+                                   db_comment='based on vertical_srs, might be elevation (positive up) or depth (positive down).')
+    vertical_srs = models.ForeignKey(SesarSpatialRefSys, models.DO_NOTHING, db_column='vertical_srs', blank=True,
+                                     null=True,
+                                     db_comment='defines units of measure for vertical coordinate, positive up or positive down, and the datum-- that is the surface that has a 0 coordinate value.   If the position is within a borehole, the vertical_srs might be the borehole geometry. ')
+    coordinate_1 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
+                                       db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
+    coordinate_2 = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True,
+                                       db_comment='coordinate order (what is coordinate_1, coordinate_2) and interpretation must be specified in the spatial_reference_system definition. ')
+    spatial_reference_system = models.CharField(db_column='spatial_reference_system', max_length=100, blank=True,
+                                                null=True)
+    wkt_geometry = models.CharField(db_column='WKT_geometry', max_length=100, blank=True,
+                                    null=True)  # Field name made lowercase.
+    global_grid_cell_id = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.label
+
+    class Meta:
+        db_table = 'geospatial_location'
+        db_table_comment = 'The latitude and longitude in the sample table are required to use WGS84 decimal degrees. This table is optional, use to report coordinate locations with spatial reference different from WGS84, e.g. UTM, local grid coordinates, global grid cell identifiers, etc. '
+
+
 class SampleDoc(models.Model):
     # note order of fields in db modified in migration 0035 to match what is in
     # legacy database so table copy function works
     sample_doc_id = models.AutoField(primary_key=True)
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, default=-1,
-                               db_comment='link to sample described by this URL content.')
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=True, null=True, related_name='sample_docs', db_comment='link to sample described by this URL content.')
     primary_image = models.IntegerField(blank=False, null=False, default=0)
     file_name = models.CharField(max_length=2048, blank=False, null=False)
     path_to_file = models.CharField(max_length=400, blank=False, null=False)
@@ -934,6 +883,48 @@ class SampleDoc(models.Model):
 
     class Meta:
         db_table = 'sample_doc'
+
+
+class RelatedLocalDoc(models.Model):
+    local_doc_id = models.AutoField(primary_key=True)
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, default=-1)
+    primary_image = models.IntegerField(blank=True, null=True)
+    file_name = models.CharField(max_length=255, blank=True, null=True)
+    file_type = models.CharField(max_length=100, blank=True, null=True)
+    path_to_file = models.CharField(max_length=400, blank=True, null=True)
+    uploaded_by = models.ForeignKey('SesarUser', models.DO_NOTHING, db_column='uploaded_by', blank=False, null=False)
+    uploaded_date = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return self.file_name
+
+    class Meta:
+        db_table = 'related_local_doc'
+        db_table_comment = 'Table to provide links from sample to document hosted in the file system local to the SESAR server'
+
+
+class OtherProperty(models.Model):
+    property_value_id = models.IntegerField(primary_key=True)
+    label = models.CharField(max_length=50, blank=False, null=False,
+                             db_comment='text to display property value in user interface')
+    sample = models.ForeignKey(Sample, models.DO_NOTHING, blank=False, null=False, default=-1,
+                               db_comment='foreign key to sample table to link property attribution to sample')
+    property_type = models.ForeignKey('PropertyType', models.DO_NOTHING, blank=False, null=False,
+                                      db_comment='foreign key to property type vocabulary')
+    property_value_text = models.CharField(max_length=256, blank=False, null=False,
+                                           db_comment='property value, serialized as text. the value_data_type is used ' \
+                                                      ' to convert to number or treat as URI if appropriated')
+    value_data_type = models.CharField(max_length=50, blank=False, null=False,
+                                       db_comment='data type for property value, if need to cast text as numeric or a URI.')
+    provenance = models.CharField(max_length=250, blank=True, null=True,
+                                  db_comment='explanation of how (when, who...) the value was determined')
+
+    def __str__(self):
+        return self.label
+
+    class Meta:
+        db_table = 'other_property'
+        db_table_comment = 'Optional correlation table to link sample with descriptive properties not explicitly included in this schema. Was sample_customized_metadata'
 
 
 class SesarCode(models.Model):

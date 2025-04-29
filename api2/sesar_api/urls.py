@@ -7,4 +7,5 @@ app_name = 'sesar_api'
 
 urlpatterns = (
     path('sample-metadata', DisplaySampleByIGSNView, name='sampleigsn'),
+    path('samples/', get_sample_by_igsn),
 )
