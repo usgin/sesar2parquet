@@ -3,12 +3,60 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import *
+from django.utils import timezone
+from django.utils.timezone import make_aware
 from django.db.models import Prefetch
 
-from sesar_api.serializers import SampleSerializer
+from sesar_api.serializers import SampleSerializer, SampleLandingPageSerializer
 from sesar_api.models import Sample
 from sesar_api.util import get_samples, get_team_sesar_codes_with_permission, get_paginated_queryset, generate_sample_jsonld
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_sample_by_igsn(request):
+    igsn = request.GET.get('igsn')
+    try:
+        sample = Sample.objects.select_related(
+            "igsn_prefix",
+            "classification",
+            "top_level_classification",
+            "cur_owner",
+            "cur_registrant",
+            "sample_type",
+            "country",
+            "external_parent_sample_type",
+            "launch_type",
+            "nav_type",
+            "origin_sample",
+        ).prefetch_related(
+            "other_names",
+            "publication_urls",
+            "sample_docs",
+            Prefetch(
+                "origin_sample__sample_set", 
+                queryset=Sample.objects.all(),
+                to_attr="sibling_samples",
+            ),
+            Prefetch(
+                'sample_set',
+                queryset=Sample.objects.all(),
+                to_attr="children_samples"
+            )
+        ).get(igsn=igsn)
+
+        # if sample is private
+        if sample.publish_date and make_aware(sample.publish_date) > timezone.now():
+            return Response({'error': 'Sample is private'}, status=status.HTTP_403_FORBIDDEN)
+
+        # # if sample is deactivated
+        if sample.archive_date and make_aware(sample.archive_date) < timezone.now():
+            return Response({'error': 'Sample is deactivated'}, status=status.HTTP_410_GONE)
+
+        serializer = SampleLandingPageSerializer(sample)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Sample.DoesNotExist:
+        return Response({'error': 'Sample does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
 
 # get all viewable samples in user team
@@ -103,7 +151,7 @@ def get_sample_jsonld(request):
             Prefetch(
                 "origin_sample__sample_set", 
                 queryset=Sample.objects.all(),
-                to_attr="children_samples",
+                to_attr="sibling_samples",
             ),
             Prefetch(
                 'sample_set',
@@ -111,6 +159,14 @@ def get_sample_jsonld(request):
                 to_attr="children_samples"
             )
         ).get(igsn=igsn)
+
+        # if sample is private
+        if sample.publish_date and sample.publish_date > timezone.now():
+            return Response({'error': 'Sample is private'}, status=status.HTTP_403_FORBIDDEN)
+
+        # if sample is deactivated
+        if sample.archive_date and sample.archive_date < timezone.now():
+            return Response({'error': 'Sample is deactivated'}, status=status.HTTP_410_GONE)
 
         return Response(generate_sample_jsonld(sample), status=status.HTTP_200_OK)
     except Sample.DoesNotExist:

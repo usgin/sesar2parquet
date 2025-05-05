@@ -160,7 +160,7 @@ class SampleType(models.Model):
 class Sample(models.Model):
     sample_id = models.AutoField(primary_key=True)
     origin_sample = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
-    external_parent_sample_type = models.ForeignKey('SampleType', models.DO_NOTHING, blank=True, null=True)
+    external_parent_sample_type = models.ForeignKey(SampleType, models.DO_NOTHING, blank=True, null=True)
     external_parent_name = models.CharField(max_length=1000, blank=True, null=True)
     sample_type = models.ForeignKey(SampleType, models.DO_NOTHING, related_name='sample_sample_type_set')
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING)

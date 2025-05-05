@@ -48,4 +48,5 @@ urlpatterns = [
     path('statistics/igsns/count/institution/', views.get_sample_count_by_institution),
     path('sitemap/', views.get_igsn_list_for_sitemap),
     path('sample/igsn-ev-json-ld/', views.get_sample_jsonld),
+    path('samples/', views.get_sample_by_igsn),
 ]
