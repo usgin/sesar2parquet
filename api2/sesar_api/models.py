@@ -472,27 +472,15 @@ class Sample(models.Model):
     sample_type = models.ForeignKey(SampleType, models.DO_NOTHING, blank=False, null=False,
                                     db_comment='corresponds to iSamples material sample type, use iSamples vocabulary '
                                                'with earth science extensions.')
-    # related agent
-    # org_registrant = models.ManyToManyField(Institution, related_name='org_registrant_agent_id',
-    #                                         through='RelatedSampleAgent')
     cur_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=False, null=False,
                                        related_name='sample_cur_registrant_set')
     cur_owner = models.ForeignKey(SesarUser, models.DO_NOTHING, blank=True, null=True,
                                   related_name='sample_cur_owner_set')
-    # related agent
-    # req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set',
-    #                                   blank=True,
-    #                                   null=True)
     igsn_is_system_assigned = models.IntegerField(blank=True, null=True)
     publish_date = models.DateTimeField(default=timezone.now)
     archive_date = models.DateTimeField(blank=True, null=True)
     registration_date = models.DateTimeField(default=timezone.now)
     last_update_date = models.DateTimeField(default=timezone.now)
-    # current_archive = models.ManyToManyField(Institution, related_name='curr_archive_agent_id', through='RelatedSampleAgent',
-    #                                          db_comment='link to agent that currently is the steward of the sample.')
-    # original_archive = models.ManyToManyField(Group, related_name='orig_archive_agent_id', through='RelatedSampleAgent',
-    #                                           db_comment='link to first agent that was the steward of the sample, '
-    #                                                      'if different from the current steward.')
     size = models.CharField(max_length=255, blank=True, null=True,
                             db_comment='text string  specifying size of sample; should be measured value with units '
                                        'of measure. MIght use mass or length dimensions. ')
@@ -595,12 +583,12 @@ class Sample(models.Model):
                                            db_comment='link to description of the cruise, field program, funded '
                                                       'project or other activity that is the context for the '
                                                       'collection of this sample')
-    individual_collector = models.ManyToManyField(Individual, related_name='collected_samples',
-                                                  through='RelatedSampleAgent',
-                                                  through_fields=('sample', 'individual'))
-    institution_collector = models.ManyToManyField(Institution, related_name='collected_samples',
-                                                  through='RelatedSampleAgent',
-                                                  through_fields=('sample', 'institution'))
+    # individual_collector = models.ManyToManyField(Individual, related_name='collected_samples',
+    #                                               through='RelatedSampleAgent',
+    #                                               through_fields=('sample', 'individual'))
+    # institution_collector = models.ManyToManyField(Institution, related_name='collected_samples',
+    #                                               through='RelatedSampleAgent',
+    #                                               through_fields=('sample', 'institution'))
     platform = models.ForeignKey(Platform, models.DO_NOTHING, blank=True, null=True,
                                  db_comment='Facility that hosted the sampling event. Example of indirect host is '
                                             'remote vehicle from a ship.')
@@ -625,12 +613,6 @@ class Sample(models.Model):
     metadata_store_status = models.CharField(max_length=25, blank=True, null=True,
                                              db_comment='internal status flag used by SESAR to track metadata '
                                                         'management')
-    # orig_owner = models.ManyToManyField(Individual, related_name='orig_owner_agent_id', through='RelatedSampleAgent',
-    #                                     db_comment='link to agent who was original owner of sample, if different from '
-    #                                                'the current owner.')
-    # cur_owner = models.ManyToManyField(Individual, related_name='sample_cur_owner_set', through='RelatedSampleAgent',
-    #                                    db_comment='link to current owner of the sample. SESAR uses the owner ID to '
-    #                                               'determine permissions for updating sample records.')
     last_changed_by = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_last_changed_by_set',
                                         blank=True,
                                         null=True,
@@ -644,6 +626,46 @@ class Sample(models.Model):
         db_table = 'sample'
         db_table_comment = ('base table with core sample description fields. The contents of this table are a digital '
                             'representation of a physical, material sample.')
+
+    @property
+    def individual_collectors(self):
+        return Individual.objects.filter(
+            relatedsampleagent__sample=self,
+            relatedsampleagent__agent_type=RelatedSampleAgent.AGENT_TYPES.Individual,
+            relatedsampleagent__relation_type__label='collector'
+        )
+
+    @property
+    def institution_collectors(self):
+        return Institution.objects.filter(
+            relatedsampleagent__sample=self,
+            relatedsampleagent__agent_type=RelatedSampleAgent.AGENT_TYPES.Institution,
+            relatedsampleagent__relation_type__label='collector'
+        )
+
+    @property
+    def current_archive(self):
+        return [
+            agent.get_agent()
+            for agent in self.related_agents.filter(
+                relation_type__label='current_archive'
+            )
+            if agent.get_agent() is not None
+        ]
+
+    @property
+    def original_archive(self):
+        return [
+            agent.get_agent()
+            for agent in self.related_agents.filter(
+                relation_type__label='original_archive'
+            )
+            if agent.get_agent() is not None
+        ]
+
+    @property
+    def agents(self):
+        return self.related_agents.select_related('individual', 'team', 'institution', 'relation_type')
 
 
 class SampleAdditionalName(models.Model):
@@ -740,27 +762,38 @@ class AgentRoleType(models.Model):
 
 class RelatedSampleAgent(models.Model):
     class AGENT_TYPES(models.TextChoices):
-       Individual = 'INDIVIDUAL'
-       Team = 'TEAM'
-       Institution = 'INSTITUTION'
+        Individual = 'Individual'
+        Team = 'Team'
+        Institution = 'Institution'
 
-    sample = models.ForeignKey(Sample, models.DO_NOTHING, related_name='samples')
+    sample = models.ForeignKey(Sample, related_name='related_agents', on_delete=models.DO_NOTHING)
+    relation_type = models.ForeignKey(AgentRoleType, on_delete=models.DO_NOTHING)
+    
+    agent_type = models.CharField(max_length=50, choices=AGENT_TYPES)
     related_agent_id = models.IntegerField(models.DO_NOTHING)  # this is FK to one of Individual, Team or Institution
     # depending on value of agent_type
-    agent_type = models.CharField(max_length=50, blank=False, choices=AGENT_TYPES)
-    relation_type = models.ForeignKey(AgentRoleType, models.DO_NOTHING)
+
+    # Only one of these will be set, depending on agent_type
+    individual = models.ForeignKey(Individual, null=True, blank=True, on_delete=models.DO_NOTHING)
+    institution = models.ForeignKey(Institution, null=True, blank=True, on_delete=models.DO_NOTHING)
+    team = models.ForeignKey(Team, null=True, blank=True, on_delete=models.DO_NOTHING)
+
     label = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     activate_date = models.DateField(auto_now_add=True)
-    deactivate_date = models.DateField(auto_now_add=False, blank=True, null=True)
-    individual = models.ForeignKey(Individual, models.DO_NOTHING, blank=True, null=True)
-    team = models.ForeignKey(Team, models.DO_NOTHING, blank=True, null=True)
-    institution = models.ForeignKey(Institution, models.DO_NOTHING, blank=True, null=True)
+    deactivate_date = models.DateField(blank=True, null=True)
 
     class Meta:
         db_table = 'related_sample_agent'
 
-
+    def get_agent(self):
+        if self.agent_type == self.AGENT_TYPES.Individual:
+            return self.individual
+        elif self.agent_type == self.AGENT_TYPES.Institution:
+            return self.institution
+        elif self.agent_type == self.AGENT_TYPES.Team:
+            return self.team
+        return None
 
 
 class RelationType(models.Model):

@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Prefetch
 from django.utils import timezone
 
-from sesar_api.serializers import SampleSerializer
+from sesar_api.serializers import SampleLandingPageSerializer
 from sesar_api.models import Sample, SampleMaterial
 
 @api_view(['GET'])
@@ -48,7 +48,7 @@ def get_sample_by_igsn(request):
             Prefetch(
                 'samplematerial_set',
                 queryset=SampleMaterial.objects.select_related('material_type'),
-                to_attr='prefetched_sample_materials'
+                to_attr='sample_materials'
             )
         ).get(igsn=igsn))
 
@@ -60,7 +60,7 @@ def get_sample_by_igsn(request):
         if sample.archive_date and sample.archive_date < timezone.now():
             return Response({'error': 'Sample is deactivated'}, status=status.HTTP_410_GONE)
 
-        serializer = SampleSerializer(sample)
+        serializer = SampleLandingPageSerializer(sample)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Sample.DoesNotExist:
         return Response({'error': 'Sample does not exist'}, status=status.HTTP_404_NOT_FOUND)

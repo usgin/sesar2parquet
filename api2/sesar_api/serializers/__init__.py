@@ -11,3 +11,4 @@ from .individual_serializer import *
 from .institution_serializer import *
 from .platform_serializer import *
 from .affiliation_serializer import *
+from .agent_serializer import *
