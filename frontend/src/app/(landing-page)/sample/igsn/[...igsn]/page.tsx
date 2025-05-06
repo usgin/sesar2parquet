@@ -6,9 +6,16 @@ import SampleMap from "@/components/SampleMap";
 import SampleFamily from "@/components/SampleFamily"
 import SamplePublication from "@/components/SamplePublication"
 
-export async function generateMetadata({ params }: { params: { igsn: string[] } }): Promise<Metadata> {
-    const {igsn} = await params;
-    let igsn_value = igsn.join('/');
+type Props = {
+  params: {
+    igsn: string[]
+  }
+};
+
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const {igsn} = params;
+    const igsn_value = igsn.join('/');
     return {
         title: `SESAR: ${igsn_value}`,
         description: `Sample Landing Page for IGSN ${igsn_value}`,
@@ -16,15 +23,9 @@ export async function generateMetadata({ params }: { params: { igsn: string[] } 
 }
 
 
-let general = {}
-let description = {}
-let location = {}
-let curation = {}
-let collection = {}
-
-const SampleLandingPage = async ({ params }: { params: { igsn: string[] } }) => {
-  const {igsn} = await params;
-  let igsn_value = igsn.join('/');
+const SampleLandingPage = async ({ params }: Props) => {
+  const {igsn} = params;
+  const igsn_value = igsn.join('/');
 
   const baseUrl = process.env.NEXT_PUBLIC_API2_BASE_URL;
   const res = await fetch(`${baseUrl}/api/samples/?igsn=${igsn_value}`, {
@@ -215,7 +216,7 @@ const SampleLandingPage = async ({ params }: { params: { igsn: string[] } }) => 
     }
   }
 
-  curation = {
+  const curation = {
     'Current Archive': {
       value: [...sample.current_archive]
       .map(item => item.label)
@@ -246,7 +247,7 @@ const SampleLandingPage = async ({ params }: { params: { igsn: string[] } }) => 
     },
   }
 
-  collection = {
+  const collection = {
     'Cruise/Field Program': {
       value: sample.cruise_field_prgrm?.label ?? null,
       original: original.cruise_field_prgrm,
