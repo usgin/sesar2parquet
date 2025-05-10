@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.db.models import Index, Q
 import os
+from django.core.exceptions import ValidationError
 
 
 # Extend Django User Model, add custom fields as neccessary
@@ -37,6 +38,7 @@ class SesarUser(models.Model):
     doi_prefix = models.CharField(max_length=10, default=os.environ.get('SESAR_SHARED_PREFIX', '10.58052/'))
     last_login = models.DateTimeField(blank=True, null=True, default=timezone.now)
     auth_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
+    country = models.ForeignKey('Country', models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
         if self.individual:
@@ -458,7 +460,7 @@ class SamplingMethod(models.Model):
 
 class Sample(models.Model):
     sample_id = models.AutoField(primary_key=True, db_comment='primary key for database. ')
-    igsn = models.CharField(max_length=60, blank=False, null=False,
+    igsn = models.CharField(unique=True, max_length=60, blank=False, null=False,
                             db_comment='globally unique identifier string that identifies the material sample. In '
                                        'DataCite/DOI context, this includes the DOI prefix, and the identifier suffix (which in most cases begins with a SESAR code.')
     sesar_code = models.ForeignKey('SesarCode', models.DO_NOTHING, db_column='sesar_code', to_field='sesar_code', related_name='samples', blank=True, null=True)
@@ -560,6 +562,7 @@ class Sample(models.Model):
                                                      'notes about elevation datums')
     sampled_feature_type = models.ForeignKey(SampledFeatureType, models.DO_NOTHING, blank=True, null=True,
                                              db_comment='was primary_location_type. Map to iSamples Sampled feature; this will likely be some geoscience feature. Link to controlled vocabulary.')
+    country = models.ForeignKey(Country, models.DO_NOTHING, blank=True, null=True)
     locality = models.ForeignKey(Locality, models.DO_NOTHING, blank=True, null=True,
                                  db_comment='link to place name description of sampling location, as opposed to a '
                                             'coordinate position. The locality table is incompeletly populated because'
@@ -583,12 +586,6 @@ class Sample(models.Model):
                                            db_comment='link to description of the cruise, field program, funded '
                                                       'project or other activity that is the context for the '
                                                       'collection of this sample')
-    # individual_collector = models.ManyToManyField(Individual, related_name='collected_samples',
-    #                                               through='RelatedSampleAgent',
-    #                                               through_fields=('sample', 'individual'))
-    # institution_collector = models.ManyToManyField(Institution, related_name='collected_samples',
-    #                                               through='RelatedSampleAgent',
-    #                                               through_fields=('sample', 'institution'))
     platform = models.ForeignKey(Platform, models.DO_NOTHING, blank=True, null=True,
                                  db_comment='Facility that hosted the sampling event. Example of indirect host is '
                                             'remote vehicle from a ship.')
@@ -618,6 +615,8 @@ class Sample(models.Model):
                                         null=True,
                                         db_comment='link to user who most recently changed the content of this record.')
     team_owner = models.ForeignKey(Team, models.DO_NOTHING, related_name='owned_samples_set', blank=True, null=True)
+    req_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_req_registrant_set', blank=True, null=True)
+    last_registrant = models.ForeignKey(SesarUser, models.DO_NOTHING, related_name='sample_last_registrant_set', blank=True, null=True)
 
     def __str__(self):
         return self.igsn
@@ -679,6 +678,9 @@ class SampleAdditionalName(models.Model):
 
     class Meta:
         db_table = 'sample_additional_name'
+        constraints = [
+            models.UniqueConstraint(fields=['sample', 'name'], name='unique_sample_additional_name')
+        ]
         db_table_comment = 'simple table to link one sample to potentially many different other names by which it is known'
 
 
@@ -713,12 +715,15 @@ class SampleMaterial(models.Model):
 
     class Meta:
         db_table = 'sample_material'
+        constraints = [
+            models.UniqueConstraint(fields=['sample', 'material_type'], name='unique_sample_material_type')
+        ]
         db_table_comment = 'Correlation table to implement many to many relationship between samples and material constituents of the sample.'
 
 
 class SampleCollection(models.Model):
     collection_id = models.AutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=100, blank=False, null=False)
+    name = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
     collection_owner = models.ForeignKey('SesarUser', models.DO_NOTHING,
                                          db_column='collection_owner', blank=True, null=True)
@@ -785,6 +790,23 @@ class RelatedSampleAgent(models.Model):
 
     class Meta:
         db_table = 'related_sample_agent'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['sample', 'relation_type', 'individual'],
+                name='unique_individual_relation',
+                condition=models.Q(individual__isnull=False)
+            ),
+            models.UniqueConstraint(
+                fields=['sample', 'relation_type', 'institution'],
+                name='unique_institution_relation',
+                condition=models.Q(institution__isnull=False)
+            ),
+            models.UniqueConstraint(
+                fields=['sample', 'relation_type', 'team'],
+                name='unique_team_relation',
+                condition=models.Q(team__isnull=False)
+            ),
+        ]
 
     def get_agent(self):
         if self.agent_type == self.AGENT_TYPES.Individual:
@@ -794,6 +816,15 @@ class RelatedSampleAgent(models.Model):
         elif self.agent_type == self.AGENT_TYPES.Team:
             return self.team
         return None
+    
+    def clean(self):
+        super().clean()
+        set_fields = [self.individual, self.institution, self.team]
+        set_count = sum(1 for field in set_fields if field is not None)
+        if set_count > 1:
+            raise ValidationError("Only one of 'individual', 'institution', or 'team' can be set.")
+        if set_count == 0:
+            raise ValidationError("You must set exactly one of 'individual', 'institution', or 'team'.")
 
 
 class RelationType(models.Model):
