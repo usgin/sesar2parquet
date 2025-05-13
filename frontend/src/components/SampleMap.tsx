@@ -1,13 +1,13 @@
 import React from 'react';
 
-type MapProps = {
+type Props = {
   latitude: number | null;
   longitude: number | null;
   latitude_end: number | null;
   longitude_end: number | null;
 };
 
-const SampleMap = ({ latitude, longitude, latitude_end, longitude_end }: MapProps) => {
+const SampleMap = ({ latitude, longitude, latitude_end, longitude_end }: Props) => {
   const hasLocationData =
     latitude !== null &&
     longitude !== null;

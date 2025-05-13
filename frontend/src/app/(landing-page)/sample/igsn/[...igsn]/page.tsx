@@ -14,7 +14,7 @@ type Props = {
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const {igsn} = params;
+    const {igsn} = await params;
     const igsn_value = igsn.join('/');
     return {
         title: `SESAR: ${igsn_value}`,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 const SampleLandingPage = async ({ params }: Props) => {
-  const {igsn} = params;
+  const {igsn} = await params;
   const igsn_value = igsn.join('/');
 
   const baseUrl = process.env.NEXT_PUBLIC_API2_BASE_URL;
@@ -297,6 +297,10 @@ const SampleLandingPage = async ({ params }: Props) => {
     }
   }
 
+  const sample_parent = sample.parent_sample
+  const sample_siblings = sample.sibling_igsns
+  const sample_children = sample.children_igsns
+
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
@@ -310,10 +314,10 @@ const SampleLandingPage = async ({ params }: Props) => {
       </div>
 
       {/* Right Column */}
-      <div className="w-full md:w-1/2 p-4 bg-gray-200 flex flex-col gap-6">
+      <div className="w-full md:w-1/2 p-4 flex flex-col gap-6">
         <SampleMap latitude={latitude} longitude={longitude} latitude_end={latitudeEnd} longitude_end={longitudeEnd}/>
         <ImageGallery />
-        <SampleFamily />
+        <SampleFamily parent_igsn={sample_parent} sibling_igsns={sample_siblings} children_igsns={sample_children}/>
         <SamplePublication />
       </div>
 
