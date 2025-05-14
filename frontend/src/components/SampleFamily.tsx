@@ -57,7 +57,7 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
   const [showChildren, setShowChildren] = useState(true);
 
   return (
-    <div className="flex flex-col border border-gray-200 rounded-sm mb-4">
+    <div className="flex flex-col border border-gray-200 rounded-sm">
       <button
         className="text-left text-xl font-bold bg-cyan-700 text-white pl-3 cursor-pointer p-2 rounded-t-sm"
         onClick={() => setIsOpen(!isOpen)}

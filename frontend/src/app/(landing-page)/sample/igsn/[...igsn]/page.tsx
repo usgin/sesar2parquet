@@ -300,7 +300,7 @@ const SampleLandingPage = async ({ params }: Props) => {
   const sample_parent = sample.parent_sample
   const sample_siblings = sample.sibling_igsns
   const sample_children = sample.children_igsns
-
+  // const sample_publication_urls = sample.publication_urls
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
@@ -318,11 +318,8 @@ const SampleLandingPage = async ({ params }: Props) => {
         <SampleMap latitude={latitude} longitude={longitude} latitude_end={latitudeEnd} longitude_end={longitudeEnd}/>
         <ImageGallery />
         <SampleFamily parent_igsn={sample_parent} sibling_igsns={sample_siblings} children_igsns={sample_children}/>
-        <SamplePublication />
+        <SamplePublication links={sample.publication_urls}/>
       </div>
-
-      {/* Display IGSN */}
-      {/* <h1 className="text-3xl">IGSN: {igsn_value}</h1> */}
     </div>
   );
 };
