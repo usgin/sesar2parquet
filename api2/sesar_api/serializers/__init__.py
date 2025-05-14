@@ -12,3 +12,4 @@ from .institution_serializer import *
 from .platform_serializer import *
 from .affiliation_serializer import *
 from .agent_serializer import *
+from .sample_publication_url_serializer import *
