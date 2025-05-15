@@ -56,6 +56,9 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
   const [showSiblings, setShowSiblings] = useState(true);
   const [showChildren, setShowChildren] = useState(true);
 
+  // const hasData = (parent_igsn != null) || (sibling_igsns.length > 0) || (children_igsns.length > 0);
+  const hasData = false;
+
   return (
     <div className="flex flex-col border border-gray-200 rounded-sm">
       <button
@@ -66,9 +69,9 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
         Sample Family {isOpen ? '▲' : '▼'}
       </button>
 
-      {isOpen && (
+      {isOpen && hasData && (
         <div className="p-4 rounded-b-sm space-y-4">
-          <CollapsibleSection
+          {parent_igsn != null && <CollapsibleSection
             title="Parent"
             isOpen={showParent}
             toggle={() => setShowParent(!showParent)}
@@ -81,9 +84,9 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
                 {parent_igsn}
               </Link>
             </p>
-          </CollapsibleSection>
+          </CollapsibleSection>}
 
-          <CollapsibleSection
+          {sibling_igsns.length > 0 && <CollapsibleSection
             title="Siblings"
             isOpen={showSiblings}
             toggle={() => setShowSiblings(!showSiblings)}
@@ -98,9 +101,9 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
                 </Link>
               </p>
             ))}
-          </CollapsibleSection>
+          </CollapsibleSection>}
 
-          <CollapsibleSection
+          {children_igsns.length > 0 && <CollapsibleSection
             title="Children"
             isOpen={showChildren}
             toggle={() => setShowChildren(!showChildren)}
@@ -115,8 +118,12 @@ const SampleFamily = ({ parent_igsn, sibling_igsns, children_igsns }: Props) => 
                 </Link>
               </p>
             ))}
-          </CollapsibleSection>
+          </CollapsibleSection>}
         </div>
+      )}
+
+      {isOpen && hasData == false && (
+        <p className='text-gray-600 text-center py-2'>No sample family found.</p>
       )}
     </div>
   );
