@@ -2,9 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 import LandingPageDataTable from "@/components/LandingPageDataTable";
 import ImageGallery from "@/components/ImageGallery";
-import SampleMap from "@/components/SampleMap";
-import SampleFamily from "@/components/SampleFamily"
+import LandingPageFamilyWrapper from "@/components/LandingPageFamilyWrapper"
 import SamplePublication from "@/components/SamplePublication"
+import LandingPageMapWrapper from '@/components/LandingPageMapWrapper';
 
 type Props = {
   params: {
@@ -300,10 +300,9 @@ const SampleLandingPage = async ({ params }: Props) => {
   const sample_parent = sample.parent_sample
   const sample_siblings = sample.sibling_igsns
   const sample_children = sample.children_igsns
-  // const sample_publication_urls = sample.publication_urls
 
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row">
       {/* Left Column */}
       <div className="w-full md:w-1/2 p-4 flex flex-col gap-4">
         <LandingPageDataTable title="General Identifiers" data={general}/>
@@ -315,9 +314,9 @@ const SampleLandingPage = async ({ params }: Props) => {
 
       {/* Right Column */}
       <div className="w-full md:w-1/2 p-4 flex flex-col gap-6">
-        <SampleMap latitude={latitude} longitude={longitude} latitude_end={latitudeEnd} longitude_end={longitudeEnd}/>
+        <LandingPageMapWrapper latitude={latitude} longitude={longitude} latitudeEnd={latitudeEnd} longitudeEnd={longitudeEnd}/>
         <ImageGallery />
-        <SampleFamily parent_igsn={sample_parent} sibling_igsns={sample_siblings} children_igsns={sample_children}/>
+        <LandingPageFamilyWrapper parent_igsn={sample_parent} sibling_igsns={sample_siblings} children_igsns={sample_children}/>
         <SamplePublication links={sample.publication_urls}/>
       </div>
     </div>

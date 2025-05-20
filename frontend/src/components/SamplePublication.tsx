@@ -62,22 +62,26 @@ const SamplePublication: React.FC<Props> = ({ links }) => {
             ))}
           </ol>
         )}
+        
+        {citations.length > 0 && (
+          <div className="pl-6 p-2">
+            <label htmlFor="style-select" className="font-semibold">Citation Style:</label>
+            <select
+              id="style-select"
+              value={style}
+              onChange={(e) => setStyle(e.target.value)}
+              className="ml-2 p-1 border rounded"
+            >
+              {STYLES.map((s) => (
+                <option key={s} value={s}>{s.toUpperCase()}</option>
+              ))}
+            </select>
+          </div>
+        )}
+        
         {citations.length == 0 && (
           <p className='text-gray-600 text-center py-2'>No citations provided.</p>
         )}
-        <div className="pl-6 p-2">
-          <label htmlFor="style-select" className="font-semibold">Citation Style:</label>
-          <select
-            id="style-select"
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-            className="ml-2 p-1 border rounded"
-          >
-            {STYLES.map((s) => (
-              <option key={s} value={s}>{s.toUpperCase()}</option>
-            ))}
-          </select>
-        </div>
       </div>
 
       <div className="flex flex-col rounded-sm border border-gray-200">
