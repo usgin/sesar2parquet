@@ -217,3 +217,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD')
 
 # Default From Email (must be a verified email address in SES)
 DEFAULT_FROM_EMAIL = 'SESAR <info@geosamples.org>'
+
+MEDIA_ROOT = '/public/web'          # This should match containerPath in task def
+MEDIA_URL = '/uploads/'             # URL path prefix for serving media files
