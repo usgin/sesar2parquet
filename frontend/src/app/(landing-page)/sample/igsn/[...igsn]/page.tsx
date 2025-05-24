@@ -322,10 +322,10 @@ const SampleLandingPage = async ({ params }: Props) => {
   }
 
   const images = sample.sample_docs.filter(
-    (file: File) => file.file_type.includes('image')
+    (file: File) => file.file_type?.includes('image')
   );
   const other_files = sample.sample_docs.filter(
-    (file: File) => !file.file_type.includes('image')
+    (file: File) => !file.file_type?.includes('image')
   );
 
   return (
