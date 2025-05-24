@@ -4,6 +4,8 @@ import LandingPageDataTable from "@/components/LandingPageDataTable";
 import ImageGallery from "@/components/ImageGallery";
 import LandingPageFamilyWrapper from "@/components/LandingPageFamilyWrapper"
 import SamplePublication from "@/components/SamplePublication"
+import OtherLinks from "@/components/OtherLinks"
+import OtherFiles from "@/components/OtherFiles"
 import LandingPageMapWrapper from '@/components/LandingPageMapWrapper';
 
 type Props = {
@@ -301,6 +303,31 @@ const SampleLandingPage = async ({ params }: Props) => {
   const sample_siblings = sample.sibling_igsns
   const sample_children = sample.children_igsns
 
+  interface Link {
+    url: string;
+    url_type: string;
+  }
+
+  const publication_links = sample.publication_urls.filter(
+    (link: Link) => link.url_type === 'DOI'
+  );
+  const other_links = sample.publication_urls.filter(
+    (link: Link) => link.url_type !== 'DOI'
+  );
+
+  interface File {
+    file_name: string;
+    file_type: string;
+    path_to_file: string;
+  }
+
+  const images = sample.sample_docs.filter(
+    (file: File) => file.file_type.includes('image')
+  );
+  const other_files = sample.sample_docs.filter(
+    (file: File) => !file.file_type.includes('image')
+  );
+
   return (
     <div className="flex flex-col md:flex-row">
       {/* Left Column */}
@@ -315,9 +342,11 @@ const SampleLandingPage = async ({ params }: Props) => {
       {/* Right Column */}
       <div className="w-full md:w-1/2 p-4 flex flex-col gap-6">
         <LandingPageMapWrapper latitude={latitude} longitude={longitude} latitudeEnd={latitudeEnd} longitudeEnd={longitudeEnd}/>
-        <ImageGallery />
+        <ImageGallery files={images}/>
         <LandingPageFamilyWrapper parent_igsn={sample_parent} sibling_igsns={sample_siblings} children_igsns={sample_children}/>
-        <SamplePublication links={sample.publication_urls}/>
+        <SamplePublication links={publication_links}/>
+        <OtherFiles files={other_files}/>
+        <OtherLinks links={other_links}/>
       </div>
     </div>
   );
