@@ -7,3 +7,6 @@
 /.idea
 /api
 /api2
+/frontend
+*.ddb
+*.parquet
