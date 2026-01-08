@@ -3,3 +3,5 @@
 /api/.idea
 /api/smrvenv
 *.pyc
+/.github
+/.idea
