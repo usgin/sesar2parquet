@@ -1,0 +1,179 @@
+geologic_time_id,label,abrevURI,geologic_time_interval_uri,numeric_older_bound,numeric_younger_bound,notation
+1,Phanerozoic Eon,ics:Phanerozoic,http://resource.geosciml.org/classifier/ics/ischart/Phanerozoic,541,0,a1.1
+2,Cenozoic Era,ics:Cenozoic,http://resource.geosciml.org/classifier/ics/ischart/Cenozoic,66,0,a1.1.1
+3,Quaternary Period,ics:Quaternary,http://resource.geosciml.org/classifier/ics/ischart/Quaternary,2.58,0,a1.1.1.1
+4,Holocene Epoch,ics:Holocene,http://resource.geosciml.org/classifier/ics/ischart/Holocene,0.0117,0,a1.1.1.1.1
+5,Meghalayan Age,ics:Meghalayan,http://resource.geosciml.org/classifier/ics/ischart/Meghalayan,0.0042,0,a1.1.1.1.1.1
+6,Northgrippian Age,ics:Northgrippian,http://resource.geosciml.org/classifier/ics/ischart/Northgrippian,0.0082,0.0042,a1.1.1.1.1.2
+7,Greenlandian Age,ics:Greenlandian,http://resource.geosciml.org/classifier/ics/ischart/Greenlandian,0.0117,0.0082,a1.1.1.1.1.3
+8,Pleistocene Epoch,ics:Pleistocene,http://resource.geosciml.org/classifier/ics/ischart/Pleistocene,2.58,0.0117,a1.1.1.1.2
+9,Late Pleistocene Age,ics:UpperPleistocene,http://resource.geosciml.org/classifier/ics/ischart/UpperPleistocene,0.129,0.0117,a1.1.1.1.2.1
+10,Chibanian Age,ics:MiddlePleistocene,http://resource.geosciml.org/classifier/ics/ischart/MiddlePleistocene,0.774,0.129,a1.1.1.1.2.2
+11,Calabrian Age,ics:Calabrian,http://resource.geosciml.org/classifier/ics/ischart/Calabrian,1.8,0.774,a1.1.1.1.2.3
+12,Gelasian Age,ics:Gelasian,http://resource.geosciml.org/classifier/ics/ischart/Gelasian,2.58,1.8,a1.1.1.1.2.4
+13,Neogene Period,ics:Neogene,http://resource.geosciml.org/classifier/ics/ischart/Neogene,23.03,2.58,a1.1.1.2
+14,Pliocene Epoch,ics:Pliocene,http://resource.geosciml.org/classifier/ics/ischart/Pliocene,5.333,2.58,a1.1.1.2.1
+15,Piacenzian Age,ics:Piacenzian,http://resource.geosciml.org/classifier/ics/ischart/Piacenzian,3.6,2.58,a1.1.1.2.1.1
+16,Zanclean Age,ics:Zanclean,http://resource.geosciml.org/classifier/ics/ischart/Zanclean,5.333,3.6,a1.1.1.2.1.2
+17,Miocene Epoch,ics:Miocene,http://resource.geosciml.org/classifier/ics/ischart/Miocene,23.03,5.333,a1.1.1.2.2
+18,Messinian Age,ics:Messinian,http://resource.geosciml.org/classifier/ics/ischart/Messinian,7.246,5.333,a1.1.1.2.2.1
+19,Tortonian Age,ics:Tortonian,http://resource.geosciml.org/classifier/ics/ischart/Tortonian,11.63,7.246,a1.1.1.2.2.2
+20,Serravallian Age,ics:Serravallian,http://resource.geosciml.org/classifier/ics/ischart/Serravallian,13.82,11.63,a1.1.1.2.2.3
+21,Langhian Age,ics:Langhian,http://resource.geosciml.org/classifier/ics/ischart/Langhian,15.97,13.82,a1.1.1.2.2.4
+22,Burdigalian Age,ics:Burdigalian,http://resource.geosciml.org/classifier/ics/ischart/Burdigalian,20.44,15.97,a1.1.1.2.2.5
+23,Aquitanian Age,ics:Aquitanian,http://resource.geosciml.org/classifier/ics/ischart/Aquitanian,23.03,20.44,a1.1.1.2.2.6
+24,Paleogene Period,ics:Paleogene,http://resource.geosciml.org/classifier/ics/ischart/Paleogene,66,23.03,a1.1.1.3
+25,Oligocene Epoch,ics:Oligocene,http://resource.geosciml.org/classifier/ics/ischart/Oligocene,33.9,23.03,a1.1.1.3.1
+26,Chattian Age,ics:Chattian,http://resource.geosciml.org/classifier/ics/ischart/Chattian,27.82,23.03,a1.1.1.3.1.1
+27,Rupelian Age,ics:Rupelian,http://resource.geosciml.org/classifier/ics/ischart/Rupelian,33.9,27.82,a1.1.1.3.1.2
+28,Eocene Epoch,ics:Eocene,http://resource.geosciml.org/classifier/ics/ischart/Eocene,56,33.9,a1.1.1.3.2
+29,Priabonian Age,ics:Priabonian,http://resource.geosciml.org/classifier/ics/ischart/Priabonian,37.8,33.9,a1.1.1.3.2.1
+30,Bartonian Age,ics:Bartonian,http://resource.geosciml.org/classifier/ics/ischart/Bartonian,41.2,37.8,a1.1.1.3.2.2
+31,Lutetian Age,ics:Lutetian,http://resource.geosciml.org/classifier/ics/ischart/Lutetian,47.8,41.2,a1.1.1.3.2.3
+32,Ypresian Age,ics:Ypresian,http://resource.geosciml.org/classifier/ics/ischart/Ypresian,56,47.8,a1.1.1.3.2.4
+33,Paleocene Epoch,ics:Paleocene,http://resource.geosciml.org/classifier/ics/ischart/Paleocene,66,56,a1.1.1.3.3
+34,Thanetian Age,ics:Thanetian,http://resource.geosciml.org/classifier/ics/ischart/Thanetian,59.2,56,a1.1.1.3.3.1
+35,Selandian Age,ics:Selandian,http://resource.geosciml.org/classifier/ics/ischart/Selandian,61.6,59.2,a1.1.1.3.3.2
+36,Danian Age,ics:Danian,http://resource.geosciml.org/classifier/ics/ischart/Danian,66,61.6,a1.1.1.3.3.3
+37,Mesozoic Era,ics:Mesozoic,http://resource.geosciml.org/classifier/ics/ischart/Mesozoic,251.902,66,a1.1.2
+38,Cretaceous Period,ics:Cretaceous,http://resource.geosciml.org/classifier/ics/ischart/Cretaceous,145,66,a1.1.2.1
+39,Late Cretaceous Epoch,ics:UpperCretaceous,http://resource.geosciml.org/classifier/ics/ischart/UpperCretaceous,100.5,66,a1.1.2.1.1
+40,Maastrichtian Age,ics:Maastrichtian,http://resource.geosciml.org/classifier/ics/ischart/Maastrichtian,72.1,66,a1.1.2.1.1.1
+41,Campanian Age,ics:Campanian,http://resource.geosciml.org/classifier/ics/ischart/Campanian,83.6,72.1,a1.1.2.1.1.2
+42,Santonian Age,ics:Santonian,http://resource.geosciml.org/classifier/ics/ischart/Santonian,86.3,83.6,a1.1.2.1.1.3
+43,Coniacian Age,ics:Coniacian,http://resource.geosciml.org/classifier/ics/ischart/Coniacian,89.8,86.3,a1.1.2.1.1.4
+44,Turonian Age,ics:Turonian,http://resource.geosciml.org/classifier/ics/ischart/Turonian,93.9,89.8,a1.1.2.1.1.5
+45,Cenomanian Age,ics:Cenomanian,http://resource.geosciml.org/classifier/ics/ischart/Cenomanian,100.5,93.9,a1.1.2.1.1.6
+46,Early Cretaceous Epoch,ics:LowerCretaceous,http://resource.geosciml.org/classifier/ics/ischart/LowerCretaceous,145,100.5,a1.1.2.1.2
+47,Albian Age,ics:Albian,http://resource.geosciml.org/classifier/ics/ischart/Albian,113,100.5,a1.1.2.1.2.1
+48,Aptian Age,ics:Aptian,http://resource.geosciml.org/classifier/ics/ischart/Aptian,125,113,a1.1.2.1.2.2
+49,Barremian Age,ics:Barremian,http://resource.geosciml.org/classifier/ics/ischart/Barremian,129.4,125,a1.1.2.1.2.3
+50,Hauterivian Age,ics:Hauterivian,http://resource.geosciml.org/classifier/ics/ischart/Hauterivian,132.6,129.4,a1.1.2.1.2.4
+51,Valanginian Age,ics:Valanginian,http://resource.geosciml.org/classifier/ics/ischart/Valanginian,139.8,132.6,a1.1.2.1.2.5
+52,Berriasian Age,ics:Berriasian,http://resource.geosciml.org/classifier/ics/ischart/Berriasian,145,139.8,a1.1.2.1.2.6
+53,Jurassic Period,ics:Jurassic,http://resource.geosciml.org/classifier/ics/ischart/Jurassic,201.3,145,a1.1.2.2
+54,Late Jurassic Epoch,ics:UpperJurassic,http://resource.geosciml.org/classifier/ics/ischart/UpperJurassic,163.5,145,a1.1.2.2.1
+55,Tithonian Age,ics:Tithonian,http://resource.geosciml.org/classifier/ics/ischart/Tithonian,152.1,145,a1.1.2.2.1.1
+56,Kimmeridgian Age,ics:Kimmeridgian,http://resource.geosciml.org/classifier/ics/ischart/Kimmeridgian,157.3,152.1,a1.1.2.2.1.2
+57,Oxfordian Age,ics:Oxfordian,http://resource.geosciml.org/classifier/ics/ischart/Oxfordian,163.5,157.3,a1.1.2.2.1.3
+58,Middle Jurassic Epoch,ics:MiddleJurassic,http://resource.geosciml.org/classifier/ics/ischart/MiddleJurassic,174.1,163.5,a1.1.2.2.2
+59,Callovian Age,ics:Callovian,http://resource.geosciml.org/classifier/ics/ischart/Callovian,166.1,163.5,a1.1.2.2.2.1
+60,Bathonian Age,ics:Bathonian,http://resource.geosciml.org/classifier/ics/ischart/Bathonian,168.3,166.1,a1.1.2.2.2.2
+61,Bajocian Age,ics:Bajocian,http://resource.geosciml.org/classifier/ics/ischart/Bajocian,170.3,168.3,a1.1.2.2.2.3
+62,Aalenian Age,ics:Aalenian,http://resource.geosciml.org/classifier/ics/ischart/Aalenian,174.1,170.3,a1.1.2.2.2.4
+63,Early Jurassic Epoch,ics:LowerJurassic,http://resource.geosciml.org/classifier/ics/ischart/LowerJurassic,201.3,174.1,a1.1.2.2.3
+64,Toarcian Age,ics:Toarcian,http://resource.geosciml.org/classifier/ics/ischart/Toarcian,182.7,174.1,a1.1.2.2.3.1
+65,Pliensbachian Age,ics:Pliensbachian,http://resource.geosciml.org/classifier/ics/ischart/Pliensbachian,190.8,182.7,a1.1.2.2.3.2
+66,Sinemurian Age,ics:Sinemurian,http://resource.geosciml.org/classifier/ics/ischart/Sinemurian,199.3,190.8,a1.1.2.2.3.3
+67,Hettangian Age,ics:Hettangian,http://resource.geosciml.org/classifier/ics/ischart/Hettangian,201.3,199.3,a1.1.2.2.3.4
+68,Triassic Period,ics:Triassic,http://resource.geosciml.org/classifier/ics/ischart/Triassic,251.902,201.3,a1.1.2.3
+69,Late Triassic Epoch,ics:UpperTriassic,http://resource.geosciml.org/classifier/ics/ischart/UpperTriassic,237,201.3,a1.1.2.3.1
+70,Rhaetian Age,ics:Rhaetian,http://resource.geosciml.org/classifier/ics/ischart/Rhaetian,208.5,201.3,a1.1.2.3.1.1
+71,Norian Age,ics:Norian,http://resource.geosciml.org/classifier/ics/ischart/Norian,227,208.5,a1.1.2.3.1.2
+72,Carnian Age,ics:Carnian,http://resource.geosciml.org/classifier/ics/ischart/Carnian,237,227,a1.1.2.3.1.3
+73,Middle Triassic Epoch,ics:MiddleTriassic,http://resource.geosciml.org/classifier/ics/ischart/MiddleTriassic,247.2,237,a1.1.2.3.2
+74,Ladinian Age,ics:Ladinian,http://resource.geosciml.org/classifier/ics/ischart/Ladinian,242,237,a1.1.2.3.2.1
+75,Anisian Age,ics:Anisian,http://resource.geosciml.org/classifier/ics/ischart/Anisian,247.2,242,a1.1.2.3.2.2
+76,Early Triassic Epoch,ics:LowerTriassic,http://resource.geosciml.org/classifier/ics/ischart/LowerTriassic,251.902,247.2,a1.1.2.3.3
+77,Olenekian Age,ics:Olenekian,http://resource.geosciml.org/classifier/ics/ischart/Olenekian,251.2,247.2,a1.1.2.3.3.1
+78,Induan Age,ics:Induan,http://resource.geosciml.org/classifier/ics/ischart/Induan,251.902,251.2,a1.1.2.3.3.2
+79,Paleozoic Era,ics:Paleozoic,http://resource.geosciml.org/classifier/ics/ischart/Paleozoic,541,251.902,a1.1.3
+80,Permian Period,ics:Permian,http://resource.geosciml.org/classifier/ics/ischart/Permian,298.9,251.902,a1.1.3.1
+81,Lopingian Epoch,ics:Lopingian,http://resource.geosciml.org/classifier/ics/ischart/Lopingian,259.1,251.902,a1.1.3.1.1
+82,Changhsingian Age,ics:Changhsingian,http://resource.geosciml.org/classifier/ics/ischart/Changhsingian,254.14,251.902,a1.1.3.1.1.1
+83,Wuchiapingian Age,ics:Wuchiapingian,http://resource.geosciml.org/classifier/ics/ischart/Wuchiapingian,259.1,254.14,a1.1.3.1.1.2
+84,Guadalupian Epoch,ics:Guadalupian,http://resource.geosciml.org/classifier/ics/ischart/Guadalupian,272.95,259.1,a1.1.3.1.2
+85,Capitanian Age,ics:Capitanian,http://resource.geosciml.org/classifier/ics/ischart/Capitanian,265.1,259.1,a1.1.3.1.2.1
+86,Wordian Age,ics:Wordian,http://resource.geosciml.org/classifier/ics/ischart/Wordian,268.8,265.1,a1.1.3.1.2.2
+87,Roadian Age,ics:Roadian,http://resource.geosciml.org/classifier/ics/ischart/Roadian,272.95,268.8,a1.1.3.1.2.3
+88,Cisuralian Epoch,ics:Cisuralian,http://resource.geosciml.org/classifier/ics/ischart/Cisuralian,298.9,272.95,a1.1.3.1.3
+89,Kungurian Age,ics:Kungurian,http://resource.geosciml.org/classifier/ics/ischart/Kungurian,283.5,272.95,a1.1.3.1.3.1
+90,Artinskian Age,ics:Artinskian,http://resource.geosciml.org/classifier/ics/ischart/Artinskian,290.1,283.5,a1.1.3.1.3.2
+91,Sakmarian Age,ics:Sakmarian,http://resource.geosciml.org/classifier/ics/ischart/Sakmarian,293.52,290.1,a1.1.3.1.3.3
+92,Asselian Age,ics:Asselian,http://resource.geosciml.org/classifier/ics/ischart/Asselian,298.9,293.52,a1.1.3.1.3.4
+93,Carboniferous Period,ics:Carboniferous,http://resource.geosciml.org/classifier/ics/ischart/Carboniferous,358.9,298.9,a1.1.3.2
+94,Pennsylvanian Sub-period,ics:Pennsylvanian,http://resource.geosciml.org/classifier/ics/ischart/Pennsylvanian,323.2,298.9,a1.1.3.2.1
+95,Gzhelian Age,ics:Gzhelian,http://resource.geosciml.org/classifier/ics/ischart/Gzhelian,303.7,298.9,a1.1.3.2.1.1.1
+96,Late Pennsylvanian Epoch,ics:UpperPennsylvanian,http://resource.geosciml.org/classifier/ics/ischart/UpperPennsylvanian,307,298.9,x1.1.3.2.1.1
+97,Kasimovian Age,ics:Kasimovian,http://resource.geosciml.org/classifier/ics/ischart/Kasimovian,307,303.7,a1.1.3.2.1.1.2
+98,Moscovian Age,ics:Moscovian,http://resource.geosciml.org/classifier/ics/ischart/Moscovian,315.2,307,a1.1.3.2.1.2
+99,Middle Pennsylvanian Epoch,ics:MiddlePennsylvanian,http://resource.geosciml.org/classifier/ics/ischart/MiddlePennsylvanian,315.2,307,x1.1.3.2.1.2
+100,Bashkirian Age,ics:Bashkirian,http://resource.geosciml.org/classifier/ics/ischart/Bashkirian,323.2,315.2,a1.1.3.2.1.3
+101,Early Pennsylvanian Epoch,ics:LowerPennsylvanian,http://resource.geosciml.org/classifier/ics/ischart/LowerPennsylvanian,323.2,315.2,x1.1.3.2.1.3
+102,Mississippian Sub-period,ics:Mississippian,http://resource.geosciml.org/classifier/ics/ischart/Mississippian,358.9,323.2,a1.1.3.2.2
+103,Serpukhovian Age,ics:Serpukhovian,http://resource.geosciml.org/classifier/ics/ischart/Serpukhovian,330.9,323.2,a1.1.3.2.2.1
+104,Late Mississippian Epoch,ics:UpperMississippian,http://resource.geosciml.org/classifier/ics/ischart/UpperMississippian,330.9,323.2,x1.1.3.2.2.1
+105,Visean Age,ics:Visean,http://resource.geosciml.org/classifier/ics/ischart/Visean,346.7,330.9,a1.1.3.2.2.2
+106,Middle Mississippian Epoch,ics:MiddleMississippian,http://resource.geosciml.org/classifier/ics/ischart/MiddleMississippian,346.7,330.9,x1.1.3.2.2.2
+107,Tournaisian Age,ics:Tournaisian,http://resource.geosciml.org/classifier/ics/ischart/Tournaisian,358.9,346.7,a1.1.3.2.2.3
+108,Early Mississippian Epoch,ics:LowerMississippian,http://resource.geosciml.org/classifier/ics/ischart/LowerMississippian,358.9,346.7,x1.1.3.2.2.3
+109,Devonian Period,ics:Devonian,http://resource.geosciml.org/classifier/ics/ischart/Devonian,419.2,358.9,a1.1.3.3
+110,Late Devonian Epoch,ics:UpperDevonian,http://resource.geosciml.org/classifier/ics/ischart/UpperDevonian,382.7,358.9,a1.1.3.3.1
+111,Famennian Age,ics:Famennian,http://resource.geosciml.org/classifier/ics/ischart/Famennian,372.2,358.9,a1.1.3.3.1.1
+112,Frasnian Age,ics:Frasnian,http://resource.geosciml.org/classifier/ics/ischart/Frasnian,382.7,372.2,a1.1.3.3.1.2
+113,Middle Devonian Epoch,ics:MiddleDevonian,http://resource.geosciml.org/classifier/ics/ischart/MiddleDevonian,393.3,382.7,a1.1.3.3.2
+114,Givetian Age,ics:Givetian,http://resource.geosciml.org/classifier/ics/ischart/Givetian,387.7,382.7,a1.1.3.3.2.1
+115,Eifelian Age,ics:Eifelian,http://resource.geosciml.org/classifier/ics/ischart/Eifelian,393.3,387.7,a1.1.3.3.2.2
+116,Early Devonian Epoch,ics:LowerDevonian,http://resource.geosciml.org/classifier/ics/ischart/LowerDevonian,419.2,393.3,a1.1.3.3.3
+117,Emsian Age,ics:Emsian,http://resource.geosciml.org/classifier/ics/ischart/Emsian,407.6,393.3,a1.1.3.3.3.1
+118,Pragian Age,ics:Pragian,http://resource.geosciml.org/classifier/ics/ischart/Pragian,410.8,407.6,a1.1.3.3.3.2
+119,Lochkovian Age,ics:Lochkovian,http://resource.geosciml.org/classifier/ics/ischart/Lochkovian,419.2,410.8,a1.1.3.3.3.3
+120,Silurian Period,ics:Silurian,http://resource.geosciml.org/classifier/ics/ischart/Silurian,443.8,419.2,a1.1.3.4
+121,Pridoli Epoch,ics:Pridoli,http://resource.geosciml.org/classifier/ics/ischart/Pridoli,423,419.2,a1.1.3.4.1
+122,Ludlow Epoch,ics:Ludlow,http://resource.geosciml.org/classifier/ics/ischart/Ludlow,427.4,423,a1.1.3.4.2
+123,Ludfordian Age,ics:Ludfordian,http://resource.geosciml.org/classifier/ics/ischart/Ludfordian,425.6,423,a1.1.3.4.2.1
+124,Gorstian Age,ics:Gorstian,http://resource.geosciml.org/classifier/ics/ischart/Gorstian,427.4,425.6,a1.1.3.4.2.2
+125,Wenlock Epoch,ics:Wenlock,http://resource.geosciml.org/classifier/ics/ischart/Wenlock,433.4,427.4,a1.1.3.4.3
+126,Homerian Age,ics:Homerian,http://resource.geosciml.org/classifier/ics/ischart/Homerian,430.5,427.4,a1.1.3.4.3.1
+127,Sheinwoodian Age,ics:Sheinwoodian,http://resource.geosciml.org/classifier/ics/ischart/Sheinwoodian,433.4,430.5,a1.1.3.4.3.2
+128,Llandovery Epoch,ics:Llandovery,http://resource.geosciml.org/classifier/ics/ischart/Llandovery,443.8,433.4,a1.1.3.4.4
+129,Telychian Age,ics:Telychian,http://resource.geosciml.org/classifier/ics/ischart/Telychian,438.5,433.4,a1.1.3.4.4.1
+130,Aeronian Age,ics:Aeronian,http://resource.geosciml.org/classifier/ics/ischart/Aeronian,440.8,438.5,a1.1.3.4.4.2
+131,Rhuddanian Age,ics:Rhuddanian,http://resource.geosciml.org/classifier/ics/ischart/Rhuddanian,443.8,440.8,a1.1.3.4.4.3
+132,Ordovician Period,ics:Ordovician,http://resource.geosciml.org/classifier/ics/ischart/Ordovician,485.4,443.8,a1.1.3.5
+133,Late Ordovician Epoch,ics:UpperOrdovician,http://resource.geosciml.org/classifier/ics/ischart/UpperOrdovician,458.4,443.8,a1.1.3.5.1
+134,Hirnantian Age,ics:Hirnantian,http://resource.geosciml.org/classifier/ics/ischart/Hirnantian,445.2,443.8,a1.1.3.5.1.1
+135,Katian Age,ics:Katian,http://resource.geosciml.org/classifier/ics/ischart/Katian,453,445.2,a1.1.3.5.1.2
+136,Sandbian Age,ics:Sandbian,http://resource.geosciml.org/classifier/ics/ischart/Sandbian,458.4,453,a1.1.3.5.1.3
+137,Middle Ordovician Epoch,ics:MiddleOrdovician,http://resource.geosciml.org/classifier/ics/ischart/MiddleOrdovician,470,458.4,a1.1.3.5.2
+138,Darriwilian Age,ics:Darriwilian,http://resource.geosciml.org/classifier/ics/ischart/Darriwilian,467.3,458.4,a1.1.3.5.2.1
+139,Dapingian Age,ics:Dapingian,http://resource.geosciml.org/classifier/ics/ischart/Dapingian,470,467.3,a1.1.3.5.2.2
+140,Early Ordovician Epoch,ics:LowerOrdovician,http://resource.geosciml.org/classifier/ics/ischart/LowerOrdovician,485.4,470,a1.1.3.5.3
+141,Floian Age,ics:Floian,http://resource.geosciml.org/classifier/ics/ischart/Floian,477.7,470,a1.1.3.5.3.1
+142,Tremadocian Age,ics:Tremadocian,http://resource.geosciml.org/classifier/ics/ischart/Tremadocian,485.4,477.7,a1.1.3.5.3.2
+143,Cambrian Period,ics:Cambrian,http://resource.geosciml.org/classifier/ics/ischart/Cambrian,541,485.4,a1.1.3.6
+144,Furongian Epoch,ics:Furongian,http://resource.geosciml.org/classifier/ics/ischart/Furongian,497,485.4,a1.1.3.6.1
+145,Cambrian Stage 10 Age,ics:CambrianStage10,http://resource.geosciml.org/classifier/ics/ischart/CambrianStage10,489.5,485.4,a1.1.3.6.1.1
+146,Jiangshanian Age,ics:Jiangshanian,http://resource.geosciml.org/classifier/ics/ischart/Jiangshanian,494,489.5,a1.1.3.6.1.2
+147,Paibian Age,ics:Paibian,http://resource.geosciml.org/classifier/ics/ischart/Paibian,497,494,a1.1.3.6.1.3
+148,Miaolingian Epoch,ics:Miaolingian,http://resource.geosciml.org/classifier/ics/ischart/Miaolingian,509,497,a1.1.3.6.2
+149,Guzhangian Age,ics:Guzhangian,http://resource.geosciml.org/classifier/ics/ischart/Guzhangian,500.5,497,a1.1.3.6.2.1
+150,Drumian Age,ics:Drumian,http://resource.geosciml.org/classifier/ics/ischart/Drumian,504.5,500.5,a1.1.3.6.2.2
+151,Wuliuan Age,ics:Wuliuan,http://resource.geosciml.org/classifier/ics/ischart/Wuliuan,509,504.5,a1.1.3.6.2.3
+152,Cambrian Series 2 Epoch,ics:CambrianSeries2,http://resource.geosciml.org/classifier/ics/ischart/CambrianSeries2,521,509,a1.1.3.6.3
+153,Cambrian Stage 4 Age,ics:CambrianStage4,http://resource.geosciml.org/classifier/ics/ischart/CambrianStage4,514,509,a1.1.3.6.3.1
+154,Cambrian Stage 3 Age,ics:CambrianStage3,http://resource.geosciml.org/classifier/ics/ischart/CambrianStage3,521,514,a1.1.3.6.3.2
+155,Terreneuvian Epoch,ics:Terreneuvian,http://resource.geosciml.org/classifier/ics/ischart/Terreneuvian,541,521,a1.1.3.6.4
+156,Cambrian Stage 2 Age,ics:CambrianStage2,http://resource.geosciml.org/classifier/ics/ischart/CambrianStage2,529,521,a1.1.3.6.4.1
+157,Fortunian Age,ics:Fortunian,http://resource.geosciml.org/classifier/ics/ischart/Fortunian,541,529,a1.1.3.6.4.2
+158,Precambrian Supereon,ics:Precambrian,http://resource.geosciml.org/classifier/ics/ischart/Precambrian,4567,541,a2
+159,Proterozoic Eon,ics:Proterozoic,http://resource.geosciml.org/classifier/ics/ischart/Proterozoic,2500,541,a2.1
+160,Neoproterozoic Era,ics:Neoproterozoic,http://resource.geosciml.org/classifier/ics/ischart/Neoproterozoic,1000,541,a2.1.1
+161,Ediacaran Period,ics:Ediacaran,http://resource.geosciml.org/classifier/ics/ischart/Ediacaran,635,541,a2.1.1.1
+162,Cryogenian Period,ics:Cryogenian,http://resource.geosciml.org/classifier/ics/ischart/Cryogenian,720,635,a2.1.1.2
+163,Tonian Period,ics:Tonian,http://resource.geosciml.org/classifier/ics/ischart/Tonian,1000,720,a2.1.1.3
+164,Mesoproterozoic Era,ics:Mesoproterozoic,http://resource.geosciml.org/classifier/ics/ischart/Mesoproterozoic,1600,1000,a2.1.2
+165,Stenian Period,ics:Stenian,http://resource.geosciml.org/classifier/ics/ischart/Stenian,1200,1000,a2.1.2.1
+166,Ectasian Period,ics:Ectasian,http://resource.geosciml.org/classifier/ics/ischart/Ectasian,1400,1200,a2.1.2.2
+167,Calymmian Period,ics:Calymmian,http://resource.geosciml.org/classifier/ics/ischart/Calymmian,1600,1400,a2.1.2.3
+168,Paleoproterozoic Era,ics:Paleoproterozoic,http://resource.geosciml.org/classifier/ics/ischart/Paleoproterozoic,2500,1600,a2.1.3
+169,Statherian Period,ics:Statherian,http://resource.geosciml.org/classifier/ics/ischart/Statherian,1800,1600,a2.1.3.1
+170,Orosirian Period,ics:Orosirian,http://resource.geosciml.org/classifier/ics/ischart/Orosirian,2050,1800,a2.1.3.2
+171,Rhyacian Period,ics:Rhyacian,http://resource.geosciml.org/classifier/ics/ischart/Rhyacian,2300,2050,a2.1.3.3
+172,Siderian Period,ics:Siderian,http://resource.geosciml.org/classifier/ics/ischart/Siderian,2500,2300,a2.1.3.4
+173,Archean Eon,ics:Archean,http://resource.geosciml.org/classifier/ics/ischart/Archean,4000,2500,a2.2
+174,Neoarchean Era,ics:Neoarchean,http://resource.geosciml.org/classifier/ics/ischart/Neoarchean,2800,2500,a2.2.1
+175,Mesoarchean Era,ics:Mesoarchean,http://resource.geosciml.org/classifier/ics/ischart/Mesoarchean,3200,2800,a2.2.2
+176,Paleoarchean Era,ics:Paleoarchean,http://resource.geosciml.org/classifier/ics/ischart/Paleoarchean,3600,3200,a2.2.3
+177,Eoarchean Era,ics:Eoarchean,http://resource.geosciml.org/classifier/ics/ischart/Eoarchean,4000,3600,a2.2.4
+178,Hadean Eon,ics:Hadean,http://resource.geosciml.org/classifier/ics/ischart/Hadean,4567,4000,a2.3

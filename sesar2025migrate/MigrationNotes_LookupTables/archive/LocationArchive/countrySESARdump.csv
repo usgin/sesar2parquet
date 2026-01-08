@@ -1,0 +1,257 @@
+"country_id","name","is_active"
+1,"Afghanistan",1
+2,"Albania",1
+3,"Algeria",1
+4,"American Samoa",1
+5,"Andorra",1
+6,"Angola",1
+7,"Anguilla",1
+8,"Antarctica",1
+9,"Antigua And Barbuda",1
+10,"Argentina",1
+11,"Armenia",1
+12,"Aruba",1
+13,"Australia",1
+14,"Austria",1
+15,"Azerbaijan",1
+16,"Bahamas",1
+17,"Bahrain",1
+18,"Bangladesh",1
+19,"Barbados",1
+20,"Belarus",1
+21,"Belgium",1
+22,"Belize",1
+23,"Benin",1
+24,"Bermuda",1
+25,"Bhutan",1
+26,"Bolivia",1
+27,"Bosnia And Herzegovina",1
+28,"Botswana",1
+29,"Bouvet Island",1
+30,"Brazil",1
+31,"British Indian Ocean Territory",1
+32,"Brunei Darussalam",1
+33,"Bulgaria",1
+34,"Burkina Faso",1
+35,"Burundi",1
+36,"Cambodia",1
+37,"Cameroon",1
+38,"Canada",1
+39,"Cape Verde",1
+40,"Cayman Islands",1
+41,"Central African Republic",1
+42,"Chad",1
+43,"Chile",1
+44,"China",1
+45,"Christmas Island",1
+46,"Cocos (keeling) Islands",1
+47,"Colombia",1
+48,"Comoros",1
+49,"Congo",1
+50,"Congo, The Democratic Republic Of The",1
+51,"Cook Islands",1
+52,"Costa Rica",1
+53,"Cote D'ivoire",1
+54,"Croatia",1
+55,"Cuba",1
+56,"Cyprus",1
+57,"Czech Republic",1
+58,"Denmark",1
+59,"Djibouti",1
+60,"Dominica",1
+61,"Dominican Republic",1
+62,"East Timor",1
+63,"Ecuador",1
+64,"Egypt",1
+65,"El Salvador",1
+66,"Equatorial Guinea",1
+67,"Eritrea",1
+68,"Estonia",1
+69,"Ethiopia",1
+70,"Falkland Islands (Malvinas)",1
+71,"Faroe Islands",1
+72,"Fiji",1
+73,"Finland",1
+74,"France",1
+75,"French Guiana",1
+76,"French Polynesia",1
+77,"French Southern Territories",1
+78,"Gabon",1
+79,"Gambia",1
+80,"Georgia",1
+81,"Germany",1
+82,"Ghana",1
+83,"Gibraltar",1
+84,"Greece",1
+85,"Greenland",1
+86,"Grenada",1
+87,"Guadeloupe",1
+88,"Guam",1
+89,"Guatemala",1
+90,"Guinea",1
+91,"Guinea-Bissau",1
+92,"Guyana",1
+93,"Haiti",1
+94,"Heard Island And Mcdonald Islands",1
+95,"Holy See (Vatican City State)",1
+96,"Honduras",1
+97,"Hong Kong",1
+98,"Hungary",1
+99,"Iceland",1
+100,"India",1
+101,"Indonesia",1
+102,"Iran",1
+103,"Iraq",1
+104,"Ireland",1
+105,"Israel",1
+106,"Italy",1
+107,"Jamaica",1
+108,"Japan",1
+109,"Jordan",1
+110,"Kazakhstan",1
+111,"Kenya",1
+112,"Kiribati",1
+113,"South Korea",1
+114,"North Korea",1
+115,"Kosovo",1
+116,"Kuwait",1
+117,"Kyrgyzstan",1
+118,"Lao People's Democratic Republic",1
+119,"Latvia",1
+120,"Lebanon",1
+121,"Lesotho",1
+122,"Liberia",1
+123,"Libyan Arab Jamahiriya",1
+124,"Liechtenstein",1
+125,"Lithuania",1
+126,"Luxembourg",1
+127,"Macao",1
+128,"Macedonia",1
+129,"Madagascar",1
+130,"Malawi",1
+131,"Malaysia",1
+132,"Maldives",1
+133,"Mali",1
+134,"Malta",1
+135,"Marshall Islands",1
+136,"Martinique",1
+137,"Mauritania",1
+138,"Mauritius",1
+139,"Mayotte",1
+140,"Mexico",1
+141,"Micronesia, Federated States Of",1
+142,"Moldova, Republic Of",1
+143,"Monaco",1
+144,"Mongolia",1
+145,"Montserrat",1
+146,"Montenegro",1
+147,"Morocco",1
+148,"Mozambique",1
+149,"Myanmar (Burma)",1
+150,"Namibia",1
+151,"Nauru",1
+152,"Nepal",1
+153,"Netherlands",1
+154,"Netherlands Antilles",1
+155,"New Caledonia",1
+156,"New Zealand",1
+157,"Nicaragua",1
+158,"Niger",1
+159,"Nigeria",1
+160,"Niue",1
+161,"Norfolk Island",1
+162,"Northern Mariana Islands",1
+163,"Norway",1
+164,"Oman",1
+165,"Pakistan",1
+166,"Palau",1
+167,"Palestine",1
+168,"Panama",1
+169,"Papua New Guinea",1
+170,"Paraguay",1
+171,"Peru",1
+172,"Philippines",1
+173,"Pitcairn",1
+174,"Poland",1
+175,"Portugal",1
+176,"Puerto Rico",1
+177,"Qatar",1
+178,"Reunion",1
+179,"Romania",1
+180,"Russia",1
+181,"Rwanda",1
+182,"Saint Helena",1
+183,"St. Kitts And Nevis",1
+184,"Saint Lucia",1
+185,"Saint Pierre And Miquelon",1
+186,"Saint Vincent And The Grenadines",1
+187,"Samoa",1
+188,"San Marino",1
+189,"Sao Tome And Principe",1
+190,"Saudi Arabia",1
+191,"Senegal",1
+192,"Serbia",1
+193,"Seychelles",1
+194,"Sierra Leone",1
+195,"Singapore",1
+196,"Slovakia",1
+197,"Slovenia",1
+198,"Solomon Islands",1
+199,"Somalia",1
+200,"South Africa",1
+201,"South Georgia And The South Sandwich Islands",1
+202,"Spain",1
+203,"Sri Lanka",1
+204,"Sudan",1
+205,"Suriname",1
+206,"Svalbard And Jan Mayen",1
+207,"Swaziland",1
+208,"Sweden",1
+209,"Switzerland",1
+210,"Syria",1
+211,"Taiwan, Republic Of China",1
+212,"Tajikistan",1
+213,"Tanzania",1
+214,"Thailand",1
+215,"Togo",1
+216,"Tokelau",1
+217,"Tonga",1
+218,"Trinidad And Tobago",1
+219,"Tunisia",1
+220,"Turkey",1
+221,"Turkmenistan",1
+222,"Turks And Caicos Islands",1
+223,"Tuvalu",1
+224,"Uganda",1
+225,"Ukraine",1
+226,"United Arab Emirates",1
+227,"United Kingdom",1
+228,"United States",1
+229,"United States Minor Outlying Islands",1
+230,"Uruguay",1
+231,"Uzbekistan",1
+232,"Vanuatu",1
+233,"Venezuela",1
+234,"Viet Nam",1
+235,"British Virgin Islands",1
+236,"U.S. Virgin Islands",1
+237,"Wallis And Futuna",1
+238,"Western Sahara",1
+239,"Yemen",1
+240,"Zambia",1
+241,"Zimbabwe",1
+242,"Not Applicable",1
+243,"Åland Islands",1
+244,"Bonaire, Sint Eustatius and Saba",1
+245,"Curaçao",1
+246,"Guernsey",1
+247,"Isle of Man",1
+248,"Jersey",1
+249,"North Macedonia",1
+250,"Saint Barthélemy",1
+251,"Saint Martin (French part)",1
+252,"Saint Helena, Ascension and Tristan da Cunha",1
+253,"South Sudan",1
+254,"Timor-Leste",1
+255,"Taiwan",1
+256,"Türkiye",1

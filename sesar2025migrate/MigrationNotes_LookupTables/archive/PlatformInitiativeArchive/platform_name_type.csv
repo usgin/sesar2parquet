@@ -1,0 +1,586 @@
+"platform_name","platform_type"
+"--","Ship"
+" R/V JOIDES Resolution",NULL
+" RV Maman Benita",NULL
+" RV Minnow",NULL
+"10",NULL
+"11",NULL
+"13",NULL
+"14",NULL
+"15",NULL
+"16",NULL
+"17",NULL
+"19",NULL
+"20",NULL
+"21",NULL
+"4",NULL
+"5",NULL
+"510","Ship"
+"6",NULL
+"7",NULL
+"8",NULL
+"9",NULL
+"Adriatico","Ship"
+"Agulhas","Ship"
+"Akademik B. Petrov","Ship"
+"Akademik Boris Petrov","Ship"
+"Akademik Kurchatov","Ship"
+"Akademik M.A. Lavrentyev","Ship"
+"Alaminos","Ship"
+"Albatross","Ship"
+"Albatross III","Ship"
+"Aleksandr Vinogradov","Ship"
+"Alexander Agassiz","Ship"
+"Alpine","AUV"
+"Alvin","AUV"
+"Alvin","HOV"
+"Alvin","Ship"
+"Alvin","Submersible / HOV"
+"ALVIN","Ship"
+"ALVIN","Submersible / HOV"
+"AMNH Collection Trip",NULL
+"ANDRILL","Ice Shelf"
+"Anton Brun","Ship"
+"ARA Islas Orcadas","Ship"
+"Argentinian Sun","Ship"
+"Argentinian Wildcat","Ship"
+"Argo","Ship"
+"ARGO RISE 1","Ship"
+"asdfasdf","Ship"
+"asdfasdfaas","Ship"
+"Asterias","Ship"
+"Astrea","Ship"
+"Atalante","ship"
+"Atantis","Ship"
+"Atlantic Seal","Ship"
+"Atlantis","Ship"
+"Atlantis",NULL
+"Atlantis-II","Ship"
+"Atlantis (AGOR-25)","Ship"
+"Atlantis II","ship"
+"Atlantis II","Ship"
+"ATLANTIS II","Ship"
+"Atlantis II - Alvin","ROV"
+"Atlantis II/ ALVIN","Ship"
+"Atlantis II/ALVIN","Ship"
+"Baird","Ship"
+"Bannock","Ship"
+"Bartlett","Ship"
+"Baruna Jaya","Ship"
+"Belgian S.S.","Ship"
+"Bell Telephone Labs","Ship"
+"Bell Telephone Labs (Taken on the Earl of Desmond)","Ship"
+"Bjarni Saemundsson","Ship"
+"Bjarni Saemundsson",NULL
+"Block Island","Ship"
+"Can-Do","Ship"
+"Cape Hatteras","Ship"
+"CAPE HATTERAS","Ship"
+"Cape Henlopen","Ship"
+"CAPE HENLOPEN","Ship"
+"Carr","Ship"
+"CARR","CAS"
+"Caryn","Ship"
+"Chain","ship"
+"Chain","Ship"
+"CHAIN","ship"
+"Charles Darwin","Ship"
+"Chikyu","Drillship"
+"Chikyu","Ship"
+"Chikyu",NULL
+"Circe 93","Ship"
+"Columbus Iselin","Ship"
+"Cook","Ship"
+"Cornide de Saavedra","Research vessel"
+"Cuss-1","Ship"
+"D.Pritchard","Ship"
+"D/V Glomar Challenger","Ship"
+"D/V Glomar Challenger",NULL
+"D/V Joides Resolution","Drilling Vessel"
+"D/V JOIDES Resolution",NULL
+"D/V Resolution","Ship"
+"De Steiguer","Ship"
+"Deepsea Miner","Ship"
+"Delaware","Ship"
+"DeSteigeur","Ship"
+"Desteiguer","Ship"
+"DeSteiguer","Ship"
+"Discoverer","Ship"
+"Discovery II","Ship"
+"DLDS","Platform"
+"DODO","Ship"
+"Downwind Expedition","Ship"
+"Drift Station Alpha","Platform"
+"Drift Station Charlie","Ice Island"
+"Drift Station Charlie","Platform"
+"e","Ship"
+"E/V Nautilus","ship"
+"E/V Nautilus","Ship"
+"E/V Nautilus",NULL
+"E/V Nautilus ",NULL
+"East Wind","Ship"
+"Eastward","Ship"
+"Edisto","Ship"
+"Eltanin","Ship"
+"Eltanin",NULL
+"Endeavor","ship"
+"Endeavor","Ship"
+"Endeavor",NULL
+"Endeavour","Ship"
+"Ewing","Ship"
+"EWING","Ship"
+"Falkor",NULL
+"Farnella","Ship"
+"Ferrel","Ship"
+"FV Giljanes","Ship"
+"Gillis","Ship"
+"Gilliss","Ship"
+"Gilliss",NULL
+"Glomar Challenger","Ship"
+"Glomar Challenger",NULL
+"Goldberger","Ship"
+"Gosnold","Ship"
+"Gould","Ship"
+"Gyre",NULL
+"H.M.S. Porcupine","Ship"
+"Hafthor","Ship"
+"Hak Maru","ship"
+"Hak. Maru","ship"
+"Hakuho Maru",NULL
+"HAWAII","ship"
+"Healy","Ship"
+"Healy","U.S. Coast Guard Cutter"
+"HMNZS Endeavour III","Ship"
+"Horizon","Ship"
+"Horizon",NULL
+"Hudson","Ship"
+"Hudson",NULL
+"Hugh Sharp","Ship"
+"Humboldt Bay","Ship"
+"Ice Island Arliss II","Platform"
+"Ice Island Charlie",NULL
+"Ice Island T3","Ice Island"
+"Ice Island T3","Platform"
+"Iolanthe","Ship"
+"Islas Orcadas","Ship"
+"James Cook","Ship"
+"James M. Gilliss","Ship"
+"Jason","Ship"
+"JASON","ship"
+"Jason Platform","ROV"
+"Jason Platform",NULL
+"Jean Charcot","Ship"
+"Joides Resolution","Ship"
+"Joides Resolution","SHIP"
+"Joides Resolution",NULL
+"JOIDES Resolution","drilling vessel"
+"JOIDES Resolution","Drilling Vessel"
+"JOIDES Resolution","Ship"
+"JOIDES Resolution",NULL
+"Joides Resolution > 304","Ship"
+"JW Powell","Ship"
+"KaBoat Platform","Raft"
+"Kairei","Ship"
+"Kaiyo","Ship"
+"Kana Keoki","Ship"
+"Kana Keoki",NULL
+"Kana Keoki?",NULL
+"Kane","Ship"
+"Kelez","Ship"
+"Kevin Moran","Ship"
+"Kilo Moana","Ship"
+"Kilo Moana",NULL
+"Knorr","ship"
+"Knorr","Ship"
+"Knorr",NULL
+"KNORR","ship"
+"KNORR","Ship"
+"L'Atalante","Ship"
+"L'Atalante",NULL
+"L. Walford","Ship"
+"Land Drill","Ship"
+"Land Drill",NULL
+"Le Noroit","Ship"
+"Long Lines","Ship"
+"Lord Kelvin","Ship"
+"Lynch","Ship"
+"M/V Alucia",NULL
+"m/v Samantha Miller","Ship"
+"Marcus G Langseth","ship"
+"Marcus G. Langseth","Ship"
+"Marion Dufresne",NULL
+"Maritime Explorer","Ship"
+"Maritime Maid","Ship"
+"Maurice Ewing","Ship"
+"Melville","Ship"
+"Melville",NULL
+"Melville Gloria","Ship"
+"Meteor",NULL
+"Moana Wave","Ship"
+"Moana Wave",NULL
+"Mother Goose II","Ship"
+"Mott Drilling Co.","Drill Rig"
+"Mount Mitchell","Ship"
+"Mozorola, Morrito #2","Boat"
+"Mt. Mitchell","Ship"
+"MV Thunderforce","Ship"
+"myplatform","Ship"
+"myplatform ID","Ship"
+"myplatform ID",NULL
+"Mystique",NULL
+"n","Ship"
+"Nadir","ship"
+"Nadir",NULL
+"Name of platform for the cruise.","Type of platform for the cruise."
+"Name of platform ie USCGC Healy","Icebreaker"
+"Nathanial B. Palmer","SHALDRIL"
+"Nathanial B. Palmer","Ship"
+"Nathaniel B Palmer","Ship"
+"Nathaniel B. Palmer","Ship"
+"Nathaniel B. Palmer","SHIP"
+"Nathaniel B. Palmer",NULL
+"Nautile","Ship"
+"NB Palmer","Ship"
+"NEJTW","Ship"
+"Nesmeyanov","Ship"
+"New Horizon","Ship"
+"New Horizon",NULL
+"NEW HORIZON","Ship"
+"New York Bight","Ship"
+"NOAA Ship Miller Freeman","Ship"
+"Northwind","Ship"
+"Not Applicable","Not Applicable"
+"Not Applicable",NULL
+"NotApplicable","NotApplicable"
+"NotApplicable",NULL
+"NRV Alliance",NULL
+"Oceanographer","Ship"
+"Oceanus","Ship"
+"OCEANUS","ship"
+"Oden","Ship"
+"Okeanos Explorer",NULL
+"Onrust","Ship"
+"Orange Rockland/Nyack","Ship"
+"Orca Basin","Ship"
+"Palmer","Ship"
+"Parizeau","Ship"
+"PELICAN","Ship"
+"Pillsbury","Ship"
+"Pilsbury","Ship"
+"Pisces IV","Ship"
+"Pisces IV?",NULL
+"Platform name","Platform type"
+"POINT SUR","Ship"
+"Polar Duke","Ship"
+"Polar Star","Ship"
+"Polar Stern","ship"
+"Polarstern","Ship"
+"Pourquoi Pas","ship"
+"Pourquoi Pas ?","ship"
+"Pourquoi Pas ?",NULL
+"Pourquoi Pas ? ","ship"
+"Pourquoi Pas ? ",NULL
+"Pourquoi Pas?","Ship"
+"POURQUOIPAS?","SHIP"
+"Prof. Shtockman","Ship"
+"Prof. Shtokman","Ship"
+"PT INCO",NULL
+"Quest","Ship"
+"R.V. Thompson","Ship"
+"R/V Aegaeo",NULL
+"R/V Agulhas",NULL
+"R/V Akademik",NULL
+"R/V Akademik Boris Petrov","ship"
+"R/V Akademik Boris Petrov",NULL
+"R/V Akademik Kurchatov",NULL
+"R/V APALACHEE","R/V"
+"R/V Atlantis","Ship"
+"R/V Atlantis",NULL
+"r/v Atlantis II","ship"
+"R/V Atlantis II","ship"
+"R/V Atlantis II","Ship"
+"R/V Atlantis II",NULL
+"R/V Billie",NULL
+"R/V Bjarni Saemundsson",NULL
+"R/V Blue Heron","Ship"
+"R/V Brown Bear","Ship"
+"r/v Chain","ship"
+"r/v Chain","Ship"
+"R/V Chain",NULL
+"R/V Charles Darwin","Ship"
+"R/V Coastal Profiler","Ship"
+"R/V Donald Pritchard","Ship"
+"r/v Endeavor","ship"
+"R/V Endeavor","Ship"
+"R/V Endeavor",NULL
+"R/V Falkor","Ship"
+"R/V Falkor (too)","Ship"
+"R/V Gilliss",NULL
+"R/V Hakurei-maru",NULL
+"R/V Hakurei-Maru","Ship"
+"R/V Hakurei-MARU","Ship"
+"R/V Italica","ship"
+"R/V Jean Charcot","ship"
+"R/V Jean Charcot",NULL
+"R/V JOIDES Resolution","Ship"
+"R/V Kaimikai-o-Kanaloa","Ship"
+"R/V Kairei","Ship"
+"R/V Kaiyo",NULL
+"R/V Kana Keoki",NULL
+"R/V KANA KEOKI","SHIP"
+"R/V Kelez","Ship"
+"R/V Kilo Moana","Ship"
+"R/V Kilo Moana",NULL
+"r/v Knorr","ship"
+"R/V Knorr","Ship"
+"R/V Knorr",NULL
+"R/V Laurence M. Gould","Ship"
+"R/V Laurence M. Gould","Shipp"
+"R/V Laurenece M. Gould","Ship"
+"R/V Le Nadir",NULL
+"R/V Lulu","ship"
+"R/V Lulu","Ship"
+"R/V Marcus G. Langseth","ship"
+"R/V Marion-Dufresne",NULL
+"R/V Marion Dufresne",NULL
+"R/V Maritime Maid",NULL
+"R/V Maurice Ewing",NULL
+"R/V Melville",NULL
+"R/V Meteor","Ship"
+"R/V Meteor ","ship"
+"R/V Moana Wave","Ship"
+"R/V Moana Wave",NULL
+"R/V MOANA WAVE","Ship"
+"R/V MOANA WAVE","SHIP"
+"R/V Nathaniel B Palmer","Ship"
+"R/V Nathaniel B Palmer",NULL
+"R/V Nathaniel B. Palmer","SHALDRIL"
+"R/V Nathaniel B. Palmer","ship"
+"R/V Nathaniel B. Palmer","Ship"
+"R/V Nathaniel B. Palmer","Shipp"
+"R/V Nathaniel B. Palmer",NULL
+"R/V Natsushima",NULL
+"R/V Neil Armstrong",NULL
+"R/V New Horizon","Ship"
+"R/V Pelican",NULL
+"R/V Pillsbury","ship"
+"R/V Pillsbury",NULL
+"r/v Pioneer","ship"
+"R/V Point Sur","Ship"
+"R/V Polarstern",NULL
+"R/V Polastern","ship"
+"R/V Poseidon","ship"
+"R/V Pritchard","ship"
+"R/V Prospector","Ship"
+"R/V Robert D. Conrad","ship"
+"R/V Robert D. Conrad","Ship"
+"R/V Robert D. Conrad",NULL
+"R/V Roger Revelle","Ship"
+"R/V Roger Revelle",NULL
+"R/V Ronald H. Brown",NULL
+"R/V Sally Ride","Ship"
+"R/V Sarmiento de Gamboa","Ship"
+"R/V Seawolf","Ship"
+"R/V Seward Johnson",NULL
+"r/v Shearwater","Ship"
+"R/V Sonne","ship"
+"R/V Sonne",NULL
+"R/V Southern Surveyor","ship"
+"R/V Southern Surveyor","Ship"
+"R/V Southern Surveyor",NULL
+"R/V Sur Austral","Ship"
+"R/V Tansei- Maru","SHIP"
+"R/V TANSEI-MARU","Ship"
+"R/V TG Thompson","Ship"
+"R/V Thomas G. Thompson","ship"
+"R/V Thomas G. Thompson","Ship"
+"R/V Thomas G. Thompson",NULL
+"r/v Thomas Washington","ship"
+"R/V Thomas Washington",NULL
+"R/V Thompson","Ship"
+"R/V Trident","Ship"
+"R/V Trident",NULL
+"R/V Urania","ship"
+"R/V Valdivia",NULL
+"R/V Vema","Ship"
+"R/V Vema",NULL
+"R/V Wecoma",NULL
+"R/V Western Flyer","Ship"
+"R/V Western Flyer",NULL
+"R/V Yaquina",NULL
+"R/V Yokosuka","Ship"
+"R/V Yokosuka",NULL
+"R/V YOKOSUKA","SHIP"
+"Rama",NULL
+"Rapuhia","Ship"
+"REHOBOTH","Ship"
+"Researcher","Ship"
+"Researcher 300","Ship"
+"Ricky-0Ticky","Ship"
+"RNZFA Tui","Ship"
+"Robert Conrad","Ship"
+"Robert D Conrad",NULL
+"Robert D. Conrad","Ship"
+"Robert Hays","Ship"
+"Roger Revelle","Ship"
+"Ron Brown",NULL
+"Ronald Brown",NULL
+"RV Annie",NULL
+"RV Avon",NULL
+"RV Blue Heron",NULL
+"RV Endeavor",NULL
+"RV EZR Diane",NULL
+"RV Halcyon",NULL
+"RV Happy",NULL
+"RV Ibis",NULL
+"RV JOIDES Resolution","Ship"
+"RV Kerry Kelts",NULL
+"RV Kilindi",NULL
+"RV KRKII",NULL
+"RV LeConte",NULL
+"RV Liloya",NULL
+"RV Mark Griffith",NULL
+"RV Molly McGlue",NULL
+"RV MPCA Hewes",NULL
+"RV Multor",NULL
+"RV Nathaniel B Palmer","Ship"
+"RV Ndunduma",NULL
+"RV Neuston",NULL
+"RV Nuha",NULL
+"RV Orion",NULL
+"RV Pelican","Ship"
+"RV Pritchard","Ship"
+"RV Rangatahi II",NULL
+"RV Seawolf","Ship"
+"RV Sonne",NULL
+"RV Topi",NULL
+"RV Vereshagin",NULL
+"RV Viphya",NULL
+"RV Yogi",NULL
+"S. P. Lee","Ship"
+"S.P. Lee","Ship"
+"SAFOD",NULL
+"Salernum","Ship"
+"San Francisco Bay","Ship"
+"San Pablo","Ship"
+"Scripps","Ship"
+"Sea Scope","Ship"
+"Sea Sounder","Ship"
+"Sea Sounder?",NULL
+"SEA VEE","Ship"
+"Sea Wolf","Ship"
+"Shackelton","Ship"
+"Shackleton","Ship"
+"Sikuliaq",NULL
+"SIQUEIROS","Ship"
+"Sir Horace Lamb","Ship"
+"Site 504",NULL
+"Site 84",NULL
+"Sonne","ship"
+"Sonne","Ship"
+"Spencer F Baird","Ship"
+"Spencer F. Baird",NULL
+"Styx","Ship"
+"Subastian","ROV"
+"SuBastian","ROV"
+"Sunbird","Ship"
+"T. Washington","Ship"
+"T. Washington",NULL
+"Tangaroa","Ship"
+"Tangaroa",NULL
+"Thalassa","ship"
+"The Thurstonian Alien Life Theory ALIEN TERRA FORMING  PROJECT ","Date"
+"Theta","Ship"
+"Thomas G Thompson ","Ship"
+"Thomas G. Thompson","Ship"
+"Thomas Thompson","Ship"
+"Thomas Thompson",NULL
+"THOMAS THOMPSON","Ship"
+"Thomas Washington","ship"
+"Thomas Washington","Ship"
+"Thomas Washington",NULL
+"Thompson","ship"
+"Thompson","Ship"
+"Thompson",NULL
+"TN154","Ship"
+"Touchwood, 38 degrees South","Boat"
+"TowCam","Towed Camera"
+"Trident","Ship"
+"Trident",NULL
+"Trieste","Ship"
+"Trieste","Submersible / HOV"
+"U.S.S. Nero","Ship"
+"unknown","Ship"
+"Unknown",NULL
+"USCCGC Healy","Ship"
+"USCGC Burton Island","Ship"
+"USCGC Glacier","Ship"
+"USCGC Glacier","Shipp"
+"USCGC Glacier",NULL
+"USCGC Healy","Icebreaker"
+"USCGC Healy","ROV"
+"USCGC Healy","Ship"
+"USCGC HEALY","Ship"
+"USCGC HEALY",NULL
+"USCGC HEALY ",NULL
+"USCGC Healy",NULL
+"USGS SEA SOUNDER","Ship"
+"USNS De Steiguer",NULL
+"USNS Eltanin","Drill Ship"
+"USNS Eltanin","ship"
+"USNS Eltanin","Ship"
+"USNS Eltanin","SHIP"
+"UWITEC C2FN","Gravity corer"
+"UWITEC C2FN","PISTON CORER"
+"Uwitec CLIMCOR I","Gravity corer"
+"Valdavia","Ship"
+"Valdivia","Ship"
+"Vema","Ship"
+"Vema",NULL
+"VEMA","Ship"
+"Vinogradov","Ship"
+"W.H. Buse","Ship"
+"WEA.SHIP","ship"
+"Weather Ship Lima","ship"
+"Weather Ship Mike","ship"
+"Wecoma","Ship"
+"Wecoma",NULL
+"WECOMA","Ship"
+"Western Flyer","Ship"
+"Western Venturer","Ship"
+"Yaloc",NULL
+"Yaquina","Ship"
+"Yaquina 73","Ship"
+"Yelcho","Ship"
+"Yokosuka","Ship"
+NULL,"coastal"
+NULL,"Deep Lake Drilling System"
+NULL,"DLDS"
+NULL,"Drill Rig"
+NULL,"Drill Rig "
+NULL,"Gravity corer"
+NULL,"Ice"
+NULL,"Ice Shelf"
+NULL,"LVT"
+NULL,"Macintosh"
+NULL,"Mission-specific platform"
+NULL,"n/a"
+NULL,"N/A"
+NULL,"NA"
+NULL,"Not Applicable"
+NULL,"Other"
+NULL,"R/V Coastal Profiler"
+NULL,"R/V Point Sur"
+NULL,"ROV"
+NULL,"Scientific ship cruise "
+NULL,"SHALDRIL"
+NULL,"ship"
+NULL,"Ship"
+NULL,"SHIP"
+NULL,"small craft"
+NULL,"Small craft"
+NULL,"SNORT-Suburban"
+NULL,"Synthetic"
+NULL,"truck-mounted drill rig"
+NULL,"XXXXX"
+NULL,NULL

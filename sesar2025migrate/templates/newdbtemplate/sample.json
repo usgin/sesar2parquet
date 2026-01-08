@@ -1,0 +1,209 @@
+{
+    "@schema": "iSamplesSchemaCore1.0.json",
+    "@id":"{{thesample}}",
+    "label": "{{thesample.name}}",
+	"sample_identifier": "{{thesample.igsn}}",
+    "description": "{{sampleitems.samdesc}} ",
+
+
+
+	{% if thesample.sampled_feature_type %}
+		"has_context_category": [
+			{"label":"{{thesample.sampled_feature_type}}","identifier":"{{thesample.sampled_feature_type.feature_type_uri}}"}
+		],
+	{% endif %}
+	"has_material_category":[
+	{% if thesample.material_name_verbatim %}
+		{"label":"{{thesample.material_name_verbatim}}","scheme_name":"verbatim"}
+	{% else %}
+		{"label":"missing"}
+	{% endif %}
+	{% if thesample.general_material_type %}
+		,{"label":"{{thesample.general_material_type}}","identifier":"{{thesample.general_material_type.material_type_uri}}"}
+	{% endif %}
+
+	{% for mat in sampleitems.materials %}
+		{% if mat != thesample.general_material_type %}
+				,{"label":"{{mat}}","identifier":"{{mat.material_type.material_type_uri}}"}
+		{% endif %}
+	{% endfor  %}
+	],
+
+	{% if thesample.sample_type %}
+		"has_sample_object_type":
+			{"label":"{{thesample.sample_type.label}}","identifier":"{{thesample.sample_type.sample_type_uri}}"},
+	{% endif %}
+
+
+
+    "produced_by": {
+        "label": "",
+		{% if sampleitems.collectionDesc %}
+			"description":"{{sampleitems.collectionDesc}}",
+		{% endif %}
+		"has_feature_of_interest": "{{thesample.locality.feature_type}}",
+{% if thesample.cruise_field_prgrm %}
+			"project": "{{thesample.cruise_field_prgrm}}",
+{% endif %}
+		{% if sampleitems.resp_parties%}
+			"responsibility": [
+			{%for agent in sampleitems.resp_parties %}
+				{"role":"{{agent.relation_type}}","name":"{{ agent.label }}"}
+				{% if not forloop.last %},  {% endif %}
+			{% endfor %}
+					],
+		{% endif %}
+{% if thesample.collection_start_date or thesample.collection_end_date %}
+ 	"result_time":
+		{% if thesample.collection_start_date %}
+			"{{thesample.collection_start_date}} "
+		{% else %}
+			"{{thesample.collection_end_date}}"
+		{% endif %},
+{% endif %}
+
+        "sampling_site": {
+            "label": "{{thesample.locality}}",
+		{% if thesample.locality_detail or thesample.location_qualifier %}
+			"description": "{{thesample.locality_detail}}; {{thesample.location_qualifier}}",
+		{% endif %}
+{% if sampleitems.verticalpos or thesample.latitude or thesample.longitude %}
+            "sample_location": {
+				{% if sampleitems.verticalpos %}
+                	"elevation": "{{sampleitems.verticalpos}}",
+				{% endif %}
+				{% if thesample.latitude %}
+                "latitude": {{thesample.latitude}},
+                {% endif %}
+				{% if thesample.longitude %}
+					"longitude": {{thesample.longitude}}
+				{% endif %}
+            },
+{% endif %}
+            "place_name": ["{{thesample.locality}}"]
+        }
+    },
+
+    "registrant": {"name":"{{thesample.cur_registrant.individual}}"},
+    "last_modified_time":"{{thesample.last_update_date}}",
+    "sampling_purpose": "{{thesample.purpose}}",
+
+				{%if sampleitems.parent or sampleitems.children  or sampleitems.siblings%}
+	"related_resource":[
+{% if sampleitems.parent %}
+		{
+		"label":"{{sampleitems.parent.related_sesar_sample.name}}",
+		"relationship":"Parent sample",
+		"target":"{{sampleitems.parent.related_resource_uri}}"
+		}
+{% endif %}
+{%if sampleitems.parent and sampleitems.children  %}, {% endif %}
+		{% if sampleitems.children %}
+		{% for child in sampleitems.children %}
+			{
+			"label":"{{child.sample.name}}",
+			"relationship":"Child sample",
+			"target":"{{child.sample.igsn}}"
+			}
+			{% if not forloop.last %},  {% endif %}
+		{% endfor %}
+		{% endif %}
+{% if sampleitems.children and sampleitems.siblings %},
+{% elif sampleitems.parent and sampleitems.siblings %},
+{% endif %}
+		{% if sampleitems.siblings %}
+		{% for sib in sampleitems.siblings %}
+			{
+			"label":"{{sib.sample.name}}",
+			"relationship":"Sample from the same parent",
+			"target":"{{sib.sample.igsn}}"
+			}
+			{% if not forloop.last %},  {% endif %}
+		{% endfor %}
+		{% endif %}
+{% if sampleitems.children and sampleitems.links %},
+{% elif sampleitems.parent and sampleitems.links %},
+{% elif sampleitems.siblings and sampleitems.links %},
+{% endif %}
+{% if sampleitems.links %}
+    {% for alink in sampleitems.links %}
+				{
+			"label":"{{alink.description}}",
+			"relationship":"related resourc",
+			"target":"{{alink.url}}"
+			}
+       {% if not forloop.last %},  {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if sampleitems.children and sampleitems.docs %},
+{% elif sampleitems.parent and sampleitems.docs %},
+{% elif sampleitems.siblings and sampleitems.docs %},
+{% elif sampleitems.links and sampleitems.docs %},
+{% endif %}
+
+{%if  sampleitems.docs %}
+    {% for adoc in sampleitems.docs %}
+				{
+			"label":"{{adoc.file_name}}",
+			"relationship":"local SESAR file",
+			"description":"contact SESAR to access this file"
+			}
+       {% if not forloop.last %},  {% endif %}
+    {% endfor %}
+			{% endif %}
+
+	],
+{% endif %}
+{% if sampleitems.current_archive %}
+"curation":{
+	{% if sampleitems.current_archive.institution %}
+  		"curation_location":"{{sampleitems.current_archive.institution}}",
+	{% endif %}
+	{% if sampleitems.current_archive.individual %}
+	   "responsibility": {
+			"name": "{{sampleitems.current_archive.individual}}"
+{% if sampleitems.current_archive.individual.individual_uri %}
+			,"identifier":"{{sampleitems.current_archive.individual.individual_uri}}"
+{% endif %}
+		},
+	{% endif %}
+	"role":"current archive"
+	}
+{% endif %}
+{% if thesample.geologic_age_younger or thesample.geologic_age_older or thesample.geologic_unit %}
+	,"keywords":[
+		{% if thesample.geologic_unit %}
+		{
+		"keyword":"{{thesample.geologic_unit}}",
+		"scheme_name":"Geologic unit"
+		}
+		{% endif %}
+
+{% if thesample.geologic_unit and thesample.geologic_age_younger %},
+{% endif %}
+		{% if thesample.geologic_age_younger %}
+		{
+		"keyword":"{{thesample.geologic_age_younger}}",
+		"scheme_name":"Geologic age, younger bound"
+		{% if thesample.geologic_age_younger.geologic_time_interval_uri %}
+			,"keyword_uri":"{{thesample.geologic_age_younger.geologic_time_interval_uri}}"
+		{% endif %}
+		}
+		{% endif %}
+{% if thesample.geologic_age_younger and thesample.geologic_age_older %},
+{% elif thesample.geologic_unit and thesample.geologic_age_older %},
+{% endif %}
+		{% if thesample.geologic_age_older %}
+		{
+		"keyword":"{{thesample.geologic_age_older}}",
+		"scheme_name":"Geologic age, older bound"
+		{% if thesample.geologic_age_older.geologic_time_interval_uri %}
+			,"keyword_uri":"{{thesample.geologic_age_younger.geologic_time_interval_uri}}"
+		{% endif %}
+		}
+		{% endif %}
+]
+{% endif %}
+
+}

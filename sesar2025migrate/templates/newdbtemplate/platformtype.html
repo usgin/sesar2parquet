@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>list the platform type vocabulary</h2>
+<table>
+    <thead>
+    <tr>
+            <th>label</th>
+            <th>ID</th>
+            <th>description</th>
+            <th>source</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type in PlatformTypes %}
+        <tr>
+            <td><b>{{type.label}}</b></td>
+            <td>{{ type.platform_type_id}}</td>
+            <td>{{type.description}}</td>
+            <td>{{type.source}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

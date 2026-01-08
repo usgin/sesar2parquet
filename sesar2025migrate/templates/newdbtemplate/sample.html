@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Information for IGSN:{{thesample.igsn}}</h2>
+<b>Name:{{thesample.name}}</b> </br>
+{% if sampleitems.altnames %}
+    <b>Other name:{{sampleitems.altnames.name}}</b> </br>
+{% endif %}
+<b>Type:{{thesample.sample_type}}</b> </br>
+{% if sampleitems.parent %}
+    <b>Parent:{{sampleitems.parent.related_resource_uri}}</b> </br
+{% endif %} </br>
+
+<h3>Description</h3>
+<u>General Material type</u>:{{thesample.general_material_type}} </br>
+{% if thesample.material_name_verbatim %}
+    <u>User Material Name</u>:{{thesample.material_name_verbatim}} </br>
+{% endif %}
+
+{% if sampleitems.materials %}
+    <u>Specific material classes:</u>
+    {% for material in sampleitems.materials %}
+        <li>{{ material.material_type.label }}</li>
+    {% endfor %} </br>
+{% endif %}
+<u>Sample Description</u>:{{thesample.sample_description}} </br>
+
+{% if thesample.geologic_age_verbatim %}
+    <u>Geological Age</u>:{{thesample.geologic_age_verbatim}} </br>
+{% endif %}
+
+{% if thesample.numeric_age_min %}
+    <u>Numeric Age (min)</u>:{{thesample.numeric_age_min}} {{thesample.numeric_age_unit}} </br>
+{% endif %}
+{% if thesample.numeric_age_max %}
+    <u>Numeric Age (max)</u>: {{thesample.numeric_age_max}} {{thesample.numeric_age_unit}} </br>
+{% endif %}
+
+{% if thesample.geologic_age_younger %}
+    <u>Geologic Age younger</u>:{{thesample.geologic_age_younger}} </br>
+{% endif %}
+{% if thesample.geologic_age_older %}
+    <u>Geologic Age older</u>:{{thesample.geologic_age_older}} </br>
+{% endif %}
+{% if thesample.age_qualifier %}
+    <u>Geologic Age qualifier</u>:{{thesample.age_qualifier}} </br>
+{% endif %}
+
+{% if thesample.collection_method %}
+    <u>Collection Method</u>: {{thesample.collection_method}} </br>
+{% endif %}
+{% if thesample.collection_method_detail %}
+    <u>Collection Method Description</u>:{{thesample.collection_method_detail}} </br>
+{% endif %}
+{% if thesample.size %}
+    <u>Size</u>:{{thesample.size}} </br>
+{% endif %}
+
+{% if thesample.geologic_unit %}
+    <u>Geological Unit</u>:{{thesample.geologic_unit}} </br>
+{% endif %}
+{% if thesample.purpose %}
+    <u>Purpose</u>:{{thesample.purpose}} </br>
+{% endif %} </br>
+
+
+<h3>Geolocation</h3>
+
+{% if thesample.latitude and thesample.latitude_end %}
+    <u>Latitude from</u>:{{thesample.latitude}} <u>to</u> {{thesample.latitude_end}} </br>
+{% elif thesample.latitude %}
+    <u>Latitude</u>:{{thesample.latitude}}
+{% endif %}
+{% if thesample.longitude and thesample.longitude_end %}
+    <u>Longitude from</u>:{{thesample.longitude}} <u>to</u> {{thesample.longitude_end}} </br>
+{% elif thesample.longitude %}
+    <u>Longitude</u>:{{thesample.longitude}} </br>
+{% endif %}
+
+{% if sampleitems.coordinates %}
+<u>Easting</u>{{sampleitems.coordinates.coordinate_1}}, <u>Northing</u>:{{sampleitems.coordinates.coordinate_2}},
+    <u>Spatial reference:</u>{{sampleitems.coordinates.spatial_reference_system}} </br>
+    {% if sampleitems.coordinates.vertical %}
+        <u>Vertical position:</u>{{sampleitems.coordinates.vertical}}, Vertical SRS: {{thesample.vertical_srs}} </br>
+    {% endif %}
+{% endif %}
+
+
+{% if thesample.depth_min or thesample.depth_max %}
+    {% if thesample.depth_min == thesample.depth_max %}
+        <u>Depth</u>:{{thesample.depth_min}}
+    {% elif thesample.depth_min and thesample.depth_max %}
+        <u>Depth range</u>:{{thesample.depth_min}} to {{thesample.depth_max}}
+    {% elif thesample.depth_min %}
+        <u>Depth minimum</u>:{{thesample.depth_min}}
+    {% elif thesample.depth_max %}
+        <u>Depth maximum</u>:{{thesample.depth_max}}
+    {% endif %}
+{% endif %}
+{% if thesample.depth_spatial_ref %}
+.  <u>Depth units:</u>{{thesample.depth_uom}}, <u>Depth datum:</u>:{{thesample.depth_spatial_ref}} </br>
+{% else %} </br>
+{% endif %}
+
+{% if thesample.elevation %}
+    <u>Elevation</u>:{{thesample.elevation}}
+{% endif %}
+{% if thesample.elevation_uom %}
+.  <u>Elevation units:</u>{{thesample.elevation_uom}}
+{% endif %} </br>
+
+{% if thesample.location_qualifier %}
+    <u>Location qualifier</u>:{{thesample.location_qualifier}} </br>
+{% endif %}
+
+{% if thesample.location_method %}
+    <u>Location method:</u>:{{thesample.location_method}} </br>
+{% endif %}
+
+{% if thesample.sampled_feature_type %}
+    <u>Sampled feature type:</u>:{{thesample.sampled_feature_type}} </br>
+{% endif %}
+{% if thesample.locality %}
+    <u>Sampled feature name</u>:{{thesample.locality}} </br>
+{% endif %}
+{% if thesample.locality_detail %}
+    <u>Location notes</u>:{{thesample.locality_detail}} </br>
+{% endif %}
+
+
+<h3>Collection</h3>
+
+{% if thesample.cruise_field_prgrm %}
+    <u>Cruise or field program</u>:{{thesample.cruise_field_prgrm}} </br>
+{% endif %}
+
+{% if thesample.platform %}
+    <u>Sample collection platform:</u>:{{thesample.platform}} </br>
+{% endif %}
+
+{% if thesample.launch_label %}
+    <u>Location notes</u>:{{thesample.launch_label}}
+{% endif %}
+{% if thesample.launch_platform %}
+    <u>  Launch platform</u>:{{thesample.launch_platform}} </br>
+{% else %}
+. </br>
+{% endif %}
+
+{% if sampleitems.resp_parties%}
+    <u>Responsible parties</u>: </br>
+    {% for agent in sampleitems.resp_parties %}
+        {% if agent.relation_type != 3 %}
+        <li>{{ agent.label }}, {{agent.relation_type}}</li>
+        {% endif %}
+    {% endfor %}
+{% endif %} </br>
+
+
+{% if thesample.collection_start_date %}
+    <u>Sample collection start:</u>:{{thesample.collection_start_date}} </br>
+{% endif %}
+{% if thesample.collection_end_date %}
+    <u>Sample collection end:</u>:{{thesample.collection_end_date}} </br>
+{% endif %}
+
+<h3>Curation</h3>
+<u>Current registrant</u>:{{sampleitems.registrant.individual}} </br>
+<u>Current owner</u>:{{sampleitems.owner.individual}} </br>
+<u>Current archive</u>:
+{% if sampleitems.current_archive.individual %}
+    Contact:{{sampleitems.current_archive.individual}}
+{% endif %} &nbsp;
+{% if sampleitems.current_archive.institution %}
+  Repository: {{sampleitems.current_archive.institution}}
+{% endif %} </br>
+<u>Publication date</u>:{{thesample.publish_date}} </br>
+
+{% if sampleitems.children or sampleitems.siblings %}
+    <h3>Related Samples</h3>
+    {% if sampleitems.children %}
+        <h4>Child samples:</h4>
+          {% for child in sampleitems.children %}
+            <li> igsn:{{child.sample.igsn}} </br> </li>
+          {% endfor %} </br>
+    {% endif %}
+    {% if sampleitems.siblings %}
+    <h4>Other samples from the same parent:</h4>
+      {% for sib in sampleitems.siblings %}
+    <li> igsn:{{sib.sample.igsn}} </br> </li>
+      {% endfor %} </br>
+    {% endif %}
+{%  endif %}
+
+
+{% if sampleitems.links or sampleitems.docs%}
+    <h3>Links</h3>
+    {% for alink in sampleitems.links %}
+        <li><a href="{{alink.url}}">
+            {% if alink.description %}
+                {{alink.description}}
+            {% else %}
+                {{alink.url}}
+            {% endif %}
+        </a> </br> </li>
+    {% endfor %} </br>
+
+    {% for adoc in sampleitems.docs %}
+        <li> filename:{{adoc.file_name}} </br> </li>
+    {% endfor %} </br>
+
+{% endif %}
+
+{% endblock %}

@@ -3,3 +3,7 @@
 /api/.idea
 /api/smrvenv
 *.pyc
+*.ddb
+*.parquet
+/.idea
+/.github

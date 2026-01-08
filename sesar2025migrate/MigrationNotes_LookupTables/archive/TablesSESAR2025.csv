@@ -1,0 +1,82 @@
+table_name,,,,1,'sample_id',3926829
+affiliation,,,,2, 'origin_sample_id',None
+affiliation_type,,,,3, 'external_parent_sample_type_id',None
+agent,,,,4, 'external_parent_name',None
+agent_role_type,,,,5, 'sample_type_id',15
+auth_group,,,,6, 'cur_registrant_id',179
+auth_group_permissions,,,,7, 'req_registrant_id',None
+auth_permission,,,,8, 'igsn','10.58151/NHB004BW6'
+auth_user,,,,9, 'igsn_prefix','NHB'
+auth_user_groups,,,,10, 'igsn_digit','004BW6'
+auth_user_user_permissions,,,,11, 'igsn_to_int',6.62417E+13
+collection_member,,,,12, 'igsn_is_system_assigned',1
+collection_type,,,,13, 'external_sample_id','NMNH 76043-3570 (PET)'
+country,,,,14, 'publish_date',"datetime.datetime(2015, 7, 25, 21, 11, 34, 237647)"
+django_admin_log,,,,15, 'archive_date',None
+django_content_type,,,,16, 'registration_date'," datetime.datetime(2015, 7, 25, 21, 11, 34, 237647)"
+django_migrations,,,,17, 'last_update_date'," datetime.datetime(2019, 11, 4, 18, 17, 25, 68622)"
+django_session,,,,18, 'name','NMNH 76043-3570 (PET)'
+geologic_time_scale,,,,19, 'current_archive'," 'National Rock & Ore Collection, Smithsonian National Museum of Natural History'"
+geospatial_location,,,,20, 'current_archive_contact','NMNH-MineralSciences@si.edu'
+group,,,,21, 'original_archive',None
+group_member,,,,22, 'original_archive_contact',None
+individual,,,,23, 'collection_method',None
+initiative,,,,24, 'collection_method_descr',None
+initiative_type,,,,25, 'size',None
+institution,,,,26, 'size_unit',None
+institution_type,,,,27, 'classification_id',42
+launch_type,,,,28, 'classification_comment',None
+locality,,,,29, 'top_level_classification_id',1
+location_method,,,,30, 'description',None
+material_role_type,,,,31, 'sample_comment',None
+material_type,,,,32, 'depth_min',None
+other_property,,,,33, 'depth_max',None
+parent_institution,,,,34, 'depth_scale',None
+platform,,,,35, 'age_min',None
+platform_type,,,,36, 'age_max',None
+property_type,,,,37, 'age_unit',None
+related_local_doc,,,,38, 'geological_age',None
+related_resource,,,,39, 'geological_unit',None
+related_sample_agent,,,,40, 'sample_unit',None
+relation_type,,,,41, 'latitude',37.812
+resource_type,,,,42, 'longitude',-107.688
+sample,,,,43, 'latitude_end',None
+sample_additional_identifier,,,,44, 'longitude_end',None
+sample_additional_name,,,,45, 'elevation',None
+sample_collection,,,,46, 'elevation_end',None
+sample_material,,,,47, 'elevation_unit',None
+sample_type,,,,48, 'primary_location_type',None
+sampled_feature_type,,,,49, 'primary_location_name',None
+sampling_method,,,,50, 'location_description',"'Matched to the Silverton Quadrangle, CO in the USGS USTopoAvailability webservice. The radius corresponds to the center-to-corner distance of the bounding box.'"
+sesar_user,,,,51, 'locality',None
+spatial_ref_sys,,,,52, 'locality_description','Locality Key: Silverton Quad'
+,,,,53, 'country_id',228
+,,,,54, 'field_name','Pyroxene andesite'
+,,,,55, 'province','Colorado'
+,,,,56, 'county',None
+,,,,57, 'city',None
+,,,,58, 'cruise_field_prgrm',None
+,,,,59, 'platform_type',None
+,,,,60, 'platform_name',None
+,,,,61, 'platform_descr',None
+,,,,62, 'collector',None
+,,,,63, 'collector_detail',None
+,,,,64, 'collection_start_date',None
+,,,,65, 'collection_end_date',None
+,,,,66, 'collection_date_precision',None
+,,,,67, 'last_changed_by',None
+,,,,68, 'last_registrant_id',None
+,,,,69, 'geom_latlong','0101000020E610000079E9263108EC5AC00E2DB29DEFE74240'
+,,,,70, 'nav_type_id',None
+,,,,71, 'launch_platform_name',None
+,,,,72, 'launch_type_id',None
+,,,,73, 'launch_id',None
+,,,,74, 'purpose',None
+,,,,75, 'easting',None
+,,,,76, 'northing',None
+,,,,77, 'zone',None
+,,,,78, 'vertical_datum',None
+,,,,79, 'metadata_store_status','registered-datacite'
+,,,,80, 'orig_owner_id',179
+,,,,81, 'cur_owner_id',179
+,,,,82, 'group_owner_id',None

@@ -1,0 +1,3 @@
+relation_type_id,label,description,source,scheme_uri
+1,parent material sample,link to sample from which the subject sample was derived,this vocabularuy,
+-9999,missing,relationship not specified,,

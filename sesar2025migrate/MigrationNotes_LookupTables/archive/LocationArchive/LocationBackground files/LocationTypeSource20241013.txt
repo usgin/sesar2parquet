@@ -1,0 +1,263 @@
+s	sourcelist
+sf:activehumanoccupationsite	
+sf:anthropogenicenvironment	
+sf:anysampledfeature	
+sf:atmosphere	
+sf:biologicalentity	
+sf:earthenvironment	
+sf:earthinterior	
+sf:earthsurface	
+sf:experimentsetting	
+sf:extraterrestrialenvironment	
+sf:glacierenvironment	
+sf:laboratorycuratorialenvironment	
+sf:lakeriverstreambottom	
+sf:marinewaterbody	
+sf:marinewaterbodybottom	
+sf:pasthumanoccupationsite	
+sf:subaerialsurfaceenvironment	Neuendorf et al., 2005
+sf:subsurfacefluidreservoir	
+sf:terrestrialwaterbody	
+sf:waterbody	
+sessf:abandoned_channel	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:above_carbonate_compensation_depth	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:abyssal_plain	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Bates & Jackson, 1987, Heezen & Laughton, 1963, Reading, 1978, p. 390
+sessf:abyssal_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:active_continental_margin	
+sessf:active_ocean_ridge	
+sessf:agricultural_site	https://en.wikipedia.org/wiki/Agriculture | SESAR legacy localities
+sessf:algal_flat	http://www.audubonofflorida.org/main/wetlands/chp3.htm, Reading, 1978 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:alkalic_igneous_complex	SESAR legacy localities
+sessf:alluvial_fan	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:alluvial_plain	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/,
+sessf:anoxic_environment	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:aquifer	based on Neuendorf et al., 2005, Glossary of Geology | SESAR legacy localities
+sessf:arch_natural_formation	https://en.wikipedia.org/wiki/Natural_arch | SESAR legacy localities | Oxford English Dictionary
+sessf:arid_or_semi_arid_environment	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:axial_valley	IMLGS sampled feature
+sessf:back_arc_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:backreef	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:badlands	https://en.wikipedia.org/wiki/Badlands | SESAR legacy localities
+sessf:barrier_beach	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:barrier_island_coastline	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:barrier_lagoon	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:basin	https://en.wikipedia.org/wiki/Depression_(geology) | SESAR legacy localities
+sessf:bathyal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:bay	Based on IMLGS sampled feature harbor or small bay
+sessf:beach	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:below_carbonate_compensation_depth_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:bight	SESAR legacy localities | Neuendorf et al., Glossary of Geology, 2005
+sessf:biological_reef	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:bog	Jackson, 1997, North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:braided_channel	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:butte	https://en.wikipedia.org/wiki/Butte | SESAR legacy localities
+sessf:canal	SESAR legacy localities
+sessf:canyon	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:cape	SESAR legacy localities
+sessf:carbonate_dominated_shoreline	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:carbonate_mound	https://www.sciencedirect.com/topics/earth-and-planetary-sciences/carbonate-mound: AI generated definition based on:   Treatise on Geomorphology (Second Edition), 2022 (https://www.sciencedirect.com/science/article/pii/B9780128182345001292) | SESAR legacy localities
+sessf:carbonatite_complex	SESAR legacy localities
+sessf:cave	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:channel	Neuendorf et al., 2005, Glossary of Geology | SESAR legacy localities
+sessf:cirque	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:cliff	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:coastal_dune_field	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:coastal_plain	based on Neuendorf et al, 2005, p. 125 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:collisional_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:contact_metamorphic_zone	NADM metamorphic rock vocabulary SLTTm1.0, 2004 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:continent	SESAR legacy localities
+sessf:continental_borderland	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:continental_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:continental_divide	https://en.wikipedia.org/wiki/Continental_divide | SESAR legacy localities
+sessf:continental_margin	SESAR legacy localities
+sessf:continental_margin_trench	IMLGS sampled feature
+sessf:continental_rift_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:continental_shelf	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:continental_volcanic_arc	SESAR legacy localities
+sessf:crater	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:crust	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:cutoff_meander	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:deep_sea_trench	Reading 1978 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:delta_front	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:delta_plain	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:deltaic_system	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/
+sessf:diatreme_or_kimberlite	SESAR legacy localities
+sessf:distributary_channel	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:distributary_mouth	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:drainage_basin	SESAR legacy localities
+sessf:drumlin	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:ductile_shear_zone	https://doi.org/10.1016/B978-0-12-816802-8.00002-0 | SESAR legacy localities
+sessf:dune	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:dunefield	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:englacial_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:eolian_process_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:epicontinental_marine_setting	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:escarpment	SESAR legacy localities | https://en.wikipedia.org/wiki/Escarpment
+sessf:estuarine_delta	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:estuarine_lagoon	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:estuary	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/
+sessf:extended_terrane	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | This vocabulary
+sessf:extra_terrestrial_setting	Neuendorf et al 2005, | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:fault	SESAR legacy localities
+sessf:fault_scarp	SESAR legacy localities
+sessf:fiord	IMLGS sampled feature | <http://purl.obolibrary.org/obo/ENVO_00000039>
+sessf:floodplain	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:fold	SESAR legacy localities
+sessf:forearc_setting	1-GE WP3, Neuendorf et al.(2005), p. 249 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:foreland_basin	https://doi.org/10.1046/j.1365-2117.1996.01491.x | SESAR legacy localities
+sessf:foreland_fold_thrust_belt	SESAR legacy localities
+sessf:foreland_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | 1-GE WP3, Neuendorf et al.(2005), p. 250
+sessf:forereef_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:forest	SESAR legacy localities | <http://purl.obolibrary.org/obo/ENVO_00000111>
+sessf:fracture_zone	IMLGS sampled feature
+sessf:geologic_structure	SESAR legacy localities
+sessf:geologic_unit	SESAR legacy localities
+sessf:geothermal_water	SESAR legacy localities
+sessf:gibber_plain	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:glacial_outwash_plain	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:glacier_lateral_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:glacier_terminus	NADM SLTTs, 2004 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:granitoid_intrusive_complex	SESAR legacy localities
+sessf:hadal_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:harbor	SESAR legacy localities
+sessf:high_pressure_low_temperature_earth_interior_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:hill	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:hillslope_setting	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, Hawley, J.W., and Parsons, R.B. 1980. Glossary of selected geomorphic and geologic terms. Mimeo. USDA Soil Conservation Service, West National Technical Center, Portland, OR. 30 p. | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:hinterland_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:hot_spot	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:humid_temperate_climatic_setting	Cleland, D.T., Avers, P.E., McNab, W.H., Jensen, M.E., Bailey, R.G., King, T., Russell, W.E. 1997. National Hierarchical Framework of Ecological Units, in Boyce, M. S., Haney, A., ed., Ecosystem Management Applications for Sustainable Forest and WildlifeResources: Yale University Press, New Haven, CT. pp. 181-200. | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:humid_tropical_climatic_setting	Cleland, D.T., Avers, P.E., McNab, W.H., Jensen, M.E., Bailey, R.G., King, T., Russell, W.E. 1997. National Hierarchical Framework of Ecological Units, in Boyce, M. S., Haney, A., ed., Ecosystem Management Applications for Sustainable Forest and WildlifeResources: Yale University Press, New Haven, CT. pp. 181-200. | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:hummock	SESAR legacy localities
+sessf:hypabyssal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:igneous_system	SESAR legacy localities
+sessf:impact_structure	SESAR legacy localities
+sessf:inactive_spreading_center	IMLGS sampled feature | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:inner_neritic_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:insular_shelf	definition based on gsmlee:continental_shelf_setting definition | IMLGS sampled feature
+sessf:interdistributary_bay	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:intermittent_stream_channel	https://en.wikipedia.org/wiki/Arroyo_(watercourse) | SESAR legacy localities
+sessf:intertidal	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:intraoceanic_trench	IMLGS sampled feature
+sessf:intraplate_tectonic_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | This vocabulary
+sessf:intrusive_igneous_complex	SESAR legacy data
+sessf:island	SESAR legacy localities
+sessf:island_arc	SESAR legacy localities
+sessf:isthmus	https://www.britannica.com/science/isthmus | SESAR legacy localities
+sessf:karst	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:lacustrine_delta	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lacustrine_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lagoonal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | generalize from Jackson 1997 and North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/
+sessf:lake	IMLGS sampled feature
+sessf:lake_fresh_water	IMLGS sampled feature
+sessf:lake_saline	IMLGS sampled feature
+sessf:landslide	SESAR legacy localities
+sessf:lava_flow	SESAR legacy localities
+sessf:low_energy_shoreline_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:low_pressure_high_temperature_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lower_bathyal_setting	Neuendorf, K.K.E., Mehl, J.P. & Jackson, J.A. (eds), 2005. Glossary of geology, 5th Edition. American Geological Institute, Alexandria, 779 p., Berggren, W.A. & Miller, K.G., 1989. Cenozoic bathyal and abyssal calcareous benthic foraminiferal zonation. Micropalaeontology 35, 308-320 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lower_continental_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lower_delta_plain	Readingh.G. & Collinson, J.D., 1996. Clastic coasts. 154-231 in Readingh.G. (ed.), Sedimentary Environments: Processses, Facies and Stratigraphy, third edition. Blackwell Science, Oxford | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lower_mantle	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:lower_oceanic_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:mafic_to_ultramafic_intrusive_complex	SESAR legacy localities
+sessf:mantle	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:marginal_marine_sabkha	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, based on Jackson 1997, Neuendorf et al. 2005
+sessf:marginal_shelf	IMLGS sampled feature
+sessf:marine_carbonate_platform	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:marine_setting	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, Webster's Encyclopedic Unabridged Dictionary of the English Language, 2001, p. 1894. | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:meandering_channel	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:melange	https://en.wikipedia.org/wiki/M%C3%A9lange | SESAR legacy localities
+sessf:mesa	https://en.wikipedia.org/wiki/Mesa | SESAR legacy localities
+sessf:middle_bathyal_setting	Berggren, W.A. & Miller, K.G., 1989. Cenozoic bathyal and abyssal calcareous benthic foraminiferal zonation. Micropalaeontology 35, 308-320 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:middle_continental_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:mineralized_body	sessf:sfvocabulary
+sessf:mining_site	SESAR legacy localities
+sessf:moraine	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:mountain	based on Neuendorf et al., 2005, and https://en.wikipedia.org/wiki/Mountain | SESAR legacy localities
+sessf:mountain_range	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:mountain_stream_valley	SESAR legacy localities
+sessf:mud_flat	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, Jackson, 1997 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:neritic_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:ocean_crust	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:ocean_highland	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:ocean_plateau	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Reading 1978
+sessf:ocean_ridge_crest	IMLGS sampled feature
+sessf:ocean_ridge_flank	IMLGS sampled feature
+sessf:ophiolite	SESAR legacy localities
+sessf:outcrop	SESAR legacy localities
+sessf:passive_continental_margin	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:pediment	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, NRCS, 2001 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:physiographic_feature	SESAR legacy localities
+sessf:piedmont_slope	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Hawley and Parsons, 1980+F98
+sessf:plain	Neuendorf et al., 2005, Glossary of Geology | SESAR legacy localities
+sessf:plate_margin	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:plate_spreading_center	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:plateau	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:playa	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Based on Hawley and Parsons, 1980
+sessf:pluton	SESAR legacy localities
+sessf:polar_climatic_setting	Cleland, D.T., Avers, P.E., McNab, W.H., Jensen, M.E., Bailey, R.G., King, T., Russell, W.E. 1997. National Hierarchical Framework of Ecological Units, in Boyce, M. S., Haney, A., ed., Ecosystem Management Applications for Sustainable Forest and WildlifeResources: Yale University Press, New Haven, CT. pp. 181-200. | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:prairie	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:prodelta	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:proglacial_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:quarry	SESAR legacy localities
+sessf:reef_flat	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:regional_metamorphic_setting	NADM metamorphic rock vocabulary SLTTm1.0, 2004 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:ridge	https://en.wikipedia.org/wiki/Ridge | SESAR legacy localities
+sessf:rift_zone	SESAR legacy localities
+sessf:rise_continental	IMLGS sampled feature
+sessf:rise_insular	IMLGS sampled feature
+sessf:river_channel	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:river_stream	IMLGS sampled feature
+sessf:river_system	<http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment>
+sessf:rocky_coast	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:sand_plain	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:seamount	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Reading 1978
+sessf:sedimentary_basin	SESAR legacy localities
+sessf:shoreline	based on Neuendorf et al, 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:slope_continental	IMLGS sampled feature
+sessf:slope_insular	IMLGS sampled feature
+sessf:slope_rise_setting	based on NADM SLTTs, 2004 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:soil_profile	sessf:sfvocabulary
+sessf:strandplain	based on Jackson 1997, p. 626 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:stratigraphic_section	
+sessf:subaerial_canyon	SESAR legacy localities
+sessf:subaerial_escarpment	SESAR legacy localities
+sessf:subaqueous_bar	SESAR legacy localities
+sessf:subaqueous_setting	based on North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/, | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:subduction_zone	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:subglacial_setting	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:submarine_bank	https://en.wikipedia.org/wiki/Ocean_bank | SESAR legacy localities
+sessf:submarine_canyon	IMLGS sampled feature
+sessf:submarine_channel	split IMLGS submarine canyon or channel into separate concepts | SESAR legacy localities
+sessf:submarine_escarpment	SESAR legacy localities
+sessf:submarine_fan	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:submarine_ridge	SESAR legacy localities
+sessf:submarine_vent	SESAR legacy localities
+sessf:supraglacial_setting	North American Geologic-map Data Model Science Language Technical Team, 2004, Sedimentary materials:science language for their classification, description, and interpretation in digital geologic-map databases, Version 1.0 (12/18/2004): U.S. Geological Survey Open-File Report 2004-1451 appendix C, 595 p., accessed at http://pubs.usgs.gov/of/2004/1451/sltt/appendixC/ | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:supratidal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:swamp_or_marsh	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al 2005, Soil Science Society of America, 1997.
+sessf:tectonic_setting	<http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment>
+sessf:terrace	SESAR legacy localities | Neuendorf et al., 2005, Glossary of Geology
+sessf:terrestrial_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:thrust_sheet	SESAR legacy localities
+sessf:tidal_channel	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:tidal_flat	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:tidal_marsh	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | Neuendorf et al., 2005
+sessf:tidal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:transform_plate_boundary	This vocabulary | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:transitional_crust	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:triple_junction	SESAR legacy localities
+sessf:ultra_high_pressure_crustal_setting	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:upper_bathyal_setting	Berggren, W.A. & Miller, K.G., 1989. Cenozoic bathyal and abyssal calcareous benthic foraminiferal zonation. Micropalaeontology 35, 308-320 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:upper_continental_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:upper_delta_plain	Readingh.G. & Collinson, J.D., 1996. Clastic coasts. 154-231 in Readingh.G. (ed.), Sedimentary Environments: Processses, Facies and Stratigraphy, third edition. Blackwell Science, Oxford | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:upper_mantle	Neuendorf et al., 2005 | http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:upper_ocean_crust	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:urban_setting	https://en.wikipedia.org/wiki/Urban_area | SESAR legacy localities
+sessf:valley	SESAR legacy localities
+sessf:volcanic_arc	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment | 1-GE WP3, Neuendorf et al.(2005), p. 710
+sessf:volcanic_complex	SESAR legacy localities
+sessf:volcanic_setting	sessf:sfvocabulary
+sessf:volcano	SESAR legacy localities
+sessf:wetland	http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventenvironment
+sessf:xenolith	SESAR legacy localities

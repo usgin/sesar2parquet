@@ -1,0 +1,3 @@
+"affiliation_type_id","label","description","source"
+-9999,"Missing","Missing",NULL
+1,"parent institution","organization, institution, project etc, that an institution is part of ","this vocabulary"

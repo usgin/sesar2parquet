@@ -1,0 +1,42 @@
+rock type
+
+environment/context
+	tectonic feature (type or instance)
+	geologic feature (type or instance)
+	depth
+	sedimentary environment
+
+origination age (crystallization, metamorphism, diagenesis, uplift/cooling)
+
+chemical composition
+
+mineralogy
+
+alteration
+
+metamorphism
+
+parent sample
+
+cruise (cruise implies funding)
+
+launch  (launch implies cruise) (type, instance)
+
+sample collection location (geo location with uncertainty envelope)
+
+object type (core, cuttings, hand sample]
+
+sampling methog
+	drilled core	
+	box core
+	piston core
+	gravity core
+	vibro core
+	submersible grab
+	human surface grab
+		
+project funding 
+
+
+
+

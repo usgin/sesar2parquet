@@ -1,0 +1,4671 @@
+"geological_age","age_min","age_max","age_unit"
+"?",NULL,NULL,NULL
+"~148",NULL,NULL,NULL
+"~50 Ma (Eocene)",NULL,NULL,NULL
+"1.5","0.6","4","Ma"
+"10","8.1","12.3","Ma"
+"10","10.22","10.3","Ma"
+"10.02","10.02","10.02","million years (Ma)"
+"10.02","10.02","10.02","Million Years (Ma)"
+"100000000","100000000","1000000000","years"
+"105.4","86.7","128.1","Ma"
+"106.2","92.6","121.8","Ma"
+"106.8","86.2","132.3","Ma"
+"106.8","91.1","125.1","Ma"
+"108.21",NULL,NULL,NULL
+"108.4","93.2","126","Ma"
+"1084 ± 5 Ma","1079","1089","million years (Ma)"
+"11.396",NULL,NULL,NULL
+"112.83",NULL,NULL,NULL
+"113.5","99","130.2","Ma"
+"115.5","97","137.5","Ma"
+"1175","1163","1187","million years (Ma)"
+"12.81",NULL,NULL,NULL
+"120.3","105.3","137.3","Ma"
+"121.9","106.7","139.3","Ma"
+"13.07",NULL,NULL,NULL
+"13.08",NULL,NULL,NULL
+"13.12",NULL,NULL,NULL
+"13.35",NULL,NULL,NULL
+"13.37",NULL,NULL,NULL
+"13.41",NULL,NULL,NULL
+"13.44",NULL,NULL,NULL
+"13.49",NULL,NULL,NULL
+"13.56",NULL,NULL,NULL
+"13.79",NULL,NULL,NULL
+"13.92",NULL,NULL,NULL
+"137.9","103.5","183.6","Ma"
+"14.27",NULL,NULL,NULL
+"14.49",NULL,NULL,NULL
+"14.55",NULL,NULL,NULL
+"14.62",NULL,NULL,NULL
+"14.81",NULL,NULL,NULL
+"1451.5","1723","1082",NULL
+"1464.5","1034","1721",NULL
+"1466 ± 17 maximum depositional age","1297","1311","million years (Ma)"
+"1466.7","1019","1728",NULL
+"149.177",NULL,NULL,NULL
+"149.465",NULL,NULL,NULL
+"150.034",NULL,NULL,NULL
+"150.18",NULL,NULL,NULL
+"151",NULL,NULL,NULL
+"151.02",NULL,NULL,NULL
+"151.7",NULL,NULL,NULL
+"153.2",NULL,NULL,NULL
+"158.885",NULL,NULL,NULL
+"159.205",NULL,NULL,NULL
+"16.11",NULL,NULL,NULL
+"161.44",NULL,NULL,NULL
+"162.24",NULL,NULL,NULL
+"162.7",NULL,NULL,NULL
+"168.43",NULL,NULL,NULL
+"174.3",NULL,NULL,NULL
+"174.66",NULL,NULL,NULL
+"1798 ± 24 (a maximum depositional age)","1752","2835","million years (Ma)"
+"184.2",NULL,NULL,NULL
+"198","198","205","million years (Ma)"
+"2","1.3","3.1","Ma"
+"2.13",NULL,NULL,NULL
+"2.9","2","4.3","Ma"
+"208",NULL,NULL,NULL
+"21.7","19.2","24.6","Ma"
+"25.9","22.7","29.6","Ma"
+"27.6",NULL,NULL,NULL
+"28.1",NULL,NULL,NULL
+"2873","2723","3023","Ma"
+"288.17 ± 0.78","287.39","288.95","million years (Ma)"
+"288.44 ± 0.70","287.74","289.14","million years (Ma)"
+"29",NULL,NULL,NULL
+"29.0 +/- 0.5 Ma",NULL,NULL,NULL
+"29.24 +/- 0.08 Ma",NULL,NULL,NULL
+"29.8",NULL,NULL,NULL
+"3.5","2.2","4.8","million years (Ma)"
+"3010","2985","3035","Ma"
+"3026","3000","3052","Ma"
+"3049","3070","3070","Ma"
+"3137","2947","3327","Ma"
+"3160","3148","3172","Ma"
+"3163","3153","3173","Ma"
+"3178","3168","3188","Ma"
+"3179","2999","3359","Ma"
+"3197","3186","3208","Ma"
+"3200","3182","3218","Ma"
+"3244","3234","3254","Ma"
+"33.21",NULL,NULL,NULL
+"33.5",NULL,NULL,NULL
+"3385","3372","3398","Ma"
+"34.4",NULL,NULL,NULL
+"34.82",NULL,NULL,NULL
+"35.69",NULL,NULL,NULL
+"36.1",NULL,NULL,NULL
+"3600 yr BP","3600",NULL,"years"
+"37.9",NULL,NULL,NULL
+"382.7-393.3 Ma",NULL,NULL,NULL
+"4 years",NULL,NULL,NULL
+"4.04",NULL,NULL,NULL
+"4.4",NULL,NULL,NULL
+"4.5",NULL,NULL,NULL
+"44.6",NULL,NULL,NULL
+"5","1.8","13.6","Ma"
+"5.3","3.7","7.5","Ma"
+"5.3","4.1","6.9","Ma"
+"5.7","4","8.1","Ma"
+"5.8","4.6","7.3","Ma"
+"5.9","4.4","7.8","Ma"
+"53.57",NULL,NULL,NULL
+"54.5",NULL,NULL,NULL
+"62.4",NULL,NULL,NULL
+"68.3",NULL,NULL,NULL
+"7.2","5.4","9.5","Ma"
+"77.2",NULL,NULL,NULL
+"8.8","5.6","13.8","Ma"
+"86.1","77.1","96.2","Ma"
+"9.1","7.3","11.3","Ma"
+"9.23",NULL,NULL,NULL
+"9.7","7.7","12.5","Ma"
+"9.9","6.5","15.1","Ma"
+"90",NULL,NULL,NULL
+"93.32",NULL,NULL,NULL
+"96.3","83.4","111.2","Ma"
+"99.455",NULL,NULL,NULL
+"Aeronian","438.5","440.8","Ma"
+"AGE : cccc;ABSOLUTE_AGE_TOP : aaaaa;ABSOLUTE_AGE_BOT : bbbb",NULL,NULL,NULL
+"AGE : unknown",NULL,NULL,NULL
+"AGE : unknown;ABSOLUTE_AGE_TOP : xxx;ABSOLUTE_AGE_BOT : ttt",NULL,NULL,NULL
+"Albian",NULL,NULL,NULL
+"Albian-Cenomanian",NULL,NULL,NULL
+"Albian-Cenomanian ",NULL,NULL,NULL
+"Albian ",NULL,NULL,NULL
+"all","4503","4503","million years (Ma)"
+"all","4543","4543","million years (Ma)"
+"Anisian - Ladinian",NULL,NULL,NULL
+"Anthropocene","5","5","years"
+"Anthropocene/Holocene",NULL,NULL,NULL
+"ANTHROPOCENE/HOLOCENE","1657","2017","years"
+"Aquitanian",NULL,NULL,NULL
+"Aquitanian-Burdigalian",NULL,NULL,NULL
+"Archaean",NULL,NULL,NULL
+"Archaen - Proterozoic",NULL,NULL,NULL
+"Archean","2640",NULL,"Ma"
+"Archean","2690",NULL,"Ma"
+"Archean",NULL,NULL,NULL
+"Archean ",NULL,NULL,NULL
+"Archean, Neoarchean",NULL,NULL,NULL
+"base Eocene",NULL,NULL,NULL
+"base Paleocene",NULL,NULL,NULL
+"Brookian",NULL,NULL,NULL
+"Burdigalian",NULL,NULL,NULL
+"Callovian-Oxfordian",NULL,NULL,NULL
+"Callovian-Oxfordian ",NULL,NULL,NULL
+"Cambrian",NULL,NULL,NULL
+"Cambrian-Ordovician",NULL,NULL,NULL
+"Cambrian-Ordovician?",NULL,NULL,NULL
+"Cambrian > Lower/Early",NULL,NULL,NULL
+"Cambrian > Lower/Early to Ordovician > Lower/Early",NULL,NULL,NULL
+"Cambrian > Lower/Early to Proterozoic > Lower/Early",NULL,NULL,NULL
+"Cambrian > Lower/Early to Proterozoic > Upper/Late",NULL,NULL,NULL
+"Cambrian > Middle",NULL,NULL,NULL
+"Cambrian Era",NULL,NULL,NULL
+"Cambrian to Ordovician",NULL,NULL,NULL
+"Cambrian to Silurian",NULL,NULL,NULL
+"Cambrian to Tertiary",NULL,NULL,NULL
+"Cambrian, Oligocene, or Miocene",NULL,NULL,NULL
+"Cambrian?",NULL,NULL,NULL
+"Cambro-Ordovician",NULL,NULL,NULL
+"Campanian",NULL,NULL,NULL
+"Campanian-Maastrichtian",NULL,NULL,NULL
+"Campanian ",NULL,NULL,NULL
+"Carboniferous",NULL,NULL,NULL
+"Carboniferous > Silesian > Westphalian",NULL,NULL,NULL
+"Carboniferous to Permian",NULL,NULL,NULL
+"Carboniferous, Mississippian",NULL,NULL,NULL
+"Carnian",NULL,NULL,NULL
+"Cenozoic","0","1","Ka"
+"Cenozoic","0","65.5","Ma"
+"Cenozoic","0",NULL,NULL
+"Cenozoic","0.01","65","million years (Ma)"
+"Cenozoic","1","8.3","Ka"
+"Cenozoic","2","50","Ma"
+"Cenozoic","8.3","14","Ka"
+"Cenozoic","15","50","Ma"
+"Cenozoic","20","70","Ka"
+"Cenozoic","103","305","Ka"
+"Cenozoic","250","570","Ka"
+"Cenozoic","570","615","Ka"
+"Cenozoic","730","4000","Ka"
+"Cenozoic",NULL,"0.7","Ka"
+"Cenozoic",NULL,"2","Ka"
+"Cenozoic",NULL,"3","Ka"
+"Cenozoic",NULL,"10","Ka"
+"Cenozoic",NULL,"40","Ka"
+"Cenozoic",NULL,"80","Ka"
+"Cenozoic",NULL,"130","Ka"
+"Cenozoic",NULL,"250","Ka"
+"Cenozoic",NULL,"3000","Ka"
+"Cenozoic",NULL,NULL,NULL
+"Cenozoic (uncertain)",NULL,NULL,NULL
+"Cenozoic > Neogene",NULL,NULL,NULL
+"Cenozoic > Quaternary > Pleistocene",NULL,NULL,NULL
+"Cenozoic > Tertiary > Eocene",NULL,NULL,NULL
+"Cenozoic > Tertiary > Miocene",NULL,NULL,NULL
+"Cenozoic > Tertiary > Miocene to Cenozoic > Tertiary > Pliocene",NULL,NULL,NULL
+"Cenozoic > Tertiary > Oligocene",NULL,NULL,NULL
+"Cenozoic, Paleogene",NULL,NULL,NULL
+"Cenozoic>Neogene","2.6","23","Ma"
+"Cenozoic>Neogene>Miocene","5.3","23","Ma"
+"Cenozoic>Neogene>Miocene>Early Miocene","16","23","Ma"
+"Cenozoic>Neogene>Miocene>Late Miocene","5.3","11.6","Ma"
+"Cenozoic>Neogene>Miocene>Late Miocene>Messinian","5.3","7.2","Ma"
+"Cenozoic>Neogene>Miocene>Middle Miocene","11.6","16","Ma"
+"Cenozoic>Neogene>Miocene>Middle Miocene>Langhian","13.8","16","Ma"
+"Cenozoic>Neogene>Pliocene","2.6","5.3","Ma"
+"Cenozoic>Neogene>Pliocene>Zanclean","3.6","5.3","Ma"
+"Cenozoic>Paleogene","23","65.5","Ma"
+"Cenozoic>Paleogene>Eocene","33.9","55.8","Ma"
+"Cenozoic>Paleogene>Eocene>Early Eocene","48.6","55.8","Ma"
+"Cenozoic>Paleogene>Eocene>Early Eocene>Ypresian","48.6","55.8","Ma"
+"Cenozoic>Paleogene>Eocene>Late Eocene","33.9","37.2","Ma"
+"Cenozoic>Paleogene>Eocene>Late Eocene>Priabonian","33.9","37.2","Ma"
+"Cenozoic>Paleogene>Eocene>Middle Eocene","37.2","48.6","Ma"
+"Cenozoic>Paleogene>Oligocene","23","33.9","Ma"
+"Cenozoic>Paleogene>Paleocene","55.8","65.5","Ma"
+"Cenozoic>Paleogene>Paleocene>Early Paleocene","61.7","65.5","Ma"
+"Cenozoic>Paleogene>Paleocene>Late Paleocene>Thanetian","55.8","58.7","Ma"
+"Cenozoic>Paleogene>Paleocene>Middle Paleocene","58.7","61.7","Ma"
+"Cenozoic>Quaternary","0","2.6","Ma"
+"Cenozoic>Quaternary","11600","12728","years"
+"Cenozoic>Quaternary>Holocene","0","0.01","Ma"
+"Cenozoic>Quaternary>Pleistocene","0.01","2.6","Ma"
+"Cenozoic>Quaternary>Pleistocene","0.0319","0.0433","million years (Ma)"
+"Cenozoic>Quaternary>Pleistocene",NULL,NULL,NULL
+"Cenozoic>Quaternary>Pleistocene>Calabrian","0.01","1.8","Ma"
+"Ceonomanian-Turonian?",NULL,NULL,NULL
+"Chattian-Aquitanian",NULL,NULL,NULL
+"Cisuralian",NULL,NULL,NULL
+"Contaminated",NULL,NULL,NULL
+"Creataceous",NULL,NULL,NULL
+"cretaceous",NULL,NULL,NULL
+"Cretaceous","55",NULL,"million years (Ma)"
+"Cretaceous","80.04",NULL,"million years (Ma)"
+"Cretaceous","85","95","million years (Ma)"
+"Cretaceous","90.82","90.92","million years (Ma)"
+"Cretaceous","90.97","91.09","million years (Ma)"
+"Cretaceous","92.1","92.7","million years (Ma)"
+"Cretaceous","92.4","93.2","million years (Ma)"
+"Cretaceous","92.64","92.8","million years (Ma)"
+"Cretaceous","93.6","94.8","million years (Ma)"
+"Cretaceous","95","95.9","million years (Ma)"
+"Cretaceous","95","96.6","million years (Ma)"
+"Cretaceous","95.17","95.97",NULL
+"Cretaceous","95.3","95.6","million years (Ma)"
+"Cretaceous","95.3","97.1","million years (Ma)"
+"Cretaceous","96.41","96.53","million years (Ma)"
+"Cretaceous","97","99","Ma"
+"Cretaceous","97.86","97.98","million years (Ma)"
+"Cretaceous","97.96","99.4",NULL
+"Cretaceous","98","100","Ma"
+"Cretaceous","98.2","102",NULL
+"Cretaceous","98.8","102.84",NULL
+"Cretaceous","98.87","100.39",NULL
+"Cretaceous","98.91","101.29",NULL
+"Cretaceous","99","100.2",NULL
+"Cretaceous","99.4","101.6",NULL
+"Cretaceous","99.42","100.08",NULL
+"Cretaceous","99.5","102.7",NULL
+"Cretaceous","99.8","102",NULL
+"Cretaceous","100","102","Ma"
+"Cretaceous","100","102",NULL
+"Cretaceous","100","104","Ma"
+"Cretaceous","100","108","million years (Ma)"
+"Cretaceous","100.4","102.6",NULL
+"Cretaceous","100.6","102.8",NULL
+"Cretaceous","100.9","103.5",NULL
+"Cretaceous","101.2","92.4",NULL
+"Cretaceous","101.2","102.6",NULL
+"Cretaceous","101.45","102.87",NULL
+"Cretaceous","101.5","103.5","million years (Ma)"
+"Cretaceous","101.8","104.6",NULL
+"Cretaceous","102","102.8",NULL
+"Cretaceous","102.1","103",NULL
+"Cretaceous","102.2","103.1","Ma"
+"Cretaceous","103","105","Ma"
+"Cretaceous","104","105","Ma"
+"Cretaceous","104","108","million years (Ma)"
+"Cretaceous","105.2","102.63",NULL
+"Cretaceous","105.2","107.6",NULL
+"Cretaceous","108","110","million years (Ma)"
+"Cretaceous","108.5","110.5","Ma"
+"Cretaceous","109","111","Ma"
+"Cretaceous","110","112","Ma"
+"Cretaceous","111","111","million years (Ma)"
+"Cretaceous","111.6","114.2","Ma"
+"Cretaceous","115.5","119.3","Ma"
+"Cretaceous","115.7","118.1","Ma"
+"Cretaceous","115.8","119.2",NULL
+"Cretaceous","116.4","119.6","Ma"
+"Cretaceous","117","118","Ma"
+"Cretaceous","118","120.4",NULL
+"Cretaceous","119","120","Ma"
+"Cretaceous","119.8","125.8","Ma"
+"Cretaceous","122.5","125.5","Ma"
+"Cretaceous",NULL,"138.8","Ma"
+"Cretaceous",NULL,"139.6","Ma"
+"Cretaceous",NULL,"139.7","Ma"
+"Cretaceous",NULL,"140","Ma"
+"Cretaceous",NULL,"141.7","Ma"
+"Cretaceous",NULL,"141.8","Ma"
+"Cretaceous",NULL,"145.8","Ma"
+"Cretaceous",NULL,NULL,NULL
+"Cretaceous ","86.7","89.6","Ma"
+"Cretaceous ","86.7","89.6","million years (Ma)"
+"Cretaceous ",NULL,NULL,NULL
+"Cretaceous - Barremian/Aptian",NULL,NULL,NULL
+"Cretaceous - Tertiary",NULL,NULL,NULL
+"Cretaceous (turbidites)",NULL,NULL,NULL
+"Cretaceous (uncertain)",NULL,NULL,NULL
+"Cretaceous (uncertain) Reworked (uncertain)",NULL,NULL,NULL
+"Cretaceous > Lower/Early",NULL,NULL,NULL
+"Cretaceous > Lower/Early > Albian",NULL,NULL,NULL
+"Cretaceous > Lower/Early > Albian to Cretaceous > Upper/Late > Cenomanian",NULL,NULL,NULL
+"Cretaceous > Lower/Early > Aptian",NULL,NULL,NULL
+"Cretaceous > Lower/Early > Aptian to Cretaceous > Upper/Late > Cenomanian",NULL,NULL,NULL
+"Cretaceous > Lower/Early to Neogene > Miocene",NULL,NULL,NULL
+"Cretaceous > Upper/Late",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Campanian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Campanian to Cretaceous > Upper/Late > Maastrichtian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Cenomanian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Cenomanian-Coniacian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Coniacian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Maastrichtian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Santonian",NULL,NULL,NULL
+"Cretaceous > Upper/Late > Turonian",NULL,NULL,NULL
+"Cretaceous > Upper/Late to Paleogene > Eocene",NULL,NULL,NULL
+"Cretaceous > Upper/Late to Paleogene > Paleocene",NULL,NULL,NULL
+"Cretaceous 83+/-1.1 Ma 40Ar/39Ar on biotite. Abstract only",NULL,NULL,NULL
+"Cretaceous inferred",NULL,NULL,NULL
+"Cretaceous met'm?",NULL,NULL,NULL
+"Cretaceous reworked (uncertain)",NULL,NULL,NULL
+"Cretaceous to Jurassic",NULL,NULL,NULL
+"Cretaceous to Tertiary",NULL,NULL,NULL
+"Cretaceous(uncertain)",NULL,NULL,NULL
+"Cretaceous, Albian",NULL,NULL,NULL
+"Cretaceous, Albian?",NULL,NULL,NULL
+"Cretaceous, Berriasian",NULL,NULL,NULL
+"Cretaceous, Campanian",NULL,NULL,NULL
+"Cretaceous, Campanian?",NULL,NULL,NULL
+"Cretaceous, Cenomanian",NULL,NULL,NULL
+"Cretaceous, Cenomanian-Turonian",NULL,NULL,NULL
+"Cretaceous, Cenomanian or Turonian",NULL,NULL,NULL
+"Cretaceous, Late Campanian",NULL,NULL,NULL
+"Cretaceous, Santonian?",NULL,NULL,NULL
+"Cretaceous, Turonian",NULL,NULL,NULL
+"Cretaceous, Upper Turonian",NULL,NULL,NULL
+"cretaceous/paleogene",NULL,NULL,NULL
+"Cretaceous/Paleogene",NULL,NULL,NULL
+"Cretaceous?",NULL,NULL,NULL
+"Cretaceuous",NULL,NULL,NULL
+"Cryogenian","700",NULL,"Ma"
+"Cryogenian",NULL,NULL,NULL
+"Cryogenian-Ediacaran",NULL,NULL,NULL
+"Danian",NULL,NULL,NULL
+"Dapingian",NULL,NULL,NULL
+"Darriwilian","458.4","467.3","Ma"
+"Darriwilian","465","467.3","Ma"
+"Darriwilian","465.5","467.3","Ma"
+"Desmoinesian",NULL,NULL,NULL
+"Dev-Miss",NULL,NULL,NULL
+"Dev-Miss?",NULL,NULL,NULL
+"Devonian","358","416","million years (Ma)"
+"Devonian","590.2",NULL,"million years (Ma)"
+"Devonian",NULL,NULL,NULL
+"Devonian ","358","416","million years (Ma)"
+"Devonian > Lower/Early",NULL,NULL,NULL
+"Devonian > Middle",NULL,NULL,NULL
+"Devonian > Upper/Late",NULL,NULL,NULL
+"Devonian to Mississippian",NULL,NULL,NULL
+"Devonian, Framennian",NULL,NULL,NULL
+"Devonian, Frasnian",NULL,NULL,NULL
+"Devonian/Mississippian",NULL,NULL,NULL
+"Devonian?",NULL,NULL,NULL
+"Earliest Permian?",NULL,NULL,NULL
+"Early-Middle Triassic",NULL,NULL,NULL
+"early Archean",NULL,"3470","Ma"
+"early Cambrian",NULL,NULL,NULL
+"Early Cambrian",NULL,NULL,NULL
+"early Cretaceous",NULL,NULL,NULL
+"Early Cretaceous",NULL,NULL,NULL
+"Early Cretaceous ",NULL,NULL,NULL
+"Early Cretaceous?",NULL,NULL,NULL
+"Early Eocene","49","53","Ma"
+"Early Eocene","50","54","Ma"
+"Early Eocene","57","61","Ma"
+"Early Eocene",NULL,NULL,NULL
+"Early Eocene, Ypresioan (Wasatchian?)","50.3","55.8","Ma"
+"Early Eocene, Ypresioan (Wasatchian?) ","50.3","55.8","Ma"
+"Early Holocene",NULL,NULL,NULL
+"Early Jurassic","200","201.2","million years (Ma)"
+"early Miocene",NULL,NULL,NULL
+"Early Miocene","17.5","17.9","Ma"
+"Early Norian",NULL,NULL,NULL
+"Early Norian, Triassic",NULL,NULL,NULL
+"Early Paleozoic",NULL,NULL,NULL
+"early Permian",NULL,NULL,NULL
+"Early Permian","275","295","million years (Ma)"
+"Early Pleistocene","500000","2000000","years"
+"Early Pliocene",NULL,NULL,NULL
+"early Proterozoic",NULL,"2490","Ma"
+"Early Zanclean",NULL,NULL,NULL
+"Ediacaran","635",NULL,"635"
+"Ediacaran",NULL,NULL,NULL
+"Ediacaran?",NULL,NULL,NULL
+"Ediacarran? Or Devonian?",NULL,NULL,NULL
+"Eifelian",NULL,NULL,NULL
+"Emsian","387.7","404","Ma"
+"Emsian","404","410.8","Ma"
+"Emsian (Late Devonian)",NULL,NULL,NULL
+"Eocene","28.92784","47.42625","38.58"
+"Eocene","31.35057","44.67117","38.28"
+"Eocene","32.1556","43.57772","35.337"
+"Eocene","32.73686","46.66895","39.32"
+"Eocene","33.9","37.8","million years (Ma)"
+"Eocene","33.9","56","Ma"
+"Eocene","33.9","56","million years (Ma)"
+"Eocene","34","34.75",NULL
+"Eocene","34","55","Million years (Ma)"
+"Eocene","34.05305","50.59802","39.39"
+"Eocene","34.37227","41.15428","38.5"
+"Eocene","34.3862","42.95203","37.4"
+"Eocene","34.60358","50.98119","37.83"
+"Eocene","34.75","35",NULL
+"Eocene","35.4","56.5","million years (Ma)"
+"Eocene","35.6","36.4",NULL
+"Eocene","36",NULL,"Ma"
+"Eocene","37","38",NULL
+"Eocene","37.8","41.2","million years (Ma)"
+"Eocene","40",NULL,"million years (Ma)"
+"Eocene","46","49","Ma"
+"Eocene","49","52","Ma"
+"Eocene","50","52","Ma"
+"Eocene","50",NULL,"million years (Ma)"
+"Eocene","56.5","65","million years (Ma)"
+"Eocene",NULL,NULL,NULL
+"Eocene--Miocene",NULL,NULL,NULL
+"Eocene--Oligocene",NULL,NULL,NULL
+"Eocene-Oligocene","5.3","33.9","Ma"
+"Eocene-Oligocene","23","56","Ma"
+"Eocene-Oligocene","23","56","million years (Ma)"
+"Eocene -mixed ages",NULL,NULL,NULL
+"Eocene (uncertain)",NULL,NULL,NULL
+"Eocene (uncertain) or contamination",NULL,NULL,NULL
+"Eocene contamination",NULL,NULL,NULL
+"Eocene or younger",NULL,NULL,NULL
+"Eocene probably",NULL,NULL,NULL
+"Eocene(uncertain)",NULL,NULL,NULL
+"Eocene/Oligocene or 
+contamination",NULL,NULL,NULL
+"Eocene?",NULL,NULL,NULL
+"Eocne",NULL,NULL,NULL
+"Famennian",NULL,NULL,NULL
+"Famennian-Tournaisian (Late Devonian-Early Carboniferous)",NULL,"376.4",NULL
+"Famennian-Tournaisian (Late Devonian-Early Carboniferous)",NULL,"620.8","million years (Ma)"
+"Famennian (Late Devonian)",NULL,"538.1","million years (Ma)"
+"Famennian (Late Devonian)",NULL,"557","million years (Ma)"
+"Floian","470","470.5","Ma"
+"Floian","470.5","472.5","Ma"
+"Floian","472.5","476","Ma"
+"Floian","476","477.7","Ma"
+"Frasnian",NULL,NULL,NULL
+"Furongian","485.4","489.5","Ma"
+"Furongian","489.5","494","Ma"
+"Givetian",NULL,NULL,NULL
+"Guzhangian","497","500.5","Ma"
+"Hettangian (Jurassic)",NULL,NULL,NULL
+"Historic","18","18","years"
+"Historic",NULL,NULL,NULL
+"holocene",NULL,NULL,NULL
+"Holocene","-68",NULL,"years"
+"Holocene","-64","365","years"
+"Holocene","-64","530","years"
+"Holocene","-64","1260","years"
+"Holocene","-64","2750","years"
+"Holocene","0","0.01","Ma"
+"Holocene","0","12000","years"
+"Holocene","0","16000","years"
+"Holocene","0","73000","years"
+"Holocene","0","74000","years"
+"Holocene","0.1","0.35","Ka"
+"Holocene","0.95","2.4","Ka"
+"Holocene","3","5.2","Ka"
+"Holocene","10","12","Ka"
+"Holocene","100","120","years"
+"Holocene","142","143","years"
+"Holocene","420","425","years"
+"Holocene","2000",NULL,"years"
+"Holocene","2017",NULL,"years"
+"Holocene","2484","2499","Years"
+"Holocene","2800","2800","years"
+"Holocene","2897","2909","Years"
+"Holocene","3228","3242","Years"
+"Holocene","3382","3407","Years"
+"Holocene","3650","3650","years"
+"Holocene","3733","3753","Years"
+"Holocene","4095","4111","Years"
+"Holocene","4150","4410","ka BP"
+"Holocene","4524","4531","Years"
+"Holocene","4726","4733","Years"
+"Holocene","4772","4789","Years"
+"Holocene","5008","5026","Years"
+"Holocene","5032","5044","Years"
+"Holocene","5089","5098","Years"
+"Holocene","5123","5131","Years"
+"Holocene","5132","5139","Years"
+"Holocene","6284","6309","Years"
+"Holocene","12000",NULL,"years"
+"Holocene","20000",NULL,"years"
+"Holocene","30000",NULL,"years"
+"Holocene",NULL,"0","years"
+"Holocene",NULL,"2","years"
+"Holocene",NULL,"10","years"
+"Holocene",NULL,"20","years"
+"Holocene",NULL,"30","years"
+"Holocene",NULL,"50","years"
+"Holocene",NULL,"100","years"
+"Holocene",NULL,"130","years"
+"Holocene",NULL,"150","years"
+"Holocene",NULL,"200","years"
+"Holocene",NULL,"250","years"
+"Holocene",NULL,"300","years"
+"Holocene",NULL,"350","years"
+"Holocene",NULL,"500","years"
+"Holocene",NULL,"750","years"
+"Holocene",NULL,"800","years"
+"Holocene",NULL,"1000","years"
+"Holocene",NULL,"1100","years"
+"Holocene",NULL,"1400","years"
+"Holocene",NULL,"1500","years"
+"Holocene",NULL,"2000","years"
+"Holocene",NULL,"2500","years"
+"Holocene",NULL,"2750","years"
+"Holocene",NULL,"3000","years"
+"Holocene",NULL,"3500","years"
+"Holocene",NULL,"4500","years"
+"Holocene",NULL,"5000","years"
+"Holocene",NULL,"6000","years"
+"Holocene",NULL,"7000","years"
+"Holocene",NULL,"8000","years"
+"Holocene",NULL,"9000","years"
+"Holocene",NULL,"10000","years"
+"Holocene",NULL,"11500","years"
+"Holocene",NULL,"12000","years"
+"Holocene",NULL,"13000","years"
+"Holocene",NULL,"19000","years"
+"Holocene",NULL,"20000","years"
+"Holocene",NULL,NULL,NULL
+"HOLOCENE","0","200","years"
+"HOLOCENE",NULL,"200","years"
+"HOLOCENE",NULL,NULL,NULL
+"Holocene-Pleistocene",NULL,NULL,NULL
+"Holocene-Tertiary",NULL,NULL,NULL
+"Homerian","427.4","430.5","Ma"
+"Hoocene","1968",NULL,"AD years"
+"Hoocene",NULL,NULL,NULL
+"Jiangshanian","489.5","494","Ma"
+"Juassic",NULL,NULL,NULL
+"Jurassic","144",NULL,"million years (Ma)"
+"Jurassic","151.2","151.4","Ma"
+"Jurassic","164","166","Ma"
+"Jurassic","170","173","Ma"
+"Jurassic","171","173","Ma"
+"Jurassic",NULL,"148",NULL
+"Jurassic",NULL,"152",NULL
+"Jurassic",NULL,"154",NULL
+"Jurassic",NULL,"157",NULL
+"Jurassic",NULL,"159",NULL
+"Jurassic",NULL,"160",NULL
+"Jurassic",NULL,"162",NULL
+"Jurassic",NULL,"163",NULL
+"Jurassic",NULL,"165",NULL
+"Jurassic",NULL,"168",NULL
+"Jurassic",NULL,"170",NULL
+"Jurassic",NULL,"171",NULL
+"Jurassic",NULL,"172",NULL
+"Jurassic",NULL,"194",NULL
+"Jurassic",NULL,NULL,NULL
+"Jurassic- Cretaceous (?)",NULL,NULL,NULL
+"Jurassic-Triassic",NULL,NULL,NULL
+"Jurassic–Cretaceous","55","155","million years (Ma)"
+"Jurassic–Cretaceous","75","151","million years (Ma)"
+"Jurassic–Cretaceous",NULL,NULL,NULL
+"Jurassic > Lower/Early",NULL,NULL,NULL
+"Jurassic > Middle",NULL,NULL,NULL
+"Jurassic > Upper/Late",NULL,NULL,NULL
+"Jurassic > Upper/Late > Kimmeridgian",NULL,NULL,NULL
+"Jurassic > Upper/Late > Oxfordian",NULL,NULL,NULL
+"Jurassic or Cretaceous?",NULL,NULL,NULL
+"Jurassic to Cretaceous",NULL,NULL,NULL
+"Jurassic, Pliensbachian",NULL,NULL,NULL
+"Jurassic, Sinemurian",NULL,NULL,NULL
+"Jurassic/Cretaceous",NULL,NULL,NULL
+"Jurassic?",NULL,"173",NULL
+"Jurassic?",NULL,"178",NULL
+"Jurassic?",NULL,"467",NULL
+"Jurassic?",NULL,NULL,NULL
+"Jurrasic and Pennsylvanian",NULL,NULL,NULL
+"Katian","445.2","453","Ma"
+"Katian",NULL,NULL,NULL
+"Katian, Pirgu Regional Stage",NULL,NULL,NULL
+"Kimmeridgian",NULL,NULL,NULL
+"Kimmeridgian-Tithonian",NULL,NULL,NULL
+"Kimmeridgian ",NULL,NULL,NULL
+"Last Interglacial",NULL,NULL,NULL
+"Late-Pleistocene to Holocene",NULL,NULL,NULL
+"late Archean",NULL,"2540","Ma"
+"late Archean",NULL,"2570","Ma"
+"late Archean",NULL,"2629","Ma"
+"Late Cambrian - Early Ordovician",NULL,NULL,NULL
+"late Cretaceous",NULL,NULL,NULL
+"Late Cretaceous","70","79","Ma"
+"Late Cretaceous","71","76","Ma"
+"Late Cretaceous","79.6","97.8","million years (Ma)"
+"Late Cretaceous","81.1","85.3","Ma"
+"Late Cretaceous","93","96.4","Ma"
+"Late Cretaceous","94.2","97.8","Ma"
+"Late Cretaceous","94.5","95.7","Ma"
+"Late Cretaceous","95.8","97","Ma"
+"Late Cretaceous","97.1","98.3","Ma"
+"Late Cretaceous",NULL,NULL,NULL
+"Late Cretaceous-Eocene",NULL,NULL,NULL
+"Late Cretaceous-Eocene?",NULL,NULL,NULL
+"Late Cretaceous–Eocene","50","75","million years (Ma)"
+"Late Cretaceous or Eocene?",NULL,NULL,NULL
+"late Cretaceous/ late Oligocene",NULL,NULL,NULL
+"Late Cretaceous?",NULL,NULL,NULL
+"Late Devonian",NULL,NULL,NULL
+"Late Devonian - Early Carboniferous",NULL,"360","million years (Ma)"
+"Late Devonian - Early Carboniferous",NULL,"370","million years (Ma)"
+"Late Devonian - Early Carboniferous",NULL,"550","million years (Ma)"
+"Late Devonian and Early Mississippian",NULL,NULL,NULL
+"Late Eocene","40","44","Ma"
+"late Holocene",NULL,NULL,NULL
+"Late Jurassic","147.9","150.3","Ma"
+"Late Jurassic",NULL,NULL,NULL
+"Late K",NULL,NULL,NULL
+"Late Mesozoic",NULL,NULL,NULL
+"Late Miocene","7.1","7.3","Ma"
+"Late Miocene","8.5","8.9","Ma"
+"Late Miocene","11.5","11.9","Ma"
+"Late Miocene",NULL,NULL,NULL
+"late Oligocene or younger",NULL,NULL,NULL
+"Late or Middle Cretaceous",NULL,NULL,NULL
+"Late Ordovician","591.4",NULL,"million years (Ma)"
+"Late Ordovician",NULL,NULL,NULL
+"Late Ordovician-Early Silurian (?)",NULL,NULL,NULL
+"Late Ordovician - Silurian","423","460","million years (Ma)"
+"late Paleocene inferred",NULL,NULL,NULL
+"Late Paleocene, Clarkforkian ","55.5","56","Ma"
+"late Pleistocene",NULL,NULL,NULL
+"Late Pleistocene",NULL,NULL,NULL
+"Late Pliocene",NULL,NULL,NULL
+"late Proterozoic",NULL,NULL,NULL
+"Late Triassic","210","220","million years (Ma)"
+"Late Triassic","210","225","million years (Ma)"
+"Late Triassic","210","255","million years (Ma)"
+"Late Triassic","212.1","214.5","Ma"
+"Late Triassic","216.2","220.6","Ma"
+"Late Triassic","218.5","224.9","Ma"
+"Late Triassic","231.7","234.1","Ma"
+"Late Triassic",NULL,NULL,NULL
+"Late Triassic/Early Jurassic",NULL,NULL,NULL
+"latest Miocene-Quaternary","0","5.5","million years (Ma)"
+"lower-mid Paleocene",NULL,NULL,NULL
+"Lower-Middle Devonian",NULL,NULL,NULL
+"Lower-Middle Devonian ",NULL,NULL,NULL
+"Lower-Middle Jurassic",NULL,NULL,NULL
+"Lower-Middle Jurassic ",NULL,NULL,NULL
+"Lower Aptian",NULL,NULL,NULL
+"Lower Aptian ",NULL,NULL,NULL
+"Lower Cambrian",NULL,"527",NULL
+"Lower Cambrian",NULL,"557",NULL
+"Lower Cambrian",NULL,"559",NULL
+"Lower Cambrian",NULL,"564",NULL
+"Lower Cambrian",NULL,"567",NULL
+"Lower Cambrian",NULL,"575",NULL
+"Lower Cambrian",NULL,"577",NULL
+"Lower Cambrian",NULL,"598",NULL
+"Lower Cambrian",NULL,NULL,NULL
+"Lower Campanian",NULL,NULL,NULL
+"Lower Carboniferous",NULL,NULL,NULL
+"Lower Cretaceous","101.2","103.4","Ma"
+"Lower Cretaceous","101.8","104.2","Ma"
+"Lower Cretaceous","102","104.6","Ma"
+"Lower Cretaceous","106.2","108.8","Ma"
+"Lower Cretaceous","113.4","116.4","Ma"
+"Lower Cretaceous","132","140","million years (Ma)"
+"Lower Cretaceous",NULL,"114",NULL
+"Lower Devonian",NULL,NULL,NULL
+"Lower Eocene",NULL,NULL,NULL
+"Lower Jurassic",NULL,"185",NULL
+"Lower Jurassic",NULL,"187",NULL
+"Lower Jurassic",NULL,"188",NULL
+"Lower Jurassic",NULL,"191",NULL
+"Lower Jurassic",NULL,"193",NULL
+"Lower Jurassic",NULL,"194",NULL
+"Lower Jurassic",NULL,NULL,NULL
+"Lower Jurassic?",NULL,"212",NULL
+"Lower Mississippian",NULL,NULL,NULL
+"Lower Ordovician","543",NULL,"million years (Ma)"
+"Lower Ordovician",NULL,NULL,NULL
+"Lower Paleocene",NULL,NULL,NULL
+"Lower Pennsylvanian",NULL,NULL,NULL
+"Lower Pleistocene",NULL,NULL,NULL
+"Lower Pliestocene",NULL,NULL,NULL
+"lower Pliocene",NULL,NULL,NULL
+"Lower to Middle ordovician",NULL,NULL,NULL
+"Lower to Upper Cretaceous","99.5","101.1","Ma"
+"lowermost Cretaceous",NULL,"136",NULL
+"lowermost Cretaceous",NULL,"142",NULL
+"Ludlow","423","427.4","Ma"
+"Ludlow",NULL,NULL,NULL
+"Lutetian",NULL,NULL,NULL
+"Lutetian-Bartonian",NULL,NULL,NULL
+"Ma","33.5","35.5",NULL
+"Maastricht-Danian",NULL,NULL,NULL
+"Maastrichtian",NULL,NULL,NULL
+"Maastrichtian-Danian",NULL,NULL,NULL
+"Mesoarchean",NULL,NULL,NULL
+"Mesoarchean to Neoarchean",NULL,NULL,NULL
+"Mesoproterozoic","1080","1084","Ma"
+"Mesoproterozoic","1080","1100","Ma"
+"Mesoproterozoic","1082.3","1084.7","million years (Ma)"
+"Mesoproterozoic","1083.2","1086.6","million years (Ma)"
+"Mesoproterozoic","1084.1","1087.1","million years (Ma)"
+"Mesoproterozoic","1090.4","1092.8","million years (Ma)"
+"Mesoproterozoic","1097","1099","Ma"
+"Mesoproterozoic","1098","1100","Ma"
+"Mesoproterozoic","1099.2","1101.6","million years (Ma)"
+"Mesoproterozoic",NULL,NULL,NULL
+"Mesozoic","65.5","251","Ma"
+"Mesozoic",NULL,NULL,NULL
+"MESOZOIC","66","225","Ma"
+"Mesozoic?",NULL,NULL,NULL
+"Mesozoic>Cretaceous","65.5","145.5","Ma"
+"Mesozoic>Cretaceous>Early Cretaceous","99.6","145.5","Ma"
+"Mesozoic>Cretaceous>Early Cretaceous>Albian","99.6","112","Ma"
+"Mesozoic>Cretaceous>Early Cretaceous>Aptian","112","125","Ma"
+"Mesozoic>Cretaceous>Early Cretaceous>Barremian","125","130","Ma"
+"Mesozoic>Cretaceous>Early Cretaceous>Berriasian","140","145.5","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous","65.5","99.6","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous>Campanian","70.6","83.5","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous>Cenomanian","93.5","99.6","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous>Coniacian","85.8","89.3","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous>Maastrichtian","65.5","70.6","Ma"
+"Mesozoic>Cretaceous>Late Cretaceous>Turonian","89.3","93.5","Ma"
+"Mesozoic>Jurassic","145.5","201.5","Ma"
+"Mesozoic>Jurassic>Early Jurassic","176","201.6","Ma"
+"Mesozoic>Jurassic>Early Jurassic>Pliensbachian","183","190","Ma"
+"Mesozoic>Jurassic>Early Jurassic>Sinemurian","190","197","Ma"
+"Mesozoic>Jurassic>Early Jurassic>Toarcian","176","183","Ma"
+"Mesozoic>Jurassic>Late Jurassic","145.5","161","Ma"
+"Mesozoic>Jurassic>Late Jurassic>Kimmeridgian","151","156","Ma"
+"Mesozoic>Jurassic>Late Jurassic>Oxfordian","156","161","Ma"
+"Mesozoic>Jurassic>Late Jurassic>Tithonian","145.5","151","Ma"
+"Mesozoic>Jurassic>Middle Jurassic","161","176","Ma"
+"Mesozoic>Jurassic>Middle Jurassic>Aalenian","172","176","Ma"
+"Mesozoic>Jurassic>Middle Jurassic>Bajocian","168","172","Ma"
+"Mesozoic>Jurassic>Middle Jurassic>Bathonian","165","168","Ma"
+"Mesozoic>Triassic","201.6","251","Ma"
+"Mesozoic>Triassic>Early Triassic","245","251","Ma"
+"Mesozoic>Triassic>Late Triassic","201.6","235","Ma"
+"Mesozoic>Triassic>Late Triassic>Rhaetian","201.6","204","Ma"
+"Mesozoic>Triassic>Middle Triassic>Anisian","241","245","Ma"
+"Mesozoic>Triassic>Middle Triassic>Ladinian","235","241","Ma"
+"Mesproterozoic?",NULL,NULL,NULL
+"mid-Cretaceous",NULL,"101",NULL
+"mid-Cretaceous",NULL,NULL,NULL
+"Mid-to-Late Miocene",NULL,NULL,NULL
+"Mid Cambrian",NULL,NULL,NULL
+"Mid Miocene",NULL,NULL,NULL
+"middle-Early Pliocene",NULL,NULL,NULL
+"Middle-Late Ordovician",NULL,NULL,NULL
+"Middle-Lower Ordovician","562.7",NULL,"million years (Ma)"
+"middle-Pliocene",NULL,NULL,NULL
+"middle-upper Miocene",NULL,NULL,NULL
+"middle Archean",NULL,"3225","Ma"
+"middle Archean",NULL,"3243","Ma"
+"middle Archean",NULL,"3470","Ma"
+"Middle Cambrian",NULL,"571",NULL
+"Middle Cambrian",NULL,"575",NULL
+"Middle Cambrian",NULL,"576",NULL
+"Middle Cambrian",NULL,"581",NULL
+"Middle Cambrian",NULL,"583",NULL
+"Middle Campanian",NULL,NULL,NULL
+"Middle Devonian","382.5","393.3","Ma"
+"Middle Devonian",NULL,NULL,NULL
+"Middle Devonian ",NULL,NULL,NULL
+"Middle Devonian, 382.7-393.3 Ma",NULL,NULL,NULL
+"middle Eocene",NULL,NULL,NULL
+"Middle Eocene","33.9","56","million years (Ma)"
+"Middle Jurassic","169.4","173.2","Ma"
+"Middle Jurassic",NULL,NULL,NULL
+"Middle Late Miocene",NULL,NULL,NULL
+"Middle Lutetian",NULL,NULL,NULL
+"middle Miocene","16","16.25","million years (Ma)"
+"middle Miocene",NULL,NULL,NULL
+"Middle Miocene","5.2","23.3","million years (Ma)"
+"Middle Miocene",NULL,NULL,NULL
+"Middle Mississippian",NULL,NULL,NULL
+"Middle Ordovician",NULL,NULL,NULL
+"Middle Ordovician to Cambrian","470","540","million years (Ma)"
+"Middle Pennsylvanian",NULL,NULL,NULL
+"middle Pleist",NULL,NULL,NULL
+"Middle to Upper Jurassic","162.3","165.1","Ma"
+"Middle Triassic, Anisian",NULL,NULL,NULL
+"Miocence",NULL,NULL,NULL
+"Miocene","5.2","23.3","million years (Ma)"
+"Miocene","5.3","23","Ma"
+"Miocene","6.1","12","million years (Ma)"
+"Miocene","6.41","8.07","million years (Ma)"
+"Miocene","6.496","6.548","million years (Ma)"
+"Miocene","6.5",NULL,"million years (Ma)"
+"Miocene","7.3","7.34","million years (Ma)"
+"Miocene","7.34","7.98","million years (Ma)"
+"Miocene","7.456","7.502","million years (Ma)"
+"Miocene","7.5",NULL,"million years (Ma)"
+"Miocene","7.6","8.04","million years (Ma)"
+"Miocene","9","10","million years (Ma)"
+"Miocene","9.1","14.2","Ma"
+"Miocene","10.81","11.67","million years (Ma)"
+"Miocene","10.924","11.008","million years (Ma)"
+"Miocene","11.1","13.5","million years (Ma)"
+"Miocene","11.355","11.411","million years (Ma)"
+"Miocene","11.79","12.07","million years (Ma)"
+"Miocene","12.2","12.4",NULL
+"Miocene","12.3","13.1","Ma"
+"Miocene","12.5","13.8","million years (Ma)"
+"Miocene","12.69","12.79","million years (Ma)"
+"Miocene","15.85","16","million years (Ma)"
+"Miocene","15.9","16","million years (Ma)"
+"Miocene","15.9","16",NULL
+"Miocene","16","16.25","million years (Ma)"
+"Miocene","16","18","million years (Ma)"
+"Miocene","16.1","16.5","Ma"
+"Miocene","18.9","19.3","Ma"
+"Miocene","22.6","22.6","Ma"
+"Miocene",NULL,"8.2","million years (Ma)"
+"Miocene",NULL,NULL,NULL
+"Miocene--Pliocene",NULL,NULL,NULL
+"Miocene- Pliocene",NULL,NULL,NULL
+"Miocene-Pliocene",NULL,NULL,NULL
+"Miocene (?)",NULL,NULL,NULL
+"Miocene (Serravallian)","13.27","13.29","13.28"
+"Miocene (uncertain)",NULL,NULL,NULL
+"Miocene or younger",NULL,NULL,NULL
+"MIOCENE to HOLOCENE","0","23","Ma"
+"MIOCENE to HOLOCENE",NULL,NULL,NULL
+"Miocene, Burdigalian",NULL,NULL,NULL
+"Miocene/Oligocene",NULL,NULL,NULL
+"MIS 5.5; Quaternary",NULL,NULL,NULL
+"MIS 5e",NULL,NULL,NULL
+"MIS 5e?",NULL,NULL,NULL
+"MIS4","78000","96000","years"
+"MIS7","187000","225000","years"
+"Mississippian",NULL,NULL,NULL
+"Mississippian > Lower/Early",NULL,NULL,NULL
+"Mississippian > Upper/Late",NULL,NULL,NULL
+"Mississippian or Cretaceous?",NULL,NULL,NULL
+"Mississippian to Pennsylvanian",NULL,NULL,NULL
+"Mississippian, Arnsbergian",NULL,NULL,NULL
+"Mississippian, Pendleian",NULL,NULL,NULL
+"Mississippian, Permian",NULL,NULL,NULL
+"Mississippian?",NULL,NULL,NULL
+"Missourian",NULL,NULL,NULL
+"mixed ages",NULL,NULL,NULL
+"mixed Eocene & Oligocene",NULL,NULL,NULL
+"modern","1960","2016","years"
+"modern","1970","2016","years"
+"Modern","1854",NULL,"years"
+"Modern","1942",NULL,"years"
+"Modern","1953",NULL,"years"
+"Modern","1986","2012","A.D"
+"Modern","1990",NULL,"years"
+"Modern","1994","2012","A.D"
+"Modern",NULL,NULL,"ka"
+"Modern",NULL,NULL,NULL
+"Modern (Mesoproterozoic detritus)",NULL,NULL,NULL
+"Namurian (middle Carboniferous)",NULL,"322.6","million years (Ma)"
+"Neo-Mesoproterozoic",NULL,NULL,NULL
+"Neoarchean",NULL,NULL,NULL
+"Neogene","0","10","Ma"
+"Neogene",NULL,NULL,NULL
+"Neogene > Miocene",NULL,NULL,NULL
+"Neogene > Miocene > Lower/Early",NULL,NULL,NULL
+"Neogene > Miocene to Neogene > Pliocene",NULL,NULL,NULL
+"Neogene > Pleistocene",NULL,NULL,NULL
+"Neogene > Pliocene",NULL,NULL,NULL
+"Neogene > Pliocene to Quaternary > Pleistocene",NULL,NULL,NULL
+"Neoproterozoic","628",NULL,NULL
+"Neoproterozoic","629",NULL,NULL
+"Neoproterozoic","630","670","Ma"
+"Neoproterozoic","630",NULL,NULL
+"Neoproterozoic","633",NULL,NULL
+"Neoproterozoic","679",NULL,NULL
+"Neoproterozoic","692",NULL,NULL
+"Neoproterozoic","717","780","Ma"
+"Neoproterozoic","717","780","million years (Ma)"
+"Neoproterozoic","717","780",NULL
+"Neoproterozoic","717","850","million years (Ma)"
+"Neoproterozoic",NULL,NULL,NULL
+"Neoproterozoic-Cambrian",NULL,NULL,NULL
+"Neoproterozoic-Paleozoic",NULL,NULL,NULL
+"Norian/Rhaetian (Triassic)",NULL,NULL,NULL
+"Not Applicable",NULL,NULL,NULL
+"Oligocene","5.3","33.9","Ma"
+"Oligocene","18.86",NULL,"Ma"
+"Oligocene","19.2","29.8","million years (Ma)"
+"Oligocene","23","28.4","million years (Ma)"
+"Oligocene","23","33.9","Ma"
+"Oligocene","23","34","million years (Ma)"
+"Oligocene","24","24","Ma"
+"Oligocene","24","25",NULL
+"Oligocene","24.2","24.2","Ma"
+"Oligocene","24.3",NULL,NULL
+"Oligocene","24.5","24.5","Ma"
+"Oligocene","24.6","24.6","Ma"
+"Oligocene","24.7","24.7","Ma"
+"Oligocene","24.7",NULL,"Ma"
+"Oligocene","24.8","24.8","Ma"
+"Oligocene","24.88",NULL,NULL
+"Oligocene","24.9","24.9","Ma"
+"Oligocene","25","25","Ma"
+"Oligocene","25.2","25.2","Ma"
+"Oligocene","25.3","25.3","Ma"
+"Oligocene","25.83",NULL,"Ma"
+"Oligocene","26","28","million years (Ma)"
+"Oligocene","26","29","million years (Ma)"
+"Oligocene","26.8","36.4","million years (Ma)"
+"Oligocene","26.98",NULL,"Ma"
+"Oligocene","27.1","27.1","million years (Ma)"
+"Oligocene","27.13",NULL,"Ma"
+"Oligocene","27.22",NULL,"Ma"
+"Oligocene","28","30.5","million years (Ma)"
+"Oligocene","29.3",NULL,"Ma"
+"Oligocene","29.99",NULL,"Ma"
+"Oligocene","30.09",NULL,"Ma"
+"Oligocene","30.21",NULL,"Ma"
+"Oligocene","30.45",NULL,"Ma"
+"Oligocene","30.62",NULL,"Ma"
+"Oligocene","31.11",NULL,"Ma"
+"Oligocene","31.3",NULL,"Ma"
+"Oligocene",NULL,NULL,NULL
+"Oligocene--Miocene",NULL,NULL,NULL
+"Oligocene-Miocene","2.6","5.3","Ma"
+"Oligocene-Miocene","5.3","33.9","Ma"
+"Oligocene-Miocene",NULL,NULL,NULL
+"Oligocene (uncertain)",NULL,NULL,NULL
+"Oligocene probably",NULL,NULL,NULL
+"Oligocene(uncertain)",NULL,NULL,NULL
+"Ordovician","443.8","470","million years (Ma)"
+"Ordovician","585.6",NULL,"million years (Ma)"
+"Ordovician","592.8",NULL,"million years (Ma)"
+"Ordovician",NULL,"592.6",NULL
+"Ordovician",NULL,NULL,NULL
+"Ordovician-Silurian?",NULL,NULL,NULL
+"Ordovician ",NULL,NULL,NULL
+"Ordovician ?",NULL,NULL,NULL
+"Ordovician > Lower/Early",NULL,NULL,NULL
+"Ordovician > Lower/Early to Proterozoic > Upper/Late",NULL,NULL,NULL
+"Ordovician > Middle",NULL,NULL,NULL
+"Ordovician > Upper/Late",NULL,NULL,NULL
+"Ordovician > Upper/Late to Cambrian > Lower/Early",NULL,NULL,NULL
+"Ordovician Era",NULL,NULL,NULL
+"Ordovician/Silurian",NULL,NULL,NULL
+"Paibian","494","497","Ma"
+"Palaeozoic",NULL,NULL,NULL
+"Paleoarchaean","3260",NULL,"Ma"
+"Paleoarchaean","3261",NULL,"Ma"
+"Paleoarchaean","3262",NULL,"Ma"
+"Paleoarchaean","3263",NULL,"Ma"
+"Paleoarchaean","3264",NULL,"Ma"
+"Paleoarchaean","3265",NULL,"Ma"
+"Paleoarchaean","3266",NULL,"Ma"
+"Paleoarchaean","3267",NULL,"Ma"
+"Paleoarchaean","3268",NULL,"Ma"
+"Paleoarchaean","3269",NULL,"Ma"
+"Paleoarchaean","3270",NULL,"Ma"
+"Paleoarchaean","3271",NULL,"Ma"
+"Paleoarchaean","3272",NULL,"Ma"
+"Paleoarchaean","3273",NULL,"Ma"
+"Paleoarchaean","3274",NULL,"Ma"
+"Paleoarchaean","3275",NULL,"Ma"
+"Paleoarchaean","3276",NULL,"Ma"
+"Paleoarchaean","3277",NULL,"Ma"
+"Paleoarchaean","3278",NULL,"Ma"
+"Paleoarchaean","3279",NULL,"Ma"
+"Paleoarchaean","3280",NULL,"Ma"
+"Paleoarchaean","3281",NULL,"Ma"
+"Paleoarchaean","3282",NULL,"Ma"
+"Paleoarchaean","3283",NULL,"Ma"
+"Paleoarchaean","3284",NULL,"Ma"
+"Paleoarchaean","3285",NULL,"Ma"
+"Paleoarchaean","3286",NULL,"Ma"
+"Paleoarchaean","3287",NULL,"Ma"
+"Paleoarchaean","3288",NULL,"Ma"
+"Paleoarchaean","3289",NULL,"Ma"
+"Paleoarchaean","3290",NULL,"Ma"
+"Paleoarchaean","3291",NULL,"Ma"
+"Paleoarchaean","3292",NULL,"Ma"
+"Paleoarchaean","3293",NULL,"Ma"
+"Paleoarchaean","3294",NULL,"Ma"
+"Paleoarchaean","3295",NULL,"Ma"
+"Paleoarchaean","3296",NULL,"Ma"
+"Paleoarchaean","3297",NULL,"Ma"
+"Paleoarchaean","3298",NULL,"Ma"
+"Paleoarchaean","3299",NULL,"Ma"
+"Paleoarchaean","3300",NULL,"Ma"
+"Paleoarchaean","3301",NULL,"Ma"
+"Paleoarchaean","3302",NULL,"Ma"
+"Paleoarchaean","3303",NULL,"Ma"
+"Paleoarchaean","3304",NULL,"Ma"
+"Paleoarchaean","3305",NULL,"Ma"
+"Paleoarchaean","3306",NULL,"Ma"
+"Paleoarchaean","3307",NULL,"Ma"
+"Paleoarchaean","3308",NULL,"Ma"
+"Paleoarchaean","3309",NULL,"Ma"
+"Paleoarchaean","3310",NULL,"Ma"
+"Paleoarchaean","3311",NULL,"Ma"
+"Paleoarchaean","3312",NULL,"Ma"
+"Paleoarchaean","3313",NULL,"Ma"
+"Paleoarchaean","3314",NULL,"Ma"
+"Paleoarchaean","3315",NULL,"Ma"
+"Paleoarchaean","3316",NULL,"Ma"
+"Paleoarchaean","3317",NULL,"Ma"
+"Paleoarchaean","3318",NULL,"Ma"
+"Paleoarchaean","3319",NULL,"Ma"
+"Paleoarchaean","3320",NULL,"Ma"
+"Paleoarchaean","3321",NULL,"Ma"
+"Paleoarchaean","3322",NULL,"Ma"
+"Paleoarchaean","3323",NULL,"Ma"
+"Paleoarchaean","3324",NULL,"Ma"
+"Paleoarchaean","3325",NULL,"Ma"
+"Paleoarchaean","3326",NULL,"Ma"
+"Paleoarchaean","3327",NULL,"Ma"
+"Paleoarchaean","3328",NULL,"Ma"
+"Paleoarchaean","3329",NULL,"Ma"
+"Paleoarchaean","3330",NULL,"Ma"
+"Paleoarchaean","3331",NULL,"Ma"
+"Paleoarchaean","3332",NULL,"Ma"
+"Paleoarchaean","3333",NULL,"Ma"
+"Paleoarchaean","3334",NULL,"Ma"
+"Paleoarchaean","3335",NULL,"Ma"
+"Paleoarchaean","3336",NULL,"Ma"
+"Paleoarchaean","3337",NULL,"Ma"
+"Paleoarchaean","3338",NULL,"Ma"
+"Paleoarchaean","3339",NULL,"Ma"
+"Paleoarchaean","3340",NULL,"Ma"
+"Paleoarchaean","3341",NULL,"Ma"
+"Paleoarchaean","3342",NULL,"Ma"
+"Paleoarchaean","3343",NULL,"Ma"
+"Paleoarchaean","3344",NULL,"Ma"
+"Paleoarchaean","3345",NULL,"Ma"
+"Paleoarchaean","3346",NULL,"Ma"
+"Paleoarchaean","3347",NULL,"Ma"
+"Paleoarchaean","3348",NULL,"Ma"
+"Paleoarchaean","3349",NULL,"Ma"
+"Paleoarchaean","3350",NULL,"Ma"
+"Paleoarchaean","3351",NULL,"Ma"
+"Paleoarchaean","3352",NULL,"Ma"
+"Paleoarchaean","3353",NULL,"Ma"
+"Paleoarchaean","3354",NULL,"Ma"
+"Paleoarchaean","3355",NULL,"Ma"
+"Paleoarchaean","3356",NULL,"Ma"
+"Paleoarchaean","3357",NULL,"Ma"
+"Paleoarchaean","3358",NULL,"Ma"
+"Paleoarchaean","3359",NULL,"Ma"
+"Paleoarchaean","3360",NULL,"Ma"
+"Paleoarchaean","3361",NULL,"Ma"
+"Paleoarchaean","3362",NULL,"Ma"
+"Paleoarchaean","3363",NULL,"Ma"
+"Paleoarchaean","3364",NULL,"Ma"
+"Paleoarchaean","3365",NULL,"Ma"
+"Paleoarchaean","3366",NULL,"Ma"
+"Paleoarchaean","3367",NULL,"Ma"
+"Paleoarchaean","3368",NULL,"Ma"
+"Paleoarchaean","3369",NULL,"Ma"
+"Paleoarchaean","3370",NULL,"Ma"
+"Paleoarchaean","3371",NULL,"Ma"
+"Paleoarchaean","3372",NULL,"Ma"
+"Paleoarchaean","3373",NULL,"Ma"
+"Paleoarchaean","3374",NULL,"Ma"
+"Paleoarchaean","3375",NULL,"Ma"
+"Paleoarchaean","3376",NULL,"Ma"
+"Paleoarchaean","3377",NULL,"Ma"
+"Paleoarchaean","3378",NULL,"Ma"
+"Paleoarchaean","3379",NULL,"Ma"
+"Paleoarchaean","3380",NULL,"Ma"
+"Paleoarchaean","3381",NULL,"Ma"
+"Paleoarchaean","3382",NULL,"Ma"
+"Paleoarchaean","3383",NULL,"Ma"
+"Paleoarchaean","3384",NULL,"Ma"
+"Paleoarchaean","3385",NULL,"Ma"
+"Paleoarchaean","3386",NULL,"Ma"
+"Paleoarchaean","3387",NULL,"Ma"
+"Paleoarchaean","3388",NULL,"Ma"
+"Paleoarchaean","3389",NULL,"Ma"
+"Paleoarchaean","3390",NULL,"Ma"
+"Paleoarchaean","3391",NULL,"Ma"
+"Paleoarchaean","3392",NULL,"Ma"
+"Paleoarchaean","3393",NULL,"Ma"
+"Paleoarchaean","3394",NULL,"Ma"
+"Paleoarchaean","3395",NULL,"Ma"
+"Paleoarchaean","3396",NULL,"Ma"
+"Paleoarchaean","3397",NULL,"Ma"
+"Paleoarchaean","3398",NULL,"Ma"
+"Paleoarchaean","3399",NULL,"Ma"
+"Paleoarchaean","3400",NULL,"Ma"
+"Paleoarchaean","3401",NULL,"Ma"
+"Paleoarchaean","3402",NULL,"Ma"
+"Paleoarchaean","3403",NULL,"Ma"
+"Paleoarchaean","3404",NULL,"Ma"
+"Paleoarchaean","3405",NULL,"Ma"
+"Paleoarchaean","3406",NULL,"Ma"
+"Paleoarchaean","3407",NULL,"Ma"
+"Paleoarchaean","3408",NULL,"Ma"
+"Paleoarchaean","3409",NULL,"Ma"
+"Paleoarchaean","3410",NULL,"Ma"
+"Paleoarchaean","3411",NULL,"Ma"
+"Paleoarchaean","3412",NULL,"Ma"
+"Paleoarchaean","3413",NULL,"Ma"
+"Paleoarchaean","3414",NULL,"Ma"
+"Paleoarchaean","3415",NULL,"Ma"
+"Paleoarchaean","3416",NULL,"Ma"
+"Paleoarchaean","3417",NULL,"Ma"
+"Paleoarchaean","3418",NULL,"Ma"
+"Paleoarchaean","3419",NULL,"Ma"
+"Paleoarchaean","3420",NULL,"Ma"
+"Paleoarchaean","3421",NULL,"Ma"
+"Paleoarchaean","3422",NULL,"Ma"
+"Paleoarchaean","3423",NULL,"Ma"
+"Paleoarchaean","3424",NULL,"Ma"
+"Paleoarchaean","3425",NULL,"Ma"
+"Paleoarchaean","3426",NULL,"Ma"
+"Paleoarchaean","3427",NULL,"Ma"
+"Paleoarchaean","3428",NULL,"Ma"
+"Paleoarchaean","3429",NULL,"Ma"
+"Paleoarchaean","3430",NULL,"Ma"
+"Paleoarchaean","3431",NULL,"Ma"
+"Paleoarchaean","3432",NULL,"Ma"
+"Paleoarchaean","3433",NULL,"Ma"
+"Paleoarchaean","3434",NULL,"Ma"
+"Paleoarchaean","3435",NULL,"Ma"
+"Paleoarchaean","3436",NULL,"Ma"
+"Paleoarchaean","3437",NULL,"Ma"
+"Paleoarchaean","3438",NULL,"Ma"
+"Paleoarchaean","3439",NULL,"Ma"
+"Paleoarchaean","3440",NULL,"Ma"
+"Paleoarchaean","3441",NULL,"Ma"
+"Paleoarchaean","3442",NULL,"Ma"
+"Paleoarchaean","3443",NULL,"Ma"
+"Paleoarchaean","3444",NULL,"Ma"
+"Paleoarchaean","3445",NULL,"Ma"
+"Paleoarchaean","3446",NULL,"Ma"
+"Paleoarchaean","3447",NULL,"Ma"
+"Paleoarchaean","3448",NULL,"Ma"
+"Paleoarchaean","3449",NULL,"Ma"
+"Paleoarchaean","3450",NULL,"Ma"
+"Paleoarchaean","3451",NULL,"Ma"
+"Paleoarchaean","3452",NULL,"Ma"
+"Paleoarchaean","3453",NULL,"Ma"
+"Paleoarchaean","3454",NULL,"Ma"
+"Paleoarchaean","3455",NULL,"Ma"
+"Paleoarchaean","3456",NULL,"Ma"
+"Paleoarchaean","3457",NULL,"Ma"
+"Paleoarchaean","3458",NULL,"Ma"
+"Paleoarchaean","3459",NULL,"Ma"
+"Paleoarchaean","3460",NULL,"Ma"
+"Paleoarchaean","3461",NULL,"Ma"
+"Paleoarchaean","3462",NULL,"Ma"
+"Paleoarchaean","3463",NULL,"Ma"
+"Paleoarchaean","3464",NULL,"Ma"
+"Paleoarchaean","3465",NULL,"Ma"
+"Paleoarchaean","3466",NULL,"Ma"
+"Paleoarchaean","3467",NULL,"Ma"
+"Paleoarchaean","3468",NULL,"Ma"
+"Paleoarchaean","3469",NULL,"Ma"
+"Paleoarchaean","3470",NULL,"Ma"
+"Paleoarchaean","3471",NULL,"Ma"
+"Paleoarchaean","3472",NULL,"Ma"
+"Paleoarchaean","3473",NULL,"Ma"
+"Paleoarchaean","3474",NULL,"Ma"
+"Paleoarchaean","3475",NULL,"Ma"
+"Paleoarchaean","3476",NULL,"Ma"
+"Paleoarchaean","3477",NULL,"Ma"
+"Paleoarchaean","3478",NULL,"Ma"
+"Paleoarchaean","3479",NULL,"Ma"
+"Paleoarchaean","3480",NULL,"Ma"
+"Paleoarchaean","3481",NULL,"Ma"
+"Paleoarchaean","3482",NULL,"Ma"
+"Paleoarchaean","3483",NULL,"Ma"
+"Paleoarchaean","3484",NULL,"Ma"
+"Paleoarchaean","3485",NULL,"Ma"
+"Paleoarchaean","3486",NULL,"Ma"
+"Paleoarchaean","3487",NULL,"Ma"
+"Paleoarchaean","3488",NULL,"Ma"
+"Paleoarchaean","3489",NULL,"Ma"
+"Paleoarchaean","3490",NULL,"Ma"
+"Paleoarchaean","3491",NULL,"Ma"
+"Paleoarchaean","3492",NULL,"Ma"
+"Paleoarchaean","3493",NULL,"Ma"
+"Paleoarchaean","3494",NULL,"Ma"
+"Paleoarchaean","3495",NULL,"Ma"
+"Paleoarchaean","3496",NULL,"Ma"
+"Paleoarchaean","3497",NULL,"Ma"
+"Paleoarchaean","3498",NULL,"Ma"
+"Paleoarchaean","3499",NULL,"Ma"
+"Paleoarchaean","3500",NULL,"Ma"
+"Paleoarchaean","3501",NULL,"Ma"
+"Paleoarchaean","3502",NULL,"Ma"
+"Paleoarchaean","3503",NULL,"Ma"
+"Paleoarchaean","3504",NULL,"Ma"
+"Paleoarchaean","3505",NULL,"Ma"
+"Paleoarchaean","3506",NULL,"Ma"
+"Paleoarchaean","3507",NULL,"Ma"
+"Paleoarchaean","3508",NULL,"Ma"
+"Paleoarchaean","3509",NULL,"Ma"
+"Paleoarchaean","3510",NULL,"Ma"
+"Paleoarchaean","3511",NULL,"Ma"
+"Paleoarchaean","3512",NULL,"Ma"
+"Paleoarchaean","3513",NULL,"Ma"
+"Paleoarchaean","3514",NULL,"Ma"
+"Paleoarchaean","3515",NULL,"Ma"
+"Paleoarchaean","3516",NULL,"Ma"
+"Paleoarchaean","3517",NULL,"Ma"
+"Paleoarchaean","3518",NULL,"Ma"
+"Paleoarchaean","3519",NULL,"Ma"
+"Paleoarchaean","3520",NULL,"Ma"
+"Paleoarchaean","3521",NULL,"Ma"
+"Paleoarchaean","3522",NULL,"Ma"
+"Paleoarchaean","3523",NULL,"Ma"
+"Paleoarchaean","3524",NULL,"Ma"
+"Paleoarchaean","3525",NULL,"Ma"
+"Paleoarchaean","3526",NULL,"Ma"
+"Paleoarchaean","3527",NULL,"Ma"
+"Paleoarchaean","3528",NULL,"Ma"
+"Paleoarchaean","3529",NULL,"Ma"
+"Paleoarchaean","3530",NULL,"Ma"
+"Paleoarchaean","3531",NULL,"Ma"
+"Paleoarchaean","3532",NULL,"Ma"
+"Paleoarchaean","3533",NULL,"Ma"
+"Paleoarchaean","3534",NULL,"Ma"
+"Paleoarchaean","3535",NULL,"Ma"
+"Paleoarchaean","3536",NULL,"Ma"
+"Paleoarchaean","3537",NULL,"Ma"
+"Paleoarchaean","3538",NULL,"Ma"
+"Paleoarchaean","3539",NULL,"Ma"
+"Paleoarchaean","3540",NULL,"Ma"
+"Paleoarchaean","3541",NULL,"Ma"
+"Paleoarchaean","3542",NULL,"Ma"
+"Paleoarchaean",NULL,NULL,NULL
+"Paleoarchean","3260","3300","million years (Ma)"
+"Paleoarchean","3260",NULL,"Ma"
+"Paleoarchean",NULL,"3260","Ma"
+"Paleocdene",NULL,NULL,NULL
+"Paleocene","56","65","million years (Ma)"
+"Paleocene","56.5","65","million years (Ma)"
+"Paleocene",NULL,NULL,NULL
+"Paleocene-Eocene",NULL,NULL,NULL
+"Paleocene-lower Eocene",NULL,NULL,NULL
+"Paleocene (uncertain)",NULL,NULL,NULL
+"Paleocene(uncertain)",NULL,NULL,NULL
+"Paleocene(uncertain) inferred",NULL,NULL,NULL
+"Paleocene/Eocene",NULL,NULL,NULL
+"Paleogene","25","33","million years (Ma)"
+"Paleogene","26","40","million years (Ma)"
+"Paleogene","40","60",NULL
+"Paleogene","41","44",NULL
+"Paleogene","44","46","Ma"
+"Paleogene","50","60",NULL
+"Paleogene","52","57","Ma"
+"Paleogene","53","57","Ma"
+"Paleogene","53","58","Ma"
+"Paleogene","54","57","Ma"
+"Paleogene","55","57","Ma"
+"Paleogene","55","60",NULL
+"Paleogene","58.5","61.5",NULL
+"Paleogene",NULL,NULL,NULL
+"Paleogene-Oligocene?",NULL,NULL,NULL
+"Paleogene > Eocene",NULL,NULL,NULL
+"Paleogene > Eocene > Lower/Early",NULL,NULL,NULL
+"Paleogene > Eocene to Paleogene > Oligocene",NULL,NULL,NULL
+"Paleogene > Oligocene",NULL,NULL,NULL
+"Paleogene > Oligocene > Upper/Late",NULL,NULL,NULL
+"Paleogene > Oligocene to Neogene > Miocene",NULL,NULL,NULL
+"Paleogene > Paleocene",NULL,NULL,NULL
+"Paleogene > Paleocene to Cretaceous > Upper/Late > Maastrichtian",NULL,NULL,NULL
+"Paleogene > Paleocene to Paleogene > Eocene",NULL,NULL,NULL
+"Paleoproterozoic",NULL,NULL,NULL
+"Paleozoic","251","542","Ma"
+"Paleozoic",NULL,NULL,NULL
+"Paleozoic ",NULL,NULL,NULL
+"Paleozoic > Cambrian",NULL,NULL,NULL
+"Paleozoic > Permian",NULL,NULL,NULL
+"Paleozoic>Cambrian","488","542","Ma"
+"Paleozoic>Cambrian>Terreneuvian","521","542","Ma"
+"Paleozoic>Carboniferous","299","359","Ma"
+"Paleozoic>Carboniferous>Mississippian","318","359","Ma"
+"Paleozoic>Carboniferous>Mississippian>Tournaisian","345","359","Ma"
+"Paleozoic>Carboniferous>Mississippian>Visean","326","345","Ma"
+"Paleozoic>Carboniferous>Pennsylvanian","299","318","Ma"
+"Paleozoic>Devonian","359","416","Ma"
+"Paleozoic>Devonian>Early Devonian","398","416","Ma"
+"Paleozoic>Devonian>Late Devonian","359","385","Ma"
+"Paleozoic>Devonian>Late Devonian>Famennian","359","374","Ma"
+"Paleozoic>Devonian>Middle Devonian","385","398","Ma"
+"Paleozoic>Ordovician","444","488","Ma"
+"Paleozoic>Ordovician>Early Ordovician","472","488","Ma"
+"Paleozoic>Ordovician>Late Ordovician","444","461","Ma"
+"Paleozoic>Ordovician>Middle Ordovician","461","472","Ma"
+"Paleozoic>Permian","251","299","Ma"
+"Paleozoic>Permian>Early Permian>Artinskian","276","284","Ma"
+"Paleozoic>Permian>Early Permian>Kungurian","271","276","Ma"
+"Paleozoic>Permian>Middle Permian","260","271","Ma"
+"Paleozoic>Silurian","416","444","Ma"
+"Paleozoic>Silurian>Early Silurian","428","444","Ma"
+"Paleozoic>Silurian>Late Silurian","416","423","Ma"
+"Penn",NULL,NULL,NULL
+"Penn, Desmoinesian",NULL,NULL,NULL
+"Pennsylvanian",NULL,NULL,NULL
+"Pennsylvanian ",NULL,NULL,NULL
+"Pennsylvanian > Lower/Early",NULL,NULL,NULL
+"Pennsylvanian to Permian",NULL,NULL,NULL
+"Pennsylvanian, Bolsovian",NULL,NULL,NULL
+"Pennsylvanian, Duckmantian",NULL,NULL,NULL
+"Pennsylvanian, Langsettian",NULL,NULL,NULL
+"Pennsylvanian/Mississippian",NULL,NULL,NULL
+"Permian","290","305","million years (Ma)"
+"Permian",NULL,NULL,NULL
+"Permian-Jurassic",NULL,NULL,NULL
+"Permian > Upper/Late",NULL,NULL,NULL
+"Permian and/or Triassic?",NULL,NULL,NULL
+"Permian met'm",NULL,NULL,NULL
+"Permian met?",NULL,NULL,NULL
+"Permian or Jurassic met.?",NULL,NULL,NULL
+"Permian to Jurassic",NULL,NULL,NULL
+"Permian to Pennsylvanian",NULL,NULL,NULL
+"Permian to Triassic",NULL,NULL,NULL
+"Permian, Capitanian",NULL,NULL,NULL
+"Permian, Changhsingian",NULL,NULL,NULL
+"Permian, Lower",NULL,NULL,NULL
+"Permian?",NULL,NULL,NULL
+"Permo-Carboniferous","294","307","million years (Ma)"
+"Permo-Triassic",NULL,"255",NULL
+"Permo-Triassic ",NULL,NULL,NULL
+"Permo-triassic; alpine metamorphism",NULL,NULL,NULL
+"Permo–Carboniferous",NULL,"465","million years (Ma)"
+"Phanerozoic>Cenozoic>Miocene",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Cretaceous","65","65",NULL
+"Phanerozoic>Mesozoic>Cretaceous",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Cretaceous>Danian",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Cretaceous>Maastrichtian",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Devonian>Famennian",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Devonian>Frasnian",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Jurassic",NULL,NULL,NULL
+"Phanerozoic>Mesozoic>Paleogene>Maastrichtian",NULL,NULL,NULL
+"Phanerozoic>Paleogene>Miocene",NULL,NULL,NULL
+"Phanerozoic>Paleozoic>Devonian>Famennian",NULL,NULL,NULL
+"Phanerozoic>Paleozoic>Devonian>Frasnian",NULL,NULL,NULL
+"Phanerozoic>Paleozoic>Ordovician",NULL,NULL,NULL
+"Pleistocene","0.01","1.64","million years (Ma)"
+"Pleistocene","0.68",NULL,NULL
+"Pleistocene","0.76","0.78",NULL
+"Pleistocene","0.88","1.18","Ma"
+"Pleistocene","1.1","1.4","Ma"
+"Pleistocene","1.1","1.4","million years (Ma)"
+"Pleistocene","1.18","1.2","Ma"
+"Pleistocene","1.18","1.2","million years (Ma)"
+"Pleistocene","1.18","1.2",NULL
+"Pleistocene","1.59","1.93",NULL
+"Pleistocene","2.1","2.3","Ma"
+"Pleistocene","2.1","2.3",NULL
+"Pleistocene","35","39","ka"
+"Pleistocene","49","53","ka"
+"Pleistocene","51.34504","51.34504","kyr"
+"Pleistocene","52.88355","52.88355","kyr"
+"Pleistocene","85.64122","85.64122","kyr"
+"Pleistocene","100.0305","100.0305","kyr"
+"Pleistocene","111.6742","111.6742","kyr"
+"Pleistocene","130.5756","130.5756","kyr"
+"Pleistocene","141","147","ka"
+"Pleistocene","176.9575","176.9575","kyr"
+"Pleistocene","178.2885","178.2885","kyr"
+"Pleistocene","200.2992","200.2992","kyr"
+"Pleistocene","228.8614","228.8614","kyr"
+"Pleistocene","234.4763","234.4763","kyr"
+"Pleistocene","274.7958","274.7958","kyr"
+"Pleistocene","276.9496","276.9496","kyr"
+"Pleistocene","285.7499","285.7499","kyr"
+"Pleistocene","286.4981","286.4981","kyr"
+"Pleistocene","288.858","288.858","kyr"
+"Pleistocene","289.632","289.632","kyr"
+"Pleistocene","304.627","304.627","kyr"
+"Pleistocene","304.8153","304.8153","kyr"
+"Pleistocene","312.516","312.516","kyr"
+"Pleistocene","316.6938","316.6938","kyr"
+"Pleistocene","317.6146","317.6146","kyr"
+"Pleistocene","321.3747","321.3747","kyr"
+"Pleistocene","322.3206","322.3206","kyr"
+"Pleistocene","327.3221","327.3221","kyr"
+"Pleistocene","328.2748","328.2748","kyr"
+"Pleistocene","331.7481","331.7481","kyr"
+"Pleistocene","346.525","346.525","kyr"
+"Pleistocene","355.1878","355.1878","kyr"
+"Pleistocene","357.9778","357.9778","kyr"
+"Pleistocene","365.171","365.171","kyr"
+"Pleistocene","370.5434","370.5434","kyr"
+"Pleistocene","373.5553","373.5553","kyr"
+"Pleistocene","375.9283","375.9283","kyr"
+"Pleistocene","378.429","378.429","kyr"
+"Pleistocene","383.6845","383.6845","kyr"
+"Pleistocene","386.5069","386.5069","kyr"
+"Pleistocene","396.6885","396.6885","kyr"
+"Pleistocene","410.8","410.8","kyr"
+"Pleistocene","440.4916","440.4916","kyr"
+"Pleistocene","448.2717","448.2717","kyr"
+"Pleistocene","477.5016","477.5016","kyr"
+"Pleistocene","492.477",NULL,"ka"
+"Pleistocene","494.4168","494.4168","kyr"
+"Pleistocene","509.4885","509.4885","kyr"
+"Pleistocene","514.0657","514.0657","kyr"
+"Pleistocene","545.4443","545.4443","kyr"
+"Pleistocene","550.9464","550.9464","kyr"
+"Pleistocene","553.3435","553.3435","kyr"
+"Pleistocene","577.335",NULL,NULL
+"Pleistocene","644.483","644.483","kyr"
+"Pleistocene","672.8207","672.8207","kyr"
+"Pleistocene","739.6271","739.6271","kyr"
+"Pleistocene","748.9389","748.9389","kyr"
+"Pleistocene","818.6991","818.6991","kyr"
+"Pleistocene","820.6492","820.6492","kyr"
+"Pleistocene","838.1461","838.1461","kyr"
+"Pleistocene","839.5471","839.5471","kyr"
+"Pleistocene","862.1107","862.1107","kyr"
+"Pleistocene","943.5887","943.5887","kyr"
+"Pleistocene","949.8242","949.8242","kyr"
+"Pleistocene","1026.68","1026.68","kyr"
+"Pleistocene","1048.366","1048.366","kyr"
+"Pleistocene","1061.042","1061.042","kyr"
+"Pleistocene","1061.47","1061.47","kyr"
+"Pleistocene","1103.594","1103.594","kyr"
+"Pleistocene","1104.439","1104.439","kyr"
+"Pleistocene","1147.601","1147.601","kyr"
+"Pleistocene","1152.702","1152.702","kyr"
+"Pleistocene","1263.82","1263.82","kyr"
+"Pleistocene","1284.022","1284.022","kyr"
+"Pleistocene","1284.236","1284.236","kyr"
+"Pleistocene","1336.183","1336.183","kyr"
+"Pleistocene","1384.014","1384.014","kyr"
+"Pleistocene","1386.159","1386.159","kyr"
+"Pleistocene","1394.368","1394.368","kyr"
+"Pleistocene","1396.402","1396.402","kyr"
+"Pleistocene","1398.743","1398.743","kyr"
+"Pleistocene","1487.359","1487.359","kyr"
+"Pleistocene","1487.553","1487.553","kyr"
+"Pleistocene","1510.883","1510.883","kyr"
+"Pleistocene","1571.737","1571.737","kyr"
+"Pleistocene","1575.052","1575.052","kyr"
+"Pleistocene","1587.387","1587.387","kyr"
+"Pleistocene","1590.171","1590.171","kyr"
+"Pleistocene","1593.791","1593.791","kyr"
+"Pleistocene","1596.773","1596.773","kyr"
+"Pleistocene","1599.498","1599.498","kyr"
+"Pleistocene","1602.598","1602.598","kyr"
+"Pleistocene","1635.557","1635.557","kyr"
+"Pleistocene","1637.052","1637.052","kyr"
+"Pleistocene","1640.043","1640.043","kyr"
+"Pleistocene","1647.643","1647.643","kyr"
+"Pleistocene","1651.56","1651.56","kyr"
+"Pleistocene","1704.211","1704.211","kyr"
+"Pleistocene","1707.096","1707.096","kyr"
+"Pleistocene","1707.875","1707.875","kyr"
+"Pleistocene","1710.267","1710.267","kyr"
+"Pleistocene","1719.69","1719.69","kyr"
+"Pleistocene","1720.683","1720.683","kyr"
+"Pleistocene","1737.045","1737.045","kyr"
+"Pleistocene","1737.38","1737.38","kyr"
+"Pleistocene","1789.65","1789.65","kyr"
+"Pleistocene","1797.286","1797.286","kyr"
+"Pleistocene","1836.594","1836.594","kyr"
+"Pleistocene","1842.667","1842.667","kyr"
+"Pleistocene","1853.194","1853.194","kyr"
+"Pleistocene","1858.023","1858.023","kyr"
+"Pleistocene","1875.965","1875.965","kyr"
+"Pleistocene","1880.733","1880.733","kyr"
+"Pleistocene","1939.687","1939.687","kyr"
+"Pleistocene","1940.523","1940.523","kyr"
+"Pleistocene","1968.742","1968.742","kyr"
+"Pleistocene","1970.63","1970.63","kyr"
+"Pleistocene","1977.796","1977.796","kyr"
+"Pleistocene","1981.171","1981.171","kyr"
+"Pleistocene","1984.223","1984.223","kyr"
+"Pleistocene","1988.45","1988.45","kyr"
+"Pleistocene","2060.085","2060.085","kyr"
+"Pleistocene","2065.895","2065.895","kyr"
+"Pleistocene","2070.282","2070.282","kyr"
+"Pleistocene","2075.228","2075.228","kyr"
+"Pleistocene","2081.407","2081.407","kyr"
+"Pleistocene","2099.947","2099.947","kyr"
+"Pleistocene","2103.016","2103.016","kyr"
+"Pleistocene","2124.668","2124.668","kyr"
+"Pleistocene","2125.216","2125.216","kyr"
+"Pleistocene","2178.044","2178.044","kyr"
+"Pleistocene","2501.654","2501.654","kyr"
+"Pleistocene","2503.748","2503.748","kyr"
+"Pleistocene","2507.484","2507.484","kyr"
+"Pleistocene","2510.552","2510.552","kyr"
+"Pleistocene","2616.763","2616.763","kyr"
+"Pleistocene","2873.903","2873.903","kyr"
+"Pleistocene","3694.748","3694.748","kyr"
+"Pleistocene","3742.986","3742.986","kyr"
+"Pleistocene","3779.872","3779.872","kyr"
+"Pleistocene","3902.361","3902.361","kyr"
+"Pleistocene","4105.961","4105.961","kyr"
+"Pleistocene","4211.801","4211.801","kyr"
+"Pleistocene","50000","60000","years"
+"Pleistocene","50000","100000","years"
+"Pleistocene","80000","130000","years"
+"Pleistocene","577335",NULL,"years"
+"Pleistocene",NULL,"65","Ka"
+"Pleistocene",NULL,"135","ka"
+"Pleistocene",NULL,"137","Ka"
+"Pleistocene",NULL,"194","Ka"
+"Pleistocene",NULL,"226","Ka"
+"Pleistocene",NULL,NULL,NULL
+"Pleistocene-Holocene","0","2.6","Ma"
+"Pleistocene-Holocene",NULL,NULL,NULL
+"Pleistocene-Q1dd1",NULL,NULL,NULL
+"Pleistocene ",NULL,NULL,NULL
+"Pleistocene (Eemian)",NULL,NULL,NULL
+"Pleistocene (uncertain)",NULL,NULL,NULL
+"Pleistocene and Holocene","0","63000","years"
+"Pleistocene and Holocene","0","70000","years"
+"Pleistocene and Holocene","0","72000","years"
+"Pleistocene and Holocene","0","74000","years"
+"Pleistocene(uncertain)",NULL,NULL,NULL
+"Plio-Pleistocene","0.01","5.2","million years (Ma)"
+"Plio-Pleistocene",NULL,NULL,NULL
+"Plio-Quaternary",NULL,NULL,NULL
+"Pliocene","1.64","5.2","million years (Ma)"
+"Pliocene","2","2.04",NULL
+"Pliocene","2.16","2.2",NULL
+"Pliocene","2.37","2.43","Ma"
+"Pliocene","2.6","5.3","Ma"
+"Pliocene","2.677","2.835","Ma"
+"Pliocene","2.73","3.4","Ma"
+"Pliocene","2.733","2.775","Ma"
+"Pliocene","2.74","3.58","Ma"
+"Pliocene","2.913","2.937","Ma"
+"Pliocene","2.977","2.995","Ma"
+"Pliocene","3.828","4.004","Ma"
+"Pliocene","3.86","3.95",NULL
+"Pliocene","3.86","4","Ma"
+"Pliocene","4.16","4.28",NULL
+"Pliocene","4.2","4.7","Ma"
+"Pliocene","4.2","4.7",NULL
+"Pliocene","4.28","4.87","Ma"
+"Pliocene","4.4","5.1","Ma"
+"Pliocene","4.8","5.28","Ma"
+"Pliocene","1050.274","1050.274","kyr"
+"Pliocene","2986.209","2986.209","kyr"
+"Pliocene","3144.047","3144.047","kyr"
+"Pliocene","3483.438","3483.438","kyr"
+"Pliocene","3743.873","3743.873","kyr"
+"Pliocene","3787.73","3787.73","kyr"
+"Pliocene",NULL,"4.22",NULL
+"Pliocene",NULL,"4.7","million years (Ma)"
+"Pliocene",NULL,NULL,NULL
+"Pliocene-Miocene","4.7","5.02","Ma"
+"Pliocene-Pleist",NULL,NULL,NULL
+"Pliocene-pleistocene",NULL,NULL,NULL
+"Pliocene-Pleistocene",NULL,NULL,NULL
+"Pliocene-Quaternary",NULL,NULL,NULL
+"Pliocene (uncertain)",NULL,NULL,NULL
+"Pliocene early",NULL,NULL,NULL
+"Pliocene(uncertain)",NULL,NULL,NULL
+"Pliocene?",NULL,NULL,NULL
+"Portlandian",NULL,NULL,NULL
+"Pragian","404","410.8","Ma"
+"Pragian","415","419.2","Ma"
+"Pragian",NULL,NULL,NULL
+"Precambrian","542","4600","Ma"
+"Precambrian",NULL,"504",NULL
+"Precambrian",NULL,"561",NULL
+"Precambrian",NULL,"596",NULL
+"Precambrian",NULL,NULL,NULL
+"Precambrian-?Paleoproterozoic",NULL,NULL,NULL
+"Precambrian Era",NULL,NULL,NULL
+"Precambrian to Ordovician",NULL,NULL,NULL
+"Precambrian, Keweenawan",NULL,NULL,NULL
+"Precambrian?",NULL,NULL,NULL
+"Precambrian>Archean","2500","3850","Ma"
+"Precambrian>Archean>Neoarchean","2500","2800","Ma"
+"Precambrian>Proterozoic","542","2500","Ma"
+"Precambrian>Proterozoic>Mesoproterozoic","1000","1600","Ma"
+"Precambrian>Proterozoic>Mesoproterozoic>Calymmian","1400","1600","Ma"
+"Precambrian>Proterozoic>Mesoproterozoic>Stenian","1000","1200","Ma"
+"Precambrian>Proterozoic>Neoproterozoic","542","1000","Ma"
+"Precambrian>Proterozoic>Neoproterozoic>Cryogenian","630","850","Ma"
+"Precambrian>Proterozoic>Neoproterozoic>Ediacaran","542","630","Ma"
+"Precambrian>Proterozoic>Paleoproterozoic","1600","2500","Ma"
+"Precambrian>Proterozoic>Paleoproterozoic>Orosirian","1800","2050","Ma"
+"Precambrian>Proterozoic>Paleoproterozoic>Rhyacian","2050","2300","Ma"
+"Precambrian>Proterozoic>Paleoproterozoic>Siderian","2300","2500","Ma"
+"Precambrian>Proterozoic>Paleoproterozoic>Statherian","1600","1800","Ma"
+"Priabonian–Chattian",NULL,NULL,NULL
+"Pridoli","419.2","423","Ma"
+"Proterozoic","1.7","1.7","Ga"
+"Proterozoic","541","2500","million years (Ma)"
+"Proterozoic",NULL,NULL,NULL
+"PROTEROZOIC","541","2500","Ma"
+"Proterozoic - mid",NULL,NULL,NULL
+"Ptz-Cambrian",NULL,NULL,NULL
+"q",NULL,NULL,NULL
+"Quarternary",NULL,NULL,NULL
+"Quarternary/Triassic",NULL,NULL,NULL
+"Quaternary","0","2","Ma"
+"Quaternary","0","2","million years (Ma)"
+"Quaternary","0","100000","years"
+"Quaternary","0",NULL,NULL
+"Quaternary","0.00143","0.00151",NULL
+"Quaternary","0.00321","0.00337",NULL
+"Quaternary","0.00385","0.00409",NULL
+"Quaternary","0.00836","0.00876",NULL
+"Quaternary","0.01372","0.01542",NULL
+"Quaternary","0.01455","0.01653",NULL
+"Quaternary","0.02","0.021","Million years (Ma)"
+"Quaternary","0.02826","0.0298",NULL
+"Quaternary","0.03993","0.04061",NULL
+"Quaternary","0.09902","0.1052",NULL
+"Quaternary","0.10763","0.11127",NULL
+"Quaternary","0.13077","0.13655",NULL
+"Quaternary","0.1313","0.13942",NULL
+"Quaternary","0.1531","0.16068",NULL
+"Quaternary","0.15493","0.16259",NULL
+"Quaternary","0.15508","0.1627",NULL
+"Quaternary","0.15568","0.16374",NULL
+"Quaternary","0.16671","0.17781",NULL
+"Quaternary","0.16922","0.17966",NULL
+"Quaternary","0.17588","0.18416",NULL
+"Quaternary","0.22321","0.23453",NULL
+"Quaternary","0.22466","0.2372",NULL
+"Quaternary","0.23448","0.24738",NULL
+"Quaternary","0.23458","0.2474",NULL
+"Quaternary","0.23505","0.24741",NULL
+"Quaternary","0.26576","0.27552",NULL
+"Quaternary","0.34594","0.36092","Ma"
+"Quaternary","0.34812","0.3634","Ma"
+"Quaternary","0.35361","0.36289","Ma"
+"Quaternary","0.39242","0.40432","Ma"
+"Quaternary","0.41158","0.41792","Ma"
+"Quaternary","0.41293","0.42133","Ma"
+"Quaternary","0.4143499999999999","0.42517","Ma"
+"Quaternary","0.4175","0.43036","Ma"
+"Quaternary","0.45101","0.45689","Ma"
+"Quaternary","0.45289","0.45949","Ma"
+"Quaternary","0.47365","0.48733","Ma"
+"Quaternary","0.48675","0.49459","Ma"
+"Quaternary","0.48962","0.49848","Ma"
+"Quaternary","0.50453","0.5128100000000001","Ma"
+"Quaternary","0.5097999999999999","0.51854","Ma"
+"Quaternary","0.5114","0.52234","Ma"
+"Quaternary","0.52751","0.5342100000000001","Ma"
+"Quaternary","0.6228899999999999","0.63085","Ma"
+"Quaternary","0.6417999999999999","0.6553199999999999","Ma"
+"Quaternary","0.65539","0.6697099999999999","Ma"
+"Quaternary","0.6683000000000001","0.68016","Ma"
+"Quaternary","0.6763899999999999","0.6853100000000001","Ma"
+"Quaternary","0.71196","0.7215199999999999","Ma"
+"Quaternary","0.72856","0.7402799999999999","Ma"
+"Quaternary","0.77137","0.78165","Ma"
+"Quaternary","0.7862199999999999","0.79312","Ma"
+"Quaternary","0.8829","0.8934599999999999","Ma"
+"Quaternary","0.97314","0.9855200000000001","Ma"
+"Quaternary","1.10632","1.12104",NULL
+"Quaternary","1.12831","1.13685",NULL
+"Quaternary","1.20235","1.21145",NULL
+"Quaternary","1.21509","1.22807",NULL
+"Quaternary","8.7","29.7","Ka"
+"Quaternary","10","15","million years (Ma)"
+"Quaternary","52","76","Ka"
+"Quaternary","70","640","ka"
+"Quaternary","70","640",NULL
+"Quaternary","111.5","162.1","Ka"
+"Quaternary","118.962","120.984","ka"
+"Quaternary","119.021","121.045","ka"
+"Quaternary","120.111","122.166","ka"
+"Quaternary","120.371","121.334","ka"
+"Quaternary","121.22","123.305","ka"
+"Quaternary","122.429","124.548","ka"
+"Quaternary","124.171","126.341","ka"
+"Quaternary","124.432","126.611","ka"
+"Quaternary","130","130","years"
+"Quaternary","200","1000","years"
+"Quaternary","260.7","319.3","Ka"
+"Quaternary","283.8","324","Ka"
+"Quaternary","380.3","401.5","Ka"
+"Quaternary","393","413","1000 yrs"
+"Quaternary","452.8","477.6","Ka"
+"Quaternary","528.1","561.5","Ka"
+"Quaternary","530.1","713.9","Ka"
+"Quaternary","1047.4","1091.6","Ka"
+"Quaternary","70000","640000","years"
+"Quaternary","119996.43121754","122136.28978463","ka"
+"Quaternary",NULL,NULL,NULL
+"Quaternary-Cretaceous",NULL,NULL,NULL
+"Quaternary-Holocene",NULL,"69","kyrs"
+"Quaternary-Holocene",NULL,"70","kyrs"
+"Quaternary-Holocene",NULL,"75","kyrs"
+"Quaternary-Teriary",NULL,NULL,NULL
+"Quaternary-Tertiary",NULL,NULL,NULL
+"Quaternary-Tertiary-Cretaceous",NULL,NULL,NULL
+"Quaternary > Holocene",NULL,NULL,NULL
+"Quaternary > Pleistocene",NULL,NULL,NULL
+"Quaternary > Pleistocene to Quaternary > Holocene",NULL,NULL,NULL
+"Quaternary/Holocene",NULL,NULL,NULL
+"Quaternary/Triassic",NULL,NULL,NULL
+"Quaternary: MIS 5.5",NULL,NULL,NULL
+"Quaternary; MIS 5.5",NULL,NULL,NULL
+"recent",NULL,NULL,NULL
+"Recent","0","0","Ma"
+"Recent",NULL,NULL,NULL
+"reworked Oligocene in Miocene-Pliocene",NULL,NULL,NULL
+"Rhuddanian","440.8","443.8","Ma"
+"Rupelian","29","30","million years (Ma)"
+"Rupelian",NULL,NULL,NULL
+"Sandbian","453","458.4","Ma"
+"Sandbian",NULL,NULL,NULL
+"Santonian",NULL,NULL,NULL
+"Santonian-Campanian",NULL,NULL,NULL
+"Saxonian",NULL,NULL,NULL
+"Sheinwoodian","430.5","433.4","Ma"
+"should be Pleistocene",NULL,NULL,NULL
+"Silurian","426","429","million years (Ma)"
+"Silurian",NULL,NULL,NULL
+"Silurian-Devonian?",NULL,NULL,NULL
+"Silurian > Mid/Late",NULL,NULL,NULL
+"Silurian maybe?",NULL,NULL,NULL
+"Silurian to Devonian",NULL,NULL,NULL
+"Silurian?",NULL,NULL,NULL
+"Snowbird Tectonic Zone",NULL,NULL,NULL
+"Stenian",NULL,NULL,NULL
+"Stephanian A/Westphalian D",NULL,NULL,NULL
+"Stephanian B",NULL,NULL,NULL
+"Sub-fossil",NULL,NULL,NULL
+"SUP ORDOVICIAN",NULL,NULL,NULL
+"Telychian","433.4","438.5","Ma"
+"Tertiary",NULL,NULL,NULL
+"Tertiary-Quarternary",NULL,NULL,NULL
+"Tertiary-Quaternary",NULL,NULL,NULL
+"Tertiary (?)",NULL,NULL,NULL
+"Tertiary Undiff",NULL,NULL,NULL
+"Tertiary: Miocene",NULL,NULL,NULL
+"Tithonian",NULL,NULL,NULL
+"Tithonian ",NULL,NULL,NULL
+"Tonian",NULL,"735","million years (Ma)"
+"Tonian",NULL,NULL,NULL
+"Tonian? To Ediacaran? ",NULL,NULL,NULL
+"Tournaisian-Visean (Early Carboniferous)",NULL,"373.6","million years (Ma)"
+"Tremadocian","477.7","478","Ma"
+"Tremadocian","478","478.5","Ma"
+"Tremadocian","478.5","480","Ma"
+"Tremadocian","480","481.7","Ma"
+"Tremadocian","481.7","482","Ma"
+"Tremadocian","482","484.4","Ma"
+"Tremadocian","484.4","485","Ma"
+"Tremadocian","485","485.4","Ma"
+"Triassic","201","250","million years (Ma)"
+"Triassic","201","252","million years (Ma)"
+"Triassic","214","216","Ma"
+"Triassic","216","218","Ma"
+"Triassic","218","218","million years (Ma)"
+"Triassic","218","220","Ma"
+"Triassic",NULL,"216",NULL
+"Triassic",NULL,"217",NULL
+"Triassic",NULL,"220",NULL
+"Triassic",NULL,"225",NULL
+"Triassic",NULL,"230",NULL
+"Triassic",NULL,"247",NULL
+"Triassic",NULL,"265",NULL
+"Triassic",NULL,NULL,NULL
+"Triassic-Jurassic",NULL,NULL,NULL
+"Triassic ",NULL,NULL,NULL
+"Triassic > Upper/Late",NULL,NULL,NULL
+"Triassic to Cretaceous",NULL,NULL,NULL
+"Triassic to Jurassic",NULL,NULL,NULL
+"Triassic, Induan/Olenikian",NULL,NULL,NULL
+"Triassic, Norian",NULL,NULL,NULL
+"Triassic, Rhaetian",NULL,NULL,NULL
+"Triassic/Jurassic","180","205","million years (Ma)"
+"Triassic?",NULL,NULL,NULL
+"Turonian",NULL,NULL,NULL
+"Turonian-Santonian",NULL,NULL,NULL
+"unknown",NULL,NULL,NULL
+"Unknown","0","10","million years (Ma)"
+"Unknown",NULL,NULL,NULL
+"Up. Lutetian-Low. Bartonian",NULL,NULL,NULL
+"Upper Aptian",NULL,NULL,NULL
+"Upper Aptian ",NULL,NULL,NULL
+"Upper Aquitanian-Burdigalian",NULL,NULL,NULL
+"upper Bart-Priabonian",NULL,NULL,NULL
+"Upper Bartonian-Priabonian",NULL,NULL,NULL
+"Upper Camp-Maastrichtian",NULL,NULL,NULL
+"Upper Camp.-Maastrichtian",NULL,NULL,NULL
+"Upper Cretaceous","95.3","97.5","Ma"
+"Upper Cretaceous",NULL,NULL,NULL
+"Upper Cretaceous?",NULL,NULL,NULL
+"Upper Devonian",NULL,NULL,NULL
+"upper Eocene",NULL,NULL,NULL
+"Upper Famennian",NULL,NULL,NULL
+"Upper Jurassic","152.2","166","Ma"
+"Upper Jurassic","155.9","160.9","Ma"
+"Upper Jurassic","157.9","162.3","Ma"
+"Upper Jurassic",NULL,NULL,NULL
+"upper Miocene",NULL,NULL,NULL
+"Upper Miocene",NULL,NULL,NULL
+"Upper Miocene -  Messinian",NULL,NULL,NULL
+"Upper Miocene - late Messinian ",NULL,NULL,NULL
+"Upper Miocene - Messinian",NULL,NULL,NULL
+"Upper Miocene - Tortonian",NULL,NULL,NULL
+"Upper Mississippian - Upper Devonian","326.4","385.3","million years (Ma)"
+"Upper Ordovician","543.8",NULL,"million years (Ma)"
+"upper Paleocene",NULL,NULL,NULL
+"upper Pliocene",NULL,NULL,NULL
+"Upper Pliocene-Pleistocene",NULL,NULL,NULL
+"Upper Triassic","214.4","217.4","Ma"
+"Upper Triassic","216.9","219.1","Ma"
+"Upper Triassic","217.5","225.5","Ma"
+"Upper Triassic","218.3","223.3","Ma"
+"Upper Triassic","219.2","223.4","Ma"
+"Upper Triassic","226.6","231.2","Ma"
+"Upper Triassic",NULL,NULL,NULL
+"uppermost Triassic",NULL,"206",NULL
+"uppermost Triassic",NULL,"208",NULL
+"uppermost Triassic",NULL,"210",NULL
+"uppermost Triassic",NULL,"216",NULL
+"Valanginian",NULL,NULL,NULL
+"Valanginian ",NULL,NULL,NULL
+"Vendian",NULL,NULL,NULL
+"Visean (Early Carboniferous)",NULL,"468.9","million years (Ma)"
+"Visean (Early Carboniferous)",NULL,"561.9","million years (Ma)"
+"Visean (Early Carboniferous)",NULL,"578.2","million years (Ma)"
+"Visean (Early Carboniferous)",NULL,"583.7","million years (Ma)"
+"Walloon Subgroup",NULL,NULL,NULL
+"Wesphalian D base",NULL,NULL,NULL
+"Westphalian (Late Carboniferous)",NULL,"322.8","million years (Ma)"
+"Westphalian (Late Carboniferous)",NULL,"339.3","million years (Ma)"
+"Westphalian C",NULL,NULL,NULL
+"Westphalian D top",NULL,NULL,NULL
+"Ypresian",NULL,NULL,NULL
+NULL,"-1105",NULL,"years"
+NULL,"-321",NULL,"years"
+NULL,"-38",NULL,"years before present"
+NULL,"-0.03","0.15",NULL
+NULL,"-7.2e-05","-7.2e-05",NULL
+NULL,"0","0","Ma"
+NULL,"0","0","million years (Ma)"
+NULL,"0","0.01","Ma"
+NULL,"0","0.425","million years (Ma)"
+NULL,"0","1","million years (Ma)"
+NULL,"0","2.5","Ma"
+NULL,"0","2.6","Ma"
+NULL,"0","4.54",NULL
+NULL,"0","15","years"
+NULL,"0","20","years"
+NULL,"0","30","years"
+NULL,"0","150","Ma"
+NULL,"0","150",NULL
+NULL,"0","200","years"
+NULL,"0","285","cal yrs BP"
+NULL,"0","20000","years"
+NULL,"0",NULL,"million years (Ma)"
+NULL,"0",NULL,NULL
+NULL,"6.4e-05",NULL,"million years (Ma)"
+NULL,"7.9e-05",NULL,"million years (Ma)"
+NULL,"0.0001","0.0001","Ma"
+NULL,"0.00015","170","million years (Ma)"
+NULL,"0.00015",NULL,"million years (Ma)"
+NULL,"0.000271",NULL,"million years (Ma)"
+NULL,"0.000311",NULL,"million years (Ma)"
+NULL,"0.000532","0.000532","Ma"
+NULL,"0.0006","0.0006","Ma"
+NULL,"0.0007","0.0007",NULL
+NULL,"0.001","0.02","million years (Ma)"
+NULL,"0.001",NULL,NULL
+NULL,"0.001009",NULL,"million years (Ma)"
+NULL,"0.0011","0.0011","Ma"
+NULL,"0.001138","0.001138","Ma"
+NULL,"0.001253","0.001253","Ma"
+NULL,"0.001258",NULL,"million years (Ma)"
+NULL,"0.0013","0.0013","Ma"
+NULL,"0.0014","0.0014","Ma"
+NULL,"0.002","0.5","million years (Ma)"
+NULL,"0.0024","0.0024","Ma"
+NULL,"0.002671","0.002671","Ma"
+NULL,"0.0027","0.0027","Ma"
+NULL,"0.004",NULL,"million years (Ma)"
+NULL,"0.004705","0.004705","Ma"
+NULL,"0.0054","0.0054","Ma"
+NULL,"0.006025","0.006025","Ma"
+NULL,"0.008059","0.008059","Ma"
+NULL,"0.009379","0.009379","Ma"
+NULL,"0.01","2.6","Ma"
+NULL,"0.01","2.6",NULL
+NULL,"0.0103","0.0103","Ma"
+NULL,"0.011413","0.011413","Ma"
+NULL,"0.0121","0.0121","Ma"
+NULL,"0.0126","0.0126","Ma"
+NULL,"0.013202","0.013202","Ma"
+NULL,"0.014342","0.014342","Ma"
+NULL,"0.014974","0.014974","Ma"
+NULL,"0.015449","0.015449","Ma"
+NULL,"0.015913","0.015913","Ma"
+NULL,"0.016056","0.016056","Ma"
+NULL,"0.016722","0.016722","Ma"
+NULL,"0.017",NULL,"Ma"
+NULL,"0.017",NULL,"million years (Ma)"
+NULL,"0.017243","0.017243","Ma"
+NULL,"0.017681","0.017681","Ma"
+NULL,"0.0177","0.0177","Ma"
+NULL,"0.018107","0.018107","Ma"
+NULL,"0.018551","0.018551","Ma"
+NULL,"0.018976","0.018976","Ma"
+NULL,"0.019414","0.019414","Ma"
+NULL,"0.01984","0.01984","Ma"
+NULL,"0.02","0.09","million years (Ma)"
+NULL,"0.02","23","Ma"
+NULL,"0.020917","0.020917","Ma"
+NULL,"0.022341","0.022341","Ma"
+NULL,"0.023785","0.023785","Ma"
+NULL,"0.0248","0.0248","Ma"
+NULL,"0.025189","0.025189","Ma"
+NULL,"0.026633","0.026633","Ma"
+NULL,"0.027296","0.027296","Ma"
+NULL,"0.0274","0.0274","Ma"
+NULL,"0.0276","0.0276","Ma"
+NULL,"0.0277","0.0277","Ma"
+NULL,"0.028369","0.028369","Ma"
+NULL,"0.030524","0.030524","Ma"
+NULL,"0.031","0.128","million years (Ma)"
+NULL,"0.031426","0.031426","Ma"
+NULL,"0.033239","0.033239","Ma"
+NULL,"0.034206","0.034206","Ma"
+NULL,"0.035915","0.035915","Ma"
+NULL,"0.037117","0.037117","Ma"
+NULL,"0.0375","0.0375","Ma"
+NULL,"0.039195","0.039195","Ma"
+NULL,"0.04","0.13","Ma"
+NULL,"0.040914","0.040914","Ma"
+NULL,"0.043216","0.043216","Ma"
+NULL,"0.046478","0.046478","Ma"
+NULL,"0.047996","0.047996","Ma"
+NULL,"0.0481","0.0481","Ma"
+NULL,"0.05","0.05","million years (Ma)"
+NULL,"0.05","0.09",NULL
+NULL,"0.05087","0.05087","Ma"
+NULL,"0.0511","0.0511","Ma"
+NULL,"0.05452","0.05452","Ma"
+NULL,"0.056232","0.056232","Ma"
+NULL,"0.0569","0.0569","Ma"
+NULL,"0.0573","0.0573","Ma"
+NULL,"0.059107","0.059107","Ma"
+NULL,"0.06","0.06","Ma"
+NULL,"0.06",NULL,"Ma"
+NULL,"0.060819","0.060819","Ma"
+NULL,"0.0625","0.0625","Ma"
+NULL,"0.063822","0.063822","Ma"
+NULL,"0.066988","0.066988","Ma"
+NULL,"0.0679","0.0679","Ma"
+NULL,"0.07","0.17","million years (Ma)"
+NULL,"0.07036","0.07036","Ma"
+NULL,"0.072","0.072","Ma"
+NULL,"0.072596","0.072596","Ma"
+NULL,"0.074",NULL,NULL
+NULL,"0.076875","0.076875","Ma"
+NULL,"0.0773","0.0773","Ma"
+NULL,"0.0777","0.0777","Ma"
+NULL,"0.079142","0.079142","Ma"
+NULL,"0.0794","0.0794","Ma"
+NULL,"0.0808","0.0808","Ma"
+NULL,"0.0817","0.0817","Ma"
+NULL,"0.083078","0.083078","Ma"
+NULL,"0.085346","0.085346","Ma"
+NULL,"0.0875","0.0875","Ma"
+NULL,"0.088319","0.088319","Ma"
+NULL,"0.090266","0.090266","Ma"
+NULL,"0.0913","0.0913","Ma"
+NULL,"0.0922","0.0922","Ma"
+NULL,"0.094031","0.094031","Ma"
+NULL,"0.096255","0.096255","Ma"
+NULL,"0.1","0.15",NULL
+NULL,"0.1","0.3",NULL
+NULL,"0.10002","0.10002","Ma"
+NULL,"0.102223","0.102223","Ma"
+NULL,"0.104","0.104","Ma"
+NULL,"0.10601","0.10601","Ma"
+NULL,"0.108363","0.108363","Ma"
+NULL,"0.1092","0.1092","Ma"
+NULL,"0.11","0.11","Ma"
+NULL,"0.112256","0.112256","Ma"
+NULL,"0.113","0.113","Ma"
+NULL,"0.114395","0.114395","Ma"
+NULL,"0.115","0.115","Ma"
+NULL,"0.118246","0.118246","Ma"
+NULL,"0.12","0.12","million years (Ma)"
+NULL,"0.120342","0.120342","Ma"
+NULL,"0.1207","0.1207","Ma"
+NULL,"0.124235","0.124235","Ma"
+NULL,"0.1261","0.1261","Ma"
+NULL,"0.126417","0.126417","Ma"
+NULL,"0.128044","0.128044","Ma"
+NULL,"0.129","0.129","Ma"
+NULL,"0.1291","0.1291","Ma"
+NULL,"0.1292","0.1292","Ma"
+NULL,"0.1325","0.1325","Ma"
+NULL,"0.133539","0.133539","Ma"
+NULL,"0.135736","0.135736","Ma"
+NULL,"0.1359","0.1359","Ma"
+NULL,"0.138","0.138","Ma"
+NULL,"0.139473","0.139473","Ma"
+NULL,"0.141231","0.141231","Ma"
+NULL,"0.1423","0.1423","Ma"
+NULL,"0.145385","0.145385","Ma"
+NULL,"0.1467","0.1467","Ma"
+NULL,"0.147604","0.147604","Ma"
+NULL,"0.1498","0.1498","Ma"
+NULL,"0.1499","0.1499","Ma"
+NULL,"0.15","0.15","million years (Ma)"
+NULL,"0.151297","0.151297","Ma"
+NULL,"0.153048","0.153048","Ma"
+NULL,"0.155792","0.155792","Ma"
+NULL,"0.157365","0.157365","Ma"
+NULL,"0.1574","0.1574","Ma"
+NULL,"0.158","0.158","Ma"
+NULL,"0.160078","0.160078","Ma"
+NULL,"0.1606","0.1606","Ma"
+NULL,"0.161651","0.161651","Ma"
+NULL,"0.1631","0.1631","Ma"
+NULL,"0.1638","0.1638","Ma"
+NULL,"0.164225","0.164225","Ma"
+NULL,"0.1648","0.1648","Ma"
+NULL,"0.1659","0.1659","Ma"
+NULL,"0.1664","0.1664","Ma"
+NULL,"0.166923","0.166923","Ma"
+NULL,"0.1672","0.1672","Ma"
+NULL,"0.167663","0.167663","Ma"
+NULL,"0.169","0.169","Ma"
+NULL,"0.169","0.17","ka"
+NULL,"0.169205","0.169205","Ma"
+NULL,"0.17","0.17","million years (Ma)"
+NULL,"0.171","0.171","Ma"
+NULL,"0.171486","0.171486","Ma"
+NULL,"0.173059","0.173059","Ma"
+NULL,"0.1735","0.1735","Ma"
+NULL,"0.175525","0.175525","Ma"
+NULL,"0.177406","0.177406","Ma"
+NULL,"0.179487","0.179487","Ma"
+NULL,"0.1798","0.1798","Ma"
+NULL,"0.18","0.18","million years (Ma)"
+NULL,"0.18","0.22",NULL
+NULL,"0.180983","0.180983","Ma"
+NULL,"0.182539","0.182539","Ma"
+NULL,"0.183129","0.183129","Ma"
+NULL,"0.184317","0.184317","Ma"
+NULL,"0.184958","0.184958","Ma"
+NULL,"0.185818","0.185818","Ma"
+NULL,"0.186357","0.186357","Ma"
+NULL,"0.187037","0.187037","Ma"
+NULL,"0.1875","0.1875","Ma"
+NULL,"0.1877","0.1877","Ma"
+NULL,"0.18775","0.18775","Ma"
+NULL,"0.1878","0.1878","Ma"
+NULL,"0.1883","0.1883","Ma"
+NULL,"0.188359","0.188359","Ma"
+NULL,"0.1885","0.1885","Ma"
+NULL,"0.189","0.189","Ma"
+NULL,"0.189643","0.189643","Ma"
+NULL,"0.1897","0.1897","Ma"
+NULL,"0.19","0.21","million years (Ma)"
+NULL,"0.19","0.25","Ma"
+NULL,"0.190028","0.190028","Ma"
+NULL,"0.1902","0.1902","Ma"
+NULL,"0.191298","0.191298","Ma"
+NULL,"0.191696","0.191696","Ma"
+NULL,"0.1917","0.1917","Ma"
+NULL,"0.19298","0.19298","Ma"
+NULL,"0.193365","0.193365","Ma"
+NULL,"0.196264","0.196264","Ma"
+NULL,"0.197759","0.197759","Ma"
+NULL,"0.1989","0.1989","Ma"
+NULL,"0.1995","0.1995","Ma"
+NULL,"0.2","0.2","Ma"
+NULL,"0.2","0.8","Ma"
+NULL,"0.2005","0.2005","Ma"
+NULL,"0.2009","0.2009","Ma"
+NULL,"0.2017","0.2017","Ma"
+NULL,"0.201925","0.201925","Ma"
+NULL,"0.203645","0.203645","Ma"
+NULL,"0.2048","0.2048","Ma"
+NULL,"0.205547","0.205547","Ma"
+NULL,"0.2069","0.2069","Ma"
+NULL,"0.207","0.207","Ma"
+NULL,"0.209","0.209","Ma"
+NULL,"0.20975","0.20975","Ma"
+NULL,"0.21","0.25","Ma"
+NULL,"0.211938","0.211938","Ma"
+NULL,"0.212172","0.212172","Ma"
+NULL,"0.214906","0.214906","Ma"
+NULL,"0.2212","0.2212","Ma"
+NULL,"0.226512","0.226512","Ma"
+NULL,"0.229035","0.229035","Ma"
+NULL,"0.23","0.27","Ma"
+NULL,"0.235517","0.235517","Ma"
+NULL,"0.236","0.236","Ma"
+NULL,"0.2385","0.2385","Ma"
+NULL,"0.239117","0.239117","Ma"
+NULL,"0.24","0.31","million years (Ma)"
+NULL,"0.242759","0.242759","Ma"
+NULL,"0.245448","0.245448","Ma"
+NULL,"0.2457","0.2457","Ma"
+NULL,"0.248179","0.248179","Ma"
+NULL,"0.249048","0.249048","Ma"
+NULL,"0.25","0.25","Ka"
+NULL,"0.25","0.25","Ma"
+NULL,"0.25",NULL,"Ka"
+NULL,"0.252207","0.252207","Ma"
+NULL,"0.252648","0.252648","Ma"
+NULL,"0.255793","0.255793","Ma"
+NULL,"0.2574","0.2574","Ma"
+NULL,"0.260087","0.260087","Ma"
+NULL,"0.2621","0.2621","Ma"
+NULL,"0.267261","0.267261","Ma"
+NULL,"0.27","0.27","million years (Ma)"
+NULL,"0.273537","0.273537","Ma"
+NULL,"0.273785","0.273785","Ma"
+NULL,"0.276607","0.276607","Ma"
+NULL,"0.276656","0.276656","Ma"
+NULL,"0.2786","0.2786","Ma"
+NULL,"0.279923","0.279923","Ma"
+NULL,"0.28","0.34",NULL
+NULL,"0.28","0.83",NULL
+NULL,"0.2805","0.2805","Ma"
+NULL,"0.282","0.282","Ma"
+NULL,"0.282723","0.282723","Ma"
+NULL,"0.284","0.37",NULL
+NULL,"0.2841","0.2841","Ma"
+NULL,"0.2845","0.2941","million years (Ma)"
+NULL,"0.286137","0.286137","Ma"
+NULL,"0.289477","0.289477","Ma"
+NULL,"0.292719","0.292719","Ma"
+NULL,"0.295814","0.295814","Ma"
+NULL,"0.296","0.296","Ma"
+NULL,"0.29955","0.29955","Ma"
+NULL,"0.3","0.3","Ma"
+NULL,"0.3032","0.3032","Ma"
+NULL,"0.303674","0.303674","Ma"
+NULL,"0.309","0.311","million years (Ma)"
+NULL,"0.309473","0.309473","Ma"
+NULL,"0.3101","0.3101","Ma"
+NULL,"0.311798","0.311798","Ma"
+NULL,"0.314","0.314","Ma"
+NULL,"0.316388","0.316388","Ma"
+NULL,"0.317","0.317","Ma"
+NULL,"0.318","0.318","Ma"
+NULL,"0.3181","0.3181","Ma"
+NULL,"0.32","0.32","million years (Ma)"
+NULL,"0.32014","0.32014","Ma"
+NULL,"0.3202","0.3202","Ma"
+NULL,"0.3226","0.3226","Ma"
+NULL,"0.326713","0.326713","Ma"
+NULL,"0.3275","0.3275","Ma"
+NULL,"0.3278","0.3278","Ma"
+NULL,"0.330219","0.330219","Ma"
+NULL,"0.331767","0.331767","Ma"
+NULL,"0.3322","0.3322","Ma"
+NULL,"0.332996","0.332996","Ma"
+NULL,"0.333585","0.333585","Ma"
+NULL,"0.3343","0.3343","Ma"
+NULL,"0.335167","0.335167","Ma"
+NULL,"0.3357","0.3357","Ma"
+NULL,"0.3359","0.3359","Ma"
+NULL,"0.336396","0.336396","Ma"
+NULL,"0.33754","0.33754","Ma"
+NULL,"0.338","0.338","Ma"
+NULL,"0.339055","0.339055","Ma"
+NULL,"0.339947","0.339947","Ma"
+NULL,"0.341882","0.341882","Ma"
+NULL,"0.3436","0.3436","Ma"
+NULL,"0.3446","0.3446","Ma"
+NULL,"0.345543","0.345543","Ma"
+NULL,"0.348095","0.348095","Ma"
+NULL,"0.35","0.35","Ma"
+NULL,"0.35",NULL,"Ma"
+NULL,"0.351143","0.351143","Ma"
+NULL,"0.352705","0.352705","Ma"
+NULL,"0.354812","0.354812","Ma"
+NULL,"0.356843","0.356843","Ma"
+NULL,"0.358604","0.358604","Ma"
+NULL,"0.36","0.36","Ma"
+NULL,"0.36","0.42",NULL
+NULL,"0.360161","0.360161","Ma"
+NULL,"0.361934","0.361934","Ma"
+NULL,"0.363397","0.363397","Ma"
+NULL,"0.365563","0.365563","Ma"
+NULL,"0.3662","0.3662","Ma"
+NULL,"0.366836","0.366836","Ma"
+NULL,"0.369581","0.369581","Ma"
+NULL,"0.37","0.66","Ma"
+NULL,"0.372269","0.372269","Ma"
+NULL,"0.374383","0.374383","Ma"
+NULL,"0.376103","0.376103","Ma"
+NULL,"0.3762","0.3762","Ma"
+NULL,"0.3815","0.3815","Ma"
+NULL,"0.383","0.383","Ma"
+NULL,"0.383704","0.383704","Ma"
+NULL,"0.386491","0.386491","Ma"
+NULL,"0.3888","0.3888","Ma"
+NULL,"0.39","0.47",NULL
+NULL,"0.391806","0.391806","Ma"
+NULL,"0.394333","0.394333","Ma"
+NULL,"0.4","0.4",NULL
+NULL,"0.4","0.46",NULL
+NULL,"0.4","0.5",NULL
+NULL,"0.400296","0.400296","Ma"
+NULL,"0.403","0.403","Ma"
+NULL,"0.403537","0.403537","Ma"
+NULL,"0.4076","0.4076","Ma"
+NULL,"0.4081","0.4081","Ma"
+NULL,"0.408158","0.408158","Ma"
+NULL,"0.411018","0.411018","Ma"
+NULL,"0.414731","0.414731","Ma"
+NULL,"0.417416","0.417416","Ma"
+NULL,"0.421455","0.421455","Ma"
+NULL,"0.4226","0.4227","Ma"
+NULL,"0.423262","0.423262","Ma"
+NULL,"0.427928","0.427928","Ma"
+NULL,"0.428","0.428","Ma"
+NULL,"0.43","0.43","million years (Ma)"
+NULL,"0.433498","0.433498","Ma"
+NULL,"0.4379","0.4379","Ma"
+NULL,"0.4393","0.4393","Ma"
+NULL,"0.443825","0.443825","Ma"
+NULL,"0.44765","0.44765","Ma"
+NULL,"0.453538","0.453538","Ma"
+NULL,"0.457325","0.457325","Ma"
+NULL,"0.46",NULL,"Ma"
+NULL,"0.46325","0.46325","Ma"
+NULL,"0.467525","0.467525","Ma"
+NULL,"0.470672","0.470672","Ma"
+NULL,"0.471533","0.471533","Ma"
+NULL,"0.4719","0.4719","Ma"
+NULL,"0.472438","0.472438","Ma"
+NULL,"0.473","0.473","Ma"
+NULL,"0.4749","0.4749","Ma"
+NULL,"0.476744","0.476744","Ma"
+NULL,"0.477591","0.477591","Ma"
+NULL,"0.478525","0.478525","Ma"
+NULL,"0.479489","0.479489","Ma"
+NULL,"0.480423","0.480423","Ma"
+NULL,"0.481737","0.481737","Ma"
+NULL,"0.48267","0.48267","Ma"
+NULL,"0.484678","0.484678","Ma"
+NULL,"0.486626","0.486626","Ma"
+NULL,"0.488696","0.488696","Ma"
+NULL,"0.490675","0.490675","Ma"
+NULL,"0.4917","0.4917","Ma"
+NULL,"0.492257","0.492257","Ma"
+NULL,"0.493901","0.493901","Ma"
+NULL,"0.499958","0.499958","Ma"
+NULL,"0.5","0.5","million years (Ma)"
+NULL,"0.5","0.5",NULL
+NULL,"0.5","0.62","million years (Ma)"
+NULL,"0.5","0.7",NULL
+NULL,"0.501297","0.501297","Ma"
+NULL,"0.5015","0.5015","Ma"
+NULL,"0.504158","0.504158","Ma"
+NULL,"0.50498","0.50498","Ma"
+NULL,"0.5061","0.5061","Ma"
+NULL,"0.5073","0.5073","Ma"
+NULL,"0.5079","0.5079","Ma"
+NULL,"0.508146","0.508146","Ma"
+NULL,"0.5084","0.5084","Ma"
+NULL,"0.5095","0.5095","Ma"
+NULL,"0.509546","0.509546","Ma"
+NULL,"0.51","0.59",NULL
+NULL,"0.51",NULL,"Ma"
+NULL,"0.512164","0.512164","Ma"
+NULL,"0.513503","0.513503","Ma"
+NULL,"0.516151","0.516151","Ma"
+NULL,"0.5173","0.5173","Ma"
+NULL,"0.51749","0.51749","Ma"
+NULL,"0.518","0.518","Ma"
+NULL,"0.5186","0.5186","Ma"
+NULL,"0.5193","0.5193","Ma"
+NULL,"0.520169","0.520169","Ma"
+NULL,"0.5213","0.5213","Ma"
+NULL,"0.521371","0.521371","Ma"
+NULL,"0.5219","0.5219","Ma"
+NULL,"0.523151","0.523151","Ma"
+NULL,"0.5279","0.5279","Ma"
+NULL,"0.5284","0.5284","Ma"
+NULL,"0.529087","0.529087","Ma"
+NULL,"0.5292","0.5292","Ma"
+NULL,"0.5294","0.5294","Ma"
+NULL,"0.5299","0.5299","Ma"
+NULL,"0.53","0.53","Ma"
+NULL,"0.531157","0.531157","Ma"
+NULL,"0.533622","0.533622","Ma"
+NULL,"0.536422","0.536422","Ma"
+NULL,"0.538096","0.538096","Ma"
+NULL,"0.540166","0.540166","Ma"
+NULL,"0.5416","0.5416","Ma"
+NULL,"0.542631","0.542631","Ma"
+NULL,"0.544671","0.544671","Ma"
+NULL,"0.547075","0.547075","Ma"
+NULL,"0.55","0.61","million years (Ma)"
+NULL,"0.5516","0.5516","Ma"
+NULL,"0.5557","0.5557","Ma"
+NULL,"0.557942","0.557942","Ma"
+NULL,"0.56","0.56","million years (Ma)"
+NULL,"0.560909","0.560909","Ma"
+NULL,"0.562309","0.562309","Ma"
+NULL,"0.565277","0.565277","Ma"
+NULL,"0.566677","0.566677","Ma"
+NULL,"0.5686","0.5686","Ma"
+NULL,"0.5694","0.5694","Ma"
+NULL,"0.56966","0.56966","Ma"
+NULL,"0.57","0.57","Ma"
+NULL,"0.5705","0.5705","Ma"
+NULL,"0.571","0.571","Ma"
+NULL,"0.5719","0.5719","Ma"
+NULL,"0.5725","0.5725","Ma"
+NULL,"0.572582","0.572582","Ma"
+NULL,"0.5731","0.5731","Ma"
+NULL,"0.5737","0.5737","Ma"
+NULL,"0.575413","0.575413","Ma"
+NULL,"0.576935","0.576935","Ma"
+NULL,"0.58","0.58","Ma"
+NULL,"0.5804","0.5804","Ma"
+NULL,"0.5912","0.5912","Ma"
+NULL,"0.5917","0.5917","Ma"
+NULL,"0.5919","0.5919","Ma"
+NULL,"0.5927","0.5927","Ma"
+NULL,"0.5949","0.5949","Ma"
+NULL,"0.616","0.616","Ma"
+NULL,"0.6174","0.6174","Ma"
+NULL,"0.625","0.625","Ma"
+NULL,"0.63","0.95","million years (Ma)"
+NULL,"0.6374","0.6374","Ma"
+NULL,"0.6455","0.6455","Ma"
+NULL,"0.65","0.65","Ma"
+NULL,"0.65","0.73","million years (Ma)"
+NULL,"0.6592","0.6592","Ma"
+NULL,"0.6605","0.6605","Ma"
+NULL,"0.6768","0.6768","Ma"
+NULL,"0.6836","0.6836","Ma"
+NULL,"0.6848","0.6848","Ma"
+NULL,"0.69","0.69","Ma"
+NULL,"0.69","0.75",NULL
+NULL,"0.69","0.77",NULL
+NULL,"0.6965","0.6966","Ma"
+NULL,"0.7","0.7","Ma"
+NULL,"0.7055","0.7055","Ma"
+NULL,"0.7065","0.7065","Ma"
+NULL,"0.7066","0.7066","Ma"
+NULL,"0.7067","0.7067","Ma"
+NULL,"0.7068","0.7068","Ma"
+NULL,"0.7069","0.7069","Ma"
+NULL,"0.707","0.707","Ma"
+NULL,"0.7071","0.7071","Ma"
+NULL,"0.7096","0.7096","Ma"
+NULL,"0.7148","0.7148","Ma"
+NULL,"0.7284","0.7284","Ma"
+NULL,"0.733","0.733","Ma"
+NULL,"0.7339","0.7339","Ma"
+NULL,"0.734","0.734","Ma"
+NULL,"0.7356","0.7356","Ma"
+NULL,"0.7388","0.7388","Ma"
+NULL,"0.7433","0.7433","Ma"
+NULL,"0.7461","0.7461","Ma"
+NULL,"0.7473","0.7473","Ma"
+NULL,"0.7476","0.7476","Ma"
+NULL,"0.7484","0.7484","Ma"
+NULL,"0.7487","0.7487","Ma"
+NULL,"0.7495","0.7495","Ma"
+NULL,"0.753","0.753","Ma"
+NULL,"0.7594","0.7594","Ma"
+NULL,"0.7627","0.7627","Ma"
+NULL,"0.7672","0.7672","Ma"
+NULL,"0.77","0.77","Ma"
+NULL,"0.7714","0.7714","Ma"
+NULL,"0.7718","0.7718","Ma"
+NULL,"0.78","2.2","Ma"
+NULL,"0.781","0.781","Ma"
+NULL,"0.79","0.79","million years (Ma)"
+NULL,"0.8","1.2","Ma"
+NULL,"0.8",NULL,"Ma"
+NULL,"0.8086","0.8086","Ma"
+NULL,"0.8089","0.8089","Ma"
+NULL,"0.81","0.81","Ma"
+NULL,"0.82","0.82","million years (Ma)"
+NULL,"0.8205","0.8205","Ma"
+NULL,"0.8208","0.8208","Ma"
+NULL,"0.8281","0.8281","Ma"
+NULL,"0.83","0.89",NULL
+NULL,"0.83",NULL,NULL
+NULL,"0.831","0.831","Ma"
+NULL,"0.8461","0.8461","Ma"
+NULL,"0.8465","0.8465","Ma"
+NULL,"0.8503","0.8503","Ma"
+NULL,"0.878","0.878","Ma"
+NULL,"0.88","0.98","Ma"
+NULL,"0.88",NULL,"million years (Ma)"
+NULL,"0.8954","0.8954","Ma"
+NULL,"0.8972","0.8972","Ma"
+NULL,"0.9","0.9","Ma"
+NULL,"0.9","0.9",NULL
+NULL,"0.9","1.5",NULL
+NULL,"0.9097","0.9097","Ma"
+NULL,"0.926","0.926","million years (Ma)"
+NULL,"0.93","0.97",NULL
+NULL,"0.934","0.934","Ma"
+NULL,"0.9351","0.9351","Ma"
+NULL,"0.938","0.938","Ma"
+NULL,"0.9385","0.9385","Ma"
+NULL,"0.943","0.943","Ma"
+NULL,"0.95","0.97",NULL
+NULL,"0.9665","0.9665","Ma"
+NULL,"0.97","1.03",NULL
+NULL,"0.974",NULL,"Ma"
+NULL,"0.98","1.19","Ma"
+NULL,"0.9915","0.9915","Ma"
+NULL,"0.9967","0.9967","Ma"
+NULL,"0.997","0.997","Ma"
+NULL,"0.9971","0.9971","Ma"
+NULL,"1","1","Ma"
+NULL,"1","1","million years (Ma)"
+NULL,"1","1","years"
+NULL,"1","2","Ga"
+NULL,"1","2","Ka"
+NULL,"1","2","million years (Ma)"
+NULL,"1","10","Ka"
+NULL,"1","10","million years (Ma)"
+NULL,"1","11","a"
+NULL,"1","11","Ma"
+NULL,"1","22","a"
+NULL,"1",NULL,"Ma"
+NULL,"1",NULL,"years"
+NULL,"1.01","1.05",NULL
+NULL,"1.01","1.09",NULL
+NULL,"1.02","1.02","Ma"
+NULL,"1.027","1.027","Ma"
+NULL,"1.0274","1.0274","Ma"
+NULL,"1.0288","1.0288","Ma"
+NULL,"1.03","1.03","Ma"
+NULL,"1.0301","1.0301","Ma"
+NULL,"1.032","1.032","Ma"
+NULL,"1.0322","1.0322","Ma"
+NULL,"1.0334","1.0334","Ma"
+NULL,"1.0349","1.0349","Ma"
+NULL,"1.0388","1.0388","Ma"
+NULL,"1.0394","1.0394","Ma"
+NULL,"1.0403","1.0403","Ma"
+NULL,"1.0416","1.0416","Ma"
+NULL,"1.0423","1.0423","Ma"
+NULL,"1.0426","1.0426","Ma"
+NULL,"1.067",NULL,"Ma"
+NULL,"1.069","1.069","Ma"
+NULL,"1.07","1.15",NULL
+NULL,"1.0832","1.0832","Ma"
+NULL,"1.09","1.09","Ma"
+NULL,"1.1","1.26","million years (Ma)"
+NULL,"1.1","1.3",NULL
+NULL,"1.105","1.105","Ma"
+NULL,"1.11","1.15",NULL
+NULL,"1.116","1.116","Ma"
+NULL,"1.1162","1.1162","Ma"
+NULL,"1.12",NULL,"Ma"
+NULL,"1.1237","1.1237","Ma"
+NULL,"1.135","1.135","Ma"
+NULL,"1.1397","1.1397","Ma"
+NULL,"1.14","1.14","Ma"
+NULL,"1.1402","1.1402","Ma"
+NULL,"1.1408","1.1408","Ma"
+NULL,"1.1411","1.1411","Ma"
+NULL,"1.1416","1.1416","Ma"
+NULL,"1.1418","1.1418","Ma"
+NULL,"1.1419","1.1419","Ma"
+NULL,"1.1422","1.1422","Ma"
+NULL,"1.1424","1.1424","Ma"
+NULL,"1.145",NULL,"million years (Ma)"
+NULL,"1.1452","1.1452","Ma"
+NULL,"1.15","1.23",NULL
+NULL,"1.153","1.153","Ma"
+NULL,"1.16","1.34","million years (Ma)"
+NULL,"1.1604","1.1604","Ma"
+NULL,"1.162","1.162","Ma"
+NULL,"1.189","1.189","Ma"
+NULL,"1.19","1.27",NULL
+NULL,"1.1937","1.1937","Ma"
+NULL,"1.2","1.2","Ma"
+NULL,"1.2","1.2","million years (Ma)"
+NULL,"1.2","1.8","Ma"
+NULL,"1.21","1.21","Ma"
+NULL,"1.21","1.27",NULL
+NULL,"1.21",NULL,"Ma"
+NULL,"1.21",NULL,"million years (Ma)"
+NULL,"1.21",NULL,NULL
+NULL,"1.217","1.217","Ma"
+NULL,"1.22","1.26",NULL
+NULL,"1.2228","1.2228","Ma"
+NULL,"1.2234","1.2234","Ma"
+NULL,"1.224","1.224","Ma"
+NULL,"1.232","1.232","Ma"
+NULL,"1.2334","1.2334","Ma"
+NULL,"1.24","1.28","million years (Ma)"
+NULL,"1.24",NULL,"Ma"
+NULL,"1.25","1.45","million years (Ma)"
+NULL,"1.252","1.252","Ma"
+NULL,"1.255","1.255","Ma"
+NULL,"1.2591","1.2591","Ma"
+NULL,"1.26","1.26","Ma"
+NULL,"1.26","1.38","million years (Ma)"
+NULL,"1.281","1.281","Ma"
+NULL,"1.284","1.284","Ma"
+NULL,"1.29","1.35",NULL
+NULL,"1.3","1.3","million years (Ma)"
+NULL,"1.3",NULL,"Ma"
+NULL,"1.3",NULL,"million years (Ma)"
+NULL,"1.305","1.305","Ma"
+NULL,"1.31","1.31","Ma"
+NULL,"1.31","1.37",NULL
+NULL,"1.31","1.39",NULL
+NULL,"1.314","1.314","Ma"
+NULL,"1.32","1.36","million years (Ma)"
+NULL,"1.329","1.329","Ma"
+NULL,"1.33","1.33","Ma"
+NULL,"1.33","1.33","million years (Ma)"
+NULL,"1.33","1.39",NULL
+NULL,"1.34","1.34","Ma"
+NULL,"1.344","1.344","Ma"
+NULL,"1.35",NULL,"million years (Ma)"
+NULL,"1.36","1.42","million years (Ma)"
+NULL,"1.37","1.37","Ma"
+NULL,"1.374","1.374","Ma"
+NULL,"1.378","1.378","Ma"
+NULL,"1.4","1.4","million years (Ma)"
+NULL,"1.4","1.46","million years (Ma)"
+NULL,"1.404","1.404","Ma"
+NULL,"1.4046","1.4046","Ma"
+NULL,"1.41","1.41","Ma"
+NULL,"1.418","1.418","Ma"
+NULL,"1.421","1.421","Ma"
+NULL,"1.44","1.44","Ma"
+NULL,"1.444","1.444","Ma"
+NULL,"1.45","1.57","million years (Ma)"
+NULL,"1.46","1.6","million years (Ma)"
+NULL,"1.461","1.461","Ma"
+NULL,"1.468","1.468","Ma"
+NULL,"1.48","1.48","Ma"
+NULL,"1.48","1.56","million years (Ma)"
+NULL,"1.48","1.6","million years (Ma)"
+NULL,"1.49","1.49","Ma"
+NULL,"1.49","1.51",NULL
+NULL,"1.491","1.491","Ma"
+NULL,"1.495",NULL,"million years (Ma)"
+NULL,"1.5","1.5","million years (Ma)"
+NULL,"1.5","1.64",NULL
+NULL,"1.512","1.512","Ma"
+NULL,"1.513","1.513","Ma"
+NULL,"1.52","1.52","Ma"
+NULL,"1.53","1.54","Ma"
+NULL,"1.534","1.534","Ma"
+NULL,"1.54","1.54","Ma"
+NULL,"1.554","1.554","Ma"
+NULL,"1.56","1.56","Ma"
+NULL,"1.564","1.564","Ma"
+NULL,"1.57","1.75","million years (Ma)"
+NULL,"1.574","1.574","Ma"
+NULL,"1.58","1.58","Ma"
+NULL,"1.58","1.59","million years (Ma)"
+NULL,"1.593","1.593","Ma"
+NULL,"1.6","1.6","Ma"
+NULL,"1.6","1.6","million years (Ma)"
+NULL,"1.61","1.61","Ma"
+NULL,"1.627","1.627","Ma"
+NULL,"1.63","1.68","million years (Ma)"
+NULL,"1.644","1.644","Ma"
+NULL,"1.658","1.658","Ma"
+NULL,"1.66","1.66","Ma"
+NULL,"1.66","1.74",NULL
+NULL,"1.676","1.676","Ma"
+NULL,"1.692","1.692","Ma"
+NULL,"1.7","1.7","million years (Ma)"
+NULL,"1.7","1.71","million years (Ma)"
+NULL,"1.7",NULL,"Ma"
+NULL,"1.703","1.703","Ma"
+NULL,"1.71","1.71","Ma"
+NULL,"1.7258","1.7258","Ma"
+NULL,"1.7273","1.7273","Ma"
+NULL,"1.728","1.728","Ma"
+NULL,"1.738","1.738","Ma"
+NULL,"1.749","1.749","Ma"
+NULL,"1.749",NULL,"Ma"
+NULL,"1.7498","1.7498","Ma"
+NULL,"1.75","1.75","Ma"
+NULL,"1.75","1.95","million years (Ma)"
+NULL,"1.76","1.9",NULL
+NULL,"1.76","1.98",NULL
+NULL,"1.771","1.771","Ma"
+NULL,"1.779","1.779","Ma"
+NULL,"1.796","1.796","Ma"
+NULL,"1.8","1.8","Ma"
+NULL,"1.817","1.817","Ma"
+NULL,"1.82","1.82","Ma"
+NULL,"1.825","1.825","Ma"
+NULL,"1.8271","1.8271","Ma"
+NULL,"1.83","1.83","Ma"
+NULL,"1.84","1.99","Ma"
+NULL,"1.8446","1.8446","Ma"
+NULL,"1.85","1.93",NULL
+NULL,"1.859","1.859","Ma"
+NULL,"1.875","1.875","Ma"
+NULL,"1.88","1.88","Ma"
+NULL,"1.89","1.98","Ma"
+NULL,"1.9","1.9","Ma"
+NULL,"1.9","1.9","million years (Ma)"
+NULL,"1.9","2.1","million years (Ma)"
+NULL,"1.93","1.93","Ma"
+NULL,"1.949","1.949","Ma"
+NULL,"1.96","1.96","Ma"
+NULL,"1.96","2.06",NULL
+NULL,"1.9602","1.9602","Ma"
+NULL,"1.9608","1.9608","Ma"
+NULL,"1.964","1.964","Ma"
+NULL,"1.996","1.996","Ma"
+NULL,"2","2","Ma"
+NULL,"2","2","million years (Ma)"
+NULL,"2","3","Ma"
+NULL,"2.035","2.035","Ma"
+NULL,"2.04","2.04","Ma"
+NULL,"2.053","2.053","Ma"
+NULL,"2.063","2.063","Ma"
+NULL,"2.0636","2.0636","Ma"
+NULL,"2.071","2.071","Ma"
+NULL,"2.086","2.086","Ma"
+NULL,"2.09","2.17",NULL
+NULL,"2.1","2.1","Ma"
+NULL,"2.1","2.1","million years (Ma)"
+NULL,"2.1","2.2",NULL
+NULL,"2.1","2.5",NULL
+NULL,"2.105","2.105","Ma"
+NULL,"2.11","2.11","Ma"
+NULL,"2.1119","2.1119","Ma"
+NULL,"2.112","2.112","Ma"
+NULL,"2.1126","2.1126","Ma"
+NULL,"2.132","2.132","Ma"
+NULL,"2.138","2.138","Ma"
+NULL,"2.169","2.169","Ma"
+NULL,"2.179","2.179","Ma"
+NULL,"2.198","2.198","Ma"
+NULL,"2.226","2.226","Ma"
+NULL,"2.246","2.246","Ma"
+NULL,"2.25","2.25","Ma"
+NULL,"2.254","2.254","Ma"
+NULL,"2.282","2.282","Ma"
+NULL,"2.2842","2.2842","Ma"
+NULL,"2.288","2.288","Ma"
+NULL,"2.3","2.5",NULL
+NULL,"2.312","2.312","Ma"
+NULL,"2.32","2.32","Ma"
+NULL,"2.327","2.327","Ma"
+NULL,"2.34","2.34","Ma"
+NULL,"2.344","2.344","Ma"
+NULL,"2.367","2.367","Ma"
+NULL,"2.38","2.38","Ma"
+NULL,"2.391","2.391","Ma"
+NULL,"2.3912","2.3912","Ma"
+NULL,"2.3913","2.3913","Ma"
+NULL,"2.41","2.41","Ma"
+NULL,"2.4159","2.4159","Ma"
+NULL,"2.421","2.421","Ma"
+NULL,"2.4291","2.4291","Ma"
+NULL,"2.4295","2.4295","Ma"
+NULL,"2.4297","2.4297","Ma"
+NULL,"2.43","2.71","million years (Ma)"
+NULL,"2.4357","2.4357","Ma"
+NULL,"2.4361","2.4361","Ma"
+NULL,"2.4363","2.4363","Ma"
+NULL,"2.462","2.462","Ma"
+NULL,"2.47","2.47","Ma"
+NULL,"2.47","2.49","Ma"
+NULL,"2.5","2.5",NULL
+NULL,"2.5","2.7",NULL
+NULL,"2.5","3.5","ka"
+NULL,"2.5","6.4","Ma"
+NULL,"2.501","2.501","Ma"
+NULL,"2.51","2.51","Ma"
+NULL,"2.52","2.52","Ma"
+NULL,"2.53","2.53","Ma"
+NULL,"2.533","2.533","Ma"
+NULL,"2.5481","2.5481","Ma"
+NULL,"2.55","2.99","million years (Ma)"
+NULL,"2.559","2.559","Ma"
+NULL,"2.56","2.56","Ma"
+NULL,"2.58","2.78","Ma"
+NULL,"2.5841","2.5841","Ma"
+NULL,"2.585","2.585","Ma"
+NULL,"2.59","2.59","Ma"
+NULL,"2.6","2.6","Ma"
+NULL,"2.6","2.6","million years (Ma)"
+NULL,"2.6","2.7",NULL
+NULL,"2.6","3.6","Ma"
+NULL,"2.6","3.8","Ma"
+NULL,"2.6","5.3","Ma"
+NULL,"2.6","7.4","Ma"
+NULL,"2.6","11.6","Ma"
+NULL,"2.608","2.608","Ma"
+NULL,"2.63","2.63","Ma"
+NULL,"2.644","2.644","Ma"
+NULL,"2.6458","2.6458","Ma"
+NULL,"2.6465","2.6465","Ma"
+NULL,"2.647","2.647","Ma"
+NULL,"2.6485","2.6485","Ma"
+NULL,"2.65","2.72","Ma"
+NULL,"2.652","2.652","Ma"
+NULL,"2.67","2.67","Ma"
+NULL,"2.673","2.673","Ma"
+NULL,"2.696","2.696","Ma"
+NULL,"2.72","2.72","Ma"
+NULL,"2.74","2.84",NULL
+NULL,"2.745","2.745","Ma"
+NULL,"2.75","2.99","million years (Ma)"
+NULL,"2.77","14.99","Ma"
+NULL,"2.774","2.774","Ma"
+NULL,"2.8","2.8","Ma"
+NULL,"2.8","2.8","million years (Ma)"
+NULL,"2.8","3.1","million years (Ma)"
+NULL,"2.805","2.805","Ma"
+NULL,"2.81","2.81","Ma"
+NULL,"2.82","4.03","Ma"
+NULL,"2.84","3.06","Ma"
+NULL,"2.841","2.841","Ma"
+NULL,"2.85",NULL,"Ma"
+NULL,"2.87","2.87","Ma"
+NULL,"2.88","3.16","million years (Ma)"
+NULL,"2.881","2.881","Ma"
+NULL,"2.89","2.95","million years (Ma)"
+NULL,"2.9","2.9","million years (Ma)"
+NULL,"2.9",NULL,"Ma"
+NULL,"2.925","2.925","Ma"
+NULL,"2.93","2.93","Ma"
+NULL,"2.94","2.94","Ma"
+NULL,"2.94","3.02","million years (Ma)"
+NULL,"2.96","2.96","Ma"
+NULL,"2.96","3.02","million years (Ma)"
+NULL,"2.97","3.05","million years (Ma)"
+NULL,"2.974","2.974","Ma"
+NULL,"2.98","2.98","Ma"
+NULL,"3","3","million years (Ma)"
+NULL,"3","3.23","Ma"
+NULL,"3","4","Ma"
+NULL,"3",NULL,"ka"
+NULL,"3",NULL,"Ka"
+NULL,"3.007","3.747","Ma"
+NULL,"3.01","3.01","Ma"
+NULL,"3.027","3.027","Ma"
+NULL,"3.03","3.03","Ma"
+NULL,"3.07","3.07","Ma"
+NULL,"3.082","3.082","Ma"
+NULL,"3.1","3.1","Ma"
+NULL,"3.112","3.112","Ma"
+NULL,"3.156","3.156","Ma"
+NULL,"3.16","3.16","Ma"
+NULL,"3.17","3.17","Ma"
+NULL,"3.2","3.2","Ma"
+NULL,"3.2","3.3","Ma"
+NULL,"3.22","3.22","Ma"
+NULL,"3.227","3.227","Ma"
+NULL,"3.227",NULL,"million years (Ma)"
+NULL,"3.23","3.23","Ma"
+NULL,"3.23","3.5","Ma"
+NULL,"3.252","3.252","Ma"
+NULL,"3.27","3.27","Ma"
+NULL,"3.275","3.275","Ma"
+NULL,"3.297","3.297","Ma"
+NULL,"3.31","3.31","Ma"
+NULL,"3.319","3.319","Ma"
+NULL,"3.32","3.32","Ma"
+NULL,"3.34","3.34","Ma"
+NULL,"3.341","3.341","Ma"
+NULL,"3.35","3.35","Ma"
+NULL,"3.362","3.362","Ma"
+NULL,"3.3645","3.3645","Ma"
+NULL,"3.37","3.37","Ma"
+NULL,"3.38","3.38","Ma"
+NULL,"3.385","3.385","Ma"
+NULL,"3.4","3.4","Ma"
+NULL,"3.409","3.409","Ma"
+NULL,"3.4283","3.4283","Ma"
+NULL,"3.4289","3.4289","Ma"
+NULL,"3.43","3.43","Ma"
+NULL,"3.4311","3.4311","Ma"
+NULL,"3.435","3.435","Ma"
+NULL,"3.44","3.44","Ma"
+NULL,"3.462","3.462","Ma"
+NULL,"3.4649","3.4649","Ma"
+NULL,"3.4758","3.4758","Ma"
+NULL,"3.4764","3.4764","Ma"
+NULL,"3.492","3.492","Ma"
+NULL,"3.4957","3.4957","Ma"
+NULL,"3.4996","3.4996","Ma"
+NULL,"3.4998","3.4998","Ma"
+NULL,"3.5","3.5","Ma"
+NULL,"3.524","3.524","Ma"
+NULL,"3.53","3.62","million years (Ma)"
+NULL,"3.54","3.54","Ma"
+NULL,"3.5451","3.5451","Ma"
+NULL,"3.557","3.557","Ma"
+NULL,"3.59","3.59","Ma"
+NULL,"3.6","3.61","Ma"
+NULL,"3.6","4.2","Ma"
+NULL,"3.62","3.63","Ma"
+NULL,"3.622","3.622","Ma"
+NULL,"3.63","3.63","Ma"
+NULL,"3.65","3.65","Ma"
+NULL,"3.652","3.652","Ma"
+NULL,"3.67","3.67","Ma"
+NULL,"3.682","3.682","Ma"
+NULL,"3.71","3.71","Ma"
+NULL,"3.739","3.739","Ma"
+NULL,"3.767","3.767","Ma"
+NULL,"3.77","3.77","Ma"
+NULL,"3.795","3.795","Ma"
+NULL,"3.825","3.825","Ma"
+NULL,"3.83","4.29","million years (Ma)"
+NULL,"3.85","3.86","Ma"
+NULL,"3.855","3.855","Ma"
+NULL,"3.884","3.884","Ma"
+NULL,"3.89","3.89","Ma"
+NULL,"3.89","3.9","Ma"
+NULL,"3.91","3.91","Ma"
+NULL,"3.912","3.912","Ma"
+NULL,"3.92","3.93","Ma"
+NULL,"3.938","3.938","Ma"
+NULL,"3.959","3.959","Ma"
+NULL,"3.986","3.986","Ma"
+NULL,"4","4","Ma"
+NULL,"4","4.5","Ma"
+NULL,"4","6","Ma"
+NULL,"4","6",NULL
+NULL,"4",NULL,"ka"
+NULL,"4",NULL,"Ka"
+NULL,"4",NULL,"Ma"
+NULL,"4.043","4.043","Ma"
+NULL,"4.075","4.075","Ma"
+NULL,"4.09","4.09","Ma"
+NULL,"4.0942","4.0942","Ma"
+NULL,"4.1","4.1","Ma"
+NULL,"4.1","4.1","million years (Ma)"
+NULL,"4.1",NULL,"million years (Ma)"
+NULL,"4.109","4.109","Ma"
+NULL,"4.11","4.11","Ma"
+NULL,"4.144","4.144","Ma"
+NULL,"4.16","4.16","Ma"
+NULL,"4.179","4.179","Ma"
+NULL,"4.194","4.194","Ma"
+NULL,"4.1956","4.1956","Ma"
+NULL,"4.2","4.2","Ma"
+NULL,"4.2","4.4","million years (Ma)"
+NULL,"4.2","5.2","Ma"
+NULL,"4.212","4.212","Ma"
+NULL,"4.24","4.24","Ma"
+NULL,"4.244","4.244","Ma"
+NULL,"4.273","4.273","Ma"
+NULL,"4.2819","4.2819","Ma"
+NULL,"4.29","4.29","Ma"
+NULL,"4.29",NULL,"Ma"
+NULL,"4.299","4.299","Ma"
+NULL,"4.31","4.69","million years (Ma)"
+NULL,"4.322","4.322","Ma"
+NULL,"4.33","4.33","Ma"
+NULL,"4.344","4.344","Ma"
+NULL,"4.364","4.364","Ma"
+NULL,"4.38","4.38","Ma"
+NULL,"4.383","4.383","Ma"
+NULL,"4.4","4.4","Ma"
+NULL,"4.417","4.417","Ma"
+NULL,"4.42","4.42","Ma"
+NULL,"4.433","4.433","Ma"
+NULL,"4.449","4.449","Ma"
+NULL,"4.46","4.46","Ma"
+NULL,"4.464","4.464","Ma"
+NULL,"4.477","4.477","Ma"
+NULL,"4.48","4.48","Ma"
+NULL,"4.496","4.496","Ma"
+NULL,"4.5","4.5","million years (Ma)"
+NULL,"4.5",NULL,"Ma"
+NULL,"4.51","4.51","Ma"
+NULL,"4.512","4.512","Ma"
+NULL,"4.529","4.529","Ma"
+NULL,"4.546","4.546","Ma"
+NULL,"4.55","4.55","Ma"
+NULL,"4.565","4.565","Ma"
+NULL,"4.585","4.585","Ma"
+NULL,"4.59","4.59","Ma"
+NULL,"4.606","4.606","Ma"
+NULL,"4.61","4.61","Ma"
+NULL,"4.627","4.627","Ma"
+NULL,"4.64","4.64","Ma"
+NULL,"4.649","4.649","Ma"
+NULL,"4.67","4.67","Ma"
+NULL,"4.692","4.692","Ma"
+NULL,"4.7","4.7","million years (Ma)"
+NULL,"4.714","4.714","Ma"
+NULL,"4.736","4.736","Ma"
+NULL,"4.74","4.86","million years (Ma)"
+NULL,"4.7426","4.7426","Ma"
+NULL,"4.75","4.75","Ma"
+NULL,"4.7502","4.7502","Ma"
+NULL,"4.7523","4.7523","Ma"
+NULL,"4.754","4.754","Ma"
+NULL,"4.7553","4.7553","Ma"
+NULL,"4.758","4.758","Ma"
+NULL,"4.782","4.782","Ma"
+NULL,"4.7854","4.7854","Ma"
+NULL,"4.79","5.19","Ma"
+NULL,"4.8","5",NULL
+NULL,"4.807","4.807","Ma"
+NULL,"4.8507","4.8507","Ma"
+NULL,"4.86","4.86","Ma"
+NULL,"4.866","4.866","Ma"
+NULL,"4.87","4.87","Ma"
+NULL,"4.883","4.883","Ma"
+NULL,"4.8893","4.8893","Ma"
+NULL,"4.8995","4.8995","Ma"
+NULL,"4.901","4.901","Ma"
+NULL,"4.93","4.93","Ma"
+NULL,"4.94","4.94","Ma"
+NULL,"4.944","4.944","Ma"
+NULL,"4.9453","4.9453","Ma"
+NULL,"4.993","4.993","Ma"
+NULL,"5","5","a"
+NULL,"5","5.08","million years (Ma)"
+NULL,"5","5.6",NULL
+NULL,"5","10","Years"
+NULL,"5","10",NULL
+NULL,"5",NULL,NULL
+NULL,"5.03","5.03","Ma"
+NULL,"5.03","5.11","million years (Ma)"
+NULL,"5.044","5.044","Ma"
+NULL,"5.0502","5.0502","Ma"
+NULL,"5.08","5.08","Ma"
+NULL,"5.095","5.095","Ma"
+NULL,"5.132","5.132","Ma"
+NULL,"5.161","5.161","Ma"
+NULL,"5.186","5.186","Ma"
+NULL,"5.2","5.2","Ma"
+NULL,"5.2","5.2","million years (Ma)"
+NULL,"5.208","5.208","Ma"
+NULL,"5.2151","5.2151","Ma"
+NULL,"5.228","5.228","Ma"
+NULL,"5.23","5.23","Ma"
+NULL,"5.249","5.249","Ma"
+NULL,"5.26","5.26","Ma"
+NULL,"5.269","5.269","Ma"
+NULL,"5.292","5.292","Ma"
+NULL,"5.3","11.6","Ma"
+NULL,"5.3","23","Ma"
+NULL,"5.3",NULL,"Ma"
+NULL,"5.318","5.318","Ma"
+NULL,"5.32","5.32","Ma"
+NULL,"5.34","5.76","Ma"
+NULL,"5.353","5.353","Ma"
+NULL,"5.36","5.36","Ma"
+NULL,"5.407","5.407","Ma"
+NULL,"5.41","5.41","Ma"
+NULL,"5.46","5.46","Ma"
+NULL,"5.5","5.5","million years (Ma)"
+NULL,"5.505","5.505","Ma"
+NULL,"5.51","5.51","Ma"
+NULL,"5.53","5.53","Ma"
+NULL,"5.59","5.59","Ma"
+NULL,"5.6","6.6","Ma"
+NULL,"5.61","5.61","Ma"
+NULL,"5.678","5.678","Ma"
+NULL,"5.68","5.68","Ma"
+NULL,"5.695","5.695","Ma"
+NULL,"5.698","5.698","Ma"
+NULL,"5.713","5.713","Ma"
+NULL,"5.7213","5.7213","Ma"
+NULL,"5.734","5.734","Ma"
+NULL,"5.755","5.755","Ma"
+NULL,"5.774","5.774","Ma"
+NULL,"5.793","5.793","Ma"
+NULL,"5.8","5.8","Ma"
+NULL,"5.8","5.8","million years (Ma)"
+NULL,"5.811","5.811","Ma"
+NULL,"5.82","5.82","Ma"
+NULL,"5.83","5.83","Ma"
+NULL,"5.85","5.85","Ma"
+NULL,"5.85","5.85","million years (Ma)"
+NULL,"5.87","5.87","Ma"
+NULL,"5.893","5.893","Ma"
+NULL,"5.917","5.917","Ma"
+NULL,"5.92","5.92","Ma"
+NULL,"5.942","5.942","Ma"
+NULL,"5.994","5.994","Ma"
+NULL,"6.01","6.01","Ma"
+NULL,"6.04","6.04","Ma"
+NULL,"6.0876","6.0876","Ma"
+NULL,"6.0889","6.0889","Ma"
+NULL,"6.1","6.1","Ma"
+NULL,"6.1042","6.1042","Ma"
+NULL,"6.1266","6.1266","Ma"
+NULL,"6.15","6.15","Ma"
+NULL,"6.1754","6.1754","Ma"
+NULL,"6.19","6.19","Ma"
+NULL,"6.49","6.51","Ma"
+NULL,"6.5","6.5","million years (Ma)"
+NULL,"6.5","7","million years (Ma)"
+NULL,"6.5","13","million years (Ma)"
+NULL,"6.5","13","years"
+NULL,"6.5","13",NULL
+NULL,"6.5","18","million years (Ma)"
+NULL,"6.5",NULL,"million years (Ma)"
+NULL,"6.52","6.52","Ma"
+NULL,"6.66","6.66","Ma"
+NULL,"6.7","7.3","Ma"
+NULL,"6.7",NULL,"million years (Ma)"
+NULL,"6.7327","6.7327","Ma"
+NULL,"6.75","6.75","Ma"
+NULL,"6.84","6.84","Ma"
+NULL,"7","7","ka"
+NULL,"7","7","Ma"
+NULL,"7","11","Ma"
+NULL,"7",NULL,"million years (Ma)"
+NULL,"7.11",NULL,"Ma"
+NULL,"7.12","7.12","Ma"
+NULL,"7.22","7.22","Ma"
+NULL,"7.3951","7.3951","Ma"
+NULL,"7.44","7.44","Ma"
+NULL,"7.7",NULL,"Ma"
+NULL,"7.7781","7.7781","Ma"
+NULL,"7.8326","7.8326","Ma"
+NULL,"7.84","7.84","Ma"
+NULL,"7.858","7.858","Ma"
+NULL,"7.96",NULL,"Ma"
+NULL,"7.97","7.97","Ma"
+NULL,"8","12","Ma"
+NULL,"8.2","13.8","Ma"
+NULL,"8.28","8.29","Ma"
+NULL,"8.35","8.35","Ma"
+NULL,"8.44","8.44","Ma"
+NULL,"8.46","8.47","Ma"
+NULL,"8.47","8.47","Ma"
+NULL,"8.52","8.52","Ma"
+NULL,"8.61","8.61","Ma"
+NULL,"8.87",NULL,"Ma"
+NULL,"8.97","9.12","Ma"
+NULL,"9","9","Ma"
+NULL,"9","10","Ma"
+NULL,"9","271","cal yr BP"
+NULL,"9","652",NULL
+NULL,"9.04","9.08","Ma"
+NULL,"9.06","9.08","Ma"
+NULL,"9.117",NULL,"million years (Ma)"
+NULL,"9.36","9.36","Ma"
+NULL,"9.38","9.38","Ma"
+NULL,"9.44","9.44","Ma"
+NULL,"9.48",NULL,"Ma"
+NULL,"9.56","9.63","Ma"
+NULL,"9.72","9.74","Ma"
+NULL,"9.81","9.88","Ma"
+NULL,"10","12","Ka"
+NULL,"10","13","million years (Ma)"
+NULL,"10","15","million years (Ma)"
+NULL,"10","15",NULL
+NULL,"10","18","million years (Ma)"
+NULL,"10","20","a"
+NULL,"10","20",NULL
+NULL,"10",NULL,"ka"
+NULL,"10",NULL,"Ka"
+NULL,"10.14","10.14","Ma"
+NULL,"10.16",NULL,"Ma"
+NULL,"10.18","10.18","Ma"
+NULL,"10.47","10.47","Ma"
+NULL,"10.6","11","million years (Ma)"
+NULL,"10.7",NULL,"Ma"
+NULL,"10.72","10.72","Ma"
+NULL,"10.74","10.74","Ma"
+NULL,"10.9","11.1","million years (Ma)"
+NULL,"10.96","10.97","Ma"
+NULL,"11","11","million years (Ma)"
+NULL,"11","12","Ma"
+NULL,"11","12",NULL
+NULL,"11","111","Ka"
+NULL,"11",NULL,"ka"
+NULL,"11",NULL,"Ka"
+NULL,"11.04","11.04","Ma"
+NULL,"11.06","11.06","Ma"
+NULL,"11.1","11.5","million years (Ma)"
+NULL,"11.12","11.13","Ma"
+NULL,"11.23",NULL,"Ma"
+NULL,"11.35","11.35","Ma"
+NULL,"11.4","11.7","Ma"
+NULL,"11.46","11.46","Ma"
+NULL,"11.6","20.4","Ma"
+NULL,"11.69","11.71","Ma"
+NULL,"11.7",NULL,"Ma"
+NULL,"11.71","11.72","Ma"
+NULL,"11.75","11.76","Ma"
+NULL,"11.85","11.86","Ma"
+NULL,"11.89","11.9","Ma"
+NULL,"11.9","12.5","million years (Ma)"
+NULL,"11.92","11.93","Ma"
+NULL,"11.94","11.94","Ma"
+NULL,"12","15",NULL
+NULL,"12","34",NULL
+NULL,"12.01804567474048","12.01804567474048","Ma"
+NULL,"12.1","13.2","million years (Ma)"
+NULL,"12.17","12.17","Ma"
+NULL,"12.37","12.39","Ma"
+NULL,"12.44","12.44","Ma"
+NULL,"12.48","12.5","Ma"
+NULL,"12.72","13.63","million years (Ma)"
+NULL,"12.77","12.77","Ma"
+NULL,"12.78","12.78","Ma"
+NULL,"13","13","Ma"
+NULL,"13.01","13.53","Ma"
+NULL,"13.06","13.06","Ma"
+NULL,"13.24",NULL,"million years (Ma)"
+NULL,"13.3",NULL,"Ma"
+NULL,"13.62","13.72","Ma"
+NULL,"13.71","14.07","Ma"
+NULL,"13.72","13.72","Ma"
+NULL,"13.77","13.77","Ma"
+NULL,"13.85","13.98","million years (Ma)"
+NULL,"14","14","Ka"
+NULL,"14","268","cal yr BP"
+NULL,"14",NULL,"Ka"
+NULL,"14.1","14.1","Ma"
+NULL,"14.2",NULL,"Ma"
+NULL,"14.28","14.3","Ma"
+NULL,"14.29","14.63","million years (Ma)"
+NULL,"14.31","14.33","Ma"
+NULL,"14.39","14.43","Ma"
+NULL,"14.46","14.48","Ma"
+NULL,"14.5","14.5","million years (Ma)"
+NULL,"14.5",NULL,"Ma"
+NULL,"14.51","14.82","Ma"
+NULL,"14.54","14.54","Ma"
+NULL,"14.56","14.71","Ma"
+NULL,"14.58","14.62","Ma"
+NULL,"14.65","14.65","Ma"
+NULL,"14.71","14.71","Ma"
+NULL,"14.85","14.87","Ma"
+NULL,"14.86","14.88","Ma"
+NULL,"14.87","14.92","Ma"
+NULL,"14.92","14.96","Ma"
+NULL,"14.97","14.99","Ma"
+NULL,"14.98","14.98","Ma"
+NULL,"15.06","15.08","Ma"
+NULL,"15.09","15.1","Ma"
+NULL,"15.17","15.17","Ma"
+NULL,"15.19","15.21","Ma"
+NULL,"15.2421","15.2421","Ma"
+NULL,"15.28","16.92","Ma"
+NULL,"15.3","15.43","million years (Ma)"
+NULL,"15.35","15.4","Ma"
+NULL,"15.4","15.48","Ma"
+NULL,"15.41","15.41","Ma"
+NULL,"15.42","15.53","Ma"
+NULL,"15.51","15.52","Ma"
+NULL,"15.52","15.54","Ma"
+NULL,"15.53","15.64","Ma"
+NULL,"15.54","15.74","Ma"
+NULL,"15.57","15.68","Ma"
+NULL,"15.62","15.66","Ma"
+NULL,"15.6267","15.6267","Ma"
+NULL,"15.64","15.73","Ma"
+NULL,"15.74","15.74","Ma"
+NULL,"15.75","15.8","Ma"
+NULL,"15.8",NULL,"Ma"
+NULL,"15.9","16",NULL
+NULL,"15.92","16.03","Ma"
+NULL,"15.95",NULL,"Ma"
+NULL,"16","16.25",NULL
+NULL,"16","23","Ma"
+NULL,"16.02","16.02","Ma"
+NULL,"16.04","16.25","Ma"
+NULL,"16.1","16.7","million years (Ma)"
+NULL,"16.12","16.22","Ma"
+NULL,"16.18","16.18","Ma"
+NULL,"16.2",NULL,"Ma"
+NULL,"16.25","17.12","Ma"
+NULL,"16.28",NULL,"Ma"
+NULL,"16.34","16.92","Ma"
+NULL,"16.4",NULL,"Ma"
+NULL,"16.45","16.45","Ma"
+NULL,"16.71","16.71","Ma"
+NULL,"16.72",NULL,"Ma"
+NULL,"16.8",NULL,"Ma"
+NULL,"16.86","16.95","Ma"
+NULL,"17.1332","17.1332","Ma"
+NULL,"17.1743","17.1743","Ma"
+NULL,"17.29","17.29","Ma"
+NULL,"17.37","17.37","Ma"
+NULL,"17.41","17.41","Ma"
+NULL,"17.5","17.53","Ma"
+NULL,"17.58",NULL,"Ma"
+NULL,"17.59","17.65","Ma"
+NULL,"17.6",NULL,"Ma"
+NULL,"17.63","17.67","Ma"
+NULL,"18",NULL,"Ma"
+NULL,"18.06","18.06","Ma"
+NULL,"18.12","18.12","Ma"
+NULL,"18.2",NULL,"Ma"
+NULL,"18.4",NULL,"Ma"
+NULL,"18.45","18.45","Ma"
+NULL,"18.59","18.59","Ma"
+NULL,"18.7",NULL,"Ma"
+NULL,"19","19","Ma"
+NULL,"19",NULL,"years"
+NULL,"19.09","19.58","Ma"
+NULL,"19.2","20.6","Ma"
+NULL,"19.2",NULL,"Ma"
+NULL,"19.22","19.66","Ma"
+NULL,"19.3",NULL,"Ma"
+NULL,"19.36","19.36","Ma"
+NULL,"19.38","19.38","Ma"
+NULL,"19.5",NULL,"Ma"
+NULL,"19.51","19.51","Ma"
+NULL,"19.54","19.54","Ma"
+NULL,"19.6","31",NULL
+NULL,"19.66",NULL,"Ma"
+NULL,"19.72","19.75","Ma"
+NULL,"19.8","19.82","Ma"
+NULL,"19.8",NULL,"Ma"
+NULL,"19.9",NULL,"Ma"
+NULL,"19.93","19.94","Ma"
+NULL,"19.93","20.24","Ma"
+NULL,"19.95979515570934","19.95979515570934","Ma"
+NULL,"19.96","19.96","Ma"
+NULL,"20","20",NULL
+NULL,"20",NULL,"years"
+NULL,"20.07","20.07","Ma"
+NULL,"20.17","20.38","Ma"
+NULL,"20.3","20.3","Ma"
+NULL,"20.5","20.5","Ma"
+NULL,"20.5",NULL,"Ma"
+NULL,"20.52","20.61","Ma"
+NULL,"20.68","20.68","Ma"
+NULL,"20.7",NULL,"Ma"
+NULL,"20.83","20.83","Ma"
+NULL,"21.36","21.36","Ma"
+NULL,"21.4",NULL,"Ma"
+NULL,"21.48","21.48","Ma"
+NULL,"21.5",NULL,"Ma"
+NULL,"21.57","21.62","Ma"
+NULL,"21.58","21.62","Ma"
+NULL,"21.66",NULL,"Ma"
+NULL,"21.68","21.71","Ma"
+NULL,"21.9",NULL,"Ma"
+NULL,"21.92","21.92","Ma"
+NULL,"21.93","21.96","Ma"
+NULL,"21.96","21.96","Ma"
+NULL,"22.1",NULL,"Ma"
+NULL,"22.2",NULL,"Ma"
+NULL,"22.25","23","million years (Ma)"
+NULL,"22.26","22.26","Ma"
+NULL,"22.4",NULL,"Ma"
+NULL,"22.5",NULL,"Ma"
+NULL,"22.51","22.61","Ma"
+NULL,"22.57","22.67","Ma"
+NULL,"22.66","22.7","Ma"
+NULL,"22.73","22.73","Ma"
+NULL,"22.85","22.85","Ma"
+NULL,"23","28","Ma"
+NULL,"23","28.4","Ma"
+NULL,"23","33","Ma"
+NULL,"23","33.9","Ma"
+NULL,"23.1804","23.1804","Ma"
+NULL,"23.2806","23.2806","Ma"
+NULL,"23.33","23.33","Ma"
+NULL,"23.38","23.38","Ma"
+NULL,"23.7","25.5","million years (Ma)"
+NULL,"23.89",NULL,"Ma"
+NULL,"23.93","23.93","Ma"
+NULL,"24","24","Ka"
+NULL,"24","264","cal yr BP"
+NULL,"24",NULL,"Ka"
+NULL,"24.08","24.18","Ma"
+NULL,"24.27","24.27","Ma"
+NULL,"24.3",NULL,"Ma"
+NULL,"24.5","27.5","million years (Ma)"
+NULL,"24.65","24.65","Ma"
+NULL,"25","37","ka"
+NULL,"25.27","25.27","Ma"
+NULL,"25.7","27.7","Ma"
+NULL,"25.87","25.87","Ma"
+NULL,"26","26","Ma"
+NULL,"26",NULL,"Ma"
+NULL,"26.18","26.18","Ma"
+NULL,"26.6","67.2","1000 yrs"
+NULL,"26.87","26.87","Ma"
+NULL,"27.2","28.4","million years (Ma)"
+NULL,"27.4","28.4","million years (Ma)"
+NULL,"27.5","28.5","million years (Ma)"
+NULL,"27.5",NULL,"Ma"
+NULL,"27.8","28.8","million years (Ma)"
+NULL,"28","28","million years (Ma)"
+NULL,"28.1","28.1","million years (Ma)"
+NULL,"28.2","28.2","Ma"
+NULL,"28.3","28.3","million years (Ma)"
+NULL,"28.4","33.9","Ma"
+NULL,"28.5","30","million years (Ma)"
+NULL,"28.6","28.6","Ma"
+NULL,"28.64","28.64","Ma"
+NULL,"28.74","28.8","million years (Ma)"
+NULL,"29","29","million years (Ma)"
+NULL,"29","34","Ma"
+NULL,"29.38","29.38","Ma"
+NULL,"29.4",NULL,"Ma"
+NULL,"29.6","31",NULL
+NULL,"29.86","29.86","Ma"
+NULL,"30","30","Ma"
+NULL,"30","30","million years (Ma)"
+NULL,"30","35","Ma"
+NULL,"30.1","30.1","Ma"
+NULL,"30.56","30.56","Ma"
+NULL,"30.62","30.62","Ma"
+NULL,"30.7","33.1",NULL
+NULL,"31","36","Ma"
+NULL,"31.24","31.24","Ma"
+NULL,"31.35","31.35","Ma"
+NULL,"31.89","31.89","Ma"
+NULL,"32","32.5","million years (Ma)"
+NULL,"32.1",NULL,"Ma"
+NULL,"32.5","33.75","million years (Ma)"
+NULL,"32.7",NULL,NULL
+NULL,"32.85","32.85","Ma"
+NULL,"33","23","Ma"
+NULL,"33","28","Ma"
+NULL,"33","38","Ma"
+NULL,"33","48","Ma"
+NULL,"33","55","Ma"
+NULL,"33","77","ka"
+NULL,"33","256","cal yr BP"
+NULL,"33.29","33.34",NULL
+NULL,"33.5","33.5","Ma"
+NULL,"33.5","35.5","million years (Ma)"
+NULL,"33.72",NULL,NULL
+NULL,"33.76","33.76","Ma"
+NULL,"33.87",NULL,NULL
+NULL,"33.9","37.2","Ma"
+NULL,"33.9","55.8","Ma"
+NULL,"33.91","33.91","Ma"
+NULL,"34.03",NULL,NULL
+NULL,"34.17","34.17","Ma"
+NULL,"34.54","34.54","Ma"
+NULL,"34.64","34.64","Ma"
+NULL,"35.14","35.14","Ma"
+NULL,"35.35","35.35","Ma"
+NULL,"36","36","years"
+NULL,"36","36",NULL
+NULL,"36",NULL,"Ma"
+NULL,"36.05","36.05","Ma"
+NULL,"36.44","37.7","million years (Ma)"
+NULL,"36.51","36.51","Ma"
+NULL,"36.74","37.48","million years (Ma)"
+NULL,"36.75","37.63","million years (Ma)"
+NULL,"36.97","36.97","Ma"
+NULL,"37","37",NULL
+NULL,"37",NULL,"years"
+NULL,"37.26","37.92","million years (Ma)"
+NULL,"37.34","37.34","Ma"
+NULL,"37.48","38.36","million years (Ma)"
+NULL,"37.54","38.58","million years (Ma)"
+NULL,"37.6",NULL,"Ma"
+NULL,"38.22","39.22","million years (Ma)"
+NULL,"38.94","39.84","million years (Ma)"
+NULL,"39.15","39.15","Ma"
+NULL,"39.19","40.05","million years (Ma)"
+NULL,"39.25","39.25","Ma"
+NULL,"40","33","Ma"
+NULL,"40","70","Ka"
+NULL,"40",NULL,"years"
+NULL,"40.4","48.6","Ma"
+NULL,"40.57","40.57","Ma"
+NULL,"41.26","41.26","Ma"
+NULL,"42.29","42.29","Ma"
+NULL,"42.77","42.77","Ma"
+NULL,"43","40","Ma"
+NULL,"43","89","ka"
+NULL,"43.68","43.68","Ma"
+NULL,"43.94","43.94","Ma"
+NULL,"44.02","44.02","Ma"
+NULL,"45","45",NULL
+NULL,"45",NULL,"years"
+NULL,"45.5","45.5","Ma"
+NULL,"46.17","46.17","Ma"
+NULL,"46.32","46.32","Ma"
+NULL,"46.92","46.92","Ma"
+NULL,"47.09","47.09","Ma"
+NULL,"47.4","47.4","Ma"
+NULL,"47.72","47.72","Ma"
+NULL,"48","40","Ma"
+NULL,"48.88","48.88","Ma"
+NULL,"48.95","48.95","Ma"
+NULL,"49.21","49.21","Ma"
+NULL,"49.72","49.72","Ma"
+NULL,"50","52","yr"
+NULL,"50","70","million years (Ma)"
+NULL,"50",NULL,"years before present"
+NULL,"50.02","50.02","Ma"
+NULL,"50.8","50.8","Ma"
+NULL,"50.9","50.9","Ma"
+NULL,"50.94381690140842","50.94381690140842","Ma"
+NULL,"51.02","51.02","Ma"
+NULL,"51.31","51.31","Ma"
+NULL,"51.76","51.76","Ma"
+NULL,"52.11","52.11","Ma"
+NULL,"52.15","52.15","Ma"
+NULL,"52.28","52.28","Ma"
+NULL,"52.34","52.34","Ma"
+NULL,"52.34029770992355","52.34029770992355","Ma"
+NULL,"52.56","52.56","Ma"
+NULL,"52.63036129032254","52.63036129032254","Ma"
+NULL,"52.69","52.69","Ma"
+NULL,"53.14828602150543","53.14828602150543","Ma"
+NULL,"53.15","53.15","Ma"
+NULL,"53.26","53.26","Ma"
+NULL,"53.33","53.33","Ma"
+NULL,"53.42","53.42","Ma"
+NULL,"53.42569832402229","53.42569832402229","Ma"
+NULL,"53.52","53.52","Ma"
+NULL,"53.53463687150837","53.53463687150837","Ma"
+NULL,"53.6","53.6","Ma"
+NULL,"53.62","53.62","Ma"
+NULL,"53.63","53.63","Ma"
+NULL,"53.66536312849168","53.66536312849168","Ma"
+NULL,"53.67","53.67","Ma"
+NULL,"53.72","53.72","Ma"
+NULL,"53.74880382775113","53.74880382775113","Ma"
+NULL,"53.8","53.8","Ma"
+NULL,"53.82","53.82","Ma"
+NULL,"53.88564593301446","53.88564593301446","Ma"
+NULL,"53.8928229665073","53.8928229665073","Ma"
+NULL,"54","76","1000 yrs"
+NULL,"54","82","Ka"
+NULL,"54.01526538849645","54.01526538849645","Ma"
+NULL,"54.08","54.08","Ma"
+NULL,"54.29","54.29","Ma"
+NULL,"54.38","54.38","Ma"
+NULL,"54.65","54.65","Ma"
+NULL,"54.8","54.8","Ma"
+NULL,"55","40","Ma"
+NULL,"55","65","Ma"
+NULL,"55","65",NULL
+NULL,"55.28","55.28","Ma"
+NULL,"55.32","55.32","Ma"
+NULL,"55.35","55.35","Ma"
+NULL,"55.38","55.38","Ma"
+NULL,"55.48","55.48","Ma"
+NULL,"55.74020181634715","55.74020181634715","Ma"
+NULL,"55.8","61.7","Ma"
+NULL,"55.8","65.5","Ma"
+NULL,"56","56","a"
+NULL,"56.11","56.11","Ma"
+NULL,"56.21","56.21","Ma"
+NULL,"56.21175384615437","56.21175384615437","Ma"
+NULL,"56.52","56.52","Ma"
+NULL,"57","57","years"
+NULL,"57.58","57.58","Ma"
+NULL,"58","48","Ma"
+NULL,"58","55","Ma"
+NULL,"58","62","million years (Ma)"
+NULL,"58",NULL,"years"
+NULL,"58.86","58.86","Ma"
+NULL,"59.36","59.36","Ma"
+NULL,"59.78","59.78","Ma"
+NULL,"60","60",NULL
+NULL,"60",NULL,"years"
+NULL,"60.22","60.22","Ma"
+NULL,"60.41","60.41","Ma"
+NULL,"61.57","61.57","Ma"
+NULL,"62","80","1000 yrs"
+NULL,"62","126","ka"
+NULL,"63.62","63.62","Ma"
+NULL,"65","65",NULL
+NULL,"65","99","Ma"
+NULL,"65","145","Ma"
+NULL,"65","170","Ka"
+NULL,"65","199","Ma"
+NULL,"65",NULL,"years"
+NULL,"65.5","70.8","Ma"
+NULL,"65.5","99.6","Ma"
+NULL,"65.5","112","Ma"
+NULL,"65.5","201","Ma"
+NULL,"65.5","251","Ma"
+NULL,"65.7","65.7","Ma"
+NULL,"65.87","65.87","Ma"
+NULL,"66.21","66.21","Ma"
+NULL,"67","100","Ma"
+NULL,"69.15","69.15","Ma"
+NULL,"70","71","million years (Ma)"
+NULL,"70","82","1000 yrs"
+NULL,"70","83","Ma"
+NULL,"70","640",NULL
+NULL,"70.6","99.6","Ma"
+NULL,"71.48","71.48","Ma"
+NULL,"74","176","ka"
+NULL,"74.2","75.9","Ma"
+NULL,"75.9","77","Ma"
+NULL,"76.08","76.08","Ma"
+NULL,"77","77",NULL
+NULL,"77",NULL,"years"
+NULL,"78","78","years"
+NULL,"78","360","Ma"
+NULL,"79","79","years"
+NULL,"80","95",NULL
+NULL,"80.1","80.5","Ma"
+NULL,"80.5","85.1","million years (Ma)"
+NULL,"81.9","86.7","million years (Ma)"
+NULL,"83.5","65.5","Ma"
+NULL,"83.5","99.6","Ma"
+NULL,"84","84","a"
+NULL,"84","84",NULL
+NULL,"84",NULL,"years"
+NULL,"84.1","86.5","million years (Ma)"
+NULL,"84.3","85.99","million years (Ma)"
+NULL,"85","95","million years (Ma)"
+NULL,"86.9","89.3","million years (Ma)"
+NULL,"87.3","89.9","million years (Ma)"
+NULL,"89","95","years"
+NULL,"89.3","93.5","Ma"
+NULL,"89.3","99.6","Ma"
+NULL,"89.8","93.9","million years (Ma)"
+NULL,"92","96.2","million years (Ma)"
+NULL,"93.5","99.6","Ma"
+NULL,"93.5","112","Ma"
+NULL,"95",NULL,NULL
+NULL,"96",NULL,"years"
+NULL,"97",NULL,"years"
+NULL,"97.22","98.68","million years (Ma)"
+NULL,"97.9","99.42","Ma"
+NULL,"97.9","99.42","million years (Ma)"
+NULL,"98","98",NULL
+NULL,"98",NULL,"years"
+NULL,"98.4",NULL,NULL
+NULL,"99","145","Ma"
+NULL,"99","176","Ma"
+NULL,"99.5","145.5","Ma"
+NULL,"99.6","112","Ma"
+NULL,"99.6","125","Ma"
+NULL,"99.6","145.5","Ma"
+NULL,"99.6","235","Ma"
+NULL,"100","100",NULL
+NULL,"100","146","Ma"
+NULL,"100","220","1000 yrs"
+NULL,"100",NULL,"Ma"
+NULL,"100",NULL,"years"
+NULL,"101.8","104.2","million years (Ma)"
+NULL,"102.5",NULL,NULL
+NULL,"103.5","107.9","million years (Ma)"
+NULL,"108",NULL,NULL
+NULL,"110",NULL,"years"
+NULL,"114",NULL,NULL
+NULL,"115",NULL,NULL
+NULL,"118","122","Ma"
+NULL,"120","120",NULL
+NULL,"120",NULL,"years"
+NULL,"125","145","Ma"
+NULL,"125",NULL,"years"
+NULL,"125",NULL,NULL
+NULL,"126.6",NULL,NULL
+NULL,"129.5","149.5","million years (Ma)"
+NULL,"130","280","Ka"
+NULL,"130.1",NULL,NULL
+NULL,"130.9",NULL,NULL
+NULL,"131.9",NULL,NULL
+NULL,"132.1",NULL,NULL
+NULL,"132.5",NULL,NULL
+NULL,"135.6",NULL,NULL
+NULL,"137.5","139.5","million years (Ma)"
+NULL,"138.7",NULL,NULL
+NULL,"139.5",NULL,NULL
+NULL,"140",NULL,"million years (Ma)"
+NULL,"143.5",NULL,NULL
+NULL,"144",NULL,"years"
+NULL,"145","145","years"
+NULL,"145","160","Ma"
+NULL,"145","161","Ma"
+NULL,"145","176","Ma"
+NULL,"145","201","Ma"
+NULL,"145",NULL,NULL
+NULL,"145.5","161","Ma"
+NULL,"145.5","201.6","Ma"
+NULL,"147","151","million years (Ma)"
+NULL,"150","165","Ma"
+NULL,"150",NULL,NULL
+NULL,"150.5",NULL,NULL
+NULL,"155","306","cal yr BP"
+NULL,"156","172","million years (Ma)"
+NULL,"156","188","1000 yrs"
+NULL,"157",NULL,"million years (Ma)"
+NULL,"160","176","million years (Ma)"
+NULL,"161","176","Ma"
+NULL,"162","184","1000 yrs"
+NULL,"163","174","million years (Ma)"
+NULL,"164","175","Ma"
+NULL,"164",NULL,"years"
+NULL,"175","175",NULL
+NULL,"175","183","Ma"
+NULL,"175","345","AD years"
+NULL,"176","161","Ma"
+NULL,"176","201","Ma"
+NULL,"176",NULL,"years"
+NULL,"179","179",NULL
+NULL,"179",NULL,"years"
+NULL,"180",NULL,"million years (Ma)"
+NULL,"183","189","Ma"
+NULL,"192",NULL,"years before present"
+NULL,"194","199","million years (Ma)"
+NULL,"200","201",NULL
+NULL,"200","210","million years (Ma)"
+NULL,"201","206","million years (Ma)"
+NULL,"201","228","Ma"
+NULL,"201","235","Ma"
+NULL,"201","251","Ma"
+NULL,"201","359","Ma"
+NULL,"201",NULL,"million years (Ma)"
+NULL,"201.6","235","Ma"
+NULL,"201.8","235","Ma"
+NULL,"204","228","Ma"
+NULL,"205","216","Ma"
+NULL,"215",NULL,NULL
+NULL,"215.8","229.8","Ma"
+NULL,"216","228","Ma"
+NULL,"216.5","231.5","Ma"
+NULL,"220.2","234.6","Ma"
+NULL,"220.4","234.6",NULL
+NULL,"224","238.4","Ma"
+NULL,"225",NULL,"Ka"
+NULL,"225.7","240.1","Ma"
+NULL,"226.9","240.7","Ma"
+NULL,"226.9","241.5","Ma"
+NULL,"228","235","Ma"
+NULL,"229","229","years"
+NULL,"229",NULL,"years"
+NULL,"229.4","243.2","Ma"
+NULL,"229.4","243.4","Ma"
+NULL,"229.78418820367","243.61581179633","Ma"
+NULL,"230.1","244.3","Ma"
+NULL,"232.2","246","Ma"
+NULL,"232.3","247.1","Ma"
+NULL,"232.8","246.8","Ma"
+NULL,"235","245","Ma"
+NULL,"235","249.2","Ma"
+NULL,"235","251","Ma"
+NULL,"236",NULL,"years before present"
+NULL,"236.8","250.8","Ma"
+NULL,"240","340","Ka"
+NULL,"241",NULL,"years before present"
+NULL,"245","251","Ma"
+NULL,"249.4","264.6","Ma"
+NULL,"251","26","Ma"
+NULL,"251","251","years"
+NULL,"251","260","Ma"
+NULL,"251","299","Ma"
+NULL,"251","359","Ma"
+NULL,"251","488","Ma"
+NULL,"251","542","Ma"
+NULL,"255",NULL,"Ka"
+NULL,"256","256","years"
+NULL,"260","270","Ma"
+NULL,"270","280","Ma"
+NULL,"271","295","1000 yrs"
+NULL,"271","299","Ma"
+NULL,"280","284","Ma"
+NULL,"284","299","Ma"
+NULL,"292","292","yr"
+NULL,"295","300","million years (Ma)"
+NULL,"299","318","Ma"
+NULL,"299","359","Ma"
+NULL,"299","416","Ma"
+NULL,"299","444","Ma"
+NULL,"299","488","Ma"
+NULL,"300","306","Ma"
+NULL,"300","500","Ka"
+NULL,"303",NULL,"Ma"
+NULL,"304","312","Ma"
+NULL,"306","318","Ma"
+NULL,"307","307","years"
+NULL,"309","300","million years (Ma)"
+NULL,"310","330","Ma"
+NULL,"310","350","1000 yrs"
+NULL,"310",NULL,"years before present"
+NULL,"312","318","Ma"
+NULL,"312","326","Ma"
+NULL,"312","330","Ma"
+NULL,"313","315","Ma"
+NULL,"313","318","Ma"
+NULL,"314","334","Ma"
+NULL,"316","319","Ma"
+NULL,"318","326","Ma"
+NULL,"318","345","Ma"
+NULL,"318","359","Ma"
+NULL,"320","324","Ma"
+NULL,"320","339","Ma"
+NULL,"320","350","Ma"
+NULL,"320.7","334.7","Ma"
+NULL,"322","335.8","Ma"
+NULL,"322.4","335.8","Ma"
+NULL,"325","498","cal yrs BP"
+NULL,"336.76","337.5","Ma"
+NULL,"337","395","Ma"
+NULL,"337.1","352.1","Ma"
+NULL,"340","440","million years (Ma)"
+NULL,"341.6","357","Ma"
+NULL,"342","458","ka"
+NULL,"342","458",NULL
+NULL,"343","343","Ma"
+NULL,"343.6","359.6","Ma"
+NULL,"344","344","Ma"
+NULL,"344.5","359.3","Ma"
+NULL,"344.7","359.3","Ma"
+NULL,"344.9","359.9","Ma"
+NULL,"345","374","Ma"
+NULL,"347.9","362.3","Ma"
+NULL,"349","359","Ma"
+NULL,"350.3","364.5","Ma"
+NULL,"351.6","366.8","Ma"
+NULL,"356.2","370.4","Ma"
+NULL,"359","374","Ma"
+NULL,"359","385","Ma"
+NULL,"359","398","Ma"
+NULL,"359","416","Ma"
+NULL,"359","444","Ma"
+NULL,"359","542","Ma"
+NULL,"360","400","1000 yrs"
+NULL,"369",NULL,"years before present"
+NULL,"374","385","Ma"
+NULL,"375","385","Ma"
+NULL,"375","645","AD years"
+NULL,"376","376","years"
+NULL,"382",NULL,"years before present"
+NULL,"385","392","Ma"
+NULL,"385","398","Ma"
+NULL,"385","416","Ma"
+NULL,"387.7","404","Ma"
+NULL,"392","398","Ma"
+NULL,"392","407","Ma"
+NULL,"398","416","Ma"
+NULL,"400",NULL,"Ma"
+NULL,"404","410.8","Ma"
+NULL,"405","405","Ma"
+NULL,"406",NULL,"years before present"
+NULL,"407","411","Ma"
+NULL,"409","437","million years (Ma)"
+NULL,"410","443","Ma"
+NULL,"411","416","Ma"
+NULL,"411","457","million years (Ma)"
+NULL,"413",NULL,NULL
+NULL,"415","419.2","Ma"
+NULL,"415","430","million years (Ma)"
+NULL,"415.5","418.1","Ma"
+NULL,"416","488","Ma"
+NULL,"420","430","Ma"
+NULL,"424","424",NULL
+NULL,"430","440","Ma"
+NULL,"431","433","million years (Ma)"
+NULL,"432","447","million years (Ma)"
+NULL,"440","450","Ma"
+NULL,"442","459","million years (Ma)"
+NULL,"444","461","Ma"
+NULL,"444","472","Ma"
+NULL,"444","485","Ma"
+NULL,"444","488","Ma"
+NULL,"444","542","Ma"
+NULL,"446","500","Ma"
+NULL,"446",NULL,"million years (Ma)"
+NULL,"446.4","467.2","Ma"
+NULL,"450","460","Ma"
+NULL,"450","510","ka"
+NULL,"450",NULL,NULL
+NULL,"455","473","Ma"
+NULL,"458",NULL,"years before present"
+NULL,"460",NULL,"million years (Ma)"
+NULL,"461","472","Ma"
+NULL,"461","488","Ma"
+NULL,"461.6","473.6","Ma"
+NULL,"462.3","472.3","Ma"
+NULL,"465",NULL,NULL
+NULL,"472","488","Ma"
+NULL,"480",NULL,"million years (Ma)"
+NULL,"481.64","487.64","Ma"
+NULL,"484","484","years"
+NULL,"485","497","Ma"
+NULL,"485","541","Ma"
+NULL,"485","1000","Ma"
+NULL,"486","513","Ma"
+NULL,"488","501","Ma"
+NULL,"488","521","Ma"
+NULL,"488","542","Ma"
+NULL,"496","521","Ma"
+NULL,"500","900",NULL
+NULL,"500",NULL,"Ma"
+NULL,"501","521","Ma"
+NULL,"503","521","Ma"
+NULL,"503","542","Ma"
+NULL,"520","540",NULL
+NULL,"521","542","Ma"
+NULL,"521","1000","Ma"
+NULL,"530","590","ka"
+NULL,"532",NULL,"years before present"
+NULL,"535","542","Ma"
+NULL,"540","542","Ma"
+NULL,"541","1000","Ma"
+NULL,"541","2500","Ma"
+NULL,"542","550","Ma"
+NULL,"542","630","Ma"
+NULL,"542","1000","Ma"
+NULL,"542","1000",NULL
+NULL,"542","1600","Ma"
+NULL,"542","2500","Ma"
+NULL,"542","3850","Ma"
+NULL,"542","4500","Ma"
+NULL,"545","555","Ma"
+NULL,"550","550","years"
+NULL,"552.56",NULL,"million years (Ma)"
+NULL,"561",NULL,"years before present"
+NULL,"563","668","cal yrs BP"
+NULL,"565","570","Ma"
+NULL,"570",NULL,"Ma"
+NULL,"575","580","Ma"
+NULL,"582.4",NULL,"million years (Ma)"
+NULL,"595","605","Ma"
+NULL,"600",NULL,"Ma"
+NULL,"614",NULL,"Ma"
+NULL,"615",NULL,NULL
+NULL,"630","640","ka"
+NULL,"630","640",NULL
+NULL,"630","850","Ma"
+NULL,"630","1200","ka"
+NULL,"630","1600","Ka"
+NULL,"635",NULL,"years before present"
+NULL,"672",NULL,"years before present"
+NULL,"709",NULL,"years before present"
+NULL,"722",NULL,"years before present"
+NULL,"730.8","731.2","Ma"
+NULL,"760","800","ka"
+NULL,"783",NULL,"years before present"
+NULL,"827",NULL,NULL
+NULL,"850","970","ka"
+NULL,"857",NULL,"years before present"
+NULL,"860","920","years"
+NULL,"860","960","ka"
+NULL,"890","930","ka"
+NULL,"920","980","ka"
+NULL,"931",NULL,"years before present"
+NULL,"940","1060","ka"
+NULL,"946","946","years"
+NULL,"950","1010","ka"
+NULL,"950","1500","million years (Ma)"
+NULL,"965","1025","years"
+NULL,"973","1177","cal yrs BP"
+NULL,"973","1539",NULL
+NULL,"985","1045","years"
+NULL,"1000","1600","Ma"
+NULL,"1000",NULL,"years"
+NULL,"1005",NULL,"years before present"
+NULL,"1037","1450",NULL
+NULL,"1041","1049","years"
+NULL,"1043",NULL,"years"
+NULL,"1050","1090","ka"
+NULL,"1060","1100","ka"
+NULL,"1060","1120","ka"
+NULL,"1064.8","1066","Ma"
+NULL,"1070","1130","ka"
+NULL,"1079",NULL,"years before present"
+NULL,"1083","1100","Ma"
+NULL,"1083","1100","million years (Ma)"
+NULL,"1083","1100",NULL
+NULL,"1085","1100","Ma"
+NULL,"1090","1090","million years (Ma)"
+NULL,"1090","1100","Ma"
+NULL,"1100","1100",NULL
+NULL,"1110","1290","ka"
+NULL,"1133","1181","years"
+NULL,"1133",NULL,"years before present"
+NULL,"1140","1220","ka"
+NULL,"1151",NULL,"years before present"
+NULL,"1160","1280","ka"
+NULL,"1181","1359","years"
+NULL,"1190","1330","ka"
+NULL,"1200",NULL,"Ka"
+NULL,"1214",NULL,"years before present"
+NULL,"1215",NULL,"years before present"
+NULL,"1230","1270","ka"
+NULL,"1240","1280","ka"
+NULL,"1267",NULL,"years before present"
+NULL,"1270","1330","ka"
+NULL,"1270","1390","ka"
+NULL,"1282",NULL,"years"
+NULL,"1328",NULL,"years before present"
+NULL,"1329","1400","years"
+NULL,"1330",NULL,"years"
+NULL,"1331",NULL,"years before present"
+NULL,"1336","1372","years"
+NULL,"1336",NULL,"years"
+NULL,"1347",NULL,"years before present"
+NULL,"1354","1400","years"
+NULL,"1357","1375","years"
+NULL,"1360","1440","ka"
+NULL,"1380",NULL,"Ma"
+NULL,"1396",NULL,"years before present"
+NULL,"1405","1530","cal yrs BP"
+NULL,"1412",NULL,"years before present"
+NULL,"1420","1520","ka"
+NULL,"1430",NULL,NULL
+NULL,"1440","1480","ka"
+NULL,"1458","1460","years"
+NULL,"1460",NULL,"years before present"
+NULL,"1484.7","1719.9",NULL
+NULL,"1525","1688","cal yrs BP"
+NULL,"1525",NULL,"years before present"
+NULL,"1589",NULL,"years before present"
+NULL,"1600","1800","Ma"
+NULL,"1600","2500","Ma"
+NULL,"1654",NULL,"years before present"
+NULL,"1659",NULL,"AD years"
+NULL,"1680",NULL,"AD years"
+NULL,"1684",NULL,"years before present"
+NULL,"1694","1957","yrs CE"
+NULL,"1699",NULL,"AD years"
+NULL,"1722",NULL,"AD years"
+NULL,"1723",NULL,"AD years"
+NULL,"1731",NULL,"years before present"
+NULL,"1745",NULL,NULL
+NULL,"1770",NULL,"years before present"
+NULL,"1772",NULL,"AD years"
+NULL,"1780","1860","million years (Ma)"
+NULL,"1793",NULL,"AD years"
+NULL,"1800","2050","Ma"
+NULL,"1800","2300","Ma"
+NULL,"1820",NULL,"years before present"
+NULL,"1835",NULL,"AD years"
+NULL,"1844",NULL,"AD years"
+NULL,"1846","1846","AD"
+NULL,"1846","1846",NULL
+NULL,"1855",NULL,"AD years"
+NULL,"1856",NULL,"AD years"
+NULL,"1880",NULL,"AD years"
+NULL,"1891","1898","years"
+NULL,"1902",NULL,"AD years"
+NULL,"1904",NULL,"AD years"
+NULL,"1905",NULL,"AD years"
+NULL,"1907","2148",NULL
+NULL,"1907",NULL,"years before present"
+NULL,"1909",NULL,"years before present"
+NULL,"1914","1921","years"
+NULL,"1917",NULL,"AD years"
+NULL,"1920",NULL,"AD years"
+NULL,"1923","1928","years"
+NULL,"1923",NULL,"AD years"
+NULL,"1925","1985","years"
+NULL,"1927",NULL,"AD years"
+NULL,"1929","1938","years"
+NULL,"1930","2017","years"
+NULL,"1932","1932","AD"
+NULL,"1933",NULL,"AD years"
+NULL,"1939",NULL,"AD years"
+NULL,"1946",NULL,"AD years"
+NULL,"1947",NULL,"AD years"
+NULL,"1951","1963","years"
+NULL,"1951",NULL,NULL
+NULL,"1954",NULL,"AD years"
+NULL,"1955","1957","yrs CE"
+NULL,"1956","2009","yrs CE"
+NULL,"1957",NULL,"AD years"
+NULL,"1958","1988","yrs CE"
+NULL,"1959","1972","years"
+NULL,"1960",NULL,"AD years"
+NULL,"1961",NULL,"AD years"
+NULL,"1963","1965","AD years"
+NULL,"1966",NULL,"AD years"
+NULL,"1968",NULL,"AD years"
+NULL,"1971",NULL,"AD years"
+NULL,"1971",NULL,NULL
+NULL,"1973",NULL,"AD years"
+NULL,"1975",NULL,"AD years"
+NULL,"1975",NULL,NULL
+NULL,"1976",NULL,"AD years"
+NULL,"1977",NULL,"AD years"
+NULL,"1978","1991","years"
+NULL,"1982","2012","years"
+NULL,"1982",NULL,"AD years"
+NULL,"1985",NULL,"AD years"
+NULL,"1988","2003","years"
+NULL,"1989",NULL,"years"
+NULL,"1991",NULL,"years"
+NULL,"1991",NULL,NULL
+NULL,"1992",NULL,"AD years"
+NULL,"1995",NULL,"AD years"
+NULL,"1996","2005","years"
+NULL,"1996","2006","years"
+NULL,"1997",NULL,"AD years"
+NULL,"1997",NULL,"Historical"
+NULL,"1998",NULL,"years before present"
+NULL,"1999",NULL,"AD years"
+NULL,"2000","180000","years"
+NULL,"2006.625","2016.875","years"
+NULL,"2008","2017","years"
+NULL,"2010","2012","years"
+NULL,"2011","2018","years"
+NULL,"2011.708","2016.708","years"
+NULL,"2012.292","2016.875","years"
+NULL,"2012.452","2016.375","years"
+NULL,"2012.458","2015.875","years"
+NULL,"2019",NULL,"years"
+NULL,"2050","2050","years"
+NULL,"2070","2130","years"
+NULL,"2074",NULL,"years before present"
+NULL,"2080","2140","years"
+NULL,"2087",NULL,"years before present"
+NULL,"2090","2150","years"
+NULL,"2095","2155","years"
+NULL,"2100","2160","years"
+NULL,"2105","2165","years"
+NULL,"2110","2170","years"
+NULL,"2115","2175","years"
+NULL,"2120","2180","years"
+NULL,"2121","2304","cal yrs BP"
+NULL,"2140","2200","years"
+NULL,"2150","2210","years"
+NULL,"2171",NULL,"years before present"
+NULL,"2175","2235","years"
+NULL,"2177",NULL,"years before present"
+NULL,"2180","2240","years"
+NULL,"2195","2255","years"
+NULL,"2266",NULL,"years before present"
+NULL,"2280",NULL,NULL
+NULL,"2290",NULL,NULL
+NULL,"2310","2630","ka"
+NULL,"2355",NULL,"years before present"
+NULL,"2360","2410","years"
+NULL,"2360","2697","cal yrs BP"
+NULL,"2400","2820","ka"
+NULL,"2420","2580","Ma"
+NULL,"2500","2500","years"
+NULL,"2630",NULL,NULL
+NULL,"2649","2649","million years (Ma)"
+NULL,"2667","2667","million years (Ma)"
+NULL,"2668","2668","million years (Ma)"
+NULL,"2669","2669","million years (Ma)"
+NULL,"2673","2673","million years (Ma)"
+NULL,"2700","2800","Ma"
+NULL,"2700",NULL,"million years (Ma)"
+NULL,"2712",NULL,"years before present"
+NULL,"2752",NULL,"years before present"
+NULL,"2757","2849","cal yrs BP"
+NULL,"2776","2863","cal yrs BP"
+NULL,"2793.8","2793.8","Thousand years (ka)"
+NULL,"2796.3","2796.3","Thousand years (ka)"
+NULL,"2799.1","2799.1","Thousand years (ka)"
+NULL,"2800","3850","Ma"
+NULL,"2802.4","2802.4","Thousand years (ka)"
+NULL,"2805.5","2805.5","Thousand years (ka)"
+NULL,"2807.8","2807.8","Thousand years (ka)"
+NULL,"2809.3","2809.3","Thousand years (ka)"
+NULL,"2809.7","2809.7","Thousand years (ka)"
+NULL,"2811.3","2811.3","Thousand years (ka)"
+NULL,"2811.5","2811.5","Thousand years (ka)"
+NULL,"2815.3","2815.3","Thousand years (ka)"
+NULL,"2817.5","2817.5","Thousand years (ka)"
+NULL,"2817.7","2817.7","Thousand years (ka)"
+NULL,"2818.2","2818.2","Thousand years (ka)"
+NULL,"2820.2","2820.2","Thousand years (ka)"
+NULL,"2822.2","2822.2","Thousand years (ka)"
+NULL,"2824.1","2824.1","Thousand years (ka)"
+NULL,"2826.1","2826.1","Thousand years (ka)"
+NULL,"2828.1","2828.1","Thousand years (ka)"
+NULL,"2830.1","2830.1","Thousand years (ka)"
+NULL,"2830.3","2830.3","Thousand years (ka)"
+NULL,"2831","2831","Thousand years (ka)"
+NULL,"2834.5","2834.5","Thousand years (ka)"
+NULL,"2836.1","2836.1","Thousand years (ka)"
+NULL,"2838","2838","Thousand years (ka)"
+NULL,"2839",NULL,"years before present"
+NULL,"2840.1","2840.1","Thousand years (ka)"
+NULL,"2842.5","2842.5","Thousand years (ka)"
+NULL,"2843.8","2843.8","Thousand years (ka)"
+NULL,"2845.1","2845.1","Thousand years (ka)"
+NULL,"2846.1","2846.1","Thousand years (ka)"
+NULL,"2848","2848","Thousand years (ka)"
+NULL,"2850","2850","Thousand years (ka)"
+NULL,"2852","2852","Thousand years (ka)"
+NULL,"2854.2","2854.2","Thousand years (ka)"
+NULL,"2856","2856","Thousand years (ka)"
+NULL,"2858","2858","Thousand years (ka)"
+NULL,"2860.1","2860.1","Thousand years (ka)"
+NULL,"2861.6","2861.6","Thousand years (ka)"
+NULL,"2865","2964","cal yrs BP"
+NULL,"2881","3064","cal yrs BP"
+NULL,"2886.5","2886.5","Thousand years (ka)"
+NULL,"2888.1","2888.1","Thousand years (ka)"
+NULL,"2890.2","2890.2","Thousand years (ka)"
+NULL,"2892.4","2892.4","Thousand years (ka)"
+NULL,"2894.1","2894.1","Thousand years (ka)"
+NULL,"2896.2","2896.2","Thousand years (ka)"
+NULL,"2898","2898","Thousand years (ka)"
+NULL,"2899.9","2899.9","Thousand years (ka)"
+NULL,"2901.4","2901.4","Thousand years (ka)"
+NULL,"2905.1","2905.1","Thousand years (ka)"
+NULL,"2906.1","2906.1","Thousand years (ka)"
+NULL,"2908","2908","Thousand years (ka)"
+NULL,"2910","2910","Thousand years (ka)"
+NULL,"2912.1","2912.1","Thousand years (ka)"
+NULL,"2914.2","2914.2","Thousand years (ka)"
+NULL,"2916","2916","Thousand years (ka)"
+NULL,"2917.2","2917.2","Thousand years (ka)"
+NULL,"2917.4","2917.4","Thousand years (ka)"
+NULL,"2931","2931","Thousand years (ka)"
+NULL,"2932.1","2932.1","Thousand years (ka)"
+NULL,"2934.1","2934.1","Thousand years (ka)"
+NULL,"2936","2936","Thousand years (ka)"
+NULL,"2942.1","2942.1","Thousand years (ka)"
+NULL,"2944.1","2944.1","Thousand years (ka)"
+NULL,"2976.7","2976.7","Thousand years (ka)"
+NULL,"2977.2","2977.2","Thousand years (ka)"
+NULL,"2997",NULL,"years before present"
+NULL,"3000","3000","years"
+NULL,"3020",NULL,NULL
+NULL,"3025","3085",NULL
+NULL,"3032.6","3032.6","Thousand years (ka)"
+NULL,"3032.7","3032.7","Thousand years (ka)"
+NULL,"3034.1","3034.1","Thousand years (ka)"
+NULL,"3036.1","3036.1","Thousand years (ka)"
+NULL,"3038.1","3038.1","Thousand years (ka)"
+NULL,"3040","3040","Thousand years (ka)"
+NULL,"3042",NULL,"years before present"
+NULL,"3042.1","3042.1","Thousand years (ka)"
+NULL,"3044","3044","Thousand years (ka)"
+NULL,"3045.8","3045.8","Thousand years (ka)"
+NULL,"3050","3110",NULL
+NULL,"3053.6","3053.6","Thousand years (ka)"
+NULL,"3053.8","3053.8","Thousand years (ka)"
+NULL,"3054","3054","Thousand years (ka)"
+NULL,"3056.1","3056.1","Thousand years (ka)"
+NULL,"3058.1","3058.1","Thousand years (ka)"
+NULL,"3060.1","3060.1","Thousand years (ka)"
+NULL,"3062.1","3062.1","Thousand years (ka)"
+NULL,"3068",NULL,"years before present"
+NULL,"3081.9","3081.9","Thousand years (ka)"
+NULL,"3082.1","3082.1","Thousand years (ka)"
+NULL,"3084.1","3084.1","Thousand years (ka)"
+NULL,"3086.1","3086.1","Thousand years (ka)"
+NULL,"3088.4","3088.4","Thousand years (ka)"
+NULL,"3090.3","3090.3","Thousand years (ka)"
+NULL,"3092.2","3092.2","Thousand years (ka)"
+NULL,"3093.5","3093.5","Thousand years (ka)"
+NULL,"3095.1","3095.1","Thousand years (ka)"
+NULL,"3096.8","3096.8","Thousand years (ka)"
+NULL,"3098.5","3098.5","Thousand years (ka)"
+NULL,"3100.2","3100.2","Thousand years (ka)"
+NULL,"3101.9","3101.9","Thousand years (ka)"
+NULL,"3103.6","3103.6","Thousand years (ka)"
+NULL,"3105.3","3105.3","Thousand years (ka)"
+NULL,"3107","3107","Thousand years (ka)"
+NULL,"3108.7","3108.7","Thousand years (ka)"
+NULL,"3110",NULL,NULL
+NULL,"3110.3","3110.3","Thousand years (ka)"
+NULL,"3112","3112","Thousand years (ka)"
+NULL,"3114.2","3114.2","Thousand years (ka)"
+NULL,"3115.7","3115.7","Thousand years (ka)"
+NULL,"3116.4","3116.4","Thousand years (ka)"
+NULL,"3117.9","3117.9","Thousand years (ka)"
+NULL,"3118.6","3118.6","Thousand years (ka)"
+NULL,"3119.3","3119.3","Thousand years (ka)"
+NULL,"3120.1","3120.1","Thousand years (ka)"
+NULL,"3122.3","3122.3","Thousand years (ka)"
+NULL,"3123.7","3123.7","Thousand years (ka)"
+NULL,"3124.4","3124.4","Thousand years (ka)"
+NULL,"3125.9","3125.9","Thousand years (ka)"
+NULL,"3126.6","3126.6","Thousand years (ka)"
+NULL,"3128.1","3128.1","Thousand years (ka)"
+NULL,"3129.1","3129.1","Thousand years (ka)"
+NULL,"3130","3130","Thousand years (ka)"
+NULL,"3130.3","3130.3","Thousand years (ka)"
+NULL,"3131.3","3131.3","Thousand years (ka)"
+NULL,"3131.9","3131.9","Thousand years (ka)"
+NULL,"3132.2","3132.2","Thousand years (ka)"
+NULL,"3133.2","3133.2","Thousand years (ka)"
+NULL,"3134.1","3134.1","Thousand years (ka)"
+NULL,"3134.5","3134.5","Thousand years (ka)"
+NULL,"3135","3135","Thousand years (ka)"
+NULL,"3135.1","3135.1","Thousand years (ka)"
+NULL,"3137.1","3137.1","Thousand years (ka)"
+NULL,"3137.6","3137.6","Thousand years (ka)"
+NULL,"3138.4","3138.4","Thousand years (ka)"
+NULL,"3140",NULL,NULL
+NULL,"3140.4","3140.4","Thousand years (ka)"
+NULL,"3142.2","3142.2","Thousand years (ka)"
+NULL,"3144.3","3144.3","Thousand years (ka)"
+NULL,"3145.8","3145.8","Thousand years (ka)"
+NULL,"3146.5","3146.5","Thousand years (ka)"
+NULL,"3147.5","3147.5","Thousand years (ka)"
+NULL,"3148.6","3148.6","Thousand years (ka)"
+NULL,"3150.8","3150.8","Thousand years (ka)"
+NULL,"3151.9","3151.9","Thousand years (ka)"
+NULL,"3153.9","3153.9","Thousand years (ka)"
+NULL,"3156","3156","Thousand years (ka)"
+NULL,"3159.9","3159.9","Thousand years (ka)"
+NULL,"3162.2","3162.2","Thousand years (ka)"
+NULL,"3163.3","3163.3","Thousand years (ka)"
+NULL,"3167.4","3167.4","Thousand years (ka)"
+NULL,"3168","3168","Thousand years (ka)"
+NULL,"3170.1","3170.1","Thousand years (ka)"
+NULL,"3172","3172","Thousand years (ka)"
+NULL,"3174.1","3174.1","Thousand years (ka)"
+NULL,"3178.6","3178.6","Thousand years (ka)"
+NULL,"3179.7","3179.7","Thousand years (ka)"
+NULL,"3191.6","3191.6","Thousand years (ka)"
+NULL,"3192.1","3192.1","Thousand years (ka)"
+NULL,"3194.4","3194.4","Thousand years (ka)"
+NULL,"3196.3","3196.3","Thousand years (ka)"
+NULL,"3198.2","3198.2","Thousand years (ka)"
+NULL,"3199.7","3199.7","Thousand years (ka)"
+NULL,"3228.7","3228.7","Thousand years (ka)"
+NULL,"3256","3256","Thousand years (ka)"
+NULL,"3274.5","3274.5","Thousand years (ka)"
+NULL,"3288.8","3288.8","Thousand years (ka)"
+NULL,"3294.8","3294.8","Thousand years (ka)"
+NULL,"3296.4","3296.4","Thousand years (ka)"
+NULL,"3298","3298","Thousand years (ka)"
+NULL,"3299.5","3299.5","Thousand years (ka)"
+NULL,"3303.2","3303.2","Thousand years (ka)"
+NULL,"3336",NULL,"years before present"
+NULL,"3356.8","3356.8","Thousand years (ka)"
+NULL,"3395.2","3395.2","Thousand years (ka)"
+NULL,"3407",NULL,"years before present"
+NULL,"3435",NULL,NULL
+NULL,"3467",NULL,"years before present"
+NULL,"3480",NULL,"years before present"
+NULL,"3515","3575",NULL
+NULL,"3515",NULL,NULL
+NULL,"3536",NULL,"years before present"
+NULL,"3551",NULL,"years before present"
+NULL,"3600","3600","years"
+NULL,"3690",NULL,NULL
+NULL,"3734",NULL,"years before present"
+NULL,"3800","3860",NULL
+NULL,"4000","4000","years"
+NULL,"4000","8000",NULL
+NULL,"4013","4235","cal yr BP"
+NULL,"4092","4242","cal yr BP"
+NULL,"4098","4243","cal yrs BP"
+NULL,"4125",NULL,NULL
+NULL,"4220","4453",NULL
+NULL,"4248","4413","cal yr BP"
+NULL,"4420",NULL,NULL
+NULL,"4453","4825",NULL
+NULL,"4853","4964","cal yrs BP"
+NULL,"4895",NULL,"years before present"
+NULL,"5000",NULL,NULL
+NULL,"5001",NULL,"years before present"
+NULL,"5020",NULL,NULL
+NULL,"5042","5285","cal yrs BP"
+NULL,"5193",NULL,"years before present"
+NULL,"5200",NULL,NULL
+NULL,"5275",NULL,NULL
+NULL,"5294",NULL,"years before present"
+NULL,"5390",NULL,"years before present"
+NULL,"5561",NULL,"years before present"
+NULL,"5741","5901","cal yrs BP"
+NULL,"5756","5849",NULL
+NULL,"5895","6128",NULL
+NULL,"5916",NULL,"years before present"
+NULL,"6128","6500",NULL
+NULL,"6199","6290","cal yrs BP"
+NULL,"6200","6300","cal yrs BP"
+NULL,"6330","6430","years"
+NULL,"6500","6919",NULL
+NULL,"6570",NULL,"years before present"
+NULL,"6652",NULL,"years before present"
+NULL,"6656",NULL,"years before present"
+NULL,"6680",NULL,"years before present"
+NULL,"6699",NULL,"years before present"
+NULL,"6703",NULL,"years before present"
+NULL,"6860",NULL,"years before present"
+NULL,"6966","7291",NULL
+NULL,"7000","7000","years"
+NULL,"7000","50000","years"
+NULL,"7278",NULL,"years before present"
+NULL,"7291","7737",NULL
+NULL,"7415",NULL,"years before present"
+NULL,"7460",NULL,"years before present"
+NULL,"7465",NULL,NULL
+NULL,"7468",NULL,"years before present"
+NULL,"7489",NULL,"years before present"
+NULL,"7673","9400","cal yrs BP"
+NULL,"7706",NULL,"years before present"
+NULL,"7751",NULL,"years before present"
+NULL,"7817",NULL,"years before present"
+NULL,"7890",NULL,"years before present"
+NULL,"8020","8120","years"
+NULL,"8387","8519","cal yrs BP"
+NULL,"8430",NULL,"years before present"
+NULL,"8458","8636","cal yrs BP"
+NULL,"8490","8590","years"
+NULL,"8492",NULL,"years before present"
+NULL,"8571",NULL,"years before present"
+NULL,"8871",NULL,"years before present"
+NULL,"8883",NULL,"years before present"
+NULL,"9120","9200","years"
+NULL,"9135","9225","years"
+NULL,"9230",NULL,"years before present"
+NULL,"9282",NULL,"years before present"
+NULL,"9298",NULL,"years before present"
+NULL,"9317",NULL,"years before present"
+NULL,"9332",NULL,"years before present"
+NULL,"9334",NULL,"years before present"
+NULL,"9336",NULL,"years before present"
+NULL,"9364",NULL,"years before present"
+NULL,"9377",NULL,"years before present"
+NULL,"9380",NULL,"years before present"
+NULL,"9381",NULL,"years before present"
+NULL,"9400","9480","years"
+NULL,"9403",NULL,"years before present"
+NULL,"9421",NULL,"years before present"
+NULL,"9427",NULL,"years before present"
+NULL,"9429",NULL,"years before present"
+NULL,"9439",NULL,"years before present"
+NULL,"9456",NULL,"years before present"
+NULL,"9522",NULL,"years before present"
+NULL,"9557","9897","cal yrs BP"
+NULL,"9558",NULL,"years before present"
+NULL,"9568",NULL,"years before present"
+NULL,"9622",NULL,"years before present"
+NULL,"9630",NULL,NULL
+NULL,"10122",NULL,"years before present"
+NULL,"10182",NULL,"years before present"
+NULL,"10205",NULL,"years before present"
+NULL,"10216",NULL,"years before present"
+NULL,"10226","11969","cal yrs BP"
+NULL,"10246","10499","cal yrs BP"
+NULL,"10262",NULL,"years before present"
+NULL,"10272",NULL,"years before present"
+NULL,"10283",NULL,"years before present"
+NULL,"10300",NULL,"years before present"
+NULL,"10335",NULL,NULL
+NULL,"10357",NULL,"years before present"
+NULL,"10366",NULL,"years before present"
+NULL,"10491",NULL,"years before present"
+NULL,"10500",NULL,NULL
+NULL,"10570",NULL,"years before present"
+NULL,"10578","11070","cal yrs BP"
+NULL,"10579",NULL,"years before present"
+NULL,"10583","10643",NULL
+NULL,"10643","11306",NULL
+NULL,"10663","11078","cal yrs BP"
+NULL,"10670",NULL,"years before present"
+NULL,"10897","11245","cal yrs BP"
+NULL,"10900",NULL,"years before present"
+NULL,"10903",NULL,"years before present"
+NULL,"10919",NULL,"years before present"
+NULL,"10920",NULL,"years before present"
+NULL,"11008",NULL,"years before present"
+NULL,"11057",NULL,"years before present"
+NULL,"11306","13065",NULL
+NULL,"11483",NULL,"years before present"
+NULL,"11649",NULL,"years before present"
+NULL,"11725",NULL,"years before present"
+NULL,"11739","12417","cal yrs BP"
+NULL,"11746",NULL,"years before present"
+NULL,"11757",NULL,"years before present"
+NULL,"12048",NULL,"years before present"
+NULL,"12198","12672","cal yrs BP"
+NULL,"12346",NULL,"years before present"
+NULL,"12408",NULL,"years before present"
+NULL,"12425",NULL,"years before present"
+NULL,"12438",NULL,"years before present"
+NULL,"12582",NULL,"years before present"
+NULL,"12635",NULL,"years before present"
+NULL,"12641",NULL,"years before present"
+NULL,"12694",NULL,"years before present"
+NULL,"12736",NULL,"years before present"
+NULL,"12740",NULL,"years before present"
+NULL,"12746","12907","cal yrs BP"
+NULL,"12747","12832","cal yrs BP"
+NULL,"12785",NULL,"years before present"
+NULL,"12787",NULL,"years before present"
+NULL,"12800",NULL,"years before present"
+NULL,"12842",NULL,"years before present"
+NULL,"12895",NULL,"years before present"
+NULL,"13065","13171",NULL
+NULL,"13207","13298",NULL
+NULL,"13298","13453",NULL
+NULL,"13339","13585","cal yrs BP"
+NULL,"13453","13676",NULL
+NULL,"13564",NULL,"years before present"
+NULL,"13608",NULL,"years before present"
+NULL,"13676","13995",NULL
+NULL,"13683",NULL,"years before present"
+NULL,"13837",NULL,"years before present"
+NULL,"13881",NULL,"years before present"
+NULL,"13889",NULL,"years before present"
+NULL,"13898",NULL,"years before present"
+NULL,"13928",NULL,"years before present"
+NULL,"14051",NULL,"years before present"
+NULL,"14114",NULL,"years before present"
+NULL,"14157",NULL,"years before present"
+NULL,"14201","14294",NULL
+NULL,"14219",NULL,"years before present"
+NULL,"14294","14524",NULL
+NULL,"14511",NULL,"years before present"
+NULL,"14524","14757",NULL
+NULL,"14630",NULL,"years before present"
+NULL,"14757","15473",NULL
+NULL,"14809",NULL,"years before present"
+NULL,"14915",NULL,"years before present"
+NULL,"14938",NULL,"years before present"
+NULL,"14966",NULL,"years before present"
+NULL,"15130",NULL,"years before present"
+NULL,"15236",NULL,"years before present"
+NULL,"15350",NULL,"years before present"
+NULL,"15473","15488",NULL
+NULL,"15477",NULL,"years before present"
+NULL,"15488","15506",NULL
+NULL,"15507",NULL,"years before present"
+NULL,"15514",NULL,"years before present"
+NULL,"15524","15541",NULL
+NULL,"15541","15661",NULL
+NULL,"15614",NULL,"years before present"
+NULL,"15621",NULL,"years before present"
+NULL,"15624",NULL,"years before present"
+NULL,"15661","15758",NULL
+NULL,"15698",NULL,"years before present"
+NULL,"15741",NULL,"years before present"
+NULL,"15758","15873",NULL
+NULL,"15827",NULL,"years before present"
+NULL,"15873","16669",NULL
+NULL,"16126","19290",NULL
+NULL,"16142",NULL,"years before present"
+NULL,"16158",NULL,"years before present"
+NULL,"16279",NULL,"years before present"
+NULL,"16379",NULL,"years before present"
+NULL,"16477",NULL,"years before present"
+NULL,"16509",NULL,"years before present"
+NULL,"16530",NULL,"years before present"
+NULL,"16614",NULL,"years before present"
+NULL,"16669",NULL,"years before present"
+NULL,"16745","16879",NULL
+NULL,"16757",NULL,"years before present"
+NULL,"16766",NULL,"years before present"
+NULL,"16877",NULL,"years before present"
+NULL,"16879","17026",NULL
+NULL,"16898",NULL,"years before present"
+NULL,"16899",NULL,"years before present"
+NULL,"17026","17182",NULL
+NULL,"17049",NULL,"years before present"
+NULL,"17268",NULL,"years before present"
+NULL,"17334",NULL,"years before present"
+NULL,"17376",NULL,"years before present"
+NULL,"17481",NULL,"years before present"
+NULL,"17947","21925",NULL
+NULL,"19041","22561",NULL
+NULL,"19150","31035",NULL
+NULL,"19295","25208",NULL
+NULL,"20000","200000","years"
+NULL,"20369","21268",NULL
+NULL,"20668","25316",NULL
+NULL,"20811","25179",NULL
+NULL,"21264","24921",NULL
+NULL,"21268","21735",NULL
+NULL,"21449","25715",NULL
+NULL,"21735","22314",NULL
+NULL,"22314","22479",NULL
+NULL,"22643","22890",NULL
+NULL,"22890","23220",NULL
+NULL,"23929","23961",NULL
+NULL,"23961","24041",NULL
+NULL,"24314","28326",NULL
+NULL,"24947","36728",NULL
+NULL,"39600","43600",NULL
+NULL,"44100",NULL,NULL
+NULL,"48520","56045",NULL
+NULL,"49559","57232",NULL
+NULL,"50000","90000","years"
+NULL,"51000",NULL,"years"
+NULL,"52439","62472",NULL
+NULL,"54000",NULL,"years"
+NULL,"60000","85000","years"
+NULL,"64000","75000","years"
+NULL,"67000","116000","years"
+NULL,"72827","83654",NULL
+NULL,"84000",NULL,"years"
+NULL,"94600",NULL,"years"
+NULL,"95205","110253",NULL
+NULL,"98080","112681",NULL
+NULL,"100000","100000","years"
+NULL,"118584","135864",NULL
+NULL,"121117","138930",NULL
+NULL,"186593","213528",NULL
+NULL,"212998","243549",NULL
+NULL,"700000","700000","years"
+NULL,"2900000","2900000","years"
+NULL,"3900000","3900000","years"
+NULL,"5700000","5700000","years"
+NULL,"6700000","6700000","years"
+NULL,NULL,"0",NULL
+NULL,NULL,"0.1","Ma"
+NULL,NULL,"0.1",NULL
+NULL,NULL,"0.7","Ka"
+NULL,NULL,"1","Ma"
+NULL,NULL,"1.305","Ma"
+NULL,NULL,"1.47","Ma"
+NULL,NULL,"2","Ka"
+NULL,NULL,"2","Ma"
+NULL,NULL,"2","million years (Ma)"
+NULL,NULL,"2.2","Ma"
+NULL,NULL,"2.5",NULL
+NULL,NULL,"2.7","Ma"
+NULL,NULL,"2.7",NULL
+NULL,NULL,"2.77","Ma"
+NULL,NULL,"3","ka"
+NULL,NULL,"3","Ka"
+NULL,NULL,"3","Ma"
+NULL,NULL,"3.6","Ma"
+NULL,NULL,"3.95","Ma"
+NULL,NULL,"3.98","Ma"
+NULL,NULL,"3.99","Ma"
+NULL,NULL,"4.2","Ma"
+NULL,NULL,"4.3","Ma"
+NULL,NULL,"4.5","Ma"
+NULL,NULL,"4.7","Ma"
+NULL,NULL,"5.4","Ma"
+NULL,NULL,"5.5","Ma"
+NULL,NULL,"6.05","Ma"
+NULL,NULL,"7.4","Ma"
+NULL,NULL,"7.86","Ma"
+NULL,NULL,"10","ka"
+NULL,NULL,"10","Ma"
+NULL,NULL,"11","Ma"
+NULL,NULL,"18","Ma"
+NULL,NULL,"21.6","million years (Ma)"
+NULL,NULL,"22","Ma"
+NULL,NULL,"29","ka"
+NULL,NULL,"40","Ka"
+NULL,NULL,"65","Ka"
+NULL,NULL,"80","Ka"
+NULL,NULL,"86","Ma"
+NULL,NULL,"88","Ma"
+NULL,NULL,"89","Ma"
+NULL,NULL,"91","Ma"
+NULL,NULL,"120","Ma"
+NULL,NULL,"137","Ka"
+NULL,NULL,"145",NULL
+NULL,NULL,"146","Ma"
+NULL,NULL,"157","Ma"
+NULL,NULL,"166",NULL
+NULL,NULL,"194","Ka"
+NULL,NULL,"200","AD years"
+NULL,NULL,"226","Ka"
+NULL,NULL,"266",NULL
+NULL,NULL,"276",NULL
+NULL,NULL,"287","cal yr BP"
+NULL,NULL,"295","cal yr BP"
+NULL,NULL,"317.3",NULL
+NULL,NULL,"330.5",NULL
+NULL,NULL,"428","million years (Ma)"
+NULL,NULL,"438.4",NULL
+NULL,NULL,"1000","years"
+NULL,NULL,"1454.5",NULL
+NULL,NULL,"1859","AD"
+NULL,NULL,"1865","AD"
+NULL,NULL,"1873","AD"
+NULL,NULL,"1883","AD"
+NULL,NULL,"1892","AD"
+NULL,NULL,"1901","AD"
+NULL,NULL,"1912","AD"
+NULL,NULL,"1922","AD"
+NULL,NULL,"1933","AD"
+NULL,NULL,"1943","AD"
+NULL,NULL,"1954","AD"
+NULL,NULL,"1955.1509433962","Common Era (CE)"
+NULL,NULL,"1956.2075471698","Common Era (CE)"
+NULL,NULL,"1957.1132075472","Common Era (CE)"
+NULL,NULL,"1958.0188679245","Common Era (CE)"
+NULL,NULL,"1958.9245283019","Common Era (CE)"
+NULL,NULL,"1959.8301886792","Common Era (CE)"
+NULL,NULL,"1960.7358490566","Common Era (CE)"
+NULL,NULL,"1961.641509434","Common Era (CE)"
+NULL,NULL,"1962.5471698113","Common Era (CE)"
+NULL,NULL,"1964","AD"
+NULL,NULL,"1965.5555555556","Common Era (CE)"
+NULL,NULL,"1970.6666666667","Common Era (CE)"
+NULL,NULL,"1975.7777777778","Common Era (CE)"
+NULL,NULL,"1976","AD"
+NULL,NULL,"1980.8888888889","Common Era (CE)"
+NULL,NULL,"1984.2962962963","Common Era (CE)"
+NULL,NULL,"1986","Common Era (CE)"
+NULL,NULL,"1987","AD"
+NULL,NULL,"1988.6842105263","Common Era (CE)"
+NULL,NULL,"1991.3684210526","Common Era (CE)"
+NULL,NULL,"1993.1578947368","Common Era (CE)"
+NULL,NULL,"1995.8421052632","Common Era (CE)"
+NULL,NULL,"1996","AD"
+NULL,NULL,"1999.4210526316","Common Era (CE)"
+NULL,NULL,"2000.3157894737","Common Era (CE)"
+NULL,NULL,"2004.8888889","Common Era (CE)"
+NULL,NULL,"2006","AD"
+NULL,NULL,"2008.8888889","Common Era (CE)"
+NULL,NULL,"2010.8888889","Common Era (CE)"
+NULL,NULL,"2011.6","Common Era (CE)"
+NULL,NULL,"2012","Common Era (CE)"
+NULL,NULL,"2012.6","Common Era (CE)"
+NULL,NULL,"2013","Common Era (CE)"
+NULL,NULL,"2013.7","Common Era (CE)"
+NULL,NULL,"2013.8","Common Era (CE)"
+NULL,NULL,"2014.3","Common Era (CE)"
+NULL,NULL,"2014.6","Common Era (CE)"
+NULL,NULL,"2014.8","Common Era (CE)"
+NULL,NULL,"2014.9","Common Era (CE)"
+NULL,NULL,"2015.3","Common Era (CE)"
+NULL,NULL,"2015.36","Common Era (CE)"
+NULL,NULL,"2016.3","Common Era (CE)"
+NULL,NULL,"2017","Common Era (CE)"
+NULL,NULL,"2017.9","Common Era (CE)"
+NULL,NULL,"2018","Common Era (CE)"
+NULL,NULL,"2018.1","Common Era (CE)"
+NULL,NULL,"2018.2","Common Era (CE)"
+NULL,NULL,"2018.4","Common Era (CE)"
+NULL,NULL,"2018.5","Common Era (CE)"
+NULL,NULL,"2018.6","Common Era (CE)"
+NULL,NULL,"2019.1","Common Era (CE)"
+NULL,NULL,"2019.6","Common Era (CE)"
+NULL,NULL,"2019.8","Common Era (CE)"
+NULL,NULL,"2020","Common Era (CE)"
+NULL,NULL,"2020.2","Common Era (CE)"
+NULL,NULL,"2020.3","Common Era (CE)"
+NULL,NULL,"2020.7","Common Era (CE)"
+NULL,NULL,"2021","Common Era (CE)"
+NULL,NULL,"2021.2","Common Era (CE)"
+NULL,NULL,"2021.4","Common Era (CE)"
+NULL,NULL,"2021.5","Common Era (CE)"
+NULL,NULL,"7040","years"
+NULL,NULL,"10000","years"
+NULL,NULL,"20000","years"
+NULL,NULL,"30000",NULL
+NULL,NULL,"51000","years"
+NULL,NULL,NULL,"Ma"
+NULL,NULL,NULL,NULL

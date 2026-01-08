@@ -1,0 +1,263 @@
+s	lab	onepar	parlist
+sf:activehumanoccupationsite	Active human occupation site	sf:anthropogenicenvironment	https://w3id.org/isample/vocabulary/sampledfeature/anthropogenicenvironment
+sf:anthropogenicenvironment	Anthropogenic environment	sf:anysampledfeature	https://w3id.org/isample/vocabulary/sampledfeature/anysampledfeature
+sf:anysampledfeature	Any sampled feature		
+sf:atmosphere	Atmosphere	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sf:biologicalentity	Biological entity	sf:anysampledfeature	https://w3id.org/isample/vocabulary/sampledfeature/anysampledfeature
+sf:earthenvironment	Earth environment	sf:anysampledfeature	https://w3id.org/isample/vocabulary/sampledfeature/anysampledfeature
+sf:earthinterior	Earth interior	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sf:earthsurface	Earth surface	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sf:experimentsetting	Experiment setting	sf:activehumanoccupationsite	https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sf:extraterrestrialenvironment	Extraterrestrial environment	sf:anysampledfeature	https://w3id.org/isample/vocabulary/sampledfeature/anysampledfeature
+sf:glacierenvironment	Glacier environment	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment | https://w3id.org/sesar/sampledfeature/polar_climatic_setting
+sf:laboratorycuratorialenvironment	Laboratory or curatorial environment	sf:activehumanoccupationsite	https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sf:lakeriverstreambottom	Lake river or stream bottom	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting
+sf:marinewaterbody	Marine water body	sf:waterbody	https://w3id.org/isample/vocabulary/sampledfeature/waterbody
+sf:marinewaterbodybottom	Marine water body bottom	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sf:pasthumanoccupationsite	Site of past human activities	sf:anthropogenicenvironment	https://w3id.org/isample/vocabulary/sampledfeature/anthropogenicenvironment
+sf:subaerialsurfaceenvironment	Subaerial surface environment	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sf:subsurfacefluidreservoir	Subsurface fluid reservoir	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sf:terrestrialwaterbody	Terrestrial water body	sf:waterbody	https://w3id.org/isample/vocabulary/sampledfeature/waterbody
+sf:waterbody	Water body	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:abandoned_channel	Abandoned river channel	sessf:river_system	https://w3id.org/sesar/sampledfeature/river_system
+sessf:above_carbonate_compensation_depth	Above carbonate compensation depth	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:abyssal_plain	Basin plain	sessf:plain	https://w3id.org/sesar/sampledfeature/plain | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:abyssal_setting	Abyssal setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:active_continental_margin	Active continental margin	sessf:plate_margin	https://w3id.org/sesar/sampledfeature/plate_margin | https://w3id.org/sesar/sampledfeature/continental_margin
+sessf:active_ocean_ridge	Active ocean ridge	sessf:submarine_ridge	https://w3id.org/sesar/sampledfeature/submarine_ridge
+sessf:agricultural_site	Agricultural site 	sf:activehumanoccupationsite	https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sessf:algal_flat	Algal flat	sessf:low_energy_shoreline_setting	https://w3id.org/sesar/sampledfeature/low_energy_shoreline_setting
+sessf:alkalic_igneous_complex	Alkalic igneous complex	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system
+sessf:alluvial_fan	Alluvial fan	sessf:piedmont_slope	https://w3id.org/sesar/sampledfeature/piedmont_slope
+sessf:alluvial_plain	Alluvial plain	sessf:plain	https://w3id.org/sesar/sampledfeature/plain | https://w3id.org/sesar/sampledfeature/piedmont_slope
+sessf:anoxic_environment	Anoxic environment	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:aquifer	Aquifer 	sf:subsurfacefluidreservoir	https://w3id.org/isample/vocabulary/sampledfeature/subsurfacefluidreservoir
+sessf:arch_natural_formation	Arch-natural formation 	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:arid_or_semi_arid_environment	Arid or semi arid environment	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:axial_valley	Ocean ridge axial valley	sessf:active_ocean_ridge	https://w3id.org/sesar/sampledfeature/active_ocean_ridge
+sessf:back_arc_setting	Back arc setting	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:backreef	Backreef setting	sessf:biological_reef	https://w3id.org/sesar/sampledfeature/biological_reef
+sessf:badlands	Badlands	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:barrier_beach	Barrier beach	sessf:beach	https://w3id.org/sesar/sampledfeature/beach | https://w3id.org/sesar/sampledfeature/barrier_island_coastline
+sessf:barrier_island_coastline	Barrier island coastline	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:barrier_lagoon	Barrier lagoon	sessf:lagoonal_setting	https://w3id.org/sesar/sampledfeature/lagoonal_setting | https://w3id.org/sesar/sampledfeature/barrier_island_coastline
+sessf:basin	Basin-physiography	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:bathyal_setting	Bathyal setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:bay	Bay	sf:waterbody	https://w3id.org/isample/vocabulary/sampledfeature/waterbody
+sessf:beach	Beach	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:below_carbonate_compensation_depth_setting	Below carbonate compensation depth setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:bight	Bight	sf:waterbody	https://w3id.org/isample/vocabulary/sampledfeature/waterbody
+sessf:biological_reef	Biological reef	sf:marinewaterbodybottom	https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:bog	Bog	sessf:wetland	https://w3id.org/sesar/sampledfeature/wetland | https://w3id.org/sesar/sampledfeature/terrestrial_setting
+sessf:braided_channel	Braided river channel	sessf:river_channel	https://w3id.org/sesar/sampledfeature/river_channel
+sessf:butte	Butte	sessf:hill	https://w3id.org/sesar/sampledfeature/hill
+sessf:canal	Canal	sf:waterbody	https://w3id.org/isample/vocabulary/sampledfeature/waterbody | https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sessf:canyon	Canyon	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:cape	Cape	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline | https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:carbonate_dominated_shoreline	Carbonate dominated shoreline	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:carbonate_mound	Carbonate mound	sf:marinewaterbodybottom	https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:carbonatite_complex	Carbonatite complex	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system
+sessf:cave	Cave	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:channel	Channel	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:cirque	Cirque	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature | https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:cliff	Cliff	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:coastal_dune_field	Coastal dune field	sessf:dunefield	https://w3id.org/sesar/sampledfeature/dunefield
+sessf:coastal_plain	Coastal plain	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment | https://w3id.org/sesar/sampledfeature/plain
+sessf:collisional_setting	Collisional setting	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting | https://w3id.org/sesar/sampledfeature/continental_crust
+sessf:contact_metamorphic_zone	Contact metamorphic zone	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:continent	Continent	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:continental_borderland	Continental borderland	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:continental_crust	Continental crust	sessf:crust	https://w3id.org/sesar/sampledfeature/crust
+sessf:continental_divide	Continental divide	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:continental_margin	Continental Margin	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:continental_margin_trench	Continental margin trench	sessf:deep_sea_trench	https://w3id.org/sesar/sampledfeature/deep_sea_trench
+sessf:continental_rift_setting	Continental rift	sessf:extended_terrane	https://w3id.org/sesar/sampledfeature/extended_terrane
+sessf:continental_shelf	Continental shelf	sessf:marginal_shelf	https://w3id.org/sesar/sampledfeature/marginal_shelf
+sessf:continental_volcanic_arc	Continental volcanic arc	sessf:volcanic_arc	https://w3id.org/sesar/sampledfeature/volcanic_arc
+sessf:crater	Crater	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:crust	Crustal setting	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior | https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:cutoff_meander	Cutoff meander	sessf:river_system	https://w3id.org/sesar/sampledfeature/river_system
+sessf:deep_sea_trench	Deep sea trench	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:delta_front	Delta front	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system
+sessf:delta_plain	Delta plain	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system | https://w3id.org/sesar/sampledfeature/plain
+sessf:deltaic_system	Deltaic system	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:diatreme_or_kimberlite	Diatreme or kimberlite	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system
+sessf:distributary_channel	Delta distributary channel	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system | https://w3id.org/sesar/sampledfeature/channel
+sessf:distributary_mouth	Delta distributary mouth	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system
+sessf:drainage_basin	Drainage basin	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting
+sessf:drumlin	Drumlin	sessf:hill	https://w3id.org/sesar/sampledfeature/hill
+sessf:ductile_shear_zone	Ductile shear zone 	sessf:geologic_structure	https://w3id.org/sesar/sampledfeature/geologic_structure
+sessf:dune	Dune 	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature | https://w3id.org/sesar/sampledfeature/eolian_process_setting
+sessf:dunefield	Dunefield	sessf:eolian_process_setting	https://w3id.org/sesar/sampledfeature/eolian_process_setting
+sessf:englacial_setting	Englacial setting	sf:glacierenvironment	https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:eolian_process_setting	Eolian process setting	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:epicontinental_marine_setting	Epicontinental marine setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:escarpment	Escarpment	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:estuarine_delta	Estuarine delta	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system | https://w3id.org/sesar/sampledfeature/estuary
+sessf:estuarine_lagoon	Estuarine lagoon	sessf:estuary	https://w3id.org/sesar/sampledfeature/estuary | https://w3id.org/sesar/sampledfeature/lagoonal_setting
+sessf:estuary	Estuary	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:extended_terrane	Extended terrane	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:extra_terrestrial_setting	Extraterrestrial setting		
+sessf:fault	Geologic fault	sessf:geologic_structure	https://w3id.org/sesar/sampledfeature/geologic_structure
+sessf:fault_scarp	Fault scarp	sessf:geologic_structure	https://w3id.org/sesar/sampledfeature/geologic_structure
+sessf:fiord	Fjord 	sf:marinewaterbody	https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbody
+sessf:floodplain	Floodplain	sessf:river_system	https://w3id.org/sesar/sampledfeature/river_system
+sessf:fold	Geologic fold	sessf:geologic_structure	https://w3id.org/sesar/sampledfeature/geologic_structure
+sessf:forearc_setting	Forearc setting	sessf:plate_margin	https://w3id.org/sesar/sampledfeature/plate_margin
+sessf:foreland_basin	Foreland basin	sessf:sedimentary_basin	https://w3id.org/sesar/sampledfeature/sedimentary_basin | https://w3id.org/sesar/sampledfeature/foreland_setting
+sessf:foreland_fold_thrust_belt	Foreland fold and thrust belt	sessf:foreland_setting	https://w3id.org/sesar/sampledfeature/foreland_setting
+sessf:foreland_setting	Foreland setting	sessf:continental_crust	https://w3id.org/sesar/sampledfeature/continental_crust | https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:forereef_setting	Forereef setting	sessf:biological_reef	https://w3id.org/sesar/sampledfeature/biological_reef
+sessf:forest	Forest	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:fracture_zone	Fracture zone	sessf:plate_margin	https://w3id.org/sesar/sampledfeature/plate_margin
+sessf:geologic_structure	Geologic structure	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:geologic_unit	Geologic unit	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:geothermal_water	Geothermal water	sf:subsurfacefluidreservoir	https://w3id.org/isample/vocabulary/sampledfeature/subsurfacefluidreservoir
+sessf:gibber_plain	Gibber plain	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment | https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/sesar/sampledfeature/plain | https://w3id.org/sesar/sampledfeature/arid_or_semi_arid_environment
+sessf:glacial_outwash_plain	Glacial outwash plain	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:glacier_lateral_setting	Glacier lateral setting	sf:glacierenvironment	https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:glacier_terminus	Glacier terminus	sessf:proglacial_setting	https://w3id.org/sesar/sampledfeature/proglacial_setting
+sessf:granitoid_intrusive_complex	Granitic intrusive igneous complex	sessf:intrusive_igneous_complex	https://w3id.org/sesar/sampledfeature/intrusive_igneous_complex
+sessf:hadal_setting	Hadal setting	sessf:deep_sea_trench	https://w3id.org/sesar/sampledfeature/deep_sea_trench
+sessf:harbor	Harbor	sf:anthropogenicenvironment	https://w3id.org/isample/vocabulary/sampledfeature/anthropogenicenvironment
+sessf:high_pressure_low_temperature_earth_interior_setting	High pressure low temperature earth interior setting	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:hill	Hill	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:hillslope_setting	Hillslope	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:hinterland_setting	Hinterland tectonic setting	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting | https://w3id.org/sesar/sampledfeature/continental_crust
+sessf:hot_spot	Hot spot	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:humid_temperate_climatic_setting	Humid temperate climatic setting	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:humid_tropical_climatic_setting	Humid tropical climatic setting	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:hummock	Hummock	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:hypabyssal_setting	Hypabyssal setting	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system | https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:igneous_system	Igneous system	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:impact_structure	Impact structure	sessf:geologic_structure	https://w3id.org/sesar/sampledfeature/geologic_structure
+sessf:inactive_spreading_center	Inactive spreading center	sessf:submarine_ridge	https://w3id.org/sesar/sampledfeature/submarine_ridge | https://w3id.org/sesar/sampledfeature/volcanic_setting | https://w3id.org/sesar/sampledfeature/intraplate_tectonic_setting
+sessf:inner_neritic_setting	Inner neritic setting		
+sessf:insular_shelf	Insular shelf	sessf:marginal_shelf	https://w3id.org/sesar/sampledfeature/marginal_shelf
+sessf:interdistributary_bay	Interdistributary bay	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting | https://w3id.org/sesar/sampledfeature/deltaic_system
+sessf:intermittent_stream_channel	Intermittent stream channel 	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment | https://w3id.org/sesar/sampledfeature/channel
+sessf:intertidal	Intertidal setting	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting | https://w3id.org/sesar/sampledfeature/tidal_setting
+sessf:intraoceanic_trench	Intraoceanic trench 	sessf:deep_sea_trench	https://w3id.org/sesar/sampledfeature/deep_sea_trench
+sessf:intraplate_tectonic_setting	Intraplate tectonic setting	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:intrusive_igneous_complex	Intrusive igneous complex	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system | https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:island	Island	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:island_arc	Island arc 	sessf:volcanic_arc	https://w3id.org/sesar/sampledfeature/volcanic_arc
+sessf:isthmus	Isthmus	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:karst	Karst	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:lacustrine_delta	Lacustrine delta	sessf:lacustrine_setting	https://w3id.org/sesar/sampledfeature/lacustrine_setting | https://w3id.org/sesar/sampledfeature/deltaic_system
+sessf:lacustrine_setting	Lacustrine setting	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/sesar/sampledfeature/subaqueous_setting
+sessf:lagoonal_setting	Lagoonal setting	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:lake	Lake 	sessf:lacustrine_setting	https://w3id.org/sesar/sampledfeature/lacustrine_setting | https://w3id.org/isample/vocabulary/sampledfeature/terrestrialwaterbody
+sessf:lake_fresh_water	Fresh water lake 	sessf:lake	https://w3id.org/sesar/sampledfeature/lake
+sessf:lake_saline	Saline lake 	sessf:lake	https://w3id.org/sesar/sampledfeature/lake
+sessf:landslide	Landslide 	sessf:hillslope_setting	https://w3id.org/sesar/sampledfeature/hillslope_setting
+sessf:lava_flow	Lava flow 	sessf:volcanic_complex	https://w3id.org/sesar/sampledfeature/volcanic_complex
+sessf:low_energy_shoreline_setting	Low energy shoreline setting	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:low_pressure_high_temperature_setting	Low pressure high temperature setting	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:lower_bathyal_setting	Lower bathyal setting	sessf:bathyal_setting	https://w3id.org/sesar/sampledfeature/bathyal_setting
+sessf:lower_continental_crust	Lower continental crust	sessf:continental_crust	https://w3id.org/sesar/sampledfeature/continental_crust
+sessf:lower_delta_plain	Lower delta plain	sessf:delta_plain	https://w3id.org/sesar/sampledfeature/delta_plain | https://w3id.org/sesar/sampledfeature/tidal_setting
+sessf:lower_mantle	Lower mantle	sessf:mantle	https://w3id.org/sesar/sampledfeature/mantle
+sessf:lower_oceanic_crust	Lower oceanic crust	sessf:ocean_crust	https://w3id.org/sesar/sampledfeature/ocean_crust
+sessf:mafic_to_ultramafic_intrusive_complex	Mafic to ultramafic intrusive igenous complex	sessf:intrusive_igneous_complex	https://w3id.org/sesar/sampledfeature/intrusive_igneous_complex
+sessf:mantle	Mantle	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior | https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:marginal_marine_sabkha	Marginal marine sabkha	sessf:arid_or_semi_arid_environment	https://w3id.org/sesar/sampledfeature/arid_or_semi_arid_environment | https://w3id.org/sesar/sampledfeature/low_energy_shoreline_setting
+sessf:marginal_shelf	Marginal shelf	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:marine_carbonate_platform	Marine carbonate platform	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:marine_setting	Marine setting	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting
+sessf:meandering_channel	Meandering river channel	sessf:river_channel	https://w3id.org/sesar/sampledfeature/river_channel
+sessf:melange	Melange	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit
+sessf:mesa	Mesa	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:middle_bathyal_setting	Middle bathyal setting	sessf:bathyal_setting	https://w3id.org/sesar/sampledfeature/bathyal_setting
+sessf:middle_continental_crust	Middle continental crust	sessf:continental_crust	https://w3id.org/sesar/sampledfeature/continental_crust
+sessf:mineralized_body	Mineralized system	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:mining_site	Mining site 	sf:activehumanoccupationsite	https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sessf:moraine	Moraine	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:mountain	Mountain	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:mountain_range	Mountain range	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:mountain_stream_valley	Mountain stream valley	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:mud_flat	Mud flat	sessf:low_energy_shoreline_setting	https://w3id.org/sesar/sampledfeature/low_energy_shoreline_setting
+sessf:neritic_setting	Neritic setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:ocean_crust	Ocean crust	sessf:crust	https://w3id.org/sesar/sampledfeature/crust
+sessf:ocean_highland	Ocean highland	sf:marinewaterbodybottom	https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom | https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:ocean_plateau	Ocean plateau	sessf:ocean_highland	https://w3id.org/sesar/sampledfeature/ocean_highland | https://w3id.org/sesar/sampledfeature/plateau
+sessf:ocean_ridge_crest	Ocean ridge crest	sessf:submarine_ridge	https://w3id.org/sesar/sampledfeature/submarine_ridge
+sessf:ocean_ridge_flank	Ocean ridge flank	sessf:submarine_ridge	https://w3id.org/sesar/sampledfeature/submarine_ridge
+sessf:ophiolite	Ophiolite	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit
+sessf:outcrop	Outcrop	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:passive_continental_margin	Passive continental margin	sessf:continental_margin	https://w3id.org/sesar/sampledfeature/continental_margin
+sessf:pediment	Pediment	sessf:piedmont_slope	https://w3id.org/sesar/sampledfeature/piedmont_slope
+sessf:physiographic_feature	Physiographic feature	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:piedmont_slope	Piedmont slope	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:plain	Plain	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:plate_margin	Plate margin	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:plate_spreading_center	Plate spreading center	sessf:extended_terrane	https://w3id.org/sesar/sampledfeature/extended_terrane | https://w3id.org/sesar/sampledfeature/volcanic_setting
+sessf:plateau	Plateau	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:playa	Playa	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/sesar/sampledfeature/arid_or_semi_arid_environment | https://w3id.org/sesar/sampledfeature/plain | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:pluton	Pluton	sessf:intrusive_igneous_complex	https://w3id.org/sesar/sampledfeature/intrusive_igneous_complex
+sessf:polar_climatic_setting	Polar climatic setting	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:prairie	Prairie	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:prodelta	Prodelta setting	sessf:deltaic_system	https://w3id.org/sesar/sampledfeature/deltaic_system | https://w3id.org/sesar/sampledfeature/subaqueous_setting
+sessf:proglacial_setting	Proglacial setting	sf:glacierenvironment	https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:quarry	Quarry 	sf:anthropogenicenvironment	https://w3id.org/isample/vocabulary/sampledfeature/anthropogenicenvironment
+sessf:reef_flat	Reef flat	sessf:biological_reef	https://w3id.org/sesar/sampledfeature/biological_reef
+sessf:regional_metamorphic_setting	Regional metamorphic setting	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:ridge	Ridge	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:rift_zone	Rift zone	sessf:extended_terrane	https://w3id.org/sesar/sampledfeature/extended_terrane
+sessf:rise_continental	Seafloor rise, continental 	sessf:slope_rise_setting	https://w3id.org/sesar/sampledfeature/slope_rise_setting
+sessf:rise_insular	Seafloor rise, insular	sessf:slope_rise_setting	https://w3id.org/sesar/sampledfeature/slope_rise_setting
+sessf:river_channel	River channel	sessf:river_system	https://w3id.org/sesar/sampledfeature/river_system | https://w3id.org/sesar/sampledfeature/channel
+sessf:river_stream	River or stream	sf:terrestrialwaterbody	https://w3id.org/isample/vocabulary/sampledfeature/terrestrialwaterbody
+sessf:river_system	River system	sessf:terrestrial_setting	https://w3id.org/sesar/sampledfeature/terrestrial_setting | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:rocky_coast	Rocky coast	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:sand_plain	Sand plain	sessf:eolian_process_setting	https://w3id.org/sesar/sampledfeature/eolian_process_setting | https://w3id.org/sesar/sampledfeature/plain | https://w3id.org/sesar/sampledfeature/arid_or_semi_arid_environment
+sessf:seamount	Seamount	sessf:ocean_highland	https://w3id.org/sesar/sampledfeature/ocean_highland | https://w3id.org/sesar/sampledfeature/intraplate_tectonic_setting | https://w3id.org/sesar/sampledfeature/volcanic_setting
+sessf:sedimentary_basin	Sedimentary basin	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:shoreline	Shoreline	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:slope_continental	Seafloor slope, continental	sessf:slope_rise_setting	https://w3id.org/sesar/sampledfeature/slope_rise_setting
+sessf:slope_insular	Seafloor slope, insular	sessf:slope_rise_setting	https://w3id.org/sesar/sampledfeature/slope_rise_setting
+sessf:slope_rise_setting	Slope rise setting	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:soil_profile	Soil profile	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:strandplain	Strandplain	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:stratigraphic_section	Stratigraphic section	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit
+sessf:subaerial_canyon	Subaerial canyon	sessf:canyon	https://w3id.org/sesar/sampledfeature/canyon | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:subaerial_escarpment	Subaerial escarpment	sessf:escarpment	https://w3id.org/sesar/sampledfeature/escarpment | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:subaqueous_bar	Subaqueous bar 	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting
+sessf:subaqueous_setting	Subaqueous setting	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:subduction_zone	Subduction zone	sessf:plate_margin	https://w3id.org/sesar/sampledfeature/plate_margin
+sessf:subglacial_setting	Subglacial setting	sf:glacierenvironment	https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:submarine_bank	Submarine bank 	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting
+sessf:submarine_canyon	Submarine canyon	sessf:canyon	https://w3id.org/sesar/sampledfeature/canyon | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:submarine_channel	Submarine channel	sessf:channel	https://w3id.org/sesar/sampledfeature/channel | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:submarine_escarpment	Submarine escarpment 	sessf:escarpment	https://w3id.org/sesar/sampledfeature/escarpment | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:submarine_fan	Submarine fan	sessf:marine_setting	https://w3id.org/sesar/sampledfeature/marine_setting | https://w3id.org/isample/vocabulary/sampledfeature/marinewaterbodybottom
+sessf:submarine_ridge	Submarine ridge	sessf:ridge	https://w3id.org/sesar/sampledfeature/ridge | https://w3id.org/sesar/sampledfeature/ocean_highland
+sessf:submarine_vent	Submarine vent	sessf:active_ocean_ridge	https://w3id.org/sesar/sampledfeature/active_ocean_ridge
+sessf:supraglacial_setting	Supraglacial setting	sf:glacierenvironment	https://w3id.org/isample/vocabulary/sampledfeature/glacierenvironment
+sessf:supratidal_setting	Supratidal setting	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:swamp_or_marsh	Swamp or marsh	sessf:wetland	https://w3id.org/sesar/sampledfeature/wetland
+sessf:tectonic_setting	Tectonically defined setting	sf:earthenvironment	https://w3id.org/isample/vocabulary/sampledfeature/earthenvironment
+sessf:terrace	Terrace	sf:subaerialsurfaceenvironment	https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:terrestrial_setting	Terrestrial setting	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:thrust_sheet	Thrust sheet	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit
+sessf:tidal_channel	Tidal channel	sessf:subaqueous_setting	https://w3id.org/sesar/sampledfeature/subaqueous_setting | https://w3id.org/sesar/sampledfeature/tidal_setting | https://w3id.org/sesar/sampledfeature/channel
+sessf:tidal_flat	Tidal flat	sessf:tidal_setting	https://w3id.org/sesar/sampledfeature/tidal_setting | https://w3id.org/isample/vocabulary/sampledfeature/subaerialsurfaceenvironment
+sessf:tidal_marsh	Tidal marsh	sessf:tidal_flat	https://w3id.org/sesar/sampledfeature/tidal_flat | https://w3id.org/sesar/sampledfeature/swamp_or_marsh
+sessf:tidal_setting	Tidal setting	sessf:shoreline	https://w3id.org/sesar/sampledfeature/shoreline
+sessf:transform_plate_boundary	Transform plate boundary	sessf:plate_margin	https://w3id.org/sesar/sampledfeature/plate_margin
+sessf:transitional_crust	Transitional crust	sessf:crust	https://w3id.org/sesar/sampledfeature/crust
+sessf:triple_junction	Plate triple junction	sessf:tectonic_setting	https://w3id.org/sesar/sampledfeature/tectonic_setting
+sessf:ultra_high_pressure_crustal_setting	Ultra high pressure crustal setting	sf:earthinterior	https://w3id.org/isample/vocabulary/sampledfeature/earthinterior
+sessf:upper_bathyal_setting	upper bathyal setting	sessf:bathyal_setting	https://w3id.org/sesar/sampledfeature/bathyal_setting
+sessf:upper_continental_crust	Upper continental crust	sessf:continental_crust	https://w3id.org/sesar/sampledfeature/continental_crust
+sessf:upper_delta_plain	Upper delta plain	sessf:delta_plain	https://w3id.org/sesar/sampledfeature/delta_plain
+sessf:upper_mantle	Upper mantle	sessf:mantle	https://w3id.org/sesar/sampledfeature/mantle
+sessf:upper_ocean_crust	Upper ocean crust	sessf:ocean_crust	https://w3id.org/sesar/sampledfeature/ocean_crust
+sessf:urban_setting	Urban setting 	sf:activehumanoccupationsite	https://w3id.org/isample/vocabulary/sampledfeature/activehumanoccupationsite
+sessf:valley	Valley	sessf:physiographic_feature	https://w3id.org/sesar/sampledfeature/physiographic_feature
+sessf:volcanic_arc	Volcanic arc	sessf:volcanic_setting	https://w3id.org/sesar/sampledfeature/volcanic_setting | https://w3id.org/sesar/sampledfeature/plate_margin
+sessf:volcanic_complex	Volcanic complex	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit
+sessf:volcanic_setting	Volcanic Setting	sessf:igneous_system	https://w3id.org/sesar/sampledfeature/igneous_system
+sessf:volcano	Volcano 	sessf:volcanic_setting	https://w3id.org/sesar/sampledfeature/volcanic_setting | https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:wetland	Wetland	sf:earthsurface	https://w3id.org/isample/vocabulary/sampledfeature/earthsurface
+sessf:xenolith	Xenolith	sessf:geologic_unit	https://w3id.org/sesar/sampledfeature/geologic_unit

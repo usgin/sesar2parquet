@@ -1,0 +1,14 @@
+h1 {
+    color: #fa0303;
+    font-family: arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+div {
+    color: green;
+    text-align: left;
+    font-size: 14px;
+}

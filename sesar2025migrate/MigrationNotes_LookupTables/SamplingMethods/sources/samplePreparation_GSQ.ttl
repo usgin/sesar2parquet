@@ -1,0 +1,385 @@
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://purl.org/linked-data/registry#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prez: <https://prez.dev/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/sample-preparation-methods> a owl:Ontology,
+        skos:ConceptScheme ;
+    dcterms:created "2020-02-07"^^xsd:date ;
+    dcterms:creator <https://linked.data.gov.au/org/gsq> ;
+    dcterms:identifier "def:sample-preparation-methods"^^prez:identifier,
+        "def:sample-preparation-methods"^^prez:slug ;
+    dcterms:modified "2023-03-16"^^xsd:date ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    dcterms:publisher <https://linked.data.gov.au/org/gsq> ;
+    ns1:status <https://linked.data.gov.au/def/reg-statuses/stable> ;
+    skos:definition "The methods used to prepare samples for analyses."@en ;
+    skos:hasTopConcept <http://linked.data.gov.au/def/sample-preparation-methods/acidify>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/aggregate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/beneficiate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/chelate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/compress>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/concentrate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/condense>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/cool>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/crush>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/crush-sort>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/cut>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/deacidify>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/decompress>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/deposit>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/dessicate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/dilute>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/disaggregate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/dissolve>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/distill>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/electrolysis>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/extract>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/filter>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/freeze>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/grind>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/heat>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/hydrate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/ionise>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/laser-ablate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/melt>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/mount>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/precipitate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/react>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/recombine>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/refine>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/refining-byproduct>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/rough-extract>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/sieve>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/sort>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/sublimate>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/unprocessed>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/unspecified>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/vaporise>,
+        <http://linked.data.gov.au/def/sample-preparation-methods/wash> ;
+    skos:prefLabel "Sample Preparation Methods"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/mine-processing> dcterms:identifier "smpl-prprtn-mthds:mine-processing"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Sample preparation steps and multi-step processes that concentrate, refine, or prepare a raw material into a saleable product."@en ;
+    skos:prefLabel "Mine Processing"@en .
+
+dcterms:created rdfs:label "Date Created"@en ;
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en .
+
+dcterms:creator rdfs:label "Creator"@en ;
+    dcterms:description "Recommended practice is to identify the creator with a URI.  If this is not possible or feasible, a literal value that identifies the creator may be provided."@en .
+
+dcterms:description rdfs:label "Description"@en ;
+    dcterms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en .
+
+dcterms:identifier rdfs:label "Identifier"@en ;
+    dcterms:description "Recommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN).  Persistent identifiers should be provided as HTTP URIs."@en .
+
+dcterms:modified rdfs:label "Date Modified"@en ;
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en .
+
+dcterms:provenance rdfs:label "Provenance"@en ;
+    dcterms:description "The statement may include a description of any changes successive custodians made to the resource."@en .
+
+dcterms:publisher rdfs:label "Publisher"@en .
+
+ns1:status rdfs:label "registry status" .
+
+rdf:type rdfs:label "type" .
+
+rdfs:label rdfs:label "label" .
+
+skos:definition rdfs:label "definition"@en ;
+    skos:definition "A statement or formal explanation of the meaning of a concept."@en .
+
+skos:hasTopConcept rdfs:label "has top concept"@en ;
+    skos:definition "Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies."@en .
+
+skos:prefLabel rdfs:label "preferred label"@en ;
+    skos:definition "The preferred lexical label for a resource, in a given language."@en .
+
+schema:name rdfs:label "name" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/acidify> dcterms:identifier "smpl-prprtn-mthds:acidify"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of making a material more acidic."@en ;
+    skos:prefLabel "Acidify"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:acidify" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/aggregate> dcterms:identifier "smpl-prprtn-mthds:aggregate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To collect or gather into a mass or whole"@en ;
+    skos:prefLabel "Aggregate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:aggregate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/beneficiate> dcterms:identifier "smpl-prprtn-mthds:beneficiate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A composite process that may include any combination of washing, crushing, and concentrating"@en ;
+    skos:prefLabel "Beneficiate"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:beneficiate",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:beneficiate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/chelate> dcterms:identifier "smpl-prprtn-mthds:chelate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A chemical process to cluster metallic ions."@en ;
+    skos:prefLabel "Chelate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:chelate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/compress> dcterms:identifier "smpl-prprtn-mthds:compress"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The action of increasing pressure on a sample."@en ;
+    skos:prefLabel "Compress"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:compress" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/concentrate> dcterms:identifier "smpl-prprtn-mthds:concentrate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Preparation by removing or reducing the diluting agent(s) or material."@en ;
+    skos:prefLabel "Concentrate"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:concentrate",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:concentrate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/condense> dcterms:identifier "smpl-prprtn-mthds:condense"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a gas to a liquid. Typically through decreasing temperature or increasing pressure."@en ;
+    skos:prefLabel "Condense"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:condense" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/cool> dcterms:identifier "smpl-prprtn-mthds:cool"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of reducing the sample temperature."@en ;
+    skos:prefLabel "Cool"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:cool" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/crush> dcterms:identifier "smpl-prprtn-mthds:crush"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The deformation or pulverization of material by compressing forcefully."@en ;
+    skos:prefLabel "Crush"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:crush" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/crush-sort> dcterms:identifier "smpl-prprtn-mthds:crush-sort"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A composite process of deformation or pulverization of material by compressing forcefully (crushing) followed by separation of material components based on a physical property such as size or density (sort)."@en ;
+    skos:prefLabel "Crush and Sort"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:crush-sort",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:crush-sort" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/cut> dcterms:identifier "smpl-prprtn-mthds:cut"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Prepartion by bifurcating any number of times to produce fresh faces or a smaller overall sample."@en ;
+    skos:prefLabel "Cut"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:cut",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:cut" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/deacidify> dcterms:identifier "smpl-prprtn-mthds:deacidify"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of making a material more alkaline."@en ;
+    skos:prefLabel "Deacidify"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:deacidify" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/decompress> dcterms:identifier "smpl-prprtn-mthds:decompress"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The action of decreasing pressure on a sample."@en ;
+    skos:prefLabel "Decompress"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:decompress" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/deposit> dcterms:identifier "smpl-prprtn-mthds:deposit"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a gas to a solid. Typically through decreasing temperature or increasing pressure."@en ;
+    skos:prefLabel "Deposit"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:deposit" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/dessicate> dcterms:identifier "smpl-prprtn-mthds:dessicate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The removal of a liquid component from a solid."@en ;
+    skos:prefLabel "Dessicate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:dessicate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/dilute> dcterms:identifier "smpl-prprtn-mthds:dilute"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Preparation by addition of the solvent or diluting agent(s)."@en ;
+    skos:prefLabel "Dilute"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:dilute" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/disaggregate> dcterms:identifier "smpl-prprtn-mthds:disaggregate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To separate into component parts"@en ;
+    skos:prefLabel "Disaggregate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:disaggregate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/dissolve> dcterms:identifier "smpl-prprtn-mthds:dissolve"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of dissolving a material in a solvent."@en ;
+    skos:prefLabel "Dissolve"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:dissolve" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/distill> dcterms:identifier "smpl-prprtn-mthds:distill"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The action of purifying a liquid by a process of heating and cooling."@en ;
+    skos:prefLabel "Distill"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:distill" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/electrolysis> dcterms:identifier "smpl-prprtn-mthds:electrolysis"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A technique that uses direct electric current to drive an otherwise non-spontaneous chemical reaction. Electrolysis is commercially important as a stage in the separation of elements from naturally occurring sources such as ores using an electrolytic cell."@en ;
+    skos:prefLabel "Electrolysis"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:electrolysis" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/extract> dcterms:identifier "smpl-prprtn-mthds:extract"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A separation process consisting in the separation of a substance from a matrix. Common examples include liquid-liquid extraction, and solid phase extraction."@en ;
+    skos:prefLabel "Extract"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:extract" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/filter> dcterms:identifier "smpl-prprtn-mthds:filter"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "An operation that separates solid matter and fluid from a mixture with a filter medium that has a complex structure through which only the fluid can pass."@en ;
+    skos:prefLabel "Filter"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:filter" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/freeze> dcterms:identifier "smpl-prprtn-mthds:freeze"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a liquid to a solid. Typically through decreasing temperature or increasing pressure."@en ;
+    skos:prefLabel "Freeze"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:freeze" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/grind> dcterms:identifier "smpl-prprtn-mthds:grind"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Reduce of material to small particles or powder by crushing it."@en ;
+    skos:prefLabel "Grind"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:grind" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/heat> dcterms:identifier "smpl-prprtn-mthds:heat"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of applying thermal radiation to a material in order to raise its surface and or internal temperature."@en ;
+    skos:prefLabel "Heat"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:heat" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/hydrate> dcterms:identifier "smpl-prprtn-mthds:hydrate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The addition of water to a solid sample."@en ;
+    skos:prefLabel "Hydrate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:hydrate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/ionise> dcterms:identifier "smpl-prprtn-mthds:ionise"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a gas to a plasma. Typically through decreasing temperature."@en ;
+    skos:prefLabel "Ionise"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:ionise" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/laser-ablate> dcterms:identifier "smpl-prprtn-mthds:laser-ablate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Laser ablation is the process of removing material from a solid (or occasionally liquid) surface by irradiating it with a laser beam."@en ;
+    skos:prefLabel "Laser Ablate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:laser-ablate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/melt> dcterms:identifier "smpl-prprtn-mthds:melt"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a solid to a liquid. Typically through increasing temperature or decreasing pressure."@en ;
+    skos:prefLabel "Melt"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:melt" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/mount> dcterms:identifier "smpl-prprtn-mthds:mount"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To be mounted on or between media in preparation for petroscopy or other observation technique which requires a stable, protected sample."@en ;
+    skos:prefLabel "Mount"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:mount" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/precipitate> dcterms:identifier "smpl-prprtn-mthds:precipitate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The process of precipitating a material out of a solvent."@en ;
+    skos:prefLabel "Precipitate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:precipitate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/react> dcterms:identifier "smpl-prprtn-mthds:react"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change the chemical state of a sample by combination with a reagent."@en ;
+    skos:prefLabel "React"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:react" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/recombine> dcterms:identifier "smpl-prprtn-mthds:recombine"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a gas to a plasma. Typically through increasing temperature."@en ;
+    skos:prefLabel "Recombine"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:recombine" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/refine> dcterms:identifier "smpl-prprtn-mthds:refine"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "A group of post-primary process in resource processing such as electrolysis, cupellation, pyrometallurgical reactions."@en ;
+    skos:prefLabel "Refine"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:refine",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:refine" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/refining-byproduct> dcterms:identifier "smpl-prprtn-mthds:refining-byproduct"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The by-product pathway parallel to a refining process that generates waste material or by-products."@en ;
+    skos:prefLabel "Refining by-product"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:refining-byproduct",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:refining-byproduct" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/rough-extract> dcterms:identifier "smpl-prprtn-mthds:rough-extract"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To extract gemstones, typically opal, as extracted from-ground or after the agitation process of washing and tumbling, but without processing by apidary equipment."@en ;
+    skos:prefLabel "Rough Extract"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:rough-extract",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:rough-extract" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/sieve> dcterms:identifier "smpl-prprtn-mthds:sieve"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Material characterised by size fractionation through a screen or series of screens."@en ;
+    skos:prefLabel "Sieve"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:sieve" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/sort> dcterms:identifier "smpl-prprtn-mthds:sort"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "The separation of material components based on a physical property such as size or density (sort)"@en ;
+    skos:prefLabel "Sort"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:sort" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/sublimate> dcterms:identifier "smpl-prprtn-mthds:sublimate"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a solid to a gas. Typically through increasing temperature or decreasing pressure."@en ;
+    skos:prefLabel "Sublimate"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:sublimate" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/unprocessed> dcterms:identifier "smpl-prprtn-mthds:unprocessed"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "An explicit indication that a sample material was not processed between two states. For example where a raw material requires no processing to be considered a saleable product."@en ;
+    skos:prefLabel "No Processing"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:unprocessed",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:unprocessed" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/unspecified> dcterms:identifier "smpl-prprtn-mthds:unspecified"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "Where a process or group of processes has been performed but specific details have not been recorded or are not available."@en ;
+    skos:prefLabel "Unspecified"@en ;
+    prez:link "/v/collection/smpl-prprtn-mthds:mine-processing/smpl-prprtn-mthds:unspecified",
+        "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:unspecified" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/vaporise> dcterms:identifier "smpl-prprtn-mthds:vaporise"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To change a liquid to a gas. Typically through increasing temperature or decreasing pressure."@en ;
+    skos:prefLabel "Vaporise"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:vaporise" .
+
+<http://linked.data.gov.au/def/sample-preparation-methods/wash> dcterms:identifier "smpl-prprtn-mthds:wash"^^prez:identifier ;
+    dcterms:provenance "Compiled by the Geological Survey of Queensland" ;
+    skos:definition "To mix with water and/or chemicals and physically agitate to remove impurities."@en ;
+    skos:prefLabel "Wash"@en ;
+    prez:link "/v/vocab/def:sample-preparation-methods/smpl-prprtn-mthds:wash" .
+
+owl:Ontology rdfs:label "Ontology" .
+
+skos:ConceptScheme rdfs:label "Concept Scheme"@en ;
+    skos:definition "A set of concepts, optionally including statements about semantic relationships between those concepts."@en .
+
+<https://linked.data.gov.au/org/gsq> rdfs:label "Geological Survey of Queensland" ;
+    schema:name "Geological Survey of Queensland" .
+

@@ -1,0 +1,8 @@
+agent_role_id,label,description,source
+-9999,Missing,Missing,NULL
+1,collector,Agent responsible for original acquisition of the sample.,SESAR
+2,original_owner,Agent that was the original owner of the sample,SESAR
+3,current_archive,"Agent that is currently the steward of the sample, responsible for curation, preservation and access",SESAR
+4,original_archive,first archive that was responsible for sample curation,SESAR
+5,req_registrant,registrant,SESAR
+6,last_registrant,previous agent responsible for maintaining the sample registration,SESAR
