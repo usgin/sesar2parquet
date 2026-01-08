@@ -5,3 +5,4 @@
 *.pyc
 /.github
 /.idea
+/api
